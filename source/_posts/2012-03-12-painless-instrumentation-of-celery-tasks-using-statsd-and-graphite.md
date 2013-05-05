@@ -79,8 +79,7 @@ def instrument_task(func):
 
         task_name = func.__name__
 
-        counter =
-statsd.counter.Counter('celery.tasks.status',stats_conn)
+        counter = statsd.counter.Counter('celery.tasks.status',stats_conn)
         counter.increment('{task_name}.started'.format(**locals()))
 
         timer = statsd.timer.Timer('celery.tasks.duration', stats_conn)
