@@ -52,7 +52,7 @@ Finally, here are the term frequencies with the obvious domain-specific terms in
 
 **Corpus Seeded from Twitter**
 
-**Corpus Seeded from Erotica**
+![Counts of Top 20 Terms from Twitter Corpus][6]  
 
 1.  that (0.84%)
 2.  just (0.70%)
@@ -75,6 +75,11 @@ Finally, here are the term frequencies with the obvious domain-specific terms in
 19. about 0.30%)
 20. make (0.30%)
 
+
+**Corpus Seeded from Erotica**
+
+![Counts of Top 20 Terms from Erotica Corpus][7]  
+
 1.  that (1.83%)
 2.  with (1.42%)
 3.  into (0.76%)
@@ -96,8 +101,7 @@ Finally, here are the term frequencies with the obvious domain-specific terms in
 19. said (0.55%)
 20. could (0.54%)
 
-![Counts of Top 20 Terms from Twitter Corpus][6]  
-![Counts of Top 20 Terms from Erotica Corpus][7]  
+
 You’ll note that the Twitter corpus had a heavy bias towards the term “*follow*” whereas the Erotica corpus shows an overwhelming use of the term “*cock*” (Writers: Use synonyms.)
 
  [6]: http://chart.apis.google.com/chart?chxl=0:|that|just|with|thi|have|your|like|love|follow|what|from|haha|good|para|will|when|know|want|about|make&chxr=0,0,703297&chxt=x&chbh=a,4,10&chs=600x200&cht=bvg&chco=4D89F9&chds=0,703297&chd=t:703297,582988,581346,573197,547218,513823,467673,455264,378187,367112,302254,296974,286671,283887,272176,254419,252303,251673,251325,248572&chtt=Counts of Top 20 Terms from Twitter Corpus
@@ -110,3 +114,4 @@ This is important because if I were to build a domain-specific search-engine, I 
 ## Conclusion
 
 To conclude, the subject matter of a document set will create a bias towards domain-specific terms in the document set’s histogram of term frequencies. If you are calculating relevance for any particular document set, you should use a corpus derived from that document set. In other words, if you can, try not to re-use your corpora!
+
