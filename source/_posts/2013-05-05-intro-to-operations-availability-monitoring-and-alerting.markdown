@@ -42,12 +42,12 @@ monitoring is set up properly, maintained, and you and your employees
 agree to approach alerts a specific way, you will be able to reap a
 variety of benefits. Here's what I recommend:
 
-1. First, collaborate with your employees to define who is
-  in the pager rotation and the escalation policies. Ask yourself: What
-  happens when the on call engineer is overwhelmed and needs backup? What
-  happens when the engineer goes on vacation?
+1. First, collaborate with your employees to define who is in the pager
+  rotation and the escalation policies. Ask yourself: What happens when
+  the on call engineer is overwhelmed and needs backup? What happens when
+  the engineer goes on vacation?
 
-2. Next, I would take inventory of what services I rely on and define my
+2. Next, take inventory of what services you rely on and define an
   internal SLA for them. This does not have to be a super formal process,
   but this inventory and SLA will be helpful for deciding what thresholds
   to set in your monitoring to avoid false positives. Try to see the big
@@ -61,34 +61,33 @@ variety of benefits. Here's what I recommend:
   Your inventory and SLA definition is a living document; remember to
   keep it up to date!
 
-3. Then I would set up whatever monitoring package we decided to use
-  (self-hosted or third party) such as [nagios][2], [Zenoss][3],
-  [Pingdom][4], or [CopperEgg][5] and configure my monitoring for those
-  services. If you're really good, you'll *check your configuration into
-  its own source control repository*. If you go the self-hosted
+3. Then set up whatever monitoring package you or your engineers decided
+  to use (self-hosted or third party) such as [nagios][2], [Zenoss][3],
+  [Pingdom][4], or [CopperEgg][5] and have your monitoring configured for
+  those services. If you're really good, you'll *check your configuration
+  into its own source control repository*. If you go the self-hosted
   route, it may also be worth having your monitoring server monitored
-  externally. Who's watching the watcher indeed. 
+  externally.  Who's watching the watcher indeed. 
 
   [2]: http://www.nagios.org/
   [3]: http://www.zenoss.com/
   [4]: http://www.pingdom.com/
   [5]: http://www.copperegg.com/
 
-4. I'd think about integrating my monitoring solution with a pager
-  service such as [PagerDuty][6]. Services like PagerDuty allow you to
-  input your pager rotation and then define good rules for how to contact
-  the on call engineer and when to escalate should the engineer be
-  unavailable.
+4. Think about integrating your monitoring with a pager service such as
+  [PagerDuty][6]. Services like PagerDuty allow you to input your pager
+  rotation and then define good rules for how to contact the on call
+  engineer and when to escalate should the engineer be unavailable.
 
   [6]: http://www.pagerduty.com/
 
-5. With improved monitoring and alerting in place, certain companies may
-  want to think about giving certain customers "911" access. At a previous
-  company, we had a secret email address our big customers could hit which
-  would *open a support ticket* and then *page the on call engineer* with
-  the ticket number. If you decide to go this route; however, you'll want
-  to *train your customers* when it's appropriate to use this power and how
-  to use it most effectively.
+5. With improved monitoring and alerting in place, you may want to think
+  about giving certain customers "911" access. At a previous company I
+  worked at, we had a secret email address our big customers could hit
+  which would *open a support ticket* and then *page the on call engineer*
+  with the ticket number. If you decide to go this route; however, you'll
+  want to *train your customers* when it's appropriate to use this power
+  and how to use it most effectively.
 
 6. Adjust alerts and fix problems as you get paged for them. Don't care
   that a particular API goes down during a known maintenance window?
