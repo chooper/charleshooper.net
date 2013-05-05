@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Intro to Operations: Configuration Management"
+permalink: /blog/intro-to-ops-config-management/
 date: 2013-05-05 20:12
 comments: true
 categories: 
@@ -14,7 +15,7 @@ without an operations background in order to introduce certain best
 practices regarding Operations. For the rest of the blog posts, please
 visit the [introductory Intro to Operations][1] blog post!*
 
-  [1]: http://www.charleshooper.net/blog/into-to-ops-for-startups/
+  [1]: http://www.charleshooper.net/blog/intro-to-ops-for-startups/
 
 One of the areas I've witnessed early stage startups lacking in is
 **configuration management**. *Configuration management is the process of

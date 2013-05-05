@@ -4,7 +4,7 @@ author: Charles Hooper
 date: 2013-05-04 21:37
 comments: true
 layout: post
-permalink: /blog/into-to-ops-for-startups/
+permalink: /blog/intro-to-ops-for-startups/
 categories: 
   - DevOps
   - Management
@@ -41,13 +41,15 @@ articles and publishing them to a variety of places, including this blog.
 Specifically, the topics I've chosen to write about are:
 
 * [Configuration management][1]
-* Availability monitoring
+* [Availability monitoring][2]
 * Metrics collection
 * Backups
 * Security
 * Disaster Recovery
 
   [1]: http://www.charleshooper.net/blog/intro-to-operations-configuration-management/
+  [2]:
+http://www.charleshooper.net/blog/intro-to-ops-availability-monitoring-alerting/
 
 Over the next week or so, I'll write about each one of these topics and
 post them to this blog. I hope people find them helpful!
