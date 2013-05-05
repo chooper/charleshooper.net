@@ -31,12 +31,14 @@ Fixing this problem is a two-step solution:
 
 The first step, moving the process code into its own thread, is a pretty easy feat. In fact, I’m testing my proof-of-concept as I write. The second step, however, is going to require alot more research and thought. In my proof-of-concept, I place Status (Tweet) objects into a queue which another thread then processes. Using sqlite, my queue never gets any smaller, as you can see below.
 
-`$ ./bootstrap-stream.py
+```
+$ ./bootstrap-stream.py
 Streaming timelines...
 Tue Dec 15 10:56:01 2009 | Queue: 93 items
 Tue Dec 15 10:56:08 2009 | Queue: 183 items
 Tue Dec 15 10:56:13 2009 | Queue: 278 items
 ...
-Tue Dec 15 10:58:02 2009 | Queue: 1859 items`
+Tue Dec 15 10:58:02 2009 | Queue: 1859 items
+```
 
 My next step will probably be to test storing these items in a MySQL (InnoDB) database, simply because it’s easy enough to swap out the sqlite module with the MySQLdb module in Python, although I  have a feeling that what I really need is a key-value store. Speaking of which, does any one have any recommendations as far as databases, hash tables, or key-value stores go? Bonus points if I can replicate the data.
