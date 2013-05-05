@@ -40,12 +40,14 @@ articles and publishing them to a variety of places, including this blog.
 
 Specifically, the topics I've chosen to write about are:
 
-* Configuration management
+* [Configuration management][1]
 * Availability monitoring
 * Metrics collection
 * Backups
 * Security
 * Disaster Recovery
+
+  [1]: http://www.charleshooper.net/blog/intro-to-operations-configuration-management/
 
 Over the next week or so, I'll write about each one of these topics and
 post them to this blog. I hope people find them helpful!
