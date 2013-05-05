@@ -47,9 +47,8 @@ Specifically, the topics I've chosen to write about are:
 * Security
 * Disaster Recovery
 
-  [1]: http://www.charleshooper.net/blog/intro-to-operations-configuration-management/
-  [2]:
-http://www.charleshooper.net/blog/intro-to-ops-availability-monitoring-alerting/
+  [1]: /blog/intro-to-ops-config-management/
+  [2]: /blog/intro-to-ops-availability-monitoring-alerting/
 
 Over the next week or so, I'll write about each one of these topics and
 post them to this blog. I hope people find them helpful!
