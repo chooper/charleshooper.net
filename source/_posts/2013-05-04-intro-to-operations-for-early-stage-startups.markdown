@@ -42,13 +42,14 @@ Specifically, the topics I've chosen to write about are:
 
 * [Configuration management][1]
 * [Availability monitoring][2]
-* Metrics collection
+* [Metrics collection][3]
 * Backups
 * Security
 * Disaster Recovery
 
   [1]: /blog/intro-to-ops-config-management/
   [2]: /blog/intro-to-ops-availability-monitoring-alerting/
+  [3]: /blog/intro-to-ops-metrics-collection/
 
 Over the next week or so, I'll write about each one of these topics and
 post them to this blog. I hope people find them helpful!
