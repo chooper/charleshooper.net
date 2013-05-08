@@ -35,8 +35,5 @@ My Tweet harvester stats look something like this. Base “sample” streaming l
  [5]: http://www.charleshooper.net/wp-content/uploads/bowserjr.plumata.net-if_eth0-d-300x164.png
  [6]: http://www.charleshooper.net/wp-content/uploads/bowserjr.plumata.net-munin_que-300x164.png
 
-[See and download the full gallery on posterous][7]
-
 Edit: I’m actually on spritzer, or whatever the base access level is. However, “drinking from the gardenhose” is a much cooler title.
 
- [7]: http://blog.charleshooper.net/drinking-from-the-gardenhose-with-graphs
