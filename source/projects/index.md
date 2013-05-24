@@ -5,6 +5,13 @@ layout: page
 ---
 # 
 
+Below is a list of various projects I've worked on outside of work. I
+may also have some unlisted projects on [Github][90] and [BitBucket][91].
+
+  [90]: https://github.com/chooper
+  [91]: https://bitbucket.org/hoop
+
+
 ## [collectd][1]
 Fork of the python collectd module adding some improvements.
 
