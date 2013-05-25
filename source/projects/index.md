@@ -12,9 +12,6 @@ may also have some unlisted projects on [Github][90] and [BitBucket][91].
   [91]: https://bitbucket.org/hoop
 
 
-## [collectd][1]
-Fork of the python collectd module adding some improvements.
-
 ## Cost Behavior Analysis Calculator
 I wrote a web-based cost behavior analyzer, which is really just what
 business people call linear regressions.
@@ -29,6 +26,9 @@ Generate recommendations of arbitrary objects.
 
 ## [markov-experimental][7]
 Just me messing around with Markov chains. Includes an IRC bot.
+
+## [collectd][1]
+Fork of the python collectd module adding some improvements.
 
 ## [bootleggers-maxbets][2]
 This "maxbets" project was something I wrote many (circa 2007) years ago
@@ -52,16 +52,12 @@ which its name is “mentioned” in.
 Implements the Version 3 commandset for the USB I/O 24 controller board
 and a related relay board.
 
-## [munin-plugins][6]
-Various Munin plugins I wrote or modified.
-
 
  [1]: https://bitbucket.org/hoop/collectd
  [2]: https://bitbucket.org/hoop/bootleggers-maxbets
  [3]: https://bitbucket.org/hoop/recon
  [4]: https://bitbucket.org/hoop/bootcrawl
  [5]: https://bitbucket.org/hoop/snapshot
- [6]: https://bitbucket.org/hoop/munin-plugins
  [7]: https://bitbucket.org/hoop/markov-experimental
  [9]: http://code.google.com/p/twitter-repeater/
  [10]: http://code.google.com/p/restful-sqlite/
