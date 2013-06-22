@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: System Administration | Charles Hooper]]></title>
+  <link href="http://www.charleshooper.net/blog/categories/system-administration/atom.xml" rel="self"/>
+  <link href="http://www.charleshooper.net/"/>
+  <updated>2013-06-22T05:43:04-07:00</updated>
+  <id>http://www.charleshooper.net/</id>
+  <author>
+    <name><![CDATA[Charles Hooper]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[We Have the Tools but What About the Techniques?]]></title>
+    <link href="http://www.charleshooper.net/blog/we-have-the-tools-but-what-about-the-techniques/"/>
+    <updated>2012-01-02T00:00:00-08:00</updated>
+    <id>http://www.charleshooper.net/blog/we-have-the-tools-but-what-about-the-techniques</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>In my previously-written article “<a href="http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops/" title="Concurrent Engineering: The Foundation of DevOps">Concurrent Engineering: The Foundation of DevOps</a>” I wrote “<em>just because you use puppet does not necessarily mean your organization is practicing DevOps.</em>” I didn’t spend much time on it then, but I think it bears repeating and further explanation. The <strong>DevOps “movement” has seen</strong>, and will likely continue to see, <strong>a huge influx of new tools</strong> as organizations attempt to find ways to adopt DevOps within their organizations. These tools have included (and certainly have not been limited to) tools that aid in monitoring (statsd), configuration management (puppet), and continuous delivery (hubot).</p>
+
+<p>Operations engineers, software developers, and managers are in a mad dash to develop, utilize, and integrate these tools within their organizations. And that’s where we’re going wrong; we are focused on a single component of the Software/Systems Engineering Process. This process model contains three main components that are central to its existence: <em>methodologies</em>, <em>techniques</em>, and <em>tools</em> (Valacich 2009). While I don’t need to go into each one specifically, it’s clear that the tools are just a single factor in the overall process. Following the model further, it becomes clear that the makeup of each of these components influences the other components in the process.</p>
+
+<p>Put simply, <strong>DevOps is a methodology</strong> and, as such, it’s natural that we’re seeing a huge response in tools. What I feel we’re missing, however, is more information about the different techniques used throughout organizations in <em>their</em> software and operations engineering processes. An excellent example of this is <a href="http://scottchacon.com/2011/08/31/github-flow.html">Scott Chacon’s explanation of how Github uses Git (and Github!) to deliver continuous improvement</a> to their service. With that said, I would like to see more organizations refine their techniques and talk about <em>these</em> as much as they talk about their tools.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Concurrent Engineering: The Foundation of DevOps]]></title>
+    <link href="http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops/"/>
+    <updated>2011-12-07T00:00:00-08:00</updated>
+    <id>http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<blockquote><p>DevOps is all about trying to avoid that epic failure and working smarter and more efficiently at the same time. It is a framework of ideas and principles designed to foster cooperation, learning and coordination between development and operational groups. In a DevOps environment, developers and sysadmins build relationships, processes, and tools that allow them to better interact and ultimately better service the customer (<a href="http://www.kartar.net/2010/02/what-devops-means-to-me/" title="What DevOps Means to Me">James Turnbull</a>).</p></blockquote>
+
+<p>At the time of writing, if you were to search for “devops” you would find eight results attempting to explain what devops is, one result for a conference, and one rather satirical article (although not necessarily incorrect) where the author answers the question of “how do you implement devops” with “<a href="http://teddziuba.com/2011/03/devops-scam.html" title="DevOps is a Poorly Executed Scam">nobody seems to know</a>” (Ted Dziuba).</p>
+
+<p>The big problem with the DevOps “movement” is that we essentially have a bunch of operations and development people promoting it and trying to implement it within their organizations. Meanwhile, those with management and business responsibilities, even if explained the “what,” don’t understand the “how.” Just because you use puppet does not necessarily mean your organization is practicing DevOps.</p>
+
+<p>This shortcoming is the result of us devops proponents either falsely claiming these techniques and methodologies are new or not knowing any better. If we had something more relatable for the business people (and, by principle, <em>we</em> should be business-oriented, too) then I think DevOps would have more of a chance.</p>
+
+<p>Well, get your product and management together because the truth is that DevOps is actually a form of Concurrent Engineering.</p>
+
+<blockquote><p>Concurrent Engineering (CE) is a systematic approach to integrated product development that emphasizes the response to customer expectations. It embodies team values of co-operation, trust and sharing in such a manner that decision making is by consensus, involving all perspectives in parallel, from the beginning of the product life-cycle (<a href="http://www.esa.int/esaMI/CDF/SEM1OF1P4HD_0.html" title="What is concurrent engineering?">ESA – Concurrent Engineering Facility</a>).</p></blockquote>
+
+<p>Concurrent Engineering encompasses several major principles which just so happen to fit the definition (however formal or informal) of devops.</p>
+
+<p>I’ll list them from the <a href="http://best.berkeley.edu/~pps/pps/concurrent.html#basic" title="Basic Principles of Concurrent Engineering">Synthesis Coalition</a> here:</p>
+
+<ul>
+<li>Get a strong commitment from senior management.</li>
+<li>Establish unified project goals and a clear business mission.</li>
+<li>Develop a detailed plan early in the process.</li>
+<li>Continually review your progress and revise your plan.</li>
+<li>Develop project leaders that have an overall vision of the project and goals.</li>
+<li>Analyze your market and know your customers.</li>
+<li>Suppress individualism and foster a team concept.</li>
+<li>Establish and cultivate cross-functional integration and collaboration.</li>
+<li>Break project into its natural phases.</li>
+<li>Develop metrics.</li>
+<li>Set milestones throughout the development process.</li>
+<li>Collectively work on all parts of project.</li>
+<li>Reduce costs and time to market.</li>
+<li>Complete tasks in parallel.</li>
+</ul>
+
+
+<p>By approaching the issues of devops as  concurrent engineering and implementing it as such, you open the movement to a well-researched, well-documented, and well-accepted product design philosophy. By shedding this light on the devops methodologies, this enables those of us pushing the devops movement to finally put the movement into a more business-oriented perspective.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Problems at Scale]]></title>
+    <link href="http://www.charleshooper.net/blog/problems-at-scale/"/>
+    <updated>2011-08-13T00:00:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/problems-at-scale</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>Over on <a href="http://news.ycombinator.com/item?id=2881122">HackerNews</a>, saturn wrote that:</p>
+
+<blockquote><p>Cloud computing scales the efficiencies, yes. It also scales the problems.</p></blockquote>
+
+<p>This is exactly right. Problems in simple architectures are relatively easy to solve. In fact, I’d go as far as to say that we’ve probably solved them in all of the traditional archetypes, both in theory and in practice.</p>
+
+<p>On the other hand, complex architectures lead to exponentially more difficult problems. There are probably lots of problems in these various complex architectures that we don’t even know exist yet. And then there are those problems that we <em>do</em> know about that we think will only occur in very rare (or even “impossible”) circumstances so they get considerably less attention devoted to them.</p>
+
+<p>Those of us who have careers, jobs, and hobbies in an engineering discipline need to remember this when we make decisions about the design of a new or existing system. Just because we can’t <em>see</em> the underlying platform, because it’s been abstracted away from us, doesn’t mean that it doesn’t exist. For example, much of the recent AWS downtime was contributed to by design flaws in the Elastic Block Store system. If you think you should be hosted on the cloud, use it, but take the time to understand the systems under the hood.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Amazon&#8217;s Relational Database Service (RDS) &#8211; The Black Box From Hell]]></title>
+    <link href="http://www.charleshooper.net/blog/amazons-relational-database-service-rds-the-black-box-from-hell/"/>
+    <updated>2011-08-10T00:00:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/amazons-relational-database-service-rds-the-black-box-from-hell</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>One morning I woke up early and checked my email. My plan was to check that my inbox was empty for some peace of mind and then go back to bed for a few more hours (I love Sundays). But that isn’t what happened. Instead, upon opening my inbox I was alerted that one of a client’s database servers was offline. I snapped out of my haze and immediately got to work.</p>
+
+<p>This particular database server was a RDS instance. RDS, or <a href="http://aws.amazon.com/rds/">Relational Database Service</a>, is an Amazon-provided MySQL (or Oracle) server that runs on top of the EC2 platform. The advantages to this service are that backups are performed automatically (complete with point-in-time recovery,) snapshots are supported, the instances can be resized with more or less RAM/CPU/storage through the AWS console, and a whole bunch of other stuff (“maintenance”) is supposed to be performed for you automatically.</p>
+
+<p>The disadvantages don’t make themselves apparent until you need to debug or troubleshoot a performance or availability issue. While CloudWatch metrics are included as part of the RDS package, knowing how much CPU, RAM, or storage space you’re using is only a very small part of knowing what your database instance is actually doing.</p>
+
+<p>Prior to attempting recovery, the first thing I did was to check the <a href="http://aws.amazon.com/cloudwatch/">CloudWatch</a> metrics. CloudWatch seems to have trouble reporting its data when the system is under durress because there were periods where there was data and there were periods where there wasn’t. The next thing I did was check the RDS event logs. Don’t get excited, the RDS event log is not a UI wrapped around system logs, it’s just a couple of entries here and there on what Amazon RDS decides to publish. The last entry in the event log was a backup job that started several hours before and never finished. These typically only take one to two minutes to finish on this instance so I knew something was wrong.</p>
+
+<p>I didn’t want to waste time trying to troubleshoot while the database was down so I instead moved immediately to recovery and rebooted the instance through the AWS console. It’s like <a href="http://onlinelibrary.wiley.com/doi/10.1002/bltj.20187/abstract">Charles McPhail</a> says, “<a href="http://onlinelibrary.wiley.com/doi/10.1002/bltj.20187/abstract">Respond, Restore, Resolve</a>.” After about a whole 20 to 30 minutes the database server began accepting connections again but the instance was never taken out of the “REBOOTING” state when it should have transitioned to “STARTED”. With the instance in the “REBOOTING” state, my only option now was to recover from a previous backup as the rest of the functionality is disabled unless the instance is in a “STARTED” state.</p>
+
+<p>To make matters worse, the various components in our infrastructure were connecting to this database server and were making it impossible to find out what’s going on. The max connection limit was reached and I was no longer able to login and view the process list or analyze the status variables.</p>
+
+<p>At this point, I decided my only course of action was to spin up a new instance from a previous backup. I made this request through the AWS console and, two to three hours later, my new instance was finally up and running. About a half an hour prior to this, the old instance was transitioned into a “FAILED” state and shut down. When your instance is in the “FAILED” state, you cannot restart it. Your only option is to restore from backup. In my case, it took several hours for AWS to declare the instance as failed and it took several hours to restore the backup. I did not know that the “FAILED” state was even a possible state and had no idea that AWS could just kill an instance like that. To top it all off, Amazon sent a very nice email to the owner of the account (my client the CEO) explaining that we’ve been using an unsupported storage engine all this time.</p>
+
+<p>As it turns out, I missed the note in the <a href="http://docs.amazonwebservices.com/AmazonRDS/latest/UserGuide/">RDS User Guide</a> that says that MyISAM is not supported, particularly when it comes to data recovery. While I understand why RDS made this decision (MyISAM gets corrupted easily and is not easy to repair sometimes,) I felt misled and uninformed about the support of the storage engines. Yes, the note is in the RDS User Guide, however, it is not mentioned anywhere in the main page about RDS nor is it in the <a href="http://aws.amazon.com/rds/faqs/">RDS FAQs</a> (where the string “MyISAM” only appears once).</p>
+
+<p>A few weeks have gone by and we have taken steps to avoid and reduce the damage from these types of outages in the future. However, we still occasionally receive an alert where an RDS instance stops accepting connections for one to two minutes at a time and all the event log has to say is that the instance has been “recovered.” Recovered from what exactly? What did you do to it? Why does this keep happening? How do we make it stop?</p>
+
+<p>In summary, I’ll probably never know because on RDS you do not have access to the underlying OS. This means:</p>
+
+<ul>
+<li>You do not have access to the OS process list</li>
+<li>You do not have access to things like top, htop, iostat, or dstat</li>
+<li>You do not have access to the process list if the MySQL process isn’t accepting connections</li>
+<li>You do not have access to any system logs</li>
+</ul>
+
+
+<p>If you just need a quick and dirty MySQL server and you almost never want to worry about the status of your backups, go ahead and use RDS. However, if you’re concerned about reliability (that you control,) being able to effectively troubleshoot problems, and knowing the state of your underlying OS, RDS is not right for you.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Common Single Point of Failure: People]]></title>
+    <link href="http://www.charleshooper.net/blog/common-single-point-of-failure-people/"/>
+    <updated>2011-06-07T00:00:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/common-single-point-of-failure-people</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>Yesterday, when I arrived at my other job on my school’s help desk, I found out that my supervisor was not coming into work at all. This is OK; I enjoy the autonomy of working unsupervised. However, at this particular university’s help desk, my supervisor is the <em>only</em> person who can reset security profile information on student accounts. She is also the only person who assigns work orders to the technicians that work here. I’ll spare you the details, but probably 80-90% of our workload on any given day gets passed through this one person.</p>
+
+<p>This is a serious problem. By passing tasks through a single person with no backup we are guaranteeing the collapse of our support system. I’ve seen this at other gigs and I bet you have, too.</p>
+
+<p>Maybe it’s the “one guy” who has access to the firewall or router. Or maybe there’s that only person who knows how to configure a particular piece of software or solve a specific problem. Truthfully, you’re probably that guy and don’t even realize it. Ever get work-related phone calls (or worse: called in) during your “time off?” Red flag.</p>
+
+<p>All of these conditions are single points of failures (SPoF). Too often, we sysadmins, developers, and engineers only think of SPoFs in terms of hardware and software. But if we look at what actually makes up the entire information system (hardware, software, data, procedures, and <em>people)</em>, we see that we’re part of it too. This hoarding of knowledge often results in a failure of the system itself and very frequently makes existing failures worse.</p>
+
+<h1>Example</h1>
+
+<p>A customer-facing database server stops responding. You’re not really familiar with what database(s) it serves but customers are complaining that it’s down or very slow. There’s another guy that normally handles this system but he’s out of town and completely unreachable. You want to diagnose but you don’t even know how to access the system. Do you blindly reboot (risking data loss and corruption)? Sit and wait it out? Learn how to summon your co-worker’s spirit?</p>
+
+<p>One very real situation occurred when I worked at a small Internet Service Provider. A very big client of ours called and said that a very large portion of their network was down (we managed it, too). Did I have the credentials to the router in question? No. Did the client? No. Who did? <em>That guy </em>did, the one who is usually too busy running around to return calls (incidentally, the owner). He did finally return our cries for help… 3 hours later. Was the problem difficult to solve? No. In fact, it was fixed within minutes of receiving the proper credentials. (Funny story, one of their on-staff techs plugged a network camera into the network and accidentally assigned their router’s address as the camera’s IP :)) Sure, this mistake was dumb, but did this client need to suffer degraded availability for these 3 hours? Absolutely not.</p>
+
+<h2>Solution</h2>
+
+<p>The obvious, and perhaps only, solution to this problem is to make as much of your knowledge available as possible. The more knowledge you offload from your brain, the better and more efficient the system becomes. I know to some this might seem a little counter-productive. After all, having this knowledge is job security…right?</p>
+
+<p>No, absolutely not. Holding company knowledge hostage should never be how you ensure your job security (<em>that’s a myth anyways</em>).</p>
+
+<p>With that being said, please don’t spend all your energy and effort on documentation only to abandon the effort a month later. I was speaking to a friend of mine earlier when he mentioned that very often he comes across company Wikis all the time that usually contain outdated information and haven’t even been logged into in 6 months.</p>
+
+<p>Allow me to re-iterate, do<em> not</em> go on documentation sprees. Document everything <em>when</em> you do it and share that information <em>when </em>you do it. Regularly. Constantly. If you wait until you have alot of information to document, then you will probably become overwhelmed and just not do it. When I was in the Air Force, we had a saying:</p>
+
+<h2>The job ain’t over till the paperwork is done.</h2>
+
+<p>Simply put, add documentation into your regular workflow. The investment is small and the returns are great.</p>
+]]></content>
+  </entry>
+  
+</feed>

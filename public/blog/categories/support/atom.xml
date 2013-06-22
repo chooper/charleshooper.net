@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Support | Charles Hooper]]></title>
+  <link href="http://www.charleshooper.net/blog/categories/support/atom.xml" rel="self"/>
+  <link href="http://www.charleshooper.net/"/>
+  <updated>2013-06-22T05:43:04-07:00</updated>
+  <id>http://www.charleshooper.net/</id>
+  <author>
+    <name><![CDATA[Charles Hooper]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hypersensitivity and Political Correctness]]></title>
+    <link href="http://www.charleshooper.net/blog/hypersensitivity-and-political-correctness/"/>
+    <updated>2011-08-19T00:00:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/hypersensitivity-and-political-correctness</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>I wrote a blog post this week on how <a href="http://www.charleshooper.net/blog/stop-letting-tech-people-be-socially-inept/" title="Stop Letting Technical People Get Away With Social Ineptitude">engineers or “technical people” don’t have to, and shouldn’t, be jerks</a>. My argument was that the stereotype that <em>technically-minded people are bad at social skills</em> was just that, a stereotype, and that employers should stop allowing us to get away with it. I knew it was going to be controversial when I wrote it, especially because the type of people who find my blog (HackerNewsers) <em>are</em> usually technically-minded people (with a nod to the rest of you entrepreneurs, biz, and VC folk). As expected, a large chunk of commentors (both on HN and on my blog) disagreed with my argument and a large chunk agreed.</p>
+
+<p>What I did not expect, however, was to be misunderstood so severely that I would be accused of wanting to ruin the lives of those who are “psychologically incapable” of learning social skills. One commentor posted a picture of a child with autism and accused me of trying to make him a second-class, unemployable citizen. Another commentor went as far as to paint a grisly picture of these “psychologically incapable” people committing suicide – all because of me.</p>
+
+<p>This blog is set up in such a way that I must manually approve comments from first-time commentors. This means that I have read every comment that was posted to my article (a few people posted more than once, but I read those too) before they appeared on my blog. I approved the comments despite the fact that I found them extremely upsetting because, even though this is my blog, I felt that everyone deserved to be heard.</p>
+
+<p>I want to take the opportunity to say that I think this combination of hypersensitivity and political correctness is an awful thing. It’s OK to be offended, but I feel that very often the thing that offends us is a misunderstanding. In this case, my point was that <em>engineers shouldn’t be jerks and should instead learn some social skills so they can interact more effectively with co-workers and clients</em> but it was misunderstood as <em>if you’re bad at social skills, even if you can’t help it, then you should be treated like garbage</em>. I don’t think that bloggers should have to acknowledge every exception to the points they make or write disclaimers into each of their posts – that kind of defeats the point (which I feel is<em> free speech on a massive scale</em>, by the way).</p>
+
+<p>So please, the next time you feel offended, consider asking the offender for clarification before you react. You might save yourself, and them, from a lot of unnecessary heartache.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Stop Letting Technical People Get Away With Social Ineptitude]]></title>
+    <link href="http://www.charleshooper.net/blog/stop-letting-tech-people-be-socially-inept/"/>
+    <updated>2011-08-17T00:00:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/stop-letting-tech-people-be-socially-inept</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>As a technical person who has worked many customer-facing support roles, I’m offended by the often-cited notion that technical people have poor people skills or are poor at filling customer support roles. Earlier this week, a web host incited a Public Relations nightmare when their “Technical Director” responded childishly to some customers, disabled their accounts, and deleted their backups. The company’s response was to create a new customer support position so they could keep their Technical Director yet isolate him from their customers. In this new customer support personnel’s recap of the situation, he wrote:</p>
+
+<blockquote><p>Jules is the Technical Director. Jules does a fantastic job looking after things and keeping the infrastructure running well. Unfortunately though, as is often the case with very technically minded people, customer service is not always his strong point.</p></blockquote>
+
+<p>As I stated above, I find this absolutely offensive. Unfortunately, it’s often believed to be true because there <em>are</em> so many engineers and technical personnel with poor people skills. I never have seen statistics to support the notion that the ratio is <em>higher</em> in these professions than in others, yet employers often find that people filling these roles with poor people skills are still employable. This needs to stop.</p>
+
+<p>I’m of the opinion that every position is customer-facing. Sure, some positions might not interface with the <em>company’s</em> customers, but the position is likely to have customers of its own – whether internal or external. All it takes for someone to be good at customer service is:</p>
+
+<ul>
+<li>The understanding that they represent their employer and that people are relying on them,</li>
+<li>A compassionate, helpful, and courteous attitude,</li>
+<li>The knowledge of whatever they’re supporting.</li>
+</ul>
+
+
+<p>Frankly, if you don’t have those qualities, how can you work with anyone at all?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[One Mom&#8217;s Way of Getting Things Done]]></title>
+    <link href="http://www.charleshooper.net/blog/one-moms-way-of-getting-things-done/"/>
+    <updated>2011-04-26T00:00:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/one-moms-way-of-getting-things-done</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>For work study (or something like that,) I’ve been working on my school’s help desk. I find alot of humor in the way people behave when they feel that they “need” something to get done.</p>
+
+<p>For example, I once had a father call who wanted to pay his son’s tuition online and it “needed” to be done “that day.” Unfortunately, he didn’t know his son’s password and wanted me to reset it for him. I can’t do that per some federal law that governs students’ privacy of their educational records (so I’m told,) so I offered to transfer him to the bursar who probably could have taken payment information over the phone, but he decided instead to mail a check. This was funny to me because the payment could have been made instantly, but he instead chose to deliver the payment through a medium that would take 2-3 days to arrive.</p>
+
+<p>Here’s another example of the way parents try to “get things done” through my school’s help desk. My first phone call of the day:</p>
+
+<blockquote><p>Me: ITS Help Desk, this is Charles, how may I help you?</p>
+
+<p>Someone’s Mom: Look, I just really need to reset my son’s password. If I’m paying the one paying the fees, wouldn’t it make sense that I have access to his account?</p>
+
+<p>Me: I’m sorry, but we are not able to reset a student’s password for anyone other than the student per federal law.</p>
+
+<p>Someone’s Mom: Fine, I’ll just keep calling back until I get someone to reset it for me. <strong>*click*</strong></p></blockquote>
+
+<p>My second phone call of the day:</p>
+
+<blockquote><p>Me: ITS Help Desk, this is Charles. How may I help you?</p>
+
+<p>Someone’s Mom: Oops, I got you again. <strong>*click*</strong></p></blockquote>
+
+<p>There are usually only 2-3 of us at any given time and phone calls come in round robin. We sit next to each other. This technique of “getting things done” doesn’t work in this environment.</p>
+]]></content>
+  </entry>
+  
+</feed>

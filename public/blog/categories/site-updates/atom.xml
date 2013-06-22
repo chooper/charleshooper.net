@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Site Updates | Charles Hooper]]></title>
+  <link href="http://www.charleshooper.net/blog/categories/site-updates/atom.xml" rel="self"/>
+  <link href="http://www.charleshooper.net/"/>
+  <updated>2013-06-22T05:43:04-07:00</updated>
+  <id>http://www.charleshooper.net/</id>
+  <author>
+    <name><![CDATA[Charles Hooper]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Catching up]]></title>
+    <link href="http://www.charleshooper.net/blog/catching-up/"/>
+    <updated>2013-06-22T04:45:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/catching-up</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<h2>tl;dr</h2>
+
+<ul>
+<li>Moved to San Francisco</li>
+<li>Took time off to decompress</li>
+<li>Joined team at Heroku</li>
+<li>Loving it</li>
+</ul>
+
+
+<h2><code>--verbose</code></h2>
+
+<p>It's been a while since I've posted, but I wanted to let you know that
+I'm still alive! Things were very hectic due to a few life changes but I
+much of the dust has settled now and I'm excited to talk about what
+those changes are.</p>
+
+<p>But first, some history.</p>
+
+<p>In 2011, I was a junior at university studying Business
+Information Systems. I had some prior systems engineering and operations
+experience and was paying my tuition by performing contract work for a
+company that doesn't exist today. While at this company, I worked very
+closely with a developer and the two of us were responsible for running
+this company's infrastructure. Neither of us had the time or the
+willpower to be bothered by operational tasks, so we automated
+everything. Even though our environment was much smaller (somewhere
+between 30-50 instances in EC2) than many others, we had alot of things
+that many companies are lacking:</p>
+
+<ul>
+<li>New services were in configuration management</li>
+<li>New deployments were almost entirely automated</li>
+<li>We had good visibility with a variety of metrics being reported to Ganglia and Graphite</li>
+<li>We even had a reasonable nagios configuration</li>
+</ul>
+
+
+<p>Around this time, the term <strong>devops</strong> was being tossed around on twitter
+on a more frequent basis. I can remember actually having a Google Alert
+for the term to email me when there were new blog posts about it and it
+<em>not</em> being spammy. I have a love/hate relationship with the term, and
+in December 2011 I wrote my blog post <a href="/blog/concurrent-engineering-the-foundation-of-devops/">Concurrent Engineering: The
+Foundation of DevOps</a> in which I argued that the ideas behind devops
+weren't new, but were maybe old ideas from business that were recently
+independtly re-discovered.</p>
+
+<p>The blog post wasn't very popular, but Solomon Hykes (CEO of dotCloud)
+managed to see it and, thinking we had very similar ideas about devops,
+invited me to interview for a position on their newly formed Site
+Reliability Engineering team. I got the job at dotCloud, and up until
+April of this year that's where I stayed.</p>
+
+<p>In mid-April, I resigned from my position at dotCloud and moved to San
+Francisco. There were a number of reasons for the resignation but chief
+among them was that I needed some time to decompress and all of my paid
+time-off had been used up following my youngest brother's car accident.
+This ended up being an awesome decision because it gave me my
+much-needed decompression time and I was able to explore my new city.</p>
+
+<p>I took about four weeks off before I put any real effort towards a job
+search. The move to San Francisco and the job search alone could fill
+two entirely-too-verbose blog posts but the end result was that I moved
+here safely and joined the team at <a href="http://www.heroku.com/">Heroku</a>!</p>
+
+<p>Fast forward to today and I've just finished my third week at Heroku.
+It's an amazing experience, a great team, and an awesome culture that is
+encapsulated in the following quote:</p>
+
+<blockquote><p>I like our culture. We welcome failure into our house and then kick
+its teeth in.</p></blockquote>
+
+<p>I'll write more about this another time. For now, thank you for
+listening to my story.</p>
+
+<p>&mdash; Charles</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[New Platform - Sorry for the RSS Spam]]></title>
+    <link href="http://www.charleshooper.net/blog/new-platform/sorry-for-rss-spam/"/>
+    <updated>2013-05-05T15:58:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/new-platform/new-platform-sorry-for-the-rss-spam</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>Sorry for the RSS spam, everyone. I switched blogging platforms recently
+from <a href="http://wordpress.org/">Wordpress</a> to <a href="http://octopress.org/">Octopress</a>. When I updated my feed URL in
+<a href="http://feedburner.google.com/">Feedburner</a>; however, I'm told it re-posted all of my previous blog
+posts in multiple RSS readers as unread. This resulted in a ton of
+annoying spam for alot of people, particularly those using <a href="http://www.feedly.com/">Feedly</a>
+and Google Reader.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[2012 Annual Review]]></title>
+    <link href="http://www.charleshooper.net/blog/2012-annual-review/"/>
+    <updated>2013-01-14T00:00:00-08:00</updated>
+    <id>http://www.charleshooper.net/blog/2012-annual-review</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>Here are some stats from 2012:</p>
+
+<ul>
+<li>Only 3 posts published.</li>
+<li>50,791 pageviews.</li>
+<li>36,176 visitors (32,007 unique)</li>
+<li>71.97% bounce rate.</li>
+<li>Same great position at dotCloud!</li>
+</ul>
+
+
+<p>Interestingly, my stats compared to last year aren’t too different, despite the fact that I only wrote 3 blog posts this year (instead of 10 last year). What’s also interesting is the HUGE spike in bounce rate (which used to be almost non-existent). This spike begins right around the time I hit a “home run” in terms of driving new traffic.</p>
+
+<p>Going forward, I am going to try to post more (<em>again</em>). I’ve said this before but have yet to succeed. This time around, I changed my posting rules to allow me to write about topics more personal to me or more opinionated in nature.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[An early year-end review &#8211; highlights]]></title>
+    <link href="http://www.charleshooper.net/blog/year-end-highlights/"/>
+    <updated>2012-12-16T00:00:00-08:00</updated>
+    <id>http://www.charleshooper.net/blog/year-end-highlights</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>Since I’ve only written 3 blog posts so far this year and alot has changed, here’s a brief summary of what I’ll be writing about in my annual review:</p>
+
+<ul>
+<li>I stopped doing contract work and started working for dotCloud part time,</li>
+<li>As of tomorrow, I’ll officially have completed the requirements for my Bachelor’s degree,</li>
+<li>I found myself, politically (I won’t be writing about this, but it is a big deal to me).</li>
+</ul>
+
+
+<p>What does the future hold for me?</p>
+
+<ul>
+<li>dotCloud offered me a full time position and I accepted; I will start January 2nd,</li>
+<li>I have a variety of side projects planned but it’s too soon to tell how much of my free time I’ll want to spend on them,</li>
+<li>I hope to become more involved with my local community and the ACM,</li>
+<li>I’ve made the decision to stop writing so much on Facebook and Twitter and write more here.</li>
+</ul>
+
+
+<p>That last item has big implications for this blog. It means that I’ll be writing about more personal subjects and opinions I have instead of wasting that effort on Twitter and Facebook (where relatives I haven’t seen in 20 years take the opportunities to rant on my wall). Some of these opinions may also be controversial and, that’s OK, we’re meant to disagree on some things. Some of them may even be ill-formed as they’ll be outside of my area of expertise. That’s OK too, just write me and educate me.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[2011 Annual Review and New-Year Updates]]></title>
+    <link href="http://www.charleshooper.net/blog/year-end-and-new-year-updates/"/>
+    <updated>2012-01-01T00:00:00-08:00</updated>
+    <id>http://www.charleshooper.net/blog/year-end-and-new-year-updates</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>Happy New Years, everyone.</p>
+
+<p>I thought I’d ring in the new year with some site stats from 2011.</p>
+
+<ul>
+<li>Only 10 posts published.</li>
+<li>59,238 pageviews.</li>
+<li>24,829 visitors (22,634 unique)</li>
+<li>1.32% bounce rate.</li>
+<li>Multiple job and business opportunities in direct response to articles I wrote including a new job (more details below).</li>
+</ul>
+
+
+<p>I really want to write more. My resolution then is to “<strong>write more</strong>.” Using a more quantified approach, <strong>I will spend at least 30 minutes a day writing for at least five days a week</strong>. That doesn’t mean I will publish five articles a week. One of my big issues with writing is the amount of time that goes into each post. I approach my writing very academically and try to back up my ideas with citations; this research takes time. I also, very frequently, solicit feedback from other people before publishing. But I really enjoy writing and I really enjoy receiving feedback on my ideas through this blog so I would like to continue doing it.</p>
+
+<p>Other resolutions of mine include physical health and professional development (I’d really like to <em>give a talk at a conference</em> this year).</p>
+
+<p>I also have some really exciting news. Starting on Monday I will officially begin my employment with <a href="https://www.dotcloud.com/">dotCloud</a> on their <em>Site Reliability Engineering</em> team! This is exciting for two reasons.</p>
+
+<p>First, working at dotCloud is going to be an awesome experience. Everyone I’ve talked to is incredibly smart. Our CEO, <a href="https://www.dotcloud.com/">Solomon Hykes</a>, was also just named on Forbes’ <a href="http://www.forbes.com/special-report/2011/30-under30-12/30-under-30-12_land.html">“30 Under 30” list</a>. Third, and probably most importantly, is that I’m going to absolutely love the work. I love solving problems, particularly in devops, and I love writing tools that make people’s lives easier (which is precisely what dotCloud does). If you’re looking for a Platform as a Service provider, try out dotCloud and let us know how you like it.</p>
+
+<p>The second reason this is exciting because, in the process of starting at a new company, I’ve managed to expand my personal consulting practice. I don’t think I’ve said so before, but I provide <em>systems engineering services</em> to <a href="http://www.loud3r.com/">Loud3r Inc</a>. I’m their only “web ops” guy and we’ve managed to completely turn things around in the past 6 months; we’re providing our services better (more reliable, more frequent updates), faster, and cheaper than before. Rather than cancel the contract entirely, the CEO of Loud3r and I felt it was a good idea for me to subcontract a large portion of my workload to a trusted colleague of mine.</p>
+
+<p>How about you? Is there anything exciting you would like to share about the progress you made during 2011 or large changes you’re making in the start of 2012? Tell me all about it!</p>
+]]></content>
+  </entry>
+  
+</feed>

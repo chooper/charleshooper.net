@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Development | Charles Hooper]]></title>
+  <link href="http://www.charleshooper.net/blog/categories/development/atom.xml" rel="self"/>
+  <link href="http://www.charleshooper.net/"/>
+  <updated>2013-06-22T05:43:04-07:00</updated>
+  <id>http://www.charleshooper.net/</id>
+  <author>
+    <name><![CDATA[Charles Hooper]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Painless instrumentation of Celery tasks using statsd and graphite]]></title>
+    <link href="http://www.charleshooper.net/blog/painless-instrumentation-of-celery-tasks-using-statsd-and-graphite/"/>
+    <updated>2012-03-12T00:00:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/painless-instrumentation-of-celery-tasks-using-statsd-and-graphite</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p><img src="http://www.charleshooper.net/wp-content/uploads/400px-Steuerstand01-150x150.jpg" title="A Control Station" alt="" />
+For one of my clients and side projects, we’ve been working hard to build in application-level metrics to our wide portfolio of services. Among these services is one built on top of the <a href="http://celeryproject.org/">Celery distributed task queue</a>. We wanted a system that required as little configuration as possible to publish new metrics. For this reason, we decided on using <a href="http://codeascraft.etsy.com/2011/02/15/measure-anything-measure-everything/">statsd</a> and <a href="http://graphite.wikidot.com/">graphite</a>. Getting statsd and graphite running was the easy part, but we needed a quick, painless way of adding the instrumentation code for the most basic metrics to our Celery-backed service.</p>
+
+<p>For us, those basic metrics consisted of:</p>
+
+<ul>
+<li>Number of times a worker starts on a specific task</li>
+<li>Number of times a task raises an exception</li>
+<li>Number of times a task completes successfully (no exceptions)</li>
+<li>How long each task takes to complete</li>
+</ul>
+
+
+<p>Since the code to enable these metrics just <em>wraps</em> the code being instrumented it seemed only natural to use a decorator. Below is the code I wrote to do just that.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>statsd_instrument.py</span><a href='https://gist.github.com/chooper/2018362'>link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot;Decorator to quickly add statsd (graphite) instrumentation to Celery</span>
+</span><span class='line'><span class="s">task functions.&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;With some slight modification, this could be used to instrument just</span>
+</span><span class='line'><span class="s">about any (non-celery) function and be made abstract enough to customize</span>
+</span><span class='line'><span class="s">metric names, etc.&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;Stats reported include number of times the task was accepted by a worker</span>
+</span><span class='line'><span class="s">(&lt;code&gt;started&lt;/code&gt;), the number of successes, and the number of times the task</span>
+</span><span class='line'><span class="s">raised an exception. In addition, it also reports how long the task took</span>
+</span><span class='line'><span class="s">to complete. Usage:&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;blockquote&gt;&lt;blockquote&gt;&lt;blockquote&gt;&lt;p&gt;@task</span>
+</span><span class='line'><span class="s">@instrument_task</span>
+</span><span class='line'><span class="s">def mytask():&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;pre&gt;&lt;code&gt;# do stuff</span>
+</span><span class='line'><span class="s">pass</span>
+</span><span class='line'><span class="s">&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;Please note that the order of decorators is important to Celery. See</span>
+</span><span class='line'><span class="s">http://ask.github.com/celery/userguide/tasks.html#decorating-tasks</span>
+</span><span class='line'><span class="s">for more information.&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;Uses &lt;code&gt;simple_decorator&lt;/code&gt; from</span>
+</span><span class='line'><span class="s">http://wiki.python.org/moin/PythonDecoratorLibrary#Property_Definition&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;Limitation: Does not readily work on subclasses of celery.tasks.Task</span>
+</span><span class='line'><span class="s">because it always reports &lt;code&gt;task_name&lt;/code&gt; as &#39;run&#39;</span>
+</span><span class='line'><span class="s">&quot;&quot;&quot;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">statsd</span> <span class="n">instrumentation</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">current_app</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">statsd</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@simple_decorator</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">instrument_task</span><span class="p">(</span><span class="n">func</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot;Wraps a celery task with statsd instrumentation code&quot;&quot;&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">instrument_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">stats_conn</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span>
+</span><span class='line'>        <span class="n">host</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="s">&#39;STATSD_HOST&#39;</span><span class="p">],</span>
+</span><span class='line'>        <span class="n">port</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="s">&#39;STATSD_PORT&#39;</span><span class="p">],</span>
+</span><span class='line'>        <span class="n">sample_rate</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">task_name</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">__name__</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">counter</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">counter</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="s">&#39;celery.tasks.status&#39;</span><span class="p">,</span><span class="n">stats_conn</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">counter</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="s">&#39;{task_name}.started&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">timer</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;celery.tasks.duration&#39;</span><span class="p">,</span> <span class="n">stats_conn</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">ret</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">except</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">counter</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="s">&#39;{task_name}.exceptions&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
+</span><span class='line'>        <span class="k">raise</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">counter</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="s">&#39;{task_name}.success&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
+</span><span class='line'>        <span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="s">&#39;{task_name}.success&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">ret</span>
+</span><span class='line'>    <span class="k">finally</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">del</span> <span class="n">timer</span>
+</span><span class='line'>            <span class="k">del</span> <span class="n">counter</span>
+</span><span class='line'>            <span class="k">del</span> <span class="n">stats_conn</span>
+</span><span class='line'>        <span class="k">except</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">pass</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">return</span> <span class="n">instrument_wrapper</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">simple_decorator</span><span class="p">(</span><span class="n">decorator</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot;Borrowed from:</span>
+</span><span class='line'><span class="s">http://wiki.python.org/moin/PythonDecoratorLibrary#Property_Definition</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">Original docstring:</span>
+</span><span class='line'><span class="s">This decorator can be used to turn simple functions</span>
+</span><span class='line'><span class="s">into well-behaved decorators, so long as the decorators</span>
+</span><span class='line'><span class="s">are fairly simple. If a decorator expects a function and</span>
+</span><span class='line'><span class="s">returns a function (no descriptors), and if it doesn&#39;t</span>
+</span><span class='line'><span class="s">modify function attributes or docstring, then it is</span>
+</span><span class='line'><span class="s">eligible to use this. Simply apply @simple_decorator to</span>
+</span><span class='line'><span class="s">your decorator and it will automatically preserve the</span>
+</span><span class='line'><span class="s">docstring and function attributes of functions to which</span>
+</span><span class='line'><span class="s">it is applied.&quot;&quot;&quot;</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">new_decorator</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">g</span> <span class="o">=</span> <span class="n">decorator</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__name__</span>
+</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">__module__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__module__</span> <span class="c"># or celery throws a fit</span>
+</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__doc__</span>
+</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">g</span>
+</span><span class='line'><span class="c"># Now a few lines needed to make simple_decorator itself</span>
+</span><span class='line'><span class="c"># be a well-behaved decorator.</span>
+</span><span class='line'><span class="n">new_decorator</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="n">decorator</span><span class="o">.</span><span class="n">__name__</span>
+</span><span class='line'><span class="n">new_decorator</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">decorator</span><span class="o">.</span><span class="n">__doc__</span>
+</span><span class='line'><span class="n">new_decorator</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">decorator</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
+</span><span class='line'><span class="k">return</span> <span class="n">new_decorator</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[We Have the Tools but What About the Techniques?]]></title>
+    <link href="http://www.charleshooper.net/blog/we-have-the-tools-but-what-about-the-techniques/"/>
+    <updated>2012-01-02T00:00:00-08:00</updated>
+    <id>http://www.charleshooper.net/blog/we-have-the-tools-but-what-about-the-techniques</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>In my previously-written article “<a href="http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops/" title="Concurrent Engineering: The Foundation of DevOps">Concurrent Engineering: The Foundation of DevOps</a>” I wrote “<em>just because you use puppet does not necessarily mean your organization is practicing DevOps.</em>” I didn’t spend much time on it then, but I think it bears repeating and further explanation. The <strong>DevOps “movement” has seen</strong>, and will likely continue to see, <strong>a huge influx of new tools</strong> as organizations attempt to find ways to adopt DevOps within their organizations. These tools have included (and certainly have not been limited to) tools that aid in monitoring (statsd), configuration management (puppet), and continuous delivery (hubot).</p>
+
+<p>Operations engineers, software developers, and managers are in a mad dash to develop, utilize, and integrate these tools within their organizations. And that’s where we’re going wrong; we are focused on a single component of the Software/Systems Engineering Process. This process model contains three main components that are central to its existence: <em>methodologies</em>, <em>techniques</em>, and <em>tools</em> (Valacich 2009). While I don’t need to go into each one specifically, it’s clear that the tools are just a single factor in the overall process. Following the model further, it becomes clear that the makeup of each of these components influences the other components in the process.</p>
+
+<p>Put simply, <strong>DevOps is a methodology</strong> and, as such, it’s natural that we’re seeing a huge response in tools. What I feel we’re missing, however, is more information about the different techniques used throughout organizations in <em>their</em> software and operations engineering processes. An excellent example of this is <a href="http://scottchacon.com/2011/08/31/github-flow.html">Scott Chacon’s explanation of how Github uses Git (and Github!) to deliver continuous improvement</a> to their service. With that said, I would like to see more organizations refine their techniques and talk about <em>these</em> as much as they talk about their tools.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Concurrent Engineering: The Foundation of DevOps]]></title>
+    <link href="http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops/"/>
+    <updated>2011-12-07T00:00:00-08:00</updated>
+    <id>http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<blockquote><p>DevOps is all about trying to avoid that epic failure and working smarter and more efficiently at the same time. It is a framework of ideas and principles designed to foster cooperation, learning and coordination between development and operational groups. In a DevOps environment, developers and sysadmins build relationships, processes, and tools that allow them to better interact and ultimately better service the customer (<a href="http://www.kartar.net/2010/02/what-devops-means-to-me/" title="What DevOps Means to Me">James Turnbull</a>).</p></blockquote>
+
+<p>At the time of writing, if you were to search for “devops” you would find eight results attempting to explain what devops is, one result for a conference, and one rather satirical article (although not necessarily incorrect) where the author answers the question of “how do you implement devops” with “<a href="http://teddziuba.com/2011/03/devops-scam.html" title="DevOps is a Poorly Executed Scam">nobody seems to know</a>” (Ted Dziuba).</p>
+
+<p>The big problem with the DevOps “movement” is that we essentially have a bunch of operations and development people promoting it and trying to implement it within their organizations. Meanwhile, those with management and business responsibilities, even if explained the “what,” don’t understand the “how.” Just because you use puppet does not necessarily mean your organization is practicing DevOps.</p>
+
+<p>This shortcoming is the result of us devops proponents either falsely claiming these techniques and methodologies are new or not knowing any better. If we had something more relatable for the business people (and, by principle, <em>we</em> should be business-oriented, too) then I think DevOps would have more of a chance.</p>
+
+<p>Well, get your product and management together because the truth is that DevOps is actually a form of Concurrent Engineering.</p>
+
+<blockquote><p>Concurrent Engineering (CE) is a systematic approach to integrated product development that emphasizes the response to customer expectations. It embodies team values of co-operation, trust and sharing in such a manner that decision making is by consensus, involving all perspectives in parallel, from the beginning of the product life-cycle (<a href="http://www.esa.int/esaMI/CDF/SEM1OF1P4HD_0.html" title="What is concurrent engineering?">ESA – Concurrent Engineering Facility</a>).</p></blockquote>
+
+<p>Concurrent Engineering encompasses several major principles which just so happen to fit the definition (however formal or informal) of devops.</p>
+
+<p>I’ll list them from the <a href="http://best.berkeley.edu/~pps/pps/concurrent.html#basic" title="Basic Principles of Concurrent Engineering">Synthesis Coalition</a> here:</p>
+
+<ul>
+<li>Get a strong commitment from senior management.</li>
+<li>Establish unified project goals and a clear business mission.</li>
+<li>Develop a detailed plan early in the process.</li>
+<li>Continually review your progress and revise your plan.</li>
+<li>Develop project leaders that have an overall vision of the project and goals.</li>
+<li>Analyze your market and know your customers.</li>
+<li>Suppress individualism and foster a team concept.</li>
+<li>Establish and cultivate cross-functional integration and collaboration.</li>
+<li>Break project into its natural phases.</li>
+<li>Develop metrics.</li>
+<li>Set milestones throughout the development process.</li>
+<li>Collectively work on all parts of project.</li>
+<li>Reduce costs and time to market.</li>
+<li>Complete tasks in parallel.</li>
+</ul>
+
+
+<p>By approaching the issues of devops as  concurrent engineering and implementing it as such, you open the movement to a well-researched, well-documented, and well-accepted product design philosophy. By shedding this light on the devops methodologies, this enables those of us pushing the devops movement to finally put the movement into a more business-oriented perspective.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Problems at Scale]]></title>
+    <link href="http://www.charleshooper.net/blog/problems-at-scale/"/>
+    <updated>2011-08-13T00:00:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/problems-at-scale</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>Over on <a href="http://news.ycombinator.com/item?id=2881122">HackerNews</a>, saturn wrote that:</p>
+
+<blockquote><p>Cloud computing scales the efficiencies, yes. It also scales the problems.</p></blockquote>
+
+<p>This is exactly right. Problems in simple architectures are relatively easy to solve. In fact, I’d go as far as to say that we’ve probably solved them in all of the traditional archetypes, both in theory and in practice.</p>
+
+<p>On the other hand, complex architectures lead to exponentially more difficult problems. There are probably lots of problems in these various complex architectures that we don’t even know exist yet. And then there are those problems that we <em>do</em> know about that we think will only occur in very rare (or even “impossible”) circumstances so they get considerably less attention devoted to them.</p>
+
+<p>Those of us who have careers, jobs, and hobbies in an engineering discipline need to remember this when we make decisions about the design of a new or existing system. Just because we can’t <em>see</em> the underlying platform, because it’s been abstracted away from us, doesn’t mean that it doesn’t exist. For example, much of the recent AWS downtime was contributed to by design flaws in the Elastic Block Store system. If you think you should be hosted on the cloud, use it, but take the time to understand the systems under the hood.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Common Single Point of Failure: People]]></title>
+    <link href="http://www.charleshooper.net/blog/common-single-point-of-failure-people/"/>
+    <updated>2011-06-07T00:00:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/common-single-point-of-failure-people</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>Yesterday, when I arrived at my other job on my school’s help desk, I found out that my supervisor was not coming into work at all. This is OK; I enjoy the autonomy of working unsupervised. However, at this particular university’s help desk, my supervisor is the <em>only</em> person who can reset security profile information on student accounts. She is also the only person who assigns work orders to the technicians that work here. I’ll spare you the details, but probably 80-90% of our workload on any given day gets passed through this one person.</p>
+
+<p>This is a serious problem. By passing tasks through a single person with no backup we are guaranteeing the collapse of our support system. I’ve seen this at other gigs and I bet you have, too.</p>
+
+<p>Maybe it’s the “one guy” who has access to the firewall or router. Or maybe there’s that only person who knows how to configure a particular piece of software or solve a specific problem. Truthfully, you’re probably that guy and don’t even realize it. Ever get work-related phone calls (or worse: called in) during your “time off?” Red flag.</p>
+
+<p>All of these conditions are single points of failures (SPoF). Too often, we sysadmins, developers, and engineers only think of SPoFs in terms of hardware and software. But if we look at what actually makes up the entire information system (hardware, software, data, procedures, and <em>people)</em>, we see that we’re part of it too. This hoarding of knowledge often results in a failure of the system itself and very frequently makes existing failures worse.</p>
+
+<h1>Example</h1>
+
+<p>A customer-facing database server stops responding. You’re not really familiar with what database(s) it serves but customers are complaining that it’s down or very slow. There’s another guy that normally handles this system but he’s out of town and completely unreachable. You want to diagnose but you don’t even know how to access the system. Do you blindly reboot (risking data loss and corruption)? Sit and wait it out? Learn how to summon your co-worker’s spirit?</p>
+
+<p>One very real situation occurred when I worked at a small Internet Service Provider. A very big client of ours called and said that a very large portion of their network was down (we managed it, too). Did I have the credentials to the router in question? No. Did the client? No. Who did? <em>That guy </em>did, the one who is usually too busy running around to return calls (incidentally, the owner). He did finally return our cries for help… 3 hours later. Was the problem difficult to solve? No. In fact, it was fixed within minutes of receiving the proper credentials. (Funny story, one of their on-staff techs plugged a network camera into the network and accidentally assigned their router’s address as the camera’s IP :)) Sure, this mistake was dumb, but did this client need to suffer degraded availability for these 3 hours? Absolutely not.</p>
+
+<h2>Solution</h2>
+
+<p>The obvious, and perhaps only, solution to this problem is to make as much of your knowledge available as possible. The more knowledge you offload from your brain, the better and more efficient the system becomes. I know to some this might seem a little counter-productive. After all, having this knowledge is job security…right?</p>
+
+<p>No, absolutely not. Holding company knowledge hostage should never be how you ensure your job security (<em>that’s a myth anyways</em>).</p>
+
+<p>With that being said, please don’t spend all your energy and effort on documentation only to abandon the effort a month later. I was speaking to a friend of mine earlier when he mentioned that very often he comes across company Wikis all the time that usually contain outdated information and haven’t even been logged into in 6 months.</p>
+
+<p>Allow me to re-iterate, do<em> not</em> go on documentation sprees. Document everything <em>when</em> you do it and share that information <em>when </em>you do it. Regularly. Constantly. If you wait until you have alot of information to document, then you will probably become overwhelmed and just not do it. When I was in the Air Force, we had a saying:</p>
+
+<h2>The job ain’t over till the paperwork is done.</h2>
+
+<p>Simply put, add documentation into your regular workflow. The investment is small and the returns are great.</p>
+]]></content>
+  </entry>
+  
+</feed>
