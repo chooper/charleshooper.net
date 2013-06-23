@@ -28,7 +28,7 @@ with [nginx][7].
 
 As of today, though, I'm experimenting with [Heroku US][3] and have
 configured my Heroku clone of the site as a second backend server for
-Fastly.  . Octopress does some magic here by serving the HTML through
+Fastly. Octopress does some magic here by serving the HTML through
 [Rack][8], a minimal webserver for ruby.
 
 My site is also monitored by [Pingdom][4] and I use [Munin][5] for
