@@ -4,7 +4,7 @@
   <title><![CDATA[Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-06-22T18:58:54-07:00</updated>
+  <updated>2013-06-22T19:02:34-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -39,7 +39,7 @@ with <a href="http://nginx.org/">nginx</a>.</p>
 
 <p>As of today, though, I&#8217;m experimenting with <a href="http://www.heroku.com/">Heroku US</a> and have
 configured my Heroku clone of the site as a second backend server for
-Fastly.  . Octopress does some magic here by serving the HTML through
+Fastly. Octopress does some magic here by serving the HTML through
 <a href="http://rack.github.io/">Rack</a>, a minimal webserver for ruby.</p>
 
 <p>My site is also monitored by <a href="http://www.pingdom.com/">Pingdom</a> and I use <a href="http://munin-monitoring.org/">Munin</a> for
