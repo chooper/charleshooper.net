@@ -52,3 +52,13 @@ many skeptics don't believe it's a working model. I think we've proven
 that it works, now we just need to prove we can grow with the needs of
 our customers.
 
+  [1]: http://octopress.org/
+  [2]: http://www.fastly.com/
+  [3]: http://www.heroku.com/
+  [4]: http://www.pingdom.com/
+  [5]: http://munin-monitoring.org/
+  [6]: http://awesome.naquadah.org/
+  [7]: http://nginx.org/
+  [8]: http://rack.github.io/
+  [9]: http://www.linode.com/?r=2fce38a23c4154c3a1abb4f99aafd6371ee78ecc
+
