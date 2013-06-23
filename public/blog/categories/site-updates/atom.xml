@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Site Updates | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/site-updates/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-06-22T06:29:41-07:00</updated>
+  <updated>2013-06-22T18:47:53-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -12,6 +12,58 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[About this site (technical)]]></title>
+    <link href="http://www.charleshooper.net/blog/about-this-site-technical/"/>
+    <updated>2013-06-22T11:58:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/about-this-site-technical</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>I was playing around with my site today and realized that I hadn't
+disclosed much about how it works. Here's that nerd "look at my site
+architecture you guys" post.</p>
+
+<p>If you couldn't tell by the default theme, my blogging software of
+choice is [Octopress][1], which generates my site's HTML from Markdown.
+I use <code>vim</code> for most of my editing and do so on my Lenovo Thinkpad X220
+running Ubuntu desktop. I use a tiling window manager called [Awesome
+WM][6].</p>
+
+<p>I also use [Fastly][2] for my caching layer. For the purposes of this
+dicussion, let's just call Fastly "varnish as a service."</p>
+
+<p>Prior to today, I just used a single [Linode][9] in the Newark, NJ datacenter
+as my web server. The Linode runs Ubuntu server and serves static HTML
+with [nginx][7].</p>
+
+<p>As of today, though, I'm experimenting with [Heroku US][3] and have
+configured my Heroku clone of the site as a second backend server for
+Fastly.  . Octopress does some magic here by serving the HTML through
+[Rack][8], a minimal webserver for ruby.</p>
+
+<p>My site is also monitored by [Pingdom][4] and I use [Munin][5] for
+metrics collection.</p>
+
+<p>There are some really amazing takeaways from this. For one, my only
+expense currently is the roughly $20/mo I pay for the [Linode][9]. I
+would happily pay for any of these services for a real, money-making
+website but, for this site, I'll continue to use the free plans.</p>
+
+<p>Second is how much technology is available to us these days. I own
+<em>zero</em> physical infrastructure and the only thing slightly resembling
+traditional infrastructure is my Linode. Contrast this to several years
+ago when I had a third generation HP Proliant DL380 colocated and was
+starting to experiment with virtualization. I mean, holy shit, you can
+literally host a website for nothing!</p>
+
+<p>This second point is why I think I love working in the PaaS
+(platform-as-a-service) space so much. PaaS is still young enough that
+many skeptics don't believe it's a working model. I think we've proven
+that it works, now we just need to prove we can grow with the needs of
+our customers.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Catching up]]></title>
@@ -166,40 +218,6 @@ and Google Reader.</p>
 
 
 <p>That last item has big implications for this blog. It means that I’ll be writing about more personal subjects and opinions I have instead of wasting that effort on Twitter and Facebook (where relatives I haven’t seen in 20 years take the opportunities to rant on my wall). Some of these opinions may also be controversial and, that’s OK, we’re meant to disagree on some things. Some of them may even be ill-formed as they’ll be outside of my area of expertise. That’s OK too, just write me and educate me.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[2011 Annual Review and New-Year Updates]]></title>
-    <link href="http://www.charleshooper.net/blog/year-end-and-new-year-updates/"/>
-    <updated>2012-01-01T00:00:00-08:00</updated>
-    <id>http://www.charleshooper.net/blog/year-end-and-new-year-updates</id>
-    <content type="html"><![CDATA[<h1></h1>
-
-<p>Happy New Years, everyone.</p>
-
-<p>I thought I’d ring in the new year with some site stats from 2011.</p>
-
-<ul>
-<li>Only 10 posts published.</li>
-<li>59,238 pageviews.</li>
-<li>24,829 visitors (22,634 unique)</li>
-<li>1.32% bounce rate.</li>
-<li>Multiple job and business opportunities in direct response to articles I wrote including a new job (more details below).</li>
-</ul>
-
-
-<p>I really want to write more. My resolution then is to “<strong>write more</strong>.” Using a more quantified approach, <strong>I will spend at least 30 minutes a day writing for at least five days a week</strong>. That doesn’t mean I will publish five articles a week. One of my big issues with writing is the amount of time that goes into each post. I approach my writing very academically and try to back up my ideas with citations; this research takes time. I also, very frequently, solicit feedback from other people before publishing. But I really enjoy writing and I really enjoy receiving feedback on my ideas through this blog so I would like to continue doing it.</p>
-
-<p>Other resolutions of mine include physical health and professional development (I’d really like to <em>give a talk at a conference</em> this year).</p>
-
-<p>I also have some really exciting news. Starting on Monday I will officially begin my employment with <a href="https://www.dotcloud.com/">dotCloud</a> on their <em>Site Reliability Engineering</em> team! This is exciting for two reasons.</p>
-
-<p>First, working at dotCloud is going to be an awesome experience. Everyone I’ve talked to is incredibly smart. Our CEO, <a href="https://www.dotcloud.com/">Solomon Hykes</a>, was also just named on Forbes’ <a href="http://www.forbes.com/special-report/2011/30-under30-12/30-under-30-12_land.html">“30 Under 30” list</a>. Third, and probably most importantly, is that I’m going to absolutely love the work. I love solving problems, particularly in devops, and I love writing tools that make people’s lives easier (which is precisely what dotCloud does). If you’re looking for a Platform as a Service provider, try out dotCloud and let us know how you like it.</p>
-
-<p>The second reason this is exciting because, in the process of starting at a new company, I’ve managed to expand my personal consulting practice. I don’t think I’ve said so before, but I provide <em>systems engineering services</em> to <a href="http://www.loud3r.com/">Loud3r Inc</a>. I’m their only “web ops” guy and we’ve managed to completely turn things around in the past 6 months; we’re providing our services better (more reliable, more frequent updates), faster, and cheaper than before. Rather than cancel the contract entirely, the CEO of Loud3r and I felt it was a good idea for me to subcontract a large portion of my workload to a trusted colleague of mine.</p>
-
-<p>How about you? Is there anything exciting you would like to share about the progress you made during 2011 or large changes you’re making in the start of 2012? Tell me all about it!</p>
 ]]></content>
   </entry>
   

@@ -9,10 +9,8 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="tl;dr Moved to San Francisco
-Took time off to decompress
-Joined team at Heroku
-Loving it --verbose It&#8217;s been a while since I&#8217;ve posted, &hellip;">
+  <meta name="description" content="I was playing around with my site today and realized that I hadn&#8217;t
+disclosed much about how it works. Here&#8217;s that nerd &#8220;look at my &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +84,85 @@ Loving it --verbose It&#8217;s been a while since I&#8217;ve posted, &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/about-this-site-technical/">About This Site (Technical)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-22T11:58:00-07:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1></h1>
+
+<p>I was playing around with my site today and realized that I hadn&#8217;t
+disclosed much about how it works. Here&#8217;s that nerd &#8220;look at my site
+architecture you guys&#8221; post.</p>
+
+<p>If you couldn&#8217;t tell by the default theme, my blogging software of
+choice is [Octopress][1], which generates my site&#8217;s HTML from Markdown.
+I use <code>vim</code> for most of my editing and do so on my Lenovo Thinkpad X220
+running Ubuntu desktop. I use a tiling window manager called [Awesome
+WM][6].</p>
+
+<p>I also use [Fastly][2] for my caching layer. For the purposes of this
+dicussion, let&#8217;s just call Fastly &#8220;varnish as a service.&#8221;</p>
+
+<p>Prior to today, I just used a single [Linode][9] in the Newark, NJ datacenter
+as my web server. The Linode runs Ubuntu server and serves static HTML
+with [nginx][7].</p>
+
+<p>As of today, though, I&#8217;m experimenting with [Heroku US][3] and have
+configured my Heroku clone of the site as a second backend server for
+Fastly.  . Octopress does some magic here by serving the HTML through
+[Rack][8], a minimal webserver for ruby.</p>
+
+<p>My site is also monitored by [Pingdom][4] and I use [Munin][5] for
+metrics collection.</p>
+
+<p>There are some really amazing takeaways from this. For one, my only
+expense currently is the roughly $20/mo I pay for the [Linode][9]. I
+would happily pay for any of these services for a real, money-making
+website but, for this site, I&#8217;ll continue to use the free plans.</p>
+
+<p>Second is how much technology is available to us these days. I own
+<em>zero</em> physical infrastructure and the only thing slightly resembling
+traditional infrastructure is my Linode. Contrast this to several years
+ago when I had a third generation HP Proliant DL380 colocated and was
+starting to experiment with virtualization. I mean, holy shit, you can
+literally host a website for nothing!</p>
+
+<p>This second point is why I think I love working in the PaaS
+(platform-as-a-service) space so much. PaaS is still young enough that
+many skeptics don&#8217;t believe it&#8217;s a working model. I think we&#8217;ve proven
+that it works, now we just need to prove we can grow with the needs of
+our customers.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -989,48 +1066,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/we-have-the-tools-but-what-about-the-techniques/">We Have the Tools but What About the Techniques?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-02T00:00:00-08:00" pubdate data-updated="true">Jan 2<span>nd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1></h1>
-
-<p>In my previously-written article “<a href="http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops/" title="Concurrent Engineering: The Foundation of DevOps">Concurrent Engineering: The Foundation of DevOps</a>” I wrote “<em>just because you use puppet does not necessarily mean your organization is practicing DevOps.</em>” I didn’t spend much time on it then, but I think it bears repeating and further explanation. The <strong>DevOps “movement” has seen</strong>, and will likely continue to see, <strong>a huge influx of new tools</strong> as organizations attempt to find ways to adopt DevOps within their organizations. These tools have included (and certainly have not been limited to) tools that aid in monitoring (statsd), configuration management (puppet), and continuous delivery (hubot).</p>
-
-<p>Operations engineers, software developers, and managers are in a mad dash to develop, utilize, and integrate these tools within their organizations. And that’s where we’re going wrong; we are focused on a single component of the Software/Systems Engineering Process. This process model contains three main components that are central to its existence: <em>methodologies</em>, <em>techniques</em>, and <em>tools</em> (Valacich 2009). While I don’t need to go into each one specifically, it’s clear that the tools are just a single factor in the overall process. Following the model further, it becomes clear that the makeup of each of these components influences the other components in the process.</p>
-
-<p>Put simply, <strong>DevOps is a methodology</strong> and, as such, it’s natural that we’re seeing a huge response in tools. What I feel we’re missing, however, is more information about the different techniques used throughout organizations in <em>their</em> software and operations engineering processes. An excellent example of this is <a href="http://scottchacon.com/2011/08/31/github-flow.html">Scott Chacon’s explanation of how Github uses Git (and Github!) to deliver continuous improvement</a> to their service. With that said, I would like to see more organizations refine their techniques and talk about <em>these</em> as much as they talk about their tools.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1062,6 +1097,10 @@ For one of my clients and side projects, we’ve been working hard to build in a
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/about-this-site-technical/">About this site (technical)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/catching-up/">Catching up</a>
       </li>
     
@@ -1075,10 +1114,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
     
       <li class="post">
         <a href="/blog/intro-to-ops-config-management/">Intro to Operations: Configuration Management</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/new-platform/sorry-for-rss-spam/">New Platform - Sorry for the RSS Spam</a>
       </li>
     
   </ul>

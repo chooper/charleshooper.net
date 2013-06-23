@@ -4,7 +4,7 @@
   <title><![CDATA[Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-06-22T06:29:41-07:00</updated>
+  <updated>2013-06-22T18:47:53-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -12,6 +12,58 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[About this site (technical)]]></title>
+    <link href="http://www.charleshooper.net/blog/about-this-site-technical/"/>
+    <updated>2013-06-22T11:58:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/about-this-site-technical</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>I was playing around with my site today and realized that I hadn&#8217;t
+disclosed much about how it works. Here&#8217;s that nerd &#8220;look at my site
+architecture you guys&#8221; post.</p>
+
+<p>If you couldn&#8217;t tell by the default theme, my blogging software of
+choice is [Octopress][1], which generates my site&#8217;s HTML from Markdown.
+I use <code>vim</code> for most of my editing and do so on my Lenovo Thinkpad X220
+running Ubuntu desktop. I use a tiling window manager called [Awesome
+WM][6].</p>
+
+<p>I also use [Fastly][2] for my caching layer. For the purposes of this
+dicussion, let&#8217;s just call Fastly &#8220;varnish as a service.&#8221;</p>
+
+<p>Prior to today, I just used a single [Linode][9] in the Newark, NJ datacenter
+as my web server. The Linode runs Ubuntu server and serves static HTML
+with [nginx][7].</p>
+
+<p>As of today, though, I&#8217;m experimenting with [Heroku US][3] and have
+configured my Heroku clone of the site as a second backend server for
+Fastly.  . Octopress does some magic here by serving the HTML through
+[Rack][8], a minimal webserver for ruby.</p>
+
+<p>My site is also monitored by [Pingdom][4] and I use [Munin][5] for
+metrics collection.</p>
+
+<p>There are some really amazing takeaways from this. For one, my only
+expense currently is the roughly $20/mo I pay for the [Linode][9]. I
+would happily pay for any of these services for a real, money-making
+website but, for this site, I&#8217;ll continue to use the free plans.</p>
+
+<p>Second is how much technology is available to us these days. I own
+<em>zero</em> physical infrastructure and the only thing slightly resembling
+traditional infrastructure is my Linode. Contrast this to several years
+ago when I had a third generation HP Proliant DL380 colocated and was
+starting to experiment with virtualization. I mean, holy shit, you can
+literally host a website for nothing!</p>
+
+<p>This second point is why I think I love working in the PaaS
+(platform-as-a-service) space so much. PaaS is still young enough that
+many skeptics don&#8217;t believe it&#8217;s a working model. I think we&#8217;ve proven
+that it works, now we just need to prove we can grow with the needs of
+our customers.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Catching up]]></title>
@@ -1134,37 +1186,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[One Mom&#8217;s Way of Getting Things Done]]></title>
-    <link href="http://www.charleshooper.net/blog/one-moms-way-of-getting-things-done/"/>
-    <updated>2011-04-26T00:00:00-07:00</updated>
-    <id>http://www.charleshooper.net/blog/one-moms-way-of-getting-things-done</id>
-    <content type="html"><![CDATA[<h1></h1>
-
-<p>For work study (or something like that,) I’ve been working on my school’s help desk. I find alot of humor in the way people behave when they feel that they “need” something to get done.</p>
-
-<p>For example, I once had a father call who wanted to pay his son’s tuition online and it “needed” to be done “that day.” Unfortunately, he didn’t know his son’s password and wanted me to reset it for him. I can’t do that per some federal law that governs students’ privacy of their educational records (so I’m told,) so I offered to transfer him to the bursar who probably could have taken payment information over the phone, but he decided instead to mail a check. This was funny to me because the payment could have been made instantly, but he instead chose to deliver the payment through a medium that would take 2-3 days to arrive.</p>
-
-<p>Here’s another example of the way parents try to “get things done” through my school’s help desk. My first phone call of the day:</p>
-
-<blockquote><p>Me: ITS Help Desk, this is Charles, how may I help you?</p>
-
-<p>Someone’s Mom: Look, I just really need to reset my son’s password. If I’m paying the one paying the fees, wouldn’t it make sense that I have access to his account?</p>
-
-<p>Me: I’m sorry, but we are not able to reset a student’s password for anyone other than the student per federal law.</p>
-
-<p>Someone’s Mom: Fine, I’ll just keep calling back until I get someone to reset it for me. <strong>*click*</strong></p></blockquote>
-
-<p>My second phone call of the day:</p>
-
-<blockquote><p>Me: ITS Help Desk, this is Charles. How may I help you?</p>
-
-<p>Someone’s Mom: Oops, I got you again. <strong>*click*</strong></p></blockquote>
-
-<p>There are usually only 2-3 of us at any given time and phone calls come in round robin. We sit next to each other. This technique of “getting things done” doesn’t work in this environment.</p>
 ]]></content>
   </entry>
   

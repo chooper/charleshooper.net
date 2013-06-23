@@ -5,15 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>2012 Annual Review - Charles Hooper</title>
+  <title>About this site (technical) - Charles Hooper</title>
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="Here are some stats from 2012: Only 3 posts published.
-50,791 pageviews.
-36,176 visitors (32,007 unique)
-71.97% bounce rate.
-Same great position at &hellip;">
+  <meta name="description" content="I was playing around with my site today and realized that I hadn&#8217;t
+disclosed much about how it works. Here&#8217;s that nerd &#8220;look at my &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +19,7 @@ Same great position at &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.charleshooper.net/blog/2012-annual-review">
+  <link rel="canonical" href="http://www.charleshooper.net/blog/about-this-site-technical">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/subversity" rel="alternate" title="Charles Hooper" type="application/atom+xml">
@@ -90,7 +87,7 @@ Same great position at &hellip;">
   
   <header>
     
-      <h1 class="entry-title">2012 Annual Review</h1>
+      <h1 class="entry-title">About This Site (Technical)</h1>
     
     
       <p class="meta">
@@ -106,7 +103,7 @@ Same great position at &hellip;">
   
 
 
-<time datetime="2013-01-14T00:00:00-08:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
+<time datetime="2013-06-22T11:58:00-07:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2013</time>
         
       </p>
     
@@ -115,20 +112,48 @@ Same great position at &hellip;">
 
 <div class="entry-content"><h1></h1>
 
-<p>Here are some stats from 2012:</p>
+<p>I was playing around with my site today and realized that I hadn&#8217;t
+disclosed much about how it works. Here&#8217;s that nerd &#8220;look at my site
+architecture you guys&#8221; post.</p>
 
-<ul>
-<li>Only 3 posts published.</li>
-<li>50,791 pageviews.</li>
-<li>36,176 visitors (32,007 unique)</li>
-<li>71.97% bounce rate.</li>
-<li>Same great position at dotCloud!</li>
-</ul>
+<p>If you couldn&#8217;t tell by the default theme, my blogging software of
+choice is [Octopress][1], which generates my site&#8217;s HTML from Markdown.
+I use <code>vim</code> for most of my editing and do so on my Lenovo Thinkpad X220
+running Ubuntu desktop. I use a tiling window manager called [Awesome
+WM][6].</p>
 
+<p>I also use [Fastly][2] for my caching layer. For the purposes of this
+dicussion, let&#8217;s just call Fastly &#8220;varnish as a service.&#8221;</p>
 
-<p>Interestingly, my stats compared to last year aren’t too different, despite the fact that I only wrote 3 blog posts this year (instead of 10 last year). What’s also interesting is the HUGE spike in bounce rate (which used to be almost non-existent). This spike begins right around the time I hit a “home run” in terms of driving new traffic.</p>
+<p>Prior to today, I just used a single [Linode][9] in the Newark, NJ datacenter
+as my web server. The Linode runs Ubuntu server and serves static HTML
+with [nginx][7].</p>
 
-<p>Going forward, I am going to try to post more (<em>again</em>). I’ve said this before but have yet to succeed. This time around, I changed my posting rules to allow me to write about topics more personal to me or more opinionated in nature.</p>
+<p>As of today, though, I&#8217;m experimenting with [Heroku US][3] and have
+configured my Heroku clone of the site as a second backend server for
+Fastly.  . Octopress does some magic here by serving the HTML through
+[Rack][8], a minimal webserver for ruby.</p>
+
+<p>My site is also monitored by [Pingdom][4] and I use [Munin][5] for
+metrics collection.</p>
+
+<p>There are some really amazing takeaways from this. For one, my only
+expense currently is the roughly $20/mo I pay for the [Linode][9]. I
+would happily pay for any of these services for a real, money-making
+website but, for this site, I&#8217;ll continue to use the free plans.</p>
+
+<p>Second is how much technology is available to us these days. I own
+<em>zero</em> physical infrastructure and the only thing slightly resembling
+traditional infrastructure is my Linode. Contrast this to several years
+ago when I had a third generation HP Proliant DL380 colocated and was
+starting to experiment with virtualization. I mean, holy shit, you can
+literally host a website for nothing!</p>
+
+<p>This second point is why I think I love working in the PaaS
+(platform-as-a-service) space so much. PaaS is still young enough that
+many skeptics don&#8217;t believe it&#8217;s a working model. I think we&#8217;ve proven
+that it works, now we just need to prove we can grow with the needs of
+our customers.</p>
 </div>
 
 
@@ -151,7 +176,7 @@ Same great position at &hellip;">
   
 
 
-<time datetime="2013-01-14T00:00:00-08:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time>
+<time datetime="2013-06-22T11:58:00-07:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2013</time>
       
 
 <span class="categories">
@@ -165,7 +190,7 @@ Same great position at &hellip;">
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.charleshooper.net/blog/2012-annual-review/" data-via="charleshooper" data-counturl="http://www.charleshooper.net/blog/2012-annual-review/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.charleshooper.net/blog/about-this-site-technical/" data-via="charleshooper" data-counturl="http://www.charleshooper.net/blog/about-this-site-technical/" >Tweet</a>
   
   
   
@@ -174,10 +199,8 @@ Same great position at &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/year-end-highlights/" title="Previous Post: An early year-end review &#8211; highlights">&laquo; An early year-end review &#8211; highlights</a>
+        <a class="basic-alignment left" href="/blog/catching-up/" title="Previous Post: Catching up">&laquo; Catching up</a>
       
-      
-        <a class="basic-alignment right" href="/blog/intro-to-ops-for-startups/" title="Next Post: Intro to Operations for Early Stage Startups">Intro to Operations for Early Stage Startups &raquo;</a>
       
     </p>
   </footer>
@@ -267,8 +290,8 @@ Same great position at &hellip;">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.charleshooper.net/blog/2012-annual-review/';
-        var disqus_url = 'http://www.charleshooper.net/blog/2012-annual-review/';
+        var disqus_identifier = 'http://www.charleshooper.net/blog/about-this-site-technical/';
+        var disqus_url = 'http://www.charleshooper.net/blog/about-this-site-technical/';
         var disqus_script = 'embed.js';
       
     (function () {

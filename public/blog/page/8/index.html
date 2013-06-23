@@ -9,7 +9,9 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="I wrote a very simple program to read Minesweeper’s memory and display a grid showing where the bombs are. I used OllyDbg for disassembly and &hellip;">
+  <meta name="description" content="Well, I just completed my first ruby app. It’s a fairly simple subnet
+calculator that takes an IP address and subnet mask and calculates
+the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +85,65 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/first-ruby-app-subnet-calculator/">First Ruby App: Subnet Calculator</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-05T00:00:00-08:00" pubdate data-updated="true">Dec 5<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1></h1>
+
+<p>Well, I just completed my first ruby app. It’s a fairly <a href="http://codepad.org/o9AHsly9">simple subnet
+calculator</a> that takes an IP address and subnet mask and calculates
+the broadcast address, network address, and maximum number of hosts that
+subnet can support.  Should you find any errors, let me know!</p>
+
+<p><strong>Example</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ./ip.rb 10.0.0.0 255.0.0.0
+</span><span class='line'>Subnetting information for 10.0.0.0/8
+</span><span class='line'>Subnet mask: 255.0.0.0
+</span><span class='line'>Network Address: 10.0.0.0
+</span><span class='line'>Broadcast: 10.255.255.255
+</span><span class='line'>Max hosts: 16777213</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1113,6 +1174,10 @@ user input? :-)</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/about-this-site-technical/">About this site (technical)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/catching-up/">Catching up</a>
       </li>
     
@@ -1126,10 +1191,6 @@ user input? :-)</p>
     
       <li class="post">
         <a href="/blog/intro-to-ops-config-management/">Intro to Operations: Configuration Management</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/new-platform/sorry-for-rss-spam/">New Platform - Sorry for the RSS Spam</a>
       </li>
     
   </ul>
