@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="For work study (or something like that,) I’ve been working on my school’s help desk. I find alot of humor in the way people behave when they feel &hellip;">
+  <meta name="description" content="If you’re reading this, you probably already know that an init script is a specific style of script that allows you to control daemon processes. In &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,181 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/controlling-django-apps-with-an-init-script/">Controlling Django Apps With an Init Script</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-29T00:00:00-07:00" pubdate data-updated="true">May 29<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1></h1>
+
+<p>If you’re reading this, you probably already know that an init script is a specific style of script that allows you to control daemon processes. In particular, they are used to start processes at boot and terminate them at shutdown. What follows is an example script I use to control one of my Django FastCGI projects. This particular example was written for Ubuntu and Debian but could probably be modified for RedHat/CentOS or other distros.</p>
+
+<p>Please refer to your Distro’s documentation on how to install and activate init scripts (hint: See /etc/init.d/ and the man page for update-rc.d if on Debian or Ubuntu.)</p>
+
+<figure class='code'><figcaption><span>django-fcgi-init.sh</span><a href='https://gist.github.com/anonymous/997829#file-django-fcgi-init-sh'>link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/sh</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">PATH</span><span class="o">=</span>/sbin:/bin:/usr/sbin:/usr/bin
+</span><span class='line'>
+</span><span class='line'><span class="nv">FCGIHOST</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span>
+</span><span class='line'><span class="nv">FCGIPORT</span><span class="o">=</span><span class="s2">&quot;5000&quot;</span>
+</span><span class='line'><span class="nv">RUNAS</span><span class="o">=</span><span class="s2">&quot;projectuser:projectgroup&quot;</span>
+</span><span class='line'><span class="nv">UMASK</span><span class="o">=</span><span class="s2">&quot;200&quot;</span>
+</span><span class='line'><span class="nv">DAEMON</span><span class="o">=</span><span class="s2">&quot;/path/to/django/manage.py&quot;</span>
+</span><span class='line'><span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;MyProject&quot;</span>
+</span><span class='line'><span class="nv">DESC</span><span class="o">=</span><span class="s2">&quot;My Django Project&quot;</span>
+</span><span class='line'><span class="nv">RUNDIR</span><span class="o">=</span>/var/run/<span class="nv">$NAME</span>
+</span><span class='line'><span class="nv">PIDFILE</span><span class="o">=</span>/var/run/<span class="nv">$NAME</span>/<span class="nv">$NAME</span>.pid
+</span><span class='line'><span class="nv">ENV</span><span class="o">=</span><span class="s2">&quot;env -i LANG=C PATH=/usr/local/bin:/usr/bin:/bin&quot;</span>
+</span><span class='line'><span class="nv">SSD</span><span class="o">=</span><span class="s2">&quot;/sbin/start-stop-daemon&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">DAEMON_OPTS</span><span class="o">=</span><span class="s2">&quot;runfcgi host=$FCGIHOST port=$FCGIPORT pidfile=$PIDFILE</span>
+</span><span class='line'><span class="s2">daemonize=true&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">test</span> -x <span class="nv">$DAEMON</span> <span class="o">||</span> <span class="nb">exit </span>0
+</span><span class='line'>
+</span><span class='line'><span class="nb">set</span> -e
+</span><span class='line'>
+</span><span class='line'>. /lib/lsb/init-functions
+</span><span class='line'>
+</span><span class='line'><span class="c"># Set up /var/run directory to write out pidfile</span>
+</span><span class='line'>mkdir -p <span class="s2">&quot;$RUNDIR&quot;</span>
+</span><span class='line'>chown <span class="s2">&quot;$RUNAS&quot;</span> <span class="s2">&quot;$RUNDIR&quot;</span>
+</span><span class='line'>chmod 775 <span class="s2">&quot;$RUNDIR&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">case</span> <span class="s2">&quot;$1&quot;</span> in
+</span><span class='line'> start<span class="o">)</span>
+</span><span class='line'> log_daemon_msg <span class="s2">&quot;Starting $DESC&quot;</span> <span class="nv">$NAME</span>
+</span><span class='line'> <span class="k">if</span> ! start-stop-daemon --start --quiet --oknodo <span class="se">\</span>
+</span><span class='line'> --pidfile <span class="nv">$PIDFILE</span> --umask <span class="s2">&quot;$UMASK&quot;</span> --chuid <span class="s2">&quot;$RUNAS&quot;</span> <span class="se">\</span>
+</span><span class='line'> --exec <span class="nv">$DAEMON</span> -- <span class="nv">$DAEMON_OPTS</span>
+</span><span class='line'> <span class="k">then</span>
+</span><span class='line'><span class="k"> </span>log_end_msg 1
+</span><span class='line'> <span class="k">else</span>
+</span><span class='line'><span class="k"> </span>chmod 400 <span class="nv">$PIDFILE</span>
+</span><span class='line'> log_end_msg 0
+</span><span class='line'> <span class="k">fi</span>
+</span><span class='line'> ;;
+</span><span class='line'> stop<span class="o">)</span>
+</span><span class='line'> log_daemon_msg <span class="s2">&quot;Stopping $DESC&quot;</span> <span class="nv">$NAME</span>
+</span><span class='line'> <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$PIDFILE</span> <span class="o">]</span>; <span class="k">then</span>
+</span><span class='line'><span class="k"> </span><span class="nb">kill</span> <span class="sb">`</span>cat -- <span class="nv">$PIDFILE</span><span class="sb">`</span>
+</span><span class='line'> rm -f -- <span class="nv">$PIDFILE</span>
+</span><span class='line'> log_end_msg 0
+</span><span class='line'> <span class="k">fi</span>
+</span><span class='line'> ;;
+</span><span class='line'> restart|force-reload<span class="o">)</span>
+</span><span class='line'> <span class="nv">$0</span> stop
+</span><span class='line'> <span class="nv">$0</span> start
+</span><span class='line'> ;;
+</span><span class='line'> status<span class="o">)</span>
+</span><span class='line'> status_of_proc -p <span class="s2">&quot;$PIDFILE&quot;</span> <span class="s2">&quot;$DAEMON&quot;</span> <span class="s2">&quot;$NAME&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit </span>0 <span class="o">||</span> <span class="nb">exit</span> <span class="nv">$?</span>
+</span><span class='line'> ;;
+</span><span class='line'> *<span class="o">)</span>
+</span><span class='line'> <span class="nb">echo</span> <span class="s2">&quot;Usage: $0 {start|stop|restart|force-reload|status}&quot;</span> &gt;&amp;2
+</span><span class='line'> <span class="nb">exit </span>1
+</span><span class='line'> ;;
+</span><span class='line'><span class="k">esac</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">exit </span>0
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -713,56 +888,6 @@ is MSRC [XXXX]. XXXX is the Security Program Manger assigned to the case and he 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/finding-web-vulnerabilities/">Finding Web Vulnerabilities</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-21T00:00:00-08:00" pubdate data-updated="true">Dec 21<span>st</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1></h1>
-
-<p>At the <a href="http://www.nesit.net/">NESIT Hackathon</a> on Saturday, I was talking to a group of people about discovering web vulnerabilities and I was asked “Which scanner or tools do you use?” The absolute shortest answer I can provide is “I don’t use a scanner.” Despite the lack of a vuln scanner in my toolset, I am still able to consistently find vulnerabilities in web applications. Here’s how:</p>
-
-<ol>
-<li>I first begin by <strong>finding or setting up an adequate test environment</strong>. If the project is freely available (aka open source/free software,) I set up a test environment. If the project is not freely available, then I look for a site that uses the platform or application I’m trying to audit. I don’t normally recommend the latter case, but if I’m testing a 3rd party web service then I don’t have any other choice.</li>
-<li>I then <strong>get familiar with the application</strong>. What does it do? What problem does it try to solve? What does a normal use case look like?</li>
-<li>Then I <strong>get really, <em>really</em> familiar with the application</strong>. In this stage, I’m really interested in the lesser-used functionality (such as error handling) and making things break. How does the application handle errors? How verbose are the error messages? Are any pages particularly slower than the others? Where does the application get most of its data? Request variables? Cookies? A database? A third party API?I usually do this step with the <a href="http://getfirebug.com/">Firebug plugin for Firefox</a>. I want to know exactly what parameters are being passed to the application, how those variables are being handled, and if (and how) those variables are being spit back out to the user.</li>
-<li>My secret weapon is not being afraid to <strong>look through the code</strong>, if it’s available. If the code is lengthy and I just want to take a cursory glance at it, I grep for “red flags.” Because most vulnerabilities are the result of unescaped, unsanitized user-input, these red flags are usually connected to user-provided variables. For example, If I’m auditing PHP scripts for vulnerabilities, I look for code referencing the $_GET, $_POST, $_REQUEST, and $_COOKIE variables. This step does wonders for finding Cross-Site Scripting and SQL injection vulnerabilities.</li>
-<li>In very small projects, like WordPress plugins, I’ll <strong>read through each</strong> <strong>file</strong> and try to figure out what story the code is telling. This is very much like reading a short story. I want to know what the application is <em>trying</em> to do.</li>
-<li>I’ll then <strong>read the code more in-depth</strong>. This is akin to analyzing poetry in a Literature class. Things like the actual names of variables and the syntax become much more important here. Now I want to know what the application is <em>actually</em> doing.
-I recently discovered Cross-Site Scripting SQL injection vulnerabilities in an URL field of an application that was <em>trying</em> to escape it’s input. The problem, however, was that the application was validating and sanitizing <em>$url_var</em> when the value of their user-input was <em>$var_url</em>. The combination of the lack of testing and the lack of error reporting allowed this bug to be introduced into production which created XSS and SQL injection vulnerabilities. Being able to read the code helps find other issues such as direct-request (authentication/authorization bypass) vulnerabilities.<br/>
-I can’t stress bug/vulnerability hunting outside the normal execution paths of any given application. If a blog platform seems pretty solid, try exploiting its dynamically-generated RSS feed. If a 3rd party web-service looks perfect, try exploiting its support forums or its help site in a different language or character set. <strong>Think outside of the box.</strong> That phrase is cliche, but it’s cliche for a reason.</li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -796,6 +921,10 @@ I can’t stress bug/vulnerability hunting outside the normal execution paths of
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/personal-kaizen-self-improvement/">My Personal Kaizen</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/about-this-site-technical/">About this site (technical)</a>
       </li>
     
@@ -809,10 +938,6 @@ I can’t stress bug/vulnerability hunting outside the normal execution paths of
     
       <li class="post">
         <a href="/blog/intro-to-ops-availability-monitoring-alerting/">Intro to Operations: Availability Monitoring and Alerting</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/intro-to-ops-config-management/">Intro to Operations: Configuration Management</a>
       </li>
     
   </ul>

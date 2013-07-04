@@ -5,13 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Intro to Operations: Configuration Management - Charles Hooper</title>
+  <title>My Personal Kaizen - Charles Hooper</title>
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="I&#8217;m writing a series of blog posts for managers and other people
-without an operations background in order to introduce certain best
-practices &hellip;">
+  <meta name="description" content="Kaizen is Japenese for &#8220;good change&#8221; or &#8220;improvement&#8221; and is frequently
+used within the context of lean manufacturing. Today &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +19,7 @@ practices &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.charleshooper.net/blog/intro-to-ops-config-management">
+  <link rel="canonical" href="http://www.charleshooper.net/blog/personal-kaizen-self-improvement">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/subversity" rel="alternate" title="Charles Hooper" type="application/atom+xml">
@@ -88,7 +87,7 @@ practices &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Intro to Operations: Configuration Management</h1>
+      <h1 class="entry-title">My Personal Kaizen</h1>
     
     
       <p class="meta">
@@ -104,7 +103,7 @@ practices &hellip;">
   
 
 
-<time datetime="2013-05-05T20:12:00-07:00" pubdate data-updated="true">May 5<span>th</span>, 2013</time>
+<time datetime="2013-07-04T11:27:00-07:00" pubdate data-updated="true">Jul 4<span>th</span>, 2013</time>
         
       </p>
     
@@ -113,58 +112,51 @@ practices &hellip;">
 
 <div class="entry-content"><h1></h1>
 
-<p><em>I&#8217;m writing a series of blog posts for managers and other people
-without an operations background in order to introduce certain best
-practices regarding Operations. For the rest of the blog posts, please
-visit the <a href="/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
+<p>Kaizen is Japenese for &#8220;good change&#8221; or &#8220;improvement&#8221; and is frequently
+used within the context of lean manufacturing. Today though, I&#8217;m going
+to talk about a few things I want to improve for myself, both personally
+and professionally.</p>
 
-<p>One of the areas I&#8217;ve witnessed early stage startups lacking in is
-<strong>configuration management</strong>. <em>Configuration management is the process of
-standardizing and enforcing configurations</em>. In other words,
-configuration management is about deciding on a specific configuration
-of services for various roles and then applying these configurations in
-practice. Typically, these manifests are written in (domain-specific)
-language and is specific to the <em>configuration management software</em>
-being used, such as <a href="https://puppetlabs.com/">puppet</a>, <a href="http://www.opscode.com/chef/">chef</a>, <a href="http://cfengine.com/">cfengine</a>, or
-<a href="http://saltstack.com/community.html">salt stack</a>.</p>
+<h2>Hard Skills</h2>
 
-<p>There are many benefits to configuration management. For one,
-configuration management allows developers to spend more time working on
-the product and less time deploying new services. This is because
-configuration is now automated and faster as a result. In addition,
-environments are standardized and therefore less time is spent
-troubleshooting or diagnosing edge cases in different environments.
-Finally, when coupled with <em>source control management</em>, the proper use
-of configuration management can be used to track and audit what has
-changed over time and who changed it.</p>
+<p>I&#8217;m fascinated by new technology and new ways of doing work, so
+polishing up on some of my so-called &#8220;hard skills&#8221; comes relatively
+natural to me. Things like learning a new programming language or a new
+tool require only time which I&#8217;m more than willing and able to invest.
+Without further ado, here are the hard skills I&#8217;d like to improve:</p>
 
-<p>In many of these early stage startups, there is either very little
-configuration management performed at all, or configuration management
-exists as a series of shell scripts cobbled together to do some
-post-hardware setup. If you&#8217;re lucky, there exists a document somewhere
-that describes when and how to run these scripts to deploy new services.</p>
+<ul>
+<li>Become proficient in <strong>Go</strong>. I find Go very appealing as a
+language, specifically for systems-level uses.</li>
+<li>Become proficient in <strong>Ruby</strong>. Alot of the software I&#8217;m
+responsible for maintaining at Heroku is written in Ruby.</li>
+<li>Become proficient in a <strong>functional programming language</strong>,
+such as <strong>Erlang</strong>. I&#8217;ve been interested in learning a functional
+programming language for a while. I decided on Erlang after hearing a
+talk from <a href="http://christophermeiklejohn.com/">Chris Meiklejohn</a> (of Basho) about Riak and watching
+several talks about Erlang and Erlang/OTP.</li>
+</ul>
 
-<p>The way configuration management works is that engineers create a
-collection of files that define how the system should be configured.
-This collection of files is typically called a <strong>manifest</strong>. Then, once
-physical or virtual hardware has been provisioned, one of these
-manifests is <em>applied</em> to the new host. During application, the
-configuration management software will interpret the new configuration,
-install software packages, manage users and credentials, alter config
-files, manage file permissions, run arbitrary commands, and so on. Once
-the manifest is fully applied, the new host should be fully configured
-and ready to be used!  In some environments; however, they may be a
-post-host-provisioning step where additional work is performed
-afterwards, such as checking out application code from a source control
-repository.</p>
 
-<p>If you&#8217;re not using configuration management already then you should
-start now because, frankly, it&#8217;s never too early. Starting configuration
-management now will not only help your first hired ops/systems engineer
-from working backwards to write these manifests later, but will also
-incur benefits (such as your developers spending less time away from
-shipping value-added code) that will outweigh the initial learning
-curve.</p>
+<h2>Soft Skills</h2>
+
+<p>Addressing soft skills is something that&#8217;s a little more difficult for
+me, but something that I think is important. These are the soft skills I&#8217;d
+like to improve:</p>
+
+<ul>
+<li>Become better at <strong>empathy</strong>. Sometimes when listening to someone,
+it&#8217;s easy to jump to conclusions about what they are trying to say or
+how they came to that point. What I have been working on, however, is
+understanding <em>why</em> they feel a certain way in particular.</li>
+<li>Become a <strong>better listener</strong>. I have been working on this for a while,
+but one area I would still like to improve is learning to ask the the right
+questions. I&#8217;m always impressed when someone follows up something I
+said with an engaging question, and I would love to gain that ability.</li>
+<li>Become more <strong>well-spoken</strong>. I&#8217;d like to be a better public speaker,
+both publicly and privately.</li>
+</ul>
+
 </div>
 
 
@@ -187,12 +179,12 @@ curve.</p>
   
 
 
-<time datetime="2013-05-05T20:12:00-07:00" pubdate data-updated="true">May 5<span>th</span>, 2013</time>
+<time datetime="2013-07-04T11:27:00-07:00" pubdate data-updated="true">Jul 4<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/devops/'>DevOps</a>, <a class='category' href='/blog/categories/management/'>Management</a>
+    <a class='category' href='/blog/categories/site-updates/'>Site Updates</a>
   
 </span>
 
@@ -201,7 +193,7 @@ curve.</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.charleshooper.net/blog/intro-to-ops-config-management/" data-via="charleshooper" data-counturl="http://www.charleshooper.net/blog/intro-to-ops-config-management/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.charleshooper.net/blog/personal-kaizen-self-improvement/" data-via="charleshooper" data-counturl="http://www.charleshooper.net/blog/personal-kaizen-self-improvement/" >Tweet</a>
   
   
   
@@ -210,10 +202,8 @@ curve.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/new-platform/sorry-for-rss-spam/" title="Previous Post: New Platform - Sorry for the RSS Spam">&laquo; New Platform - Sorry for the RSS Spam</a>
+        <a class="basic-alignment left" href="/blog/about-this-site-technical/" title="Previous Post: About this site (technical)">&laquo; About this site (technical)</a>
       
-      
-        <a class="basic-alignment right" href="/blog/intro-to-ops-availability-monitoring-alerting/" title="Next Post: Intro to Operations: Availability Monitoring and Alerting">Intro to Operations: Availability Monitoring and Alerting &raquo;</a>
       
     </p>
   </footer>
@@ -303,8 +293,8 @@ curve.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.charleshooper.net/blog/intro-to-ops-config-management/';
-        var disqus_url = 'http://www.charleshooper.net/blog/intro-to-ops-config-management/';
+        var disqus_identifier = 'http://www.charleshooper.net/blog/personal-kaizen-self-improvement/';
+        var disqus_url = 'http://www.charleshooper.net/blog/personal-kaizen-self-improvement/';
         var disqus_script = 'embed.js';
       
     (function () {

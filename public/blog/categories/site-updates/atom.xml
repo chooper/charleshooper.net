@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Site Updates | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/site-updates/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-06-22T19:02:34-07:00</updated>
+  <updated>2013-07-04T12:45:13-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -12,6 +12,61 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[My Personal Kaizen]]></title>
+    <link href="http://www.charleshooper.net/blog/personal-kaizen-self-improvement/"/>
+    <updated>2013-07-04T11:27:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/my-personal-kaizen</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>Kaizen is Japenese for "good change" or "improvement" and is frequently
+used within the context of lean manufacturing. Today though, I'm going
+to talk about a few things I want to improve for myself, both personally
+and professionally.</p>
+
+<h2>Hard Skills</h2>
+
+<p>I'm fascinated by new technology and new ways of doing work, so
+polishing up on some of my so-called "hard skills" comes relatively
+natural to me. Things like learning a new programming language or a new
+tool require only time which I'm more than willing and able to invest.
+Without further ado, here are the hard skills I'd like to improve:</p>
+
+<ul>
+<li>Become proficient in <strong>Go</strong>. I find Go very appealing as a
+language, specifically for systems-level uses.</li>
+<li>Become proficient in <strong>Ruby</strong>. Alot of the software I'm
+responsible for maintaining at Heroku is written in Ruby.</li>
+<li>Become proficient in a <strong>functional programming language</strong>,
+such as <strong>Erlang</strong>. I've been interested in learning a functional
+programming language for a while. I decided on Erlang after hearing a
+talk from <a href="http://christophermeiklejohn.com/">Chris Meiklejohn</a> (of Basho) about Riak and watching
+several talks about Erlang and Erlang/OTP.</li>
+</ul>
+
+
+<h2>Soft Skills</h2>
+
+<p>Addressing soft skills is something that's a little more difficult for
+me, but something that I think is important. These are the soft skills I'd
+like to improve:</p>
+
+<ul>
+<li>Become better at <strong>empathy</strong>. Sometimes when listening to someone,
+it's easy to jump to conclusions about what they are trying to say or
+how they came to that point. What I have been working on, however, is
+understanding <em>why</em> they feel a certain way in particular.</li>
+<li>Become a <strong>better listener</strong>. I have been working on this for a while,
+but one area I would still like to improve is learning to ask the the right
+questions. I'm always impressed when someone follows up something I
+said with an engaging question, and I would love to gain that ability.</li>
+<li>Become more <strong>well-spoken</strong>. I'd like to be a better public speaker,
+both publicly and privately.</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[About this site (technical)]]></title>
@@ -188,36 +243,6 @@ and Google Reader.</p>
 <p>Interestingly, my stats compared to last year aren’t too different, despite the fact that I only wrote 3 blog posts this year (instead of 10 last year). What’s also interesting is the HUGE spike in bounce rate (which used to be almost non-existent). This spike begins right around the time I hit a “home run” in terms of driving new traffic.</p>
 
 <p>Going forward, I am going to try to post more (<em>again</em>). I’ve said this before but have yet to succeed. This time around, I changed my posting rules to allow me to write about topics more personal to me or more opinionated in nature.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[An early year-end review &#8211; highlights]]></title>
-    <link href="http://www.charleshooper.net/blog/year-end-highlights/"/>
-    <updated>2012-12-16T00:00:00-08:00</updated>
-    <id>http://www.charleshooper.net/blog/year-end-highlights</id>
-    <content type="html"><![CDATA[<h1></h1>
-
-<p>Since I’ve only written 3 blog posts so far this year and alot has changed, here’s a brief summary of what I’ll be writing about in my annual review:</p>
-
-<ul>
-<li>I stopped doing contract work and started working for dotCloud part time,</li>
-<li>As of tomorrow, I’ll officially have completed the requirements for my Bachelor’s degree,</li>
-<li>I found myself, politically (I won’t be writing about this, but it is a big deal to me).</li>
-</ul>
-
-
-<p>What does the future hold for me?</p>
-
-<ul>
-<li>dotCloud offered me a full time position and I accepted; I will start January 2nd,</li>
-<li>I have a variety of side projects planned but it’s too soon to tell how much of my free time I’ll want to spend on them,</li>
-<li>I hope to become more involved with my local community and the ACM,</li>
-<li>I’ve made the decision to stop writing so much on Facebook and Twitter and write more here.</li>
-</ul>
-
-
-<p>That last item has big implications for this blog. It means that I’ll be writing about more personal subjects and opinions I have instead of wasting that effort on Twitter and Facebook (where relatives I haven’t seen in 20 years take the opportunities to rant on my wall). Some of these opinions may also be controversial and, that’s OK, we’re meant to disagree on some things. Some of them may even be ill-formed as they’ll be outside of my area of expertise. That’s OK too, just write me and educate me.</p>
 ]]></content>
   </entry>
   
