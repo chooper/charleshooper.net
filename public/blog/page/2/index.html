@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="For one of my clients and side projects, we’ve been working hard to build in application-level metrics to our wide portfolio of services. Among &hellip;">
+  <meta name="description" content="Since I’ve only written 3 blog posts so far this year and alot has changed, here’s a brief summary of what I’ll be writing about in my annual review &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,63 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/year-end-highlights/">An Early Year-end Review &#8211; Highlights</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-16T00:00:00-08:00" pubdate data-updated="true">Dec 16<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1></h1>
+
+<p>Since I’ve only written 3 blog posts so far this year and alot has changed, here’s a brief summary of what I’ll be writing about in my annual review:</p>
+
+<ul>
+<li>I stopped doing contract work and started working for dotCloud part time,</li>
+<li>As of tomorrow, I’ll officially have completed the requirements for my Bachelor’s degree,</li>
+<li>I found myself, politically (I won’t be writing about this, but it is a big deal to me).</li>
+</ul>
+
+
+<p>What does the future hold for me?</p>
+
+<ul>
+<li>dotCloud offered me a full time position and I accepted; I will start January 2nd,</li>
+<li>I have a variety of side projects planned but it’s too soon to tell how much of my free time I’ll want to spend on them,</li>
+<li>I hope to become more involved with my local community and the ACM,</li>
+<li>I’ve made the decision to stop writing so much on Facebook and Twitter and write more here.</li>
+</ul>
+
+
+<p>That last item has big implications for this blog. It means that I’ll be writing about more personal subjects and opinions I have instead of wasting that effort on Twitter and Facebook (where relatives I haven’t seen in 20 years take the opportunities to rant on my wall). Some of these opinions may also be controversial and, that’s OK, we’re meant to disagree on some things. Some of them may even be ill-formed as they’ll be outside of my area of expertise. That’s OK too, just write me and educate me.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -830,70 +887,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/common-single-point-of-failure-people/">Common Single Point of Failure: People</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-07T00:00:00-07:00" pubdate data-updated="true">Jun 7<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1></h1>
-
-<p>Yesterday, when I arrived at my other job on my school’s help desk, I found out that my supervisor was not coming into work at all. This is OK; I enjoy the autonomy of working unsupervised. However, at this particular university’s help desk, my supervisor is the <em>only</em> person who can reset security profile information on student accounts. She is also the only person who assigns work orders to the technicians that work here. I’ll spare you the details, but probably 80-90% of our workload on any given day gets passed through this one person.</p>
-
-<p>This is a serious problem. By passing tasks through a single person with no backup we are guaranteeing the collapse of our support system. I’ve seen this at other gigs and I bet you have, too.</p>
-
-<p>Maybe it’s the “one guy” who has access to the firewall or router. Or maybe there’s that only person who knows how to configure a particular piece of software or solve a specific problem. Truthfully, you’re probably that guy and don’t even realize it. Ever get work-related phone calls (or worse: called in) during your “time off?” Red flag.</p>
-
-<p>All of these conditions are single points of failures (SPoF). Too often, we sysadmins, developers, and engineers only think of SPoFs in terms of hardware and software. But if we look at what actually makes up the entire information system (hardware, software, data, procedures, and <em>people)</em>, we see that we’re part of it too. This hoarding of knowledge often results in a failure of the system itself and very frequently makes existing failures worse.</p>
-
-<h1>Example</h1>
-
-<p>A customer-facing database server stops responding. You’re not really familiar with what database(s) it serves but customers are complaining that it’s down or very slow. There’s another guy that normally handles this system but he’s out of town and completely unreachable. You want to diagnose but you don’t even know how to access the system. Do you blindly reboot (risking data loss and corruption)? Sit and wait it out? Learn how to summon your co-worker’s spirit?</p>
-
-<p>One very real situation occurred when I worked at a small Internet Service Provider. A very big client of ours called and said that a very large portion of their network was down (we managed it, too). Did I have the credentials to the router in question? No. Did the client? No. Who did? <em>That guy </em>did, the one who is usually too busy running around to return calls (incidentally, the owner). He did finally return our cries for help… 3 hours later. Was the problem difficult to solve? No. In fact, it was fixed within minutes of receiving the proper credentials. (Funny story, one of their on-staff techs plugged a network camera into the network and accidentally assigned their router’s address as the camera’s IP :)) Sure, this mistake was dumb, but did this client need to suffer degraded availability for these 3 hours? Absolutely not.</p>
-
-<h2>Solution</h2>
-
-<p>The obvious, and perhaps only, solution to this problem is to make as much of your knowledge available as possible. The more knowledge you offload from your brain, the better and more efficient the system becomes. I know to some this might seem a little counter-productive. After all, having this knowledge is job security…right?</p>
-
-<p>No, absolutely not. Holding company knowledge hostage should never be how you ensure your job security (<em>that’s a myth anyways</em>).</p>
-
-<p>With that being said, please don’t spend all your energy and effort on documentation only to abandon the effort a month later. I was speaking to a friend of mine earlier when he mentioned that very often he comes across company Wikis all the time that usually contain outdated information and haven’t even been logged into in 6 months.</p>
-
-<p>Allow me to re-iterate, do<em> not</em> go on documentation sprees. Document everything <em>when</em> you do it and share that information <em>when </em>you do it. Regularly. Constantly. If you wait until you have alot of information to document, then you will probably become overwhelmed and just not do it. When I was in the Air Force, we had a saying:</p>
-
-<h2>The job ain’t over till the paperwork is done.</h2>
-
-<p>Simply put, add documentation into your regular workflow. The investment is small and the returns are great.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -927,6 +920,10 @@ For one of my clients and side projects, we’ve been working hard to build in a
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/how-i-hacked-my-high-school/">How I Hacked My High School</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/personal-kaizen-self-improvement/">My Personal Kaizen</a>
       </li>
     
@@ -940,10 +937,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
     
       <li class="post">
         <a href="/blog/intro-to-ops-metrics-collection/">Intro to Operations: Metrics Collection</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/intro-to-ops-availability-monitoring-alerting/">Intro to Operations: Availability Monitoring and Alerting</a>
       </li>
     
   </ul>
