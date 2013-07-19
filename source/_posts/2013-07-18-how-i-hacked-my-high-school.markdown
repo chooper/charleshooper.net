@@ -6,6 +6,7 @@ comments: true
 categories: 
   - Life
 ---
+# 
 
 When I was a freshman or sophomore in high school, I cracked my high
 school and got in "a lot of trouble" for it. I've only told the story
