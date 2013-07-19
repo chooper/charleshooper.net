@@ -4,7 +4,7 @@
   <title><![CDATA[Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-07-06T11:37:49-07:00</updated>
+  <updated>2013-07-18T23:37:39-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -12,6 +12,210 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How I Hacked My High School]]></title>
+    <link href="http://www.charleshooper.net/blog/how-i-hacked-my-high-school/"/>
+    <updated>2013-07-18T10:59:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/how-i-hacked-my-high-school</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>When I was a freshman or sophomore in high school, I cracked my high
+school and got in &#8220;a lot of trouble&#8221; for it. I&#8217;ve only told the story
+maybe half a dozen times in my life, but after telling it a few times in
+the past month or so, I decided to write about.</p>
+
+<p>I went to a high school in a fairly decent school district that
+apparently had enough money to build several computer labs in each
+school, network them all together as a single autonomous network, and
+provide reasonably fast Internet access. This was somewhere between the
+years 1998 and the year 2000, the exact year I can&#8217;t quite remember.</p>
+
+<p>Another interesting thing to note about my high school was that it
+carried with it an 80-hour community service requirement for graduation.
+I&#8217;ve always been into computers and networking (no, seriously, <em>always</em>)
+so it was natural for me volunteer to do my community service assisting
+the technical staff in the computer labs. Community service in this way
+typically involved installing printer drivers, updating software, and
+pushing boxes around on a cart.</p>
+
+<p>My school&#8217;s computer network consisted of a mix of sevaral flavors of
+Windows including Windows 95, Windows 98, Windows NT 4.0, and there were
+a few computers that we were testing Windows 2000. Despite the large
+Microsoft-only network, we were using Novell for authentication and
+authorization. Each school in the district was networked together and
+part of this same Novell network.</p>
+
+<p>My school had reasonable filtering and monitoring in place for web
+traffic and it wasn&#8217;t uncommon to hear of students getting into trouble
+for looking at, let&#8217;s say &#8220;questionable content.&#8221;</p>
+
+<p>One weird thing my school did was restrict access to the local hard
+drive. If you went into Explorer, the <code>C:\</code> volume simply wasn&#8217;t listed.
+This was supposedly because we were supposed to use our network-attached
+&#8220;S drive&#8221; which was unique to each user. The &#8220;Run&#8221; dialog from the Start
+menu was also disabled.</p>
+
+<p>This had its flaws; however, and one day I hand-wrote (in English class)
+a 6 page paper detailing the variety of ways even an unskilled person
+could bypass this precaution. Most notably this included:</p>
+
+<ul>
+<li>Create a shortcut on the desktop to <code>C:\</code></li>
+<li>Open internet explorer and browse to <code>file:///...</code></li>
+<li>Certain &#8220;Save As&#8221; and &#8220;Open&#8221; dialogs still listed the C-drive and was browsable</li>
+<li>You could still get to a &#8220;Run&#8221; dialog by opening the task manager and finding it in there. This allowed you to a) Browse to the C-drive anyway, and b) Open up a command prompt</li>
+</ul>
+
+
+<p>There were probably some other flaws I missed. I argued that restricting
+access to the local disk was rather pointless as people could simply
+drop to it during boot (which many students were already doing in order
+to get a kick out of doing <code>deltree C:\Windows</code> for some reason) and
+that the real issue was that local password caching was enabled. In
+other words, whenever a user logged in, a hashed version of their
+password was stored in the form of a windows &#8220;PWL file.&#8221;</p>
+
+<p>The next time I did my community service, I handed my paper to the head
+technician which he responded &#8220;What? This could never happen&#8221;
+and threw my paper in the garbage.</p>
+
+<p>What?! I couldn&#8217;t believe that someone would actually throw away what
+was, at the time, the longest paper I&#8217;ve ever written after barely
+having read it. And to do this with a 4-word response no less!</p>
+
+<p>Due to my shock and what was apparent lack of maturity, I decided
+that I would show them. I mean, when you approach someone with what you
+think is an obvious, logical opinion and they don&#8217;t believe you, your
+next option is to show them, right? <em>Right?</em></p>
+
+<p>It didn&#8217;t take me too long to gather up a fairly large collection of
+these so-called &#8220;PWL files&#8221; on a floppy disk. Distinguishing between
+staff and students was trivial too due to the naming convention in
+place. Students&#8217; usernames were always in the form of
+<code>{ExpectedGraduationYear}{LastName}{FirstInitial}</code>. Mine was
+<code>03hooperc</code>. Faculty and staff, on the other hand, simply followed the
+convention <code>{FirstInitial}{LastName}</code>. I decided that I didn&#8217;t care for
+any of the student logins and just discarded them.</p>
+
+<p>When I had a good collection of staff PWL files, I used a tool called
+<a href="http://www.oxid.it/cain.html">Cain &amp; Abel</a> on my home computer and ran it overnight.</p>
+
+<p>In the morning, I was surprised to see how many passwords were cracked.
+Among them, one staff login stuck out at me. It was the technician who
+threw my paper out. I knew that because, unlike the rest of the
+technical staff, he mostly worked on network issues, he must have alot
+more access than anyone else. His password was hilariously bad and
+insecure. It consisted of two three-letter words in all caps:</p>
+
+<pre><code>THEMAN
+</code></pre>
+
+<p>The man, huh? I giggled and went to school ready to launch my next
+attack. I went to the computer lab during lunch and waited for the
+opportunity to log into my new staff account. I had to be careful,
+though, as my school set the background of staff accounts to something
+very noticable and I didn&#8217;t want the computer lab attendant sitting in
+the back to notice that I was on an account that didn&#8217;t belong to me. At
+some point, she left briefly and I quickly logged onto The Man&#8217;s
+account.</p>
+
+<p>Once I was logged in, I was more in excited and nervous than
+anything. Even still, I moved onto the next step of creating a backdoor
+account with admin privileges. I made up a name and created a new
+account following the faculty/staff naming convention and granted it
+every privilege I could. As soon as I was done, I logged off. The
+log-off couldn&#8217;t be slower. I felt like Peter in Office Space when he&#8217;s
+trying to duck out of work early and his computer keeps coming up with
+a bunch of last-minute tasks before it can log off.</p>
+
+<p>I logged into my backdoor account exactly once to verify that it worked
+and never logged into it again. I fucked up and made the classic mistake
+of telling a friend. He was one of the few people I knew who also used
+Linux and we used to trade books, CDs, and manuals all the time. My
+favorite trade was giving him <a href="http://www.gutenberg.org/ebooks/6527">Debian GNU/Linux: Guide to Installation and Usage</a>
+(which I see now places me in 1999) for a manual from Bell Canada about
+this crazy thing called SONET and T-carrier transmission systems (e.g.,
+T-1 lines). Who knew that I would one day work for an ISP and
+later move on to manage thousands of Linux hosts based on a Debian
+derivative?</p>
+
+<p>Some months later, I start hearing from other students that my buddy has
+told a bunch of people my secret and has even been logging into the
+account to prove it (OK, I definitely shouldn&#8217;t have shared the
+credentials!) I decided that the best thing to do in this case was to
+confess to the Director of Information Technology, who I used to bug
+from time to time and ask why we didn&#8217;t use Linux since it&#8217;s free (Yes,
+I was probably a very annoying fifteen year old) For those wondering, he
+said it was because of a &#8220;licensing issue&#8221; which I think was
+professional speak for &#8220;fuck off, kid&#8221;). So, I walked into his office
+one day, told him I said something big to tell him, and dropped the
+bomb.</p>
+
+<p>I honestly don&#8217;t know what I was expecting to happen. He listened to my
+story, asked me how long I had this access for. When I told him, he
+remarked that their backups didn&#8217;t back that far and that, in any case,
+he&#8217;d have to report me to the administration. He walked me over to the
+dean of disclipline&#8217;s office and I went through a grueling session of
+more questions.</p>
+
+<p>Something I should probably note is that this during a period where a
+bunch of schools, including mine, had decided to institute a
+so-called &#8220;zero tolerance policy.&#8221; What these zero-tolerance policies
+were was simply a matrix of &#8220;Violations&#8221; on one axis and
+&#8220;Number of prior offenses&#8221; on the other. In other words, getting caught
+smoking in the bathroom for the first time carried a pre-determined
+penalty which was slightly less bad than getting caught doing that for
+the second time. Students could never argue that they didn&#8217;t know they
+would get in so much trouble for anything because this matrix and every
+other school/district policy was distributed to us at the beginning of
+the year and we were required to have it on us at all times.</p>
+
+<p>The obvious flaw with this policy, besides the fact that it ignores
+additional circumstances, is that in 1999 there wasn&#8217;t a row describing
+the penalties for any of the things I had done. In fact, I hadn&#8217;t
+technically violated any of the school or district policies at all!
+(Federal and local crimes may be another issue). I was sent home with
+the dean of discipline still deciding what to do with me, but I figured
+I was probably going to be suspended for a few days.</p>
+
+<p>I went home and told my parents what happened and, very very <em>very</em>
+surprisingly, they said I did the right thing (albeit many months late).
+Something else amazing happened though. My parents called the school
+and, after talking to the dean, we learned that my school was actually
+considering <strong>expulsion!</strong> My parents made some phone calls and tried to
+pull some strings that we didn&#8217;t think we had but ultimately told me that
+we wouldn&#8217;t know my fate until the next day at school.</p>
+
+<p>The next day I went into school and was immediately called into the
+dean&#8217;s office. He explained that they had decided that what I was guilty
+of stealing and kept using this &#8220;stole the key to the bank&#8221; metaphor. He
+actually told me that had I not brought the password files home on a
+floppy disk, I would probably be in less trouble. What the fuck?</p>
+
+<p>And then I received my sentencing: Ten day suspension.</p>
+
+<p>Ten days! That was <em>huge</em>. For comparison:</p>
+
+<ul>
+<li>Ten days in the maximum amount of time you could be suspended for. Anything longer would be considered an expulsion and would require a hearing of some kind.</li>
+<li>You could punch someone in the face (you know, assault) and the punishment for doing that would be 4-6 days&#8230; on the second offense.</li>
+</ul>
+
+
+<p>I don&#8217;t remember how I got home but it was like my parents weren&#8217;t even
+mad. In fact, they seemed more proud than anything. I think they even
+thought that this incident would get me hired somewhere someday, too.</p>
+
+<p>After my suspension, I returned to school to learn that, in addition to
+my now-served suspension, I was no longer allowed to use any of the
+computers at school. This lasted over a year and, after signing a paper
+agreeing to let my school sue me if I commit another offence, I was
+given my computer access back.</p>
+
+<p>I&#8217;m terrible at concluding stories so&#8230; The End.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[My Personal Kaizen]]></title>
@@ -1056,43 +1260,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Common Single Point of Failure: People]]></title>
-    <link href="http://www.charleshooper.net/blog/common-single-point-of-failure-people/"/>
-    <updated>2011-06-07T00:00:00-07:00</updated>
-    <id>http://www.charleshooper.net/blog/common-single-point-of-failure-people</id>
-    <content type="html"><![CDATA[<h1></h1>
-
-<p>Yesterday, when I arrived at my other job on my school’s help desk, I found out that my supervisor was not coming into work at all. This is OK; I enjoy the autonomy of working unsupervised. However, at this particular university’s help desk, my supervisor is the <em>only</em> person who can reset security profile information on student accounts. She is also the only person who assigns work orders to the technicians that work here. I’ll spare you the details, but probably 80-90% of our workload on any given day gets passed through this one person.</p>
-
-<p>This is a serious problem. By passing tasks through a single person with no backup we are guaranteeing the collapse of our support system. I’ve seen this at other gigs and I bet you have, too.</p>
-
-<p>Maybe it’s the “one guy” who has access to the firewall or router. Or maybe there’s that only person who knows how to configure a particular piece of software or solve a specific problem. Truthfully, you’re probably that guy and don’t even realize it. Ever get work-related phone calls (or worse: called in) during your “time off?” Red flag.</p>
-
-<p>All of these conditions are single points of failures (SPoF). Too often, we sysadmins, developers, and engineers only think of SPoFs in terms of hardware and software. But if we look at what actually makes up the entire information system (hardware, software, data, procedures, and <em>people)</em>, we see that we’re part of it too. This hoarding of knowledge often results in a failure of the system itself and very frequently makes existing failures worse.</p>
-
-<h1>Example</h1>
-
-<p>A customer-facing database server stops responding. You’re not really familiar with what database(s) it serves but customers are complaining that it’s down or very slow. There’s another guy that normally handles this system but he’s out of town and completely unreachable. You want to diagnose but you don’t even know how to access the system. Do you blindly reboot (risking data loss and corruption)? Sit and wait it out? Learn how to summon your co-worker’s spirit?</p>
-
-<p>One very real situation occurred when I worked at a small Internet Service Provider. A very big client of ours called and said that a very large portion of their network was down (we managed it, too). Did I have the credentials to the router in question? No. Did the client? No. Who did? <em>That guy </em>did, the one who is usually too busy running around to return calls (incidentally, the owner). He did finally return our cries for help… 3 hours later. Was the problem difficult to solve? No. In fact, it was fixed within minutes of receiving the proper credentials. (Funny story, one of their on-staff techs plugged a network camera into the network and accidentally assigned their router’s address as the camera’s IP :)) Sure, this mistake was dumb, but did this client need to suffer degraded availability for these 3 hours? Absolutely not.</p>
-
-<h2>Solution</h2>
-
-<p>The obvious, and perhaps only, solution to this problem is to make as much of your knowledge available as possible. The more knowledge you offload from your brain, the better and more efficient the system becomes. I know to some this might seem a little counter-productive. After all, having this knowledge is job security…right?</p>
-
-<p>No, absolutely not. Holding company knowledge hostage should never be how you ensure your job security (<em>that’s a myth anyways</em>).</p>
-
-<p>With that being said, please don’t spend all your energy and effort on documentation only to abandon the effort a month later. I was speaking to a friend of mine earlier when he mentioned that very often he comes across company Wikis all the time that usually contain outdated information and haven’t even been logged into in 6 months.</p>
-
-<p>Allow me to re-iterate, do<em> not</em> go on documentation sprees. Document everything <em>when</em> you do it and share that information <em>when </em>you do it. Regularly. Constantly. If you wait until you have alot of information to document, then you will probably become overwhelmed and just not do it. When I was in the Air Force, we had a saying:</p>
-
-<h2>The job ain’t over till the paperwork is done.</h2>
-
-<p>Simply put, add documentation into your regular workflow. The investment is small and the returns are great.</p>
 ]]></content>
   </entry>
   

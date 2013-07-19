@@ -9,9 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="Basic Concepts of Ruby Ruby is an object-oriented
-language, but before you skip this section because you think you know
-what this is all about &hellip;">
+  <meta name="description" content="I sense a very big lack in service-oriented monitoring and reporting, primarily in the SMB market. So I ask you: If you were IT and walked into a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +83,47 @@ what this is all about &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/if-you-were-it-and-walked-into-a-company-with-no-monitoring-or-logging-what-would-your-priorities-be/
+/">If You Were IT and Walked Into a Company With No Monitoring or Logging, What</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-06T00:00:00-08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1></h1>
+
+<p>I sense a very big lack in service-oriented monitoring and reporting, primarily in the SMB market. So I ask you:</p>
+
+<blockquote><p>If you were IT and walked into a company with no service monitoring or logging, what would your priorities be?</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1076,122 +1115,9 @@ Thoughts? Advice?</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/auto-type-juggling-and-unsanitized-input/">Auto Type Juggling and Unsanitized Input</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-04T00:00:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1></h1>
-
-<p>I would like to think that one day we will all be past the point where
-we are constantly finding silly bugs and vulnerabilities caused by
-unvalidated or unsanitized user input. Unfortunately for us all, we’re
-not. In this article, I will attempt to describe a rather overlooked
-result of <a href="http://www.php.net/manual/en/language.types.type-juggling.php">PHP’s type juggling</a>.</p>
-
-<p>If you aren’t already familiar, type juggling is PHP’s way of
-automatically switching or converting variables to different types based
-on the context it’s being used in. For example, if you have the strings
-“2″ and “3″ and you add them, PHP will convert them to integers and
-return the integer 5. This is useful in PHP web-applications since any
-variable that PHP retrieves from either GPC (<em>Get</em>, <em>Post</em>, <em>Cookie</em>)
-variables or the database is considered a string. This is regardless of
-its actual value or column type in the database and the string will need
-to be converted to a numeric type before any type of math operations or
-numeric comparisons can be performed on them.</p>
-
-<p>On the lower-level, PHP is actually using libc’s strtod() function. If
-we look at the man page, we learn If no conversion is performed, zero is
-returned. Without looking at PHP’s source, it would seem to me that PHP
-is blindly handing off string pointers to strtod() and if the type
-conversion fails it will retain the type of whatever the variable was
-last. This isn’t PHP’s fault, it’s the <em>developer’s responsibility</em> to
-make sure the data he is using is properly sanitized!</p>
-
-<p>The best real-world example I can give about this bug was a series of
-exploits in the web-based RPG <a href="http://www.bootleggers.us/">Bootleggers</a> last round. One of the
-most well known exploits in this series was known to players as “The Arm
-Wrestling bug.” This arm wrestling bug was the result of a flaw or
-limitation in PHP’s magic type switching that allowed players to bypass
-certain logic checks to send extremely large strings of numbers to the
-database backend and essentially create money out of thin air, one MySQL
-signed integer (2,147,483,647) at a time.</p>
-
-<p>For an example on how we would go about exploiting this, we look at the
-following code:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$var1 = '1';
-</span><span class='line'>$var2 = '21';
-</span><span class='line'>var_dump((bool) ($var1 &lt; $var2));
-</span><span class='line'># Output: bool(true)</span></code></pre></td></tr></table></div></figure>
-
-
-<p>All this code is doing is assigning strings to two variables and then
-doing a numeric comparison of them — In our case, this script will
-output “true” since, when evaluated as an integer, 1 is in fact
-less-than 21. However, if there is any non-numeric data being passed to
-the variable then strtod() will return 0 and PHP will evaluate these
-variables as strings and use natural sorting to determine if one
-variable is “less”-than another. Proof?</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$var1 = '111 '; // there is a space before the closing quote
-</span><span class='line'>$var2 = '21';
-</span><span class='line'>var_dump((bool) ($var1 &lt; $var2));
-</span><span class='line'># Output: bool(true)</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This block of code will <em>also</em> output true because the character ’1′ is
-before the character ’2′ when using natural sorting. If a user is able
-to bypass the logic checks with this exploit, then typically the string
-will be sent straight to the database as-is (OK, maybe escaped for
-apostrophes ;)). Depending on the DBMS there may be a variance in
-behavior. Usually, exploiters will use this attack with a very large
-string so that the column being updated with that value will actually
-update to the maximum value for that column’s data type.</p>
-
-<p>While exploits on web-based RPGs aren’t the end of the world, imagine if
-your <em>bank</em> used a PHP-based web-application. Wouldn’t you feel better
-if they all knew about his caveat and properly sanitized and validated
-user input? :-)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/9/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -1222,6 +1148,10 @@ user input? :-)</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/how-i-hacked-my-high-school/">How I Hacked My High School</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/personal-kaizen-self-improvement/">My Personal Kaizen</a>
       </li>
     
@@ -1235,10 +1165,6 @@ user input? :-)</p>
     
       <li class="post">
         <a href="/blog/intro-to-ops-metrics-collection/">Intro to Operations: Metrics Collection</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/intro-to-ops-availability-monitoring-alerting/">Intro to Operations: Availability Monitoring and Alerting</a>
       </li>
     
   </ul>
