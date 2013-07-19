@@ -6,6 +6,7 @@ date: 2013-06-22 04:45
 comments: true
 categories: 
   - Site Updates
+  - Life
 ---
 # 
 
