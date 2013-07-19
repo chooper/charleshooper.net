@@ -21,7 +21,7 @@ years 1998 and the year 2000, the exact year I can't quite remember.
 
 Another interesting thing to note about my high school was that it
 carried with it an 80-hour community service requirement for graduation.
-I've always been into computers and networking (no, seriously, *always*)
+I've always been into computers and networking
 so it was natural for me volunteer to do my community service assisting
 the technical staff in the computer labs. Community service in this way
 typically involved installing printer drivers, updating software, and
