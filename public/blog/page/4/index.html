@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="It has come to my attention that there is still at least one group of people that doesn’t know how to responsibly deal with vulnerability reports. &hellip;">
+  <meta name="description" content="At the NESIT Hackathon on Saturday, I was talking to a group of people about discovering web vulnerabilities and I was asked “Which scanner or tools &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,104 +83,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/so-you-just-received-a-vulnerability-report-now-what/">So You Just Received a Vulnerability Report. Now What?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-22T00:00:00-08:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1></h1>
-
-<p>It has come to my attention that there is still at least one group of people that doesn’t know <strong>how to responsibly deal with vulnerability reports</strong>. No, I’m not talking about the security researchers, the blackhats, or the script kiddies. It’s true that there is already alot of  controversy surrounding proper (or responsible) disclosure etiquette, but that doesn’t concern the group I’m referring to right now. I’m talking about the maintainer of the resource that the vulnerability report is for. That means you, project maintainers!</p>
-
-<h2>Before Receiving a Report</h2>
-
-<p>One of the biggest difficulties I’ve been having lately is finding contact information for a project maintainer or their security contact. On multi-developer projects, there should be at least one person who is responsible for fielding security-related reports that come in. They should have the ability to put fixes for security vulnerabilities on high priority for the developers.</p>
-
-<p>Your “security guy’s” email should be easy to find or guess. For example, Google’s is security@google.com and this address is <a href="http://www.google.com/corporate/security.html">easy to find</a>. You could also achieve this effect by using support/bug report forums, but be sure that any bug or report marked as security-related should be automatically hidden from public view. Regardless of if you decide to use a dedicated email box/alias or support forums for your security reports,  it is most important to make <em>someone</em> responsible for making sure that security reports are reacted to quickly and professionally.</p>
-
-<h2>After Receiving a Report</h2>
-
-<p>As soon as the first human has eyes on the report, it should be assigned to an individual and a confirmation should be sent to the person who provided it. Here’s is one such confirmation:</p>
-
-<blockquote><p>Thank you for reporting this to us! We have opened a security
-investigation to track this issue. The case number for your tracking
-is MSRC [XXXX]. XXXX is the Security Program Manger assigned to the case and he will be working with you and the Microsoft.com team to investigate the issue. She will be following up with you shortly.</p></blockquote>
-
-<p>This step is super important because many of the people who take the time to report vulnerabilities to the vendor are only just waiting to release the report to the public. You don’t want to still be working on the fix when the news of your project’s security flaw is released.</p>
-
-<p>Once you have a someone assigned to the bug, have them send a brief introduction. I never received my introduction from “XXXX” above, so I sent another email inquiring on the status of the bug. Here is the response:</p>
-
-<blockquote><p>Thank you very much for your message! My name is YYYY and I have taken over this case from XXXX. Earlier this week, the online services team has started testing a fix for the original issue you have reported, and we are currently verifying this, which includes variation testing and a review of the whole page. The added details you have provided to us in the below message will certainly help us in this process, so thanks a lot!</p>
-
-<p>I will contact you as soon as the fix is deployed, and of course, if you have any further information or questions, please don’t hesitate to let us know.</p></blockquote>
-
-<p>This email is short, brief, yet contains all the information I would ever want to know. In particular it includes:</p>
-
-<ul>
-<li>An actual person I can continue to provide information to</li>
-<li>The status of the vulnerability/bug</li>
-<li>The next step(s) in their review process</li>
-<li>When I can expect to hear from them next</li>
-</ul>
-
-
-<p>Just like the MSRC said I would, I heard from them when the fix made it to production. (In case you were wondering, it was 5 calendar days later.) At this point, they made arrangements to acknowledge me on the “Security Researchers Acknowledgment” page. While this is certainly a nice perk, you don’t have to do this.</p>
-
-<h3>A valid question at this point is “How long do I have to fix this vulnerability?”</h3>
-
-<p>It depends, but as the vendor that’s up for you to figure out. If you’re receiving a vulnerability report from a non-public source, then consider yourself lucky. The person reporting the vulnerability likely believes in responsible disclosure (inherent of the fact that you got the report first) and will be willing to negotiate on the timeline. Be honest with this person. I once waited two months to report a minor SQL injection vulnerability in a trivial web application because the (sole) project maintainer was on vacation when I emailed him initially.</p>
-
-<h2>Summary (tl;dr)</h2>
-
-<p>Many of the security researchers who will reach out to you believe in responsible (but full) disclosure. That means that your project’s security flaws <em>will</em> make it to the public sooner or later. To ensure the best experience for your users and the preservation of your project’s reputation, you need to handle your vulnerability reports quickly and properly. That means:</p>
-
-<ul>
-<li>Making it easy to find out where to send vulnerability reports to</li>
-<li>Communicating with the source of the report to confirm receipt of their report</li>
-<li>Communicating with the source of the report your intentions for their report
-
-<ul>
-<li>Who did the vulnerability get assigned to?</li>
-<li>What is the status of this vulnerability?</li>
-<li>What are the next steps in the review process for this vulnerability?</li>
-<li>When they can expect to hear from you next</li>
-</ul>
-</li>
-<li>Communicating with the source when you believe the vulnerability is fixed</li>
-</ul>
-
-
-<p>What is all boils down to is this: React quickly and keep open lines of communication between your project and the security researcher who took the time to report a vulnerability to you. If you do this, you’ll minimize the damage to your user base and your reputation.</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -953,6 +855,61 @@ class SomeObject(object):    # new-style classes must be subclassed from object
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/three-reasons-why-im-ditching-chunkhost/">Three Reasons Why I&#8217;m Ditching ChunkHost</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-04T00:00:00-07:00" pubdate data-updated="true">Oct 4<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1></h1>
+
+<p>I’ve been using <a href="http://chunkhost.com/r/chdotnet">ChunkHost</a> for the past <strong>eight months</strong> to host my website and some minor web applications. After my short, free “beta” period I was given a 30% discount (forever) and billed like a normal customer. I’ve only had to pay <strong>$13.30</strong> a month for a Xen VPS with <strong>512MB RAM</strong>. This used to be pretty competitive <a href="http://blog.linode.com/2010/06/16/linode-turns-7-big-ram-increase/">until Linode increased the RAM for all of their VPS packages</a>. Unfortunately for ChunkHost, this Linode RAM increase and some recent events have persuaded me to <a href="http://www.linode.com/?r=2fce38a23c4154c3a1abb4f99aafd6371ee78ecc"><strong>pay the extra 7 bucks to Linode</strong></a>. Here are the three main reasons why I’m ditching ChunkHost:</p>
+
+<ol>
+<li><strong>No way to give feedback on the service.</strong> First, let me qualify this and say that there <em>is</em> a “Feedback” button on the site. However, more than a quick cursory glance reveals that their feedback system is <strong>inactive </strong>and <strong>neglected</strong>. For example, I have an eight month old feature request that has gone ignored; not rejected, not WONTFIX’d, but ignored. Other customers have older feature requests that have been promised “shortly” and never delivered.<img src="http://cdn.subversity.net/blog_imgs/chunkhost-inactive.png" title="chunkhost-inactive.png" alt="An example of ChunkHost's inactive GetSatisfaction feedback page" />
+ 
+
+<ul>
+<li><p><strong>There is no SLA (service-level agreement) or uptime guarantee.</strong> Recently, I noticed that my VM was down and the main page for ChunkHost was down as well. I emailed support about the outage and was happy to receive a quick reply.</p>
+
+<blockquote><p>Yeah, we’re looking at it now; it looks like networking oddness on one of the host machines. We’ll update Twitter with info as we have it!</p></blockquote>
+
+<p>The “fix” consisted of ChunkHost <strong>rebooting the physical host</strong> my VM was on. This same problem occurred <em>again </em><strong>5 hours later</strong>. I don’t sense any empathy from ChunkHost for bearing with them through their downtime and I certainly haven’t received any type of apology. Am I entitled to one? With the lack of an SLA, maybe not, but I’d be alot less bitter and I might have remained a customer had I received one.</p></li>
+<li><p><strong>Not enough notice given for “scheduled” maintenance.</strong> Four days before the two outages I had experienced, ChunkHost performed some scheduled maintenance. I am thankful that the maintenance occurred in off-peak hours, but <strong>I received the notice at the end of the previous day</strong>. This is not adequate notice. Had there been anything critical running on my VM, I would expect adequate notice so I could make proper arrangements ahead of time.
+It saddens me to think that my last eight months at ChunkHost were a waste. Fortunately, <a href="http://www.linode.com/?r=2fce38a23c4154c3a1abb4f99aafd6371ee78ecc">I’ve been using Linode for my “real services” for just as long</a> and I know that I won’t be disappointed there. If you’re looking for a VM for testing and development purposes only, ChunkHost might be an option – just don’t let your development server evolve into a production server.</p></li>
+</ul>
+</li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -986,10 +943,6 @@ class SomeObject(object):    # new-style classes must be subclassed from object
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/how-i-hacked-my-high-school/">How I Hacked My High School</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/personal-kaizen-self-improvement/">My Personal Kaizen</a>
       </li>
     
@@ -1003,6 +956,10 @@ class SomeObject(object):    # new-style classes must be subclassed from object
     
       <li class="post">
         <a href="/blog/intro-to-ops-metrics-collection/">Intro to Operations: Metrics Collection</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/intro-to-ops-availability-monitoring-alerting/">Intro to Operations: Availability Monitoring and Alerting</a>
       </li>
     
   </ul>
