@@ -137,8 +137,7 @@ from time to time and ask why we didn't use Linux since it's free (Yes,
 I was probably a very annoying fifteen year old) For those wondering, he
 said it was because of a "licensing issue" which I think was
 professional speak for "fuck off, kid"). So, I walked into his office
-one day, told him I said something big to tell him, and dropped the
-bomb.
+one day and dropped the bomb.
 
 I honestly don't know what I was expecting to happen. He listened to my
 story, asked me how long I had this access for. When I told him, he
