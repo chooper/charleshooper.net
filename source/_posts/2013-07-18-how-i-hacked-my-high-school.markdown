@@ -17,7 +17,7 @@ I went to a high school in a fairly decent school district that
 apparently had enough money to build several computer labs in each
 school, network them all together as a single autonomous network, and
 provide reasonably fast Internet access. This was somewhere between the
-years 1998 and the year 2000, the exact year I can't quite remember.
+year 1999 and the year 2000, the exact year I can't quite remember.
 
 Another interesting thing to note about my high school was that it
 carried with it an 80-hour community service requirement for graduation.
@@ -28,11 +28,10 @@ typically involved installing printer drivers, updating software, and
 pushing boxes around on a cart.
 
 My school's computer network consisted of a mix of sevaral flavors of
-Windows including Windows 95, Windows 98, Windows NT 4.0, and there were
-a few computers that we were testing Windows 2000. Despite the large
-Microsoft-only network, we were using Novell for authentication and
-authorization. Each school in the district was networked together and
-part of this same Novell network.
+Windows including Windows 95, Windows 98, and Windows NT 4.0. Despite
+the large Microsoft-only network, we were using Novell for
+authentication and authorization. Each school in the district was
+networked together and part of this same Novell network.
 
 My school had reasonable filtering and monitoring in place for web
 traffic and it wasn't uncommon to hear of students getting into trouble
@@ -120,11 +119,10 @@ and never logged into it again. I fucked up and made the classic mistake
 of telling a friend. He was one of the few people I knew who also used
 Linux and we used to trade books, CDs, and manuals all the time. My
 favorite trade was giving him [Debian GNU/Linux: Guide to Installation and Usage][2]
-(which I see now places me in 1999) for a manual from Bell Canada about
-this crazy thing called SONET and T-carrier transmission systems (e.g.,
-T-1 lines). Who knew that I would one day work for an ISP and
-later move on to manage thousands of Linux hosts based on a Debian
-derivative?
+for a manual from Bell Canada about this crazy thing called SONET and
+T-carrier transmission systems (e.g., T-1 lines). Who knew that I would
+one day work for an ISP and later move on to manage thousands of Linux
+hosts based on a Debian derivative?
 
   [2]: http://www.gutenberg.org/ebooks/6527
 
