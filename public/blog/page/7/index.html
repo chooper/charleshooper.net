@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="Twitter BookSuggest is a web app that attempts to make book recommendations based on a person&#8217;s last 20 tweets. Clicking on a book cover will &hellip;">
+  <meta name="description" content="What about Durability? We get lots of questions about why MongoDB doesn’t have full single server durability, and there are many people that think &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,73 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/mongodb-what-about-durability/">MongoDB &#8211; What About Durability?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-12T00:00:00-08:00" pubdate data-updated="true">Feb 12<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1></h1>
+
+<blockquote><h3><a href="http://blog.mongodb.org/post/381927266/what-about-durability">What about Durability?</a></h3>
+
+<p>We get lots of questions about why MongoDB doesn’t have full single server durability, and there are many people that think this is a major problem.  We wanted to shed some light on why we haven’t done single server durability, what our suggestions are, and our future plans.</p>
+
+<p>To start, there are some very practical reasons why we think single server durability is overvalued.  First, there are many scenarios in which that server loses all its data no matter what.  If there is water damage, fire, some hardware problems, etc… no matter how durable the software is, data can be lost.  Yes – there are ways to mitigate some of these, but those add another layer of complexity, that has to be tested, proofed, and adds more variables which can fail.</p>
+
+<p>In the real world, traditional durability often isn’t even done correctly.  If you are using a DBMS that uses a transaction log for durability, you either have to turn off hardware buffering or have a battery backed RAID controller.  Without hardware buffering, transaction logs are very slow.  Battery backed raid controllers will work well, but you have to really have one.  With the move towards the cloud and outsourced hosting, custom hardware is not always an option.</p>
+
+<p>Requirements for web applications are also changing.  99.99% uptime is no longer the goal, people want 100% uptime as much as possible.  If you have durability through a transaction log, then you have to replay it to come back up.  If you have a master and slave in the same data center and you lose power, both will have to recover which could take 5-30 minutes.<a href="http://blog.mongodb.org/post/381927266/what-about-durability">1</a></p>
+
+<p>Another feature of new non-relational databases is horizontal scalability.  While MongoDB’s auto-sharding is still in Alpha, we still feel this is a core component. With horizontal scalability comes many servers.  If you have a 100 node cluster, worrying about every machine is a liability.  If a machine goes down in the middle of the night, you want the system to recover as fast as possible, without human intervention.  Given that, and that a high percentage of failures are hardware, the best thing is to just mark that server as inactive, and ignore it until someone can look at it easily (could be hours or days).</p>
+
+<p>Given all this, we’re not saying durability isn’t important, we just think that single server durability isn’t the best way to get true durability.  We think the right path to durability is replication (local and remote) and snapshotting.  That’s why we’ve spent so much time making replication fast and easy and work over wide area networks in MongoDB.</p>
+
+<p>We are currently planning many more enhancements to replication to make it better.</p>
+
+<ul>
+<li>psuedo real-time with optional blocking for writes until on multiple servers</li>
+<li>replica sets instead of replica pairs</li>
+<li>easier to create new slaves with large data sets</li>
+</ul>
+
+
+<p>Now – there are definitely some cases where single server durability is the best option.  It is on our road map, its just not on the short list right now.  We know what we want to do and how we want to do it, it’s just a matter of code :)</p>
+
+<p><a href="http://blog.mongodb.org/post/381927266/what-about-durability">1</a> Some databases such as CouchDB use an append only model that allows for instantaneous restarts. However, this type of design usually requires compaction routines to be run periodically, so can be costly in high update scenarios.</p>
+
+<p><a href="http://blog.mongodb.org/post/381927266/what-about-durability">1 day ago</a>   via <a href="http://blog.mongodb.org/post/381927266/what-about-durability">blog.mongodb.org</a></p>
+
+<p>This is very important to consider for anyone who is thinking about (or already is) using MongoDB.</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -521,78 +588,6 @@ Fixing this problem is a two-step solution:</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/approaching-system-monitoring/">Approaching System Monitoring</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-07T00:00:00-08:00" pubdate data-updated="true">Dec 7<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1></h1>
-
-<p>Previously, I raised the question: “<a href="http://subversity.net/if-you-were-it-and-walked-into-a-company-with">If you were IT and walked into a company with no monitoring or logging, what would your priorities be?</a>” If I were in this situation, I would ask myself three questions: “<em>What should I be monitoring</em>,” “<em>How should I prioritize the alerts of each monitored item</em>,” and “<em>What items should I consider critical</em>?”
-I’d first start by answering the question “What should I be monitoring.” In addition to security events (which are outside the scope of this discussion,) I would begin monitoring of the pertinent items in the following order:</p>
-
-<ol>
-<li>Host-level availability</li>
-<li>Service-level availability</li>
-<li>Service-level performance (response times/timeouts etc)</li>
-<li>Host-level health/performance/resources (CPU, memory, and disk usage)</li>
-</ol>
-
-
-<p>Once I have a plan to begin monitoring all of the neccessary items, I would then tackle the question “How should I prioritize the alerts of each monitored item.” I would do so using the list below as a guide. This list is by no means law. In fact, <strong>priority should be determined on a per-case basis depending on your or your organization’s needs</strong> and not some cookie-cutter list.</p>
-
-<ol>
-<li>Network infrastructure (core routers, switches)</li>
-<li>Servers hosting critical services</li>
-<li>Critical services</li>
-<li>Maxed resources (low disk usage, heavy swap usage, etc)</li>
-<li>Everything else</li>
-</ol>
-
-
-<p>The final question (which is arguably an extension of the previous question) that needs to be answered is “What items should I consider critical.” This too is based off of your or your organization’s needs, but I would use the following as starting point.</p>
-
-<ul>
-<li>Connectivity</li>
-<li>Infrastructure (DNS, LDAP, etc)</li>
-<li>Communications (Exchange/Email, etc)</li>
-<li>Forward-facing services</li>
-<li>Line of Business applications and services</li>
-<li>Anything else critical to the operation and sustainability of the organization</li>
-</ul>
-
-
-<p>To sum it up, given the question “What would your priorities be if you walked into a company without any monitoring” I would approach the issue by asking myself and answering three questions. Those questions are “What should I be monitoring,” “How should I prioritize the alerts of each monitored item,” and “What items should I consider critical?” Once answered, it should be easy to develop a monitoring plan.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -626,6 +621,10 @@ I’d first start by answering the question “What should I be monitoring.” I
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/how-i-hacked-my-high-school/">How I Hacked My High School</a>
       </li>
     
@@ -639,10 +638,6 @@ I’d first start by answering the question “What should I be monitoring.” I
     
       <li class="post">
         <a href="/blog/catching-up/">Catching up</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/intro-to-ops-metrics-collection/">Intro to Operations: Metrics Collection</a>
       </li>
     
   </ul>

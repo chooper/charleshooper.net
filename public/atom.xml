@@ -4,7 +4,7 @@
   <title><![CDATA[Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-07-20T23:30:27-07:00</updated>
+  <updated>2013-07-21T12:32:45-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -12,6 +12,69 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Why I moved to San Francisco]]></title>
+    <link href="http://www.charleshooper.net/blog/why-i-moved-to-san-francisco/"/>
+    <updated>2013-07-21T00:33:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/why-i-moved-to-san-francisco</id>
+    <content type="html"><![CDATA[<h1></h1>
+
+<p>It&#8217;s been three months since I first moved to San Francisco and decided
+I should share why I moved here in the first place. The primary reasons
+why I moved to San Francisco are for my career and to be around more
+like-minded people.</p>
+
+<p>Career-wise, what made San Francisco appealing to me is the number and
+diversity of employment opportunities. In Connecticut, if you want to
+work with &#8220;technology&#8221; then you work for one of the many insurance
+companies headquartered there or an agency of some kind. In addition to
+available opportunities, there is also more parity between the job
+market in the bay area and my skill set and experience. For example,
+today <a href="http://www.indeed.com/">Indeed.com</a> reports 184 results for the &#8220;Python&#8221; in the entire
+state of Connecticut, while there are nearly 2,700 results for the San
+Francisco Bay Area. At one point in my life, I was told I was wasting my
+life messing around with GNU/Linux and other Open Source software.
+Things would have been a little better if I moved two hours away to
+either Boston or New York, but if I&#8217;m going to move then I might as well
+get better weather out of it, too.</p>
+
+<p>I also moved to San Francisco to be around more like-minded people.
+Things that interest me (besides gardening and home brewing) are
+startups and tech. There were a few groups around my old location that
+were interesting, but they typically required an hour long drive to show
+up to their events. Often times, the groups failed early due to a lack
+of participation (including the hackerspace I founded but that story is
+for another day).</p>
+
+<h2>Thoughts so far</h2>
+
+<p>As I mentioned, I&#8217;ve now been here for three months. My thoughts so far
+are:</p>
+
+<ul>
+<li><p>The place really is quite small. Especially in tech. Everyone seems to
+know everyone, which can be fun socially, but you need to watch what
+you say when you&#8217;re talking shop.</p></li>
+<li><p>The Sillicon Valley/SF Bay tech isolation chamber is real (and so is
+the echo chamber). Companies sometimes seem huge when you&#8217;re in the
+bay, but if you talk to anyone from outside of the area, they&#8217;re like
+&#8221;<em>Who?</em>&#8221;</p></li>
+<li><p>San Francisco&#8217;s neighborhoods are really awesome. SF
+is divided into a bunch of small neighborhoods, each with their own
+unique attributes. There really is a place for everyone.</p></li>
+</ul>
+
+
+<h2>Conclusion</h2>
+
+<p>I moved to San Francisco because I thought it would be good for my
+career and because I thought I would meet more like-minded people. This
+has certainly proved to be the case. What I was not expecting but have
+experienced so far is how small and isolated the SF tech scene actually
+is.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How I Hacked My High School]]></title>
@@ -1174,89 +1237,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
 
 
 <p>If you just need a quick and dirty MySQL server and you almost never want to worry about the status of your backups, go ahead and use RDS. However, if you’re concerned about reliability (that you control,) being able to effectively troubleshoot problems, and knowing the state of your underlying OS, RDS is not right for you.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[A Couple of Python Snippets]]></title>
-    <link href="http://www.charleshooper.net/blog/a-couple-of-python-snippets/"/>
-    <updated>2011-06-30T00:00:00-07:00</updated>
-    <id>http://www.charleshooper.net/blog/a-couple-of-python-snippets</id>
-    <content type="html"><![CDATA[<h1></h1>
-
-<p>I haven’t updated in awhile but I decided to drop a couple of gists in here and call it a post. These snippets are incredibly simple and I don’t expect to “wow” anybody here, but I was asked for them recently and am posting them here.</p>
-
-<h1>Group words by their first letter in Python</h1>
-
-<figure class='code'><figcaption><span>group_by_letter.py</span><a href='https://gist.github.com/chooper/1050517#file-group_by_letter-py'>link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="c">#!/usr/bin/env python</span>
-</span><span class='line'>
-</span><span class='line'><span class="sd">&quot;&quot;&quot;Group words by their first letter&quot;&quot;&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">group_by_letter</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">buckets</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:[])</span>
-</span><span class='line'>    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">buckets</span><span class="p">[</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">buckets</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-</span><span class='line'>    <span class="k">print</span> <span class="n">group_by_letter</span><span class="p">([</span><span class="s">&#39;narragansett&#39;</span><span class="p">,</span><span class="s">&#39;brooklyn lager&#39;</span><span class="p">,</span><span class="s">&#39;magic</span>
-</span><span class='line'><span class="n">hat</span><span class="s">&#39;,&#39;</span><span class="n">dog</span> <span class="n">fish</span> <span class="n">head</span><span class="s">&#39;,&#39;</span><span class="n">shock</span> <span class="n">top</span><span class="s">&#39;,&#39;</span><span class="n">ten</span> <span class="n">penny</span><span class="s">&#39;,&#39;</span><span class="n">bass</span><span class="s">&#39;])</span>
-</span><span class='line'>    <span class="c"># Output: defaultdict(&lt;function &lt;lambda&gt; at 0x7fc83416b2a8&gt;, {&#39;b&#39;:</span>
-</span><span class='line'>    <span class="c"># [&#39;bass&#39;, &#39;brooklyn lager&#39;], &#39;d&#39;: [&#39;dog fish head&#39;], &#39;m&#39;: [&#39;magic</span>
-</span><span class='line'>    <span class="c"># hat&#39;], &#39;n&#39;:[&#39;narragansett&#39;], &#39;s&#39;: [&#39;shock top&#39;], &#39;t&#39;: [&#39;ten</span>
-</span><span class='line'>    <span class="c"># penny&#39;]})</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>Merging list of lists in Python using reduce</h1>
-
-<figure class='code'><figcaption><span>merge_lists.py</span><a href='https://gist.github.com/chooper/1054819#file-merge_lists-py'>link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="c">#!/usr/bin/env python</span>
-</span><span class='line'>
-</span><span class='line'><span class="sd">&quot;&quot;&quot;Merging list of lists in Python using reduce()&quot;&quot;&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">merge_lists</span><span class="p">(</span><span class="n">list_of_lists</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span> <span class="n">list_of_lists</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">my_big_list</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">]</span>
-</span><span class='line'>    <span class="k">print</span> <span class="n">merge_lists</span><span class="p">(</span><span class="n">my_big_list</span><span class="p">)</span>
-</span><span class='line'>    <span class="c"># output: [1, 2, 3, 3, 4, 5, 6, 7, 8]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
 ]]></content>
   </entry>
   

@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="I’ve been using ChunkHost for the past eight months to host my website and some minor web applications. After my short, free “beta” period I was &hellip;">
+  <meta name="description" content="Every once in awhile in my reading I come across a minor reference to what pythonistas refer to as new-style classes. One of the nice things about &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,73 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/validating-data-with-new-style-classes-in-python/">Validating Data With New-Style Classes in Python</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-11T00:00:00-07:00" pubdate data-updated="true">Oct 11<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1></h1>
+
+<p>Every once in awhile in my reading I come across a minor reference to what pythonistas refer to as <strong>new-style classes</strong>. One of the nice things about new-style classes is the `property` decorators. These property decorators allow you to build getter and setter methods to access object attributes. This is pretty awesome because now you can perform validation at the model/class level whenever you assign a value to a property of an object.</p>
+
+<p>e.g., In one of my projects, I have an attribute named <em>timestamp</em> that takes a `datetime` object. I was concerned about receiving incorrect types from my input because there are alot of ways a programmer can represent the concept of time. Some realistic possibilities of invalid types in my case are:</p>
+
+<ul>
+<li>`time` objects from the time module</li>
+<li>`string` objects that contain the date and time (and various possible formats)</li>
+<li>`float` or `int` objects that contain a unix timestamp</li>
+</ul>
+
+
+<p>With a setter method, you can test that the new value being assigned to an attribute is the correct type before assigning it. You can also throw an <strong>exception</strong> if it’s not. In other words, you can do something like this:</p>
+
+<pre><code>from datetime import datetime
+
+class SomeObject(object):    # new-style classes must be subclassed from object
+    _timestamp = None
+
+    @property
+    def timestamp(self):
+        return self._timestamp
+
+    @timestamp.setter    # the prefix must match the read-only getter func name
+    def timestamp(self,value):    # the func name must match the read-only getter func name
+        if not isinstance(value, datetime):
+            raise ValueError(“Timestamp can only be an instance of Datetime”)
+        self._timestamp = value
+</code></pre>
+
+<p>Go ahead and try it!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -574,44 +641,6 @@ Enrons are lurking out there” (Jaffe, 2002, para. 3).</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/python-subprocess-module-on-backtrack-4/">Python: Subprocess Module on BackTrack 4</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-08T00:00:00-07:00" pubdate data-updated="true">Jul 8<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1></h1>
-
-<p>I had trouble getting the <a href="http://docs.python.org/library/subprocess.html">subprocess</a> module onto <a href="http://www.backtrack-linux.org/">BackTrack 4</a>. <em>apt-get install python-subprocess</em> wouldn’t do it, nor would <em>easy_install subprocess</em>. As it turns out, the name of the backported subprocess module is <em>subprocess32</em>, so <strong>easy_install subprocess32</strong> fixed me up real good.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/6/">&larr; Older</a>
@@ -645,6 +674,10 @@ Enrons are lurking out there” (Jaffe, 2002, para. 3).</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/how-i-hacked-my-high-school/">How I Hacked My High School</a>
       </li>
     
@@ -658,10 +691,6 @@ Enrons are lurking out there” (Jaffe, 2002, para. 3).</p>
     
       <li class="post">
         <a href="/blog/catching-up/">Catching up</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/intro-to-ops-metrics-collection/">Intro to Operations: Metrics Collection</a>
       </li>
     
   </ul>

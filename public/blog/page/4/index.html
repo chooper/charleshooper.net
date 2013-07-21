@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="It has come to my attention that there is still at least one group of people that doesn’t know how to responsibly deal with vulnerability reports. &hellip;">
+  <meta name="description" content="I’m sure almost any programmer will tell you that at some point they felt the need to work on a project but had no idea what to work on. This &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,62 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/picking-applications-to-audit/">Picking Applications to Audit</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-23T00:00:00-08:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1></h1>
+
+<p>I’m sure almost any programmer will tell you that at some point they felt the need to work on a project but had no idea what to work on. This happens to me, too, even when it comes down to choosing what applications or services I want to audit. With practice, I’ve come up with a pretty good list of categories to choose software from and I would like to share them with you.</p>
+
+<h2>1. Applications or Service You Use</h2>
+
+<p>This is probably to most obvious way to choose what application or service to audit. However, to me, it’s also one of the hardest. The reason why it is so difficult is because it involves breaking out of your mental “user” mode where you’re just <em>using</em> the application or service. I know that when <em>I’m </em>in “user” mode, I probably am not even fully conscious of the amount of software or services I use every day and how much I rely on them.</p>
+
+<p>The solution, then, is to break out of “user” mode. Once out of “user” mode (and in “audit” or “attack” mode) everything becomes clearer. For example, I recently submitted a vulnerability to a pretty large service provider (I can’t say who yet); was the vulnerability in some back page or a piece of functionality that nobody uses? No, surprisingly, this vulnerability was part of a key piece of functionality that I actually <em>use</em> frequently.</p>
+
+<h2>2. Applications or Services That You “Like” or “Believe In”</h2>
+
+<p>This is more of an extension than the item above, but it’s worth stressing. If there’s an application or service that you think has potential, go ahead and audit it. New applications and services are often full of low-hanging fruit. By auditing these and reporting the vulnerabilities, you are helping to make these applications and services better.</p>
+
+<h2>3. Applications and Services That Make It “Economically Beneficial” to Audit Them</h2>
+
+<p>This is a no-brainer. If you’re being offered money to audit an application or service (and the person offering the money has the authority to give you permission to do so,) then this is a pretty good place to start. Google, for example, has a <a href="http://googleonlinesecurity.blogspot.com/2010/11/rewarding-web-application-security.html">Vulnerability Rewards Program</a>.</p>
+
+<h2>Closing</h2>
+
+<p>These are just three of the categories to look for applications or services to audit. It’s certainly not complete as there is a plethora of software out there waiting to be audited, but I hope that this gives you a good head start.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -886,73 +942,6 @@ Additionally, due to low usage, we will be discontinuing Multiple Operation Requ
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/validating-data-with-new-style-classes-in-python/">Validating Data With New-Style Classes in Python</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-10-11T00:00:00-07:00" pubdate data-updated="true">Oct 11<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1></h1>
-
-<p>Every once in awhile in my reading I come across a minor reference to what pythonistas refer to as <strong>new-style classes</strong>. One of the nice things about new-style classes is the `property` decorators. These property decorators allow you to build getter and setter methods to access object attributes. This is pretty awesome because now you can perform validation at the model/class level whenever you assign a value to a property of an object.</p>
-
-<p>e.g., In one of my projects, I have an attribute named <em>timestamp</em> that takes a `datetime` object. I was concerned about receiving incorrect types from my input because there are alot of ways a programmer can represent the concept of time. Some realistic possibilities of invalid types in my case are:</p>
-
-<ul>
-<li>`time` objects from the time module</li>
-<li>`string` objects that contain the date and time (and various possible formats)</li>
-<li>`float` or `int` objects that contain a unix timestamp</li>
-</ul>
-
-
-<p>With a setter method, you can test that the new value being assigned to an attribute is the correct type before assigning it. You can also throw an <strong>exception</strong> if it’s not. In other words, you can do something like this:</p>
-
-<pre><code>from datetime import datetime
-
-class SomeObject(object):    # new-style classes must be subclassed from object
-    _timestamp = None
-
-    @property
-    def timestamp(self):
-        return self._timestamp
-
-    @timestamp.setter    # the prefix must match the read-only getter func name
-    def timestamp(self,value):    # the func name must match the read-only getter func name
-        if not isinstance(value, datetime):
-            raise ValueError(“Timestamp can only be an instance of Datetime”)
-        self._timestamp = value
-</code></pre>
-
-<p>Go ahead and try it!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -986,6 +975,10 @@ class SomeObject(object):    # new-style classes must be subclassed from object
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/how-i-hacked-my-high-school/">How I Hacked My High School</a>
       </li>
     
@@ -999,10 +992,6 @@ class SomeObject(object):    # new-style classes must be subclassed from object
     
       <li class="post">
         <a href="/blog/catching-up/">Catching up</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/intro-to-ops-metrics-collection/">Intro to Operations: Metrics Collection</a>
       </li>
     
   </ul>

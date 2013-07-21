@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="I sense a very big lack in service-oriented monitoring and reporting, primarily in the SMB market. So I ask you: If you were IT and walked into a &hellip;">
+  <meta name="description" content="Previously, I raised the question: “If you were IT and walked into a company with no monitoring or logging, what would your priorities be?” If I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,78 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/approaching-system-monitoring/">Approaching System Monitoring</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-07T00:00:00-08:00" pubdate data-updated="true">Dec 7<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1></h1>
+
+<p>Previously, I raised the question: “<a href="http://subversity.net/if-you-were-it-and-walked-into-a-company-with">If you were IT and walked into a company with no monitoring or logging, what would your priorities be?</a>” If I were in this situation, I would ask myself three questions: “<em>What should I be monitoring</em>,” “<em>How should I prioritize the alerts of each monitored item</em>,” and “<em>What items should I consider critical</em>?”
+I’d first start by answering the question “What should I be monitoring.” In addition to security events (which are outside the scope of this discussion,) I would begin monitoring of the pertinent items in the following order:</p>
+
+<ol>
+<li>Host-level availability</li>
+<li>Service-level availability</li>
+<li>Service-level performance (response times/timeouts etc)</li>
+<li>Host-level health/performance/resources (CPU, memory, and disk usage)</li>
+</ol>
+
+
+<p>Once I have a plan to begin monitoring all of the neccessary items, I would then tackle the question “How should I prioritize the alerts of each monitored item.” I would do so using the list below as a guide. This list is by no means law. In fact, <strong>priority should be determined on a per-case basis depending on your or your organization’s needs</strong> and not some cookie-cutter list.</p>
+
+<ol>
+<li>Network infrastructure (core routers, switches)</li>
+<li>Servers hosting critical services</li>
+<li>Critical services</li>
+<li>Maxed resources (low disk usage, heavy swap usage, etc)</li>
+<li>Everything else</li>
+</ol>
+
+
+<p>The final question (which is arguably an extension of the previous question) that needs to be answered is “What items should I consider critical.” This too is based off of your or your organization’s needs, but I would use the following as starting point.</p>
+
+<ul>
+<li>Connectivity</li>
+<li>Infrastructure (DNS, LDAP, etc)</li>
+<li>Communications (Exchange/Email, etc)</li>
+<li>Forward-facing services</li>
+<li>Line of Business applications and services</li>
+<li>Anything else critical to the operation and sustainability of the organization</li>
+</ul>
+
+
+<p>To sum it up, given the question “What would your priorities be if you walked into a company without any monitoring” I would approach the issue by asking myself and answering three questions. Those questions are “What should I be monitoring,” “How should I prioritize the alerts of each monitored item,” and “What items should I consider critical?” Once answered, it should be easy to develop a monitoring plan.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1067,54 +1139,6 @@ BR-telnet@foundry#write mem
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/ccnp-lab-recommendations/">CCNP Lab Recommendations?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-04T00:00:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1></h1>
-
-<p>In the next couple of weeks or so I will begin studying for the CCNP (Cisco-Certified Network Professional). I have the study guides, but I don’t have a lab. My three questions:</p>
-
-<ol>
-<li>Will I need much lab time for the CCNP?</li>
-<li>If so, how intense are the labs?</li>
-<li>What type of equipment is recommended for a CCNP lab?</li>
-</ol>
-
-
-<p>I passed the CCNA with almost no lab time at all, but to be fair I had worked for an ISP and was very familiar with alot of the material covered in the CCNA. I’m not sure that’s going to be the same with the CCNP.
-Thoughts? Advice?</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/9/">&larr; Older</a>
@@ -1148,6 +1172,10 @@ Thoughts? Advice?</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/how-i-hacked-my-high-school/">How I Hacked My High School</a>
       </li>
     
@@ -1161,10 +1189,6 @@ Thoughts? Advice?</p>
     
       <li class="post">
         <a href="/blog/catching-up/">Catching up</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/intro-to-ops-metrics-collection/">Intro to Operations: Metrics Collection</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="Yesterday, when I arrived at my other job on my school’s help desk, I found out that my supervisor was not coming into work at all. This is OK; I &hellip;">
+  <meta name="description" content="I haven’t updated in awhile but I decided to drop a couple of gists in here and call it a post. These snippets are incredibly simple and I don’t &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,116 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/a-couple-of-python-snippets/">A Couple of Python Snippets</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-30T00:00:00-07:00" pubdate data-updated="true">Jun 30<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1></h1>
+
+<p>I haven’t updated in awhile but I decided to drop a couple of gists in here and call it a post. These snippets are incredibly simple and I don’t expect to “wow” anybody here, but I was asked for them recently and am posting them here.</p>
+
+<h1>Group words by their first letter in Python</h1>
+
+<figure class='code'><figcaption><span>group_by_letter.py</span><a href='https://gist.github.com/chooper/1050517#file-group_by_letter-py'>link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'>
+</span><span class='line'><span class="sd">&quot;&quot;&quot;Group words by their first letter&quot;&quot;&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">group_by_letter</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">buckets</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:[])</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">buckets</span><span class="p">[</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">buckets</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">group_by_letter</span><span class="p">([</span><span class="s">&#39;narragansett&#39;</span><span class="p">,</span><span class="s">&#39;brooklyn lager&#39;</span><span class="p">,</span><span class="s">&#39;magic</span>
+</span><span class='line'><span class="n">hat</span><span class="s">&#39;,&#39;</span><span class="n">dog</span> <span class="n">fish</span> <span class="n">head</span><span class="s">&#39;,&#39;</span><span class="n">shock</span> <span class="n">top</span><span class="s">&#39;,&#39;</span><span class="n">ten</span> <span class="n">penny</span><span class="s">&#39;,&#39;</span><span class="n">bass</span><span class="s">&#39;])</span>
+</span><span class='line'>    <span class="c"># Output: defaultdict(&lt;function &lt;lambda&gt; at 0x7fc83416b2a8&gt;, {&#39;b&#39;:</span>
+</span><span class='line'>    <span class="c"># [&#39;bass&#39;, &#39;brooklyn lager&#39;], &#39;d&#39;: [&#39;dog fish head&#39;], &#39;m&#39;: [&#39;magic</span>
+</span><span class='line'>    <span class="c"># hat&#39;], &#39;n&#39;:[&#39;narragansett&#39;], &#39;s&#39;: [&#39;shock top&#39;], &#39;t&#39;: [&#39;ten</span>
+</span><span class='line'>    <span class="c"># penny&#39;]})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Merging list of lists in Python using reduce</h1>
+
+<figure class='code'><figcaption><span>merge_lists.py</span><a href='https://gist.github.com/chooper/1054819#file-merge_lists-py'>link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'>
+</span><span class='line'><span class="sd">&quot;&quot;&quot;Merging list of lists in Python using reduce()&quot;&quot;&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">merge_lists</span><span class="p">(</span><span class="n">list_of_lists</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span> <span class="n">list_of_lists</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">my_big_list</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">]</span>
+</span><span class='line'>    <span class="k">print</span> <span class="n">merge_lists</span><span class="p">(</span><span class="n">my_big_list</span><span class="p">)</span>
+</span><span class='line'>    <span class="c"># output: [1, 2, 3, 3, 4, 5, 6, 7, 8]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -798,62 +908,6 @@ licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br/>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/picking-applications-to-audit/">Picking Applications to Audit</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-23T00:00:00-08:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1></h1>
-
-<p>I’m sure almost any programmer will tell you that at some point they felt the need to work on a project but had no idea what to work on. This happens to me, too, even when it comes down to choosing what applications or services I want to audit. With practice, I’ve come up with a pretty good list of categories to choose software from and I would like to share them with you.</p>
-
-<h2>1. Applications or Service You Use</h2>
-
-<p>This is probably to most obvious way to choose what application or service to audit. However, to me, it’s also one of the hardest. The reason why it is so difficult is because it involves breaking out of your mental “user” mode where you’re just <em>using</em> the application or service. I know that when <em>I’m </em>in “user” mode, I probably am not even fully conscious of the amount of software or services I use every day and how much I rely on them.</p>
-
-<p>The solution, then, is to break out of “user” mode. Once out of “user” mode (and in “audit” or “attack” mode) everything becomes clearer. For example, I recently submitted a vulnerability to a pretty large service provider (I can’t say who yet); was the vulnerability in some back page or a piece of functionality that nobody uses? No, surprisingly, this vulnerability was part of a key piece of functionality that I actually <em>use</em> frequently.</p>
-
-<h2>2. Applications or Services That You “Like” or “Believe In”</h2>
-
-<p>This is more of an extension than the item above, but it’s worth stressing. If there’s an application or service that you think has potential, go ahead and audit it. New applications and services are often full of low-hanging fruit. By auditing these and reporting the vulnerabilities, you are helping to make these applications and services better.</p>
-
-<h2>3. Applications and Services That Make It “Economically Beneficial” to Audit Them</h2>
-
-<p>This is a no-brainer. If you’re being offered money to audit an application or service (and the person offering the money has the authority to give you permission to do so,) then this is a pretty good place to start. Google, for example, has a <a href="http://googleonlinesecurity.blogspot.com/2010/11/rewarding-web-application-security.html">Vulnerability Rewards Program</a>.</p>
-
-<h2>Closing</h2>
-
-<p>These are just three of the categories to look for applications or services to audit. It’s certainly not complete as there is a plethora of software out there waiting to be audited, but I hope that this gives you a good head start.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -887,6 +941,10 @@ licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br/>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/how-i-hacked-my-high-school/">How I Hacked My High School</a>
       </li>
     
@@ -900,10 +958,6 @@ licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br/>
     
       <li class="post">
         <a href="/blog/catching-up/">Catching up</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/intro-to-ops-metrics-collection/">Intro to Operations: Metrics Collection</a>
       </li>
     
   </ul>
