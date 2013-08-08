@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="Previously, I raised the question: “If you were IT and walked into a company with no monitoring or logging, what would your priorities be?” If I &hellip;">
+  <meta name="description" content="Lately I’ve been working on some code to process tweets coming out of the Gardenhose. The Gardenhose is the name given to the lowest level of access &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,73 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/drinking-from-the-gardenhose/">Drinking From the Gardenhose</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-15T00:00:00-08:00" pubdate data-updated="true">Dec 15<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1></h1>
+
+<p>Lately I’ve been working on some code to process tweets coming out of the <em>Gardenhose</em>. The <strong>Gardenhose</strong> is the name given to the lowest level of access to <a href="http://apiwiki.twitter.com/Streaming-API-Documentation">Twitter’s streaming API</a>. Oddly enough however, my connections to the Twitter API were dropping, causing my program to hang and my CPU to remain maxed out at 100% usage.
+After much debugging and banging my head on my desk, <a href="http://github.com/joshthecoder/tweepy">joshthecoder (creator of tweepy)</a> and uuid (#twitterapi / freenode) pointed out that I may be filling some type of buffer or queue, causing this condition. They suggested that my current workflow of <em>“receive tweet, process, store to DB”</em> all in the same thread might be too slow. After removing key parts of my processing code, what once took 100% now only took 1-3% CPU, I was receiving a much higher volume of tweets, and my connections were no longer dropping. This meant that the culprit of my general slowness was the <strong>sqlite database</strong>.
+Basically, all I was doing with these tweets was tokenizing them, tallying up their contents, and then updating a corpus (stored in a sqlite database) that would track how many tweets each word appeared in. Having this data would allow me to perform accurate <a href="http://nlp.stanford.edu/IR-book/html/htmledition/tf-idf-weighting-1.html">Tf-idf</a> scoring later on. <a href="http://codepad.org/8OkD5AGM">You can see the original (and admittedly not-very-well documented) version of this program here (Python)</a>.
+Fixing this problem is a two-step solution:</p>
+
+<ol>
+<li>Break off the processing code into another thread</li>
+<li>Replace the sqlite database with something faster</li>
+</ol>
+
+
+<p>The first step, moving the process code into its own thread, is a pretty easy feat. In fact, I’m testing my proof-of-concept as I write. The second step, however, is going to require alot more research and thought. In my proof-of-concept, I place Status (Tweet) objects into a queue which another thread then processes. Using sqlite, my queue never gets any smaller, as you can see below.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ./bootstrap-stream.py
+</span><span class='line'>Streaming timelines...
+</span><span class='line'>Tue Dec 15 10:56:01 2009 | Queue: 93 items
+</span><span class='line'>Tue Dec 15 10:56:08 2009 | Queue: 183 items
+</span><span class='line'>Tue Dec 15 10:56:13 2009 | Queue: 278 items
+</span><span class='line'>...
+</span><span class='line'>Tue Dec 15 10:58:02 2009 | Queue: 1859 items</span></code></pre></td></tr></table></div></figure>
+
+
+<p>My next step will probably be to test storing these items in a MySQL (InnoDB) database, simply because it’s easy enough to swap out the sqlite module with the MySQLdb module in Python, although I  have a feeling that what I really need is a key-value store. Speaking of which, does any one have any recommendations as far as databases, hash tables, or key-value stores go? Bonus points if I can replicate the data.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1071,74 +1138,6 @@ return NULL;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/etherchannel-trunking-between-a-foundry-switch-and-cisco-catalyst/">EtherChannel Trunking Between a Foundry Switch and Cisco Catalyst</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-04T00:00:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1></h1>
-
-<p>In my other article, <a href="http://charleshooper.posterous.com/link-aggregation-on-cisco-catalysts-and-found">LACP on Cisco Catalysts &amp; Foundry switches</a>, I describe how to configure aggregated links using LACP (802.3ad) on a Cisco Catalyst and Foundry switch. In this howto, I will be describing how to configure trunked ports using <strong>EtherChannel</strong> — LACP’s predecessor.</p>
-
-<p>Before starting, one thing that you should be aware of is that Foundry’s configure EtherChannel trunks as dot1q-encapsulated VLAN trunks by default. Cisco Catalysts (or IOS, rather) configure all ports as access ports by default.</p>
-
-<p>On a Cisco Catalyst switch running IOS, once logged in, you will need to perform the steps below. It is important that you perform these steps without the other device connected.</p>
-
-<pre><code>cisco&gt;enable
-Password: *enter password*
-cisco#config term
-cisco(config)#int Gi0/1
-cisco(config-if)#channel-group 1 mode on
-cisco(config-if)#int Gi0/2
-cisco(config-if)#channel-group 1 mode on
-cisco(config-if)#end
-cisco#write mem
-</code></pre>
-
-<p>If your other device is another Cisco Catalyst, then just repeat the steps above, connect your newly bonded ports, and disconnect any non-bonded ports connecting the two devices.</p>
-
-<p>If you are configuring a Foundry switch, there are <a href="http://www.foundrynetworks.co.jp/services/documentation/sribcg/Trunking.html">several rules you must follow</a>. Among these rules, is that you can only <em>start</em> your trunked ports on the first port of each group of 4.</p>
-
-<pre><code>BR-telnet@foundry&gt;enable
-Password: *enter password*
-BR-telnet@foundry#config term
-BR-telnet@foundry(config)#trunk ethe 1 to 2
-BR-telnet@foundry(config)#trunk deploy
-BR-telnet@foundry(config)#exit
-BR-telnet@foundry#write mem
-</code></pre>
-
-<p>Provided you correctly configured your VLANs prior to setting up EtherChannel, you may connect your cables starting with the <em>primary port</em>. The primary port is always the lowest-numbered port in the trunk, in our example, this is 1. Once connected, you can verify operation of your EtherChannel trunk with <code>show etherchannel summary</code> on the Cisco or <code>show trunk</code> on the Foundry in enable mode.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/9/">&larr; Older</a>
@@ -1172,6 +1171,10 @@ BR-telnet@foundry#write mem
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/my-def-con-21-experience/">My DEF CON 21 Experience</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
       </li>
     
@@ -1185,10 +1188,6 @@ BR-telnet@foundry#write mem
     
       <li class="post">
         <a href="/blog/about-this-site-technical/">About this site (technical)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/catching-up/">Catching up</a>
       </li>
     
   </ul>

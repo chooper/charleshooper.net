@@ -9,7 +9,8 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="I’m sure almost any programmer will tell you that at some point they felt the need to work on a project but had no idea what to work on. This &hellip;">
+  <meta name="description" content="Title: Multiple Vulnerabilities in Mingle Forum (WordPress Plugin)
+Advisory URL: http://www.charleshooper.net/blog/multiple-vulnerabilities-in- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +84,132 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/multiple-vulnerabilities-in-mingle-forum-wordpress-plugin/">Multiple Vulnerabilities in Mingle Forum (WordPress Plugin)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-08T00:00:00-08:00" pubdate data-updated="true">Jan 8<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1></h1>
+
+<p>Title: Multiple Vulnerabilities in Mingle Forum (WordPress Plugin)<br/>
+Advisory URL: http://www.charleshooper.net/blog/multiple-vulnerabilities-in-mingle-forum-wordpress-plugin/<br/>
+Date Published: January 8th, 2011<br/>
+Vendors Contacted: Paul Carter – Maintainer of plugin.</p>
+
+<ol>
+<li>Summary</li>
+</ol>
+
+
+<p>Mingle Forum is a plugin for the popular blog tool and publishing<br/>
+platform, WordPress. According to the author of Mingle Forum, “Mingle<br/>
+Forum has been modified to be lightweight, solid, secure, quick to<br/>
+setup, and easy to use.”</p>
+
+<p>There exist multiple vulnerabilities in Mingle Forum, SQL injection<br/>
+being among them.</p>
+
+<ol>
+<li>Vulnerability Information</li>
+</ol>
+
+
+<p>Packages/Versions Affected: Confirmed on 1.0.24 and 1.0.26</p>
+
+<p>3a. Type: SQL Injection [CWE-89]<br/>
+3a. Impact: Read application data.<br/>
+3a. Discussion: There is a SQL injection vulnerability present in the<br/>
+RSS feed generator. By crafting specific URLs an attacker can retrieve<br/>
+information from the MySQL database.</p>
+
+<p>3b. Type: SQL Injection [CWE-89]<br/>
+3b. Impact: Read application data.<br/>
+3b. Discussion: There is a SQL injection vulnerability present in the<br/>
+`edit post` functionality. By crafting specific URLs an attacker can<br/>
+retrieve information from the MySQL database.</p>
+
+<p>3c. Type: Auth Bypass via Direct Request [CWE-425]<br/>
+3c. Impact: AuthZ is not performed for `edit post` functionality.<br/>
+3c. Discussion: By browsing directly to the `edit post` page a user can<br/>
+view and edit any page.</p>
+
+<ol>
+<li>PoC &amp; Technical Description</li>
+</ol>
+
+
+<p>4a.<br/>
+<a href="http://path.to/wordpress/wp-content/plugins/mingle-forum/feed.php?topic=0">http://path.to/wordpress/wp-content/plugins/mingle-forum/feed.php?topic=0 UNION SELECT 1,user_email,3,4,5,user_login,7 FROM wp_users #</a></p>
+
+<p>4b.</p>
+
+<p>4c.</p>
+
+<ol>
+<li>Report Timeline</li>
+</ol>
+
+
+<p>12/17/2010 Initial email sent to plugin maintainer.<br/>
+12/22/2010 Confirmation of first email requested.<br/>
+12/31/2010 Correct email address obtained. Maintainer contacted again on<br/>
+this date.<br/>
+01/01/2011 Received response from plugin maintainer.<br/>
+01/07/2011 Plugin maintainer releases update that addresses these<br/>
+vulnerabilities.</p>
+
+<ol>
+<li>References</li>
+</ol>
+
+
+<p>6a. The WordPress Plugin page for Mingle Forum:</p>
+
+<ol>
+<li>Legalese</li>
+</ol>
+
+
+<p>This vulnerability report by Charles Hooper &lt;  > is<br/>
+licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br/>
+3.0 Unported License.</p>
+
+<ol>
+<li>Signature</li>
+</ol>
+
+
+<p>Public Key: Obtainable via pool.sks-keyservers.net</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -895,53 +1022,6 @@ Additionally, due to low usage, we will be discontinuing Multiple Operation Requ
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/code-responsibly/">Code Responsibly: What&#8217;s Best for Your Clients?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-10-23T00:00:00-07:00" pubdate data-updated="true">Oct 23<span>rd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1></h1>
-
-<p>We programmers have a natural affinity for writing and using our own code. You can’t really blame us; this is akin to gardeners who prefer to eat vegetables they grow, or brewers who prefer to drink their own beer. However, this oftentimes leads to a frequent re-invention of the wheel. While this isn’t always a bad thing, it doesn’t usually benefit our clients and here’s why:</p>
-
-<ol>
-<li><strong>Increased development time. </strong>If a client is paying you hourly, why should they pay for you to re-invent a solution that already exists? Why write a new CMS if WordPress will do? When you write a new CMS from scratch for a client, you are increasing their development costs.</li>
-<li><strong>Freedom in hosting. </strong>It’s no coincidence that many web developers also host their projects as well. This is fine for larger applications, but for the majority of the client work out there your clients should have the freedom to a broad range of hosting options. Vendor lock-in is a terrible thing.</li>
-<li><strong>Post-development support. </strong>If a client needs customizations done to the code base, they should be able to solicit the work from almost any developer. Certainly you would want preference in these solicitations, but there shouldn’t be any clients who are stuck with you. When you use your own custom solution, you are increasing your clients’ maintenance costs.</li>
-</ol>
-
-
-<p>I’m <em>not</em> saying that you shouldn’t ever write new code. What I <em>am</em> saying is that your responsibility to the client is to use the best tools for the job and to put together the best solution for them that you can. Sometimes this means flexing your coding muscles and sometimes this means humbly setting up existing software such as WordPress. So please, write new code conservatively and responsibly.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -975,6 +1055,10 @@ Additionally, due to low usage, we will be discontinuing Multiple Operation Requ
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/my-def-con-21-experience/">My DEF CON 21 Experience</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
       </li>
     
@@ -988,10 +1072,6 @@ Additionally, due to low usage, we will be discontinuing Multiple Operation Requ
     
       <li class="post">
         <a href="/blog/about-this-site-technical/">About this site (technical)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/catching-up/">Catching up</a>
       </li>
     
   </ul>

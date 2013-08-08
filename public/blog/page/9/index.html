@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="In the next couple of weeks or so I will begin studying for the CCNP (Cisco-Certified Network Professional). I have the study guides, but I don’t &hellip;">
+  <meta name="description" content="In my other article, LACP on Cisco Catalysts &amp; Foundry switches, I describe how to configure aggregated links using LACP (802.3ad) on a Cisco &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,74 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/etherchannel-trunking-between-a-foundry-switch-and-cisco-catalyst/">EtherChannel Trunking Between a Foundry Switch and Cisco Catalyst</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-04T00:00:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1></h1>
+
+<p>In my other article, <a href="http://charleshooper.posterous.com/link-aggregation-on-cisco-catalysts-and-found">LACP on Cisco Catalysts &amp; Foundry switches</a>, I describe how to configure aggregated links using LACP (802.3ad) on a Cisco Catalyst and Foundry switch. In this howto, I will be describing how to configure trunked ports using <strong>EtherChannel</strong> — LACP’s predecessor.</p>
+
+<p>Before starting, one thing that you should be aware of is that Foundry’s configure EtherChannel trunks as dot1q-encapsulated VLAN trunks by default. Cisco Catalysts (or IOS, rather) configure all ports as access ports by default.</p>
+
+<p>On a Cisco Catalyst switch running IOS, once logged in, you will need to perform the steps below. It is important that you perform these steps without the other device connected.</p>
+
+<pre><code>cisco&gt;enable
+Password: *enter password*
+cisco#config term
+cisco(config)#int Gi0/1
+cisco(config-if)#channel-group 1 mode on
+cisco(config-if)#int Gi0/2
+cisco(config-if)#channel-group 1 mode on
+cisco(config-if)#end
+cisco#write mem
+</code></pre>
+
+<p>If your other device is another Cisco Catalyst, then just repeat the steps above, connect your newly bonded ports, and disconnect any non-bonded ports connecting the two devices.</p>
+
+<p>If you are configuring a Foundry switch, there are <a href="http://www.foundrynetworks.co.jp/services/documentation/sribcg/Trunking.html">several rules you must follow</a>. Among these rules, is that you can only <em>start</em> your trunked ports on the first port of each group of 4.</p>
+
+<pre><code>BR-telnet@foundry&gt;enable
+Password: *enter password*
+BR-telnet@foundry#config term
+BR-telnet@foundry(config)#trunk ethe 1 to 2
+BR-telnet@foundry(config)#trunk deploy
+BR-telnet@foundry(config)#exit
+BR-telnet@foundry#write mem
+</code></pre>
+
+<p>Provided you correctly configured your VLANs prior to setting up EtherChannel, you may connect your cables starting with the <em>primary port</em>. The primary port is always the lowest-numbered port in the trunk, in our example, this is 1. Once connected, you can verify operation of your EtherChannel trunk with <code>show etherchannel summary</code> on the Cisco or <code>show trunk</code> on the Foundry in enable mode.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -278,6 +346,10 @@ user input? :-)</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/my-def-con-21-experience/">My DEF CON 21 Experience</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
       </li>
     
@@ -291,10 +363,6 @@ user input? :-)</p>
     
       <li class="post">
         <a href="/blog/about-this-site-technical/">About this site (technical)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/catching-up/">Catching up</a>
       </li>
     
   </ul>
