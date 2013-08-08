@@ -16,7 +16,7 @@ with coworkers.
 
 This time around I went with my good friend Japhy and no one else.
 
-    [99]: https://www.defcon.org/
+  [99]: https://www.defcon.org/
 
 ## Logistics
 
@@ -60,7 +60,7 @@ too much time trying to convince the audience that it was a good idea.
 My personal opinion, and that of the people I've talked to, all seemed
 to agree up front that it was a great idea.
 
-    [1]: https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Caudill
+  [1]: https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Caudill
 
 After leaving this talk I ended up catching the tail end of
 [Business Logic Flaws In Mobile Operators Services][2]. I wish I saw
@@ -71,7 +71,7 @@ gave a live demo of an (unnamed) customer service line that, instead of
 disconnecting you on the third entry of an invalid PIN, actually grants
 you access.
 
-    [2]: https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Alecu
+  [2]: https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Alecu
 
 Next I caught the end of [Evil DoS Attacks and Strong Defenses][3] where
 Matt Prince (CEO of CloudFlare) described some very large DDoS attacks
@@ -79,7 +79,7 @@ and what they looked like. Someone afterwards also showed a variety of
 online banking websites where the "logout" button doesn't actually do
 anything, leaving users vulnerable.
 
-    [3]: https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Bowne
+  [3]: https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Bowne
 
 Immediately following that session, two guys got up and gave their talk
 on [Kill 'em All — DDoS Protection Total Annihilation!][4]. I enjoyed
@@ -91,7 +91,7 @@ TCP/IP stack when mossible (see (a) and (b)), do what it takes to bypass
 any front-end caches, and d) try to keep your attack threshold just
 below where anyone will notice you.
 
-    [4]: https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Miu
+  [4]: https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Miu
 
 At night, there were a bunch of DEF CON parties. At some point the fire
 alarm went off a few times. A voice came over the intercom shortly after
