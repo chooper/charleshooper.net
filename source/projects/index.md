@@ -5,12 +5,16 @@ layout: page
 ---
 # 
 
-Below is a list of various projects I've worked on outside of work. I
+Below is a list of various projects I've worked on mostly outside of work. I
 may also have some unlisted projects on [Github][90] and [BitBucket][91].
 
   [90]: https://github.com/chooper
   [91]: https://bitbucket.org/hoop
 
+
+## [elbping][12]
+elbping is a small ping tool for diagnosing Amazon Elastic Load Balancers (ELBs). It's
+purpose is to measure latency and loss to the individual nodes that make up an ELB.
 
 ## Cost Behavior Analysis Calculator
 I wrote a web-based cost behavior analyzer, which is really just what
@@ -62,4 +66,4 @@ and a related relay board.
  [9]: http://code.google.com/p/twitter-repeater/
  [10]: http://code.google.com/p/restful-sqlite/
  [11]: http://code.google.com/p/python-usbio24/
-
+ [12]: https://github.com/chooper/elbping
