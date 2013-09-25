@@ -63,7 +63,7 @@ and a related relay board.
  [4]: https://bitbucket.org/hoop/bootcrawl
  [5]: https://bitbucket.org/hoop/snapshot
  [7]: https://bitbucket.org/hoop/markov-experimental
- [9]: http://code.google.com/p/twitter-repeater/
+ [9]: https://github.com/chooper/twitter-repeater
  [10]: http://code.google.com/p/restful-sqlite/
  [11]: http://code.google.com/p/python-usbio24/
  [12]: https://github.com/chooper/elbping
