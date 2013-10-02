@@ -15,8 +15,9 @@ target_globs.each do |target_glob|
   Dir.glob(target_glob).each do |f|
     puts "not a file! #{f}" unless File.file?(f)
 
-    contents = open(f).read
-    puts "#{contents.valid_encoding?}\t#{f}"
+    contents = open(f, 'rb').read
+    contents.encode!("UTF-8", "binary", :undef => :replace)
+    open(f, 'w').write(contents)
   end
 end
 
