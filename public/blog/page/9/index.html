@@ -112,7 +112,7 @@
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>In my other article, <a href="http://charleshooper.posterous.com/link-aggregation-on-cisco-catalysts-and-found">LACP on Cisco Catalysts &amp; Foundry switches</a>, I describe how to configure aggregated links using LACP (802.3ad) on a Cisco Catalyst and Foundry switch. In this howto, I will be describing how to configure trunked ports using <strong>EtherChannel</strong> — LACP’s predecessor.</p>
 
@@ -180,18 +180,17 @@ BR-telnet@foundry#write mem
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>In the next couple of weeks or so I will begin studying for the CCNP (Cisco-Certified Network Professional). I have the study guides, but I don’t have a lab. My three questions:</p>
 
 <ol>
-<li>Will I need much lab time for the CCNP?</li>
-<li>If so, how intense are the labs?</li>
-<li>What type of equipment is recommended for a CCNP lab?</li>
+  <li>Will I need much lab time for the CCNP?</li>
+  <li>If so, how intense are the labs?</li>
+  <li>What type of equipment is recommended for a CCNP lab?</li>
 </ol>
 
-
-<p>I passed the CCNA with almost no lab time at all, but to be fair I had worked for an ISP and was very familiar with alot of the material covered in the CCNA. I’m not sure that’s going to be the same with the CCNP.
+<p>I passed the CCNA with almost no lab time at all, but to be fair I had worked for an ISP and was very familiar with alot of the material covered in the CCNA. I’m not sure that’s going to be the same with the CCNP. 
 Thoughts? Advice?</p>
 </div>
   
@@ -228,7 +227,7 @@ Thoughts? Advice?</p>
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>I would like to think that one day we will all be past the point where
 we are constantly finding silly bugs and vulnerabilities caused by
@@ -267,15 +266,14 @@ signed integer (2,147,483,647) at a time.</p>
 <p>For an example on how we would go about exploiting this, we look at the
 following code:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$var1 = '1';
-</span><span class='line'>$var2 = '21';
-</span><span class='line'>var_dump((bool) ($var1 &lt; $var2));
-</span><span class='line'># Output: bool(true)</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">$var1 = '1';
+</span><span class="line">$var2 = '21';
+</span><span class="line">var_dump((bool) ($var1 &lt; $var2));
+</span><span class="line"># Output: bool(true)</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>All this code is doing is assigning strings to two variables and then
 doing a numeric comparison of them — In our case, this script will
@@ -285,15 +283,14 @@ the variable then strtod() will return 0 and PHP will evaluate these
 variables as strings and use natural sorting to determine if one
 variable is “less”-than another. Proof?</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$var1 = '111 '; // there is a space before the closing quote
-</span><span class='line'>$var2 = '21';
-</span><span class='line'>var_dump((bool) ($var1 &lt; $var2));
-</span><span class='line'># Output: bool(true)</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">$var1 = '111 '; // there is a space before the closing quote
+</span><span class="line">$var2 = '21';
+</span><span class="line">var_dump((bool) ($var1 &lt; $var2));
+</span><span class="line"># Output: bool(true)</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>This block of code will <em>also</em> output true because the character ’1′ is
 before the character ’2′ when using natural sorting. If a user is able
@@ -308,6 +305,7 @@ update to the maximum value for that column’s data type.</p>
 your <em>bank</em> used a PHP-based web-application. Wouldn’t you feel better
 if they all knew about his caveat and properly sanitized and validated
 user input? :-)</p>
+
 </div>
   
   

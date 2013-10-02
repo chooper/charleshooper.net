@@ -111,7 +111,7 @@ version of Ubuntu, &hellip;">
   </header>
 
 
-<div class="entry-content"><h1></h1>
+<div class="entry-content"><h1 id="section"></h1>
 
 <p>Today, I’m going to show you how to start up your <a href="http://www.tornadoweb.org/">Tornado</a> apps at
 boot using <a href="http://upstart.ubuntu.com/">upstart</a>. For path names, I’m assuming some modern
@@ -122,42 +122,41 @@ Tornado app. I usually have one file in all of my projects called
 
 <p>The important part of this file looks like this (mind the application and port variables):</p>
 
-<figure class='code'><figcaption><span>Snippet in web.py </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
-</span><span class='line'>  <span class="n">http_server</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">httpserver</span><span class="o">.</span><span class="n">HTTPServer</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">http_server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Snippet in web.py </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="py"><span class="line"><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span class="line">	<span class="n">http_server</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">httpserver</span><span class="o">.</span><span class="n">HTTPServer</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
+</span><span class="line">	<span class="n">http_server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+</span><span class="line">	<span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Got that in place? Good. Next, create the file <code>/etc/init/web.conf</code>. It’s <em>very</em> important that this filename ends in <strong>.conf</strong>. The contents of this file should be as follows:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>\# torando project
-</span><span class='line'>start on runlevel 2
-</span><span class='line'>stop on runlevel \[!2\]
-</span><span class='line'>respawn
-</span><span class='line'>
-</span><span class='line'>exec /path/to/project/web.py</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">\# torando project
+</span><span class="line">start on runlevel 2
+</span><span class="line">stop on runlevel \[!2\]
+</span><span class="line">respawn
+</span><span class="line">
+</span><span class="line">exec /path/to/project/web.py</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>That’s it! You can start your Tornado app by entering the command:
 <code>sudo start web</code>. If successful, you should see output similar to:
-<code>** web start/running, process 28058</code>. You can also stop your projects using
-the command <code>sudo stop web</code>.</p>
+` ** web start/running, process 28058<code>. You can also stop your projects using
+the command </code>sudo stop web`.</p>
 
 <p>The obvious caveat here is that your project is now running as root. In a future blog post, I will discuss dropping privileges at project startup. :-)</p>
 
 <p>UPDATE: I’m from the future and wrote that blog post on <a href="http://subversity.net/dropping-privileges-in-python-for-tornado-app">how to drop privileges in Python for Tornado apps</a>.</p>
+
 </div>
 
 

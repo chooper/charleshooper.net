@@ -112,7 +112,7 @@
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>One morning I woke up early and checked my email. My plan was to check that my inbox was empty for some peace of mind and then go back to bed for a few more hours (I love Sundays). But that isn’t what happened. Instead, upon opening my inbox I was alerted that one of a client’s database servers was offline. I snapped out of my haze and immediately got to work.</p>
 
@@ -135,12 +135,11 @@
 <p>In summary, I’ll probably never know because on RDS you do not have access to the underlying OS. This means:</p>
 
 <ul>
-<li>You do not have access to the OS process list</li>
-<li>You do not have access to things like top, htop, iostat, or dstat</li>
-<li>You do not have access to the process list if the MySQL process isn’t accepting connections</li>
-<li>You do not have access to any system logs</li>
+  <li>You do not have access to the OS process list</li>
+  <li>You do not have access to things like top, htop, iostat, or dstat</li>
+  <li>You do not have access to the process list if the MySQL process isn’t accepting connections</li>
+  <li>You do not have access to any system logs</li>
 </ul>
-
 
 <p>If you just need a quick and dirty MySQL server and you almost never want to worry about the status of your backups, go ahead and use RDS. However, if you’re concerned about reliability (that you control,) being able to effectively troubleshoot problems, and knowing the state of your underlying OS, RDS is not right for you.</p>
 </div>
@@ -178,80 +177,77 @@
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>I haven’t updated in awhile but I decided to drop a couple of gists in here and call it a post. These snippets are incredibly simple and I don’t expect to “wow” anybody here, but I was asked for them recently and am posting them here.</p>
 
-<h1>Group words by their first letter in Python</h1>
+<h1 id="group-words-by-their-first-letter-in-python">Group words by their first letter in Python</h1>
 
-<figure class='code'><figcaption><span>group_by_letter.py</span><a href='https://gist.github.com/chooper/1050517#file-group_by_letter-py'>link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="c">#!/usr/bin/env python</span>
-</span><span class='line'>
-</span><span class='line'><span class="sd">&quot;&quot;&quot;Group words by their first letter&quot;&quot;&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">group_by_letter</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">buckets</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:[])</span>
-</span><span class='line'>    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">buckets</span><span class="p">[</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">buckets</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-</span><span class='line'>    <span class="k">print</span> <span class="n">group_by_letter</span><span class="p">([</span><span class="s">&#39;narragansett&#39;</span><span class="p">,</span><span class="s">&#39;brooklyn lager&#39;</span><span class="p">,</span><span class="s">&#39;magic</span>
-</span><span class='line'><span class="n">hat</span><span class="s">&#39;,&#39;</span><span class="n">dog</span> <span class="n">fish</span> <span class="n">head</span><span class="s">&#39;,&#39;</span><span class="n">shock</span> <span class="n">top</span><span class="s">&#39;,&#39;</span><span class="n">ten</span> <span class="n">penny</span><span class="s">&#39;,&#39;</span><span class="n">bass</span><span class="s">&#39;])</span>
-</span><span class='line'>    <span class="c"># Output: defaultdict(&lt;function &lt;lambda&gt; at 0x7fc83416b2a8&gt;, {&#39;b&#39;:</span>
-</span><span class='line'>    <span class="c"># [&#39;bass&#39;, &#39;brooklyn lager&#39;], &#39;d&#39;: [&#39;dog fish head&#39;], &#39;m&#39;: [&#39;magic</span>
-</span><span class='line'>    <span class="c"># hat&#39;], &#39;n&#39;:[&#39;narragansett&#39;], &#39;s&#39;: [&#39;shock top&#39;], &#39;t&#39;: [&#39;ten</span>
-</span><span class='line'>    <span class="c"># penny&#39;]})</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>group_by_letter.py</span><a href="https://gist.github.com/chooper/1050517#file-group_by_letter-py">link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+</pre></td><td class="code"><pre><code class="py"><span class="line"><span class="c">#!/usr/bin/env python</span>
+</span><span class="line">
+</span><span class="line"><span class="sd">&quot;&quot;&quot;Group words by their first letter&quot;&quot;&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">group_by_letter</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+</span><span class="line">    <span class="n">buckets</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:[])</span>
+</span><span class="line">    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+</span><span class="line">        <span class="n">buckets</span><span class="p">[</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">buckets</span>
+</span><span class="line">
+</span><span class="line"><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class="line">    <span class="k">print</span> <span class="n">group_by_letter</span><span class="p">([</span><span class="s">&#39;narragansett&#39;</span><span class="p">,</span><span class="s">&#39;brooklyn lager&#39;</span><span class="p">,</span><span class="s">&#39;magic</span>
+</span><span class="line"><span class="n">hat</span><span class="s">&#39;,&#39;</span><span class="n">dog</span> <span class="n">fish</span> <span class="n">head</span><span class="s">&#39;,&#39;</span><span class="n">shock</span> <span class="n">top</span><span class="s">&#39;,&#39;</span><span class="n">ten</span> <span class="n">penny</span><span class="s">&#39;,&#39;</span><span class="n">bass</span><span class="s">&#39;])</span>
+</span><span class="line">    <span class="c"># Output: defaultdict(&lt;function &lt;lambda&gt; at 0x7fc83416b2a8&gt;, {&#39;b&#39;:</span>
+</span><span class="line">    <span class="c"># [&#39;bass&#39;, &#39;brooklyn lager&#39;], &#39;d&#39;: [&#39;dog fish head&#39;], &#39;m&#39;: [&#39;magic</span>
+</span><span class="line">    <span class="c"># hat&#39;], &#39;n&#39;:[&#39;narragansett&#39;], &#39;s&#39;: [&#39;shock top&#39;], &#39;t&#39;: [&#39;ten</span>
+</span><span class="line">    <span class="c"># penny&#39;]})</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<h1 id="merging-list-of-lists-in-python-using-reduce">Merging list of lists in Python using reduce</h1>
 
-<h1>Merging list of lists in Python using reduce</h1>
-
-<figure class='code'><figcaption><span>merge_lists.py</span><a href='https://gist.github.com/chooper/1054819#file-merge_lists-py'>link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="c">#!/usr/bin/env python</span>
-</span><span class='line'>
-</span><span class='line'><span class="sd">&quot;&quot;&quot;Merging list of lists in Python using reduce()&quot;&quot;&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">merge_lists</span><span class="p">(</span><span class="n">list_of_lists</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span> <span class="n">list_of_lists</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">my_big_list</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">]</span>
-</span><span class='line'>    <span class="k">print</span> <span class="n">merge_lists</span><span class="p">(</span><span class="n">my_big_list</span><span class="p">)</span>
-</span><span class='line'>    <span class="c"># output: [1, 2, 3, 3, 4, 5, 6, 7, 8]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>merge_lists.py</span><a href="https://gist.github.com/chooper/1054819#file-merge_lists-py">link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="py"><span class="line"><span class="c">#!/usr/bin/env python</span>
+</span><span class="line">
+</span><span class="line"><span class="sd">&quot;&quot;&quot;Merging list of lists in Python using reduce()&quot;&quot;&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">merge_lists</span><span class="p">(</span><span class="n">list_of_lists</span><span class="p">):</span>
+</span><span class="line">    <span class="k">return</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span> <span class="n">list_of_lists</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class="line">    <span class="n">my_big_list</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">]</span>
+</span><span class="line">    <span class="k">print</span> <span class="n">merge_lists</span><span class="p">(</span><span class="n">my_big_list</span><span class="p">)</span>
+</span><span class="line">    <span class="c"># output: [1, 2, 3, 3, 4, 5, 6, 7, 8]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 </div>
   
@@ -288,7 +284,7 @@
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>Yesterday, when I arrived at my other job on my school’s help desk, I found out that my supervisor was not coming into work at all. This is OK; I enjoy the autonomy of working unsupervised. However, at this particular university’s help desk, my supervisor is the <em>only</em> person who can reset security profile information on student accounts. She is also the only person who assigns work orders to the technicians that work here. I’ll spare you the details, but probably 80-90% of our workload on any given day gets passed through this one person.</p>
 
@@ -298,13 +294,13 @@
 
 <p>All of these conditions are single points of failures (SPoF). Too often, we sysadmins, developers, and engineers only think of SPoFs in terms of hardware and software. But if we look at what actually makes up the entire information system (hardware, software, data, procedures, and <em>people)</em>, we see that we’re part of it too. This hoarding of knowledge often results in a failure of the system itself and very frequently makes existing failures worse.</p>
 
-<h1>Example</h1>
+<h1 id="example">Example</h1>
 
 <p>A customer-facing database server stops responding. You’re not really familiar with what database(s) it serves but customers are complaining that it’s down or very slow. There’s another guy that normally handles this system but he’s out of town and completely unreachable. You want to diagnose but you don’t even know how to access the system. Do you blindly reboot (risking data loss and corruption)? Sit and wait it out? Learn how to summon your co-worker’s spirit?</p>
 
-<p>One very real situation occurred when I worked at a small Internet Service Provider. A very big client of ours called and said that a very large portion of their network was down (we managed it, too). Did I have the credentials to the router in question? No. Did the client? No. Who did? <em>That guy </em>did, the one who is usually too busy running around to return calls (incidentally, the owner). He did finally return our cries for help… 3 hours later. Was the problem difficult to solve? No. In fact, it was fixed within minutes of receiving the proper credentials. (Funny story, one of their on-staff techs plugged a network camera into the network and accidentally assigned their router’s address as the camera’s IP :)) Sure, this mistake was dumb, but did this client need to suffer degraded availability for these 3 hours? Absolutely not.</p>
+<p>One very real situation occurred when I worked at a small Internet Service Provider. A very big client of ours called and said that a very large portion of their network was down (we managed it, too). Did I have the credentials to the router in question? No. Did the client? No. Who did? *That guy *did, the one who is usually too busy running around to return calls (incidentally, the owner). He did finally return our cries for help… 3 hours later. Was the problem difficult to solve? No. In fact, it was fixed within minutes of receiving the proper credentials. (Funny story, one of their on-staff techs plugged a network camera into the network and accidentally assigned their router’s address as the camera’s IP :)) Sure, this mistake was dumb, but did this client need to suffer degraded availability for these 3 hours? Absolutely not.</p>
 
-<h2>Solution</h2>
+<h2 id="solution">Solution</h2>
 
 <p>The obvious, and perhaps only, solution to this problem is to make as much of your knowledge available as possible. The more knowledge you offload from your brain, the better and more efficient the system becomes. I know to some this might seem a little counter-productive. After all, having this knowledge is job security…right?</p>
 
@@ -312,9 +308,9 @@
 
 <p>With that being said, please don’t spend all your energy and effort on documentation only to abandon the effort a month later. I was speaking to a friend of mine earlier when he mentioned that very often he comes across company Wikis all the time that usually contain outdated information and haven’t even been logged into in 6 months.</p>
 
-<p>Allow me to re-iterate, do<em> not</em> go on documentation sprees. Document everything <em>when</em> you do it and share that information <em>when </em>you do it. Regularly. Constantly. If you wait until you have alot of information to document, then you will probably become overwhelmed and just not do it. When I was in the Air Force, we had a saying:</p>
+<p>Allow me to re-iterate, do* not* go on documentation sprees. Document everything <em>when</em> you do it and share that information *when *you do it. Regularly. Constantly. If you wait until you have alot of information to document, then you will probably become overwhelmed and just not do it. When I was in the Air Force, we had a saying:</p>
 
-<h2>The job ain’t over till the paperwork is done.</h2>
+<h2 id="the-job-aint-over-till-the-paperwork-is-done">The job ain’t over till the paperwork is done.</h2>
 
 <p>Simply put, add documentation into your regular workflow. The investment is small and the returns are great.</p>
 </div>
@@ -352,145 +348,143 @@
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>If you’re reading this, you probably already know that an init script is a specific style of script that allows you to control daemon processes. In particular, they are used to start processes at boot and terminate them at shutdown. What follows is an example script I use to control one of my Django FastCGI projects. This particular example was written for Ubuntu and Debian but could probably be modified for RedHat/CentOS or other distros.</p>
 
 <p>Please refer to your Distro’s documentation on how to install and activate init scripts (hint: See /etc/init.d/ and the man page for update-rc.d if on Debian or Ubuntu.)</p>
 
-<figure class='code'><figcaption><span>django-fcgi-init.sh</span><a href='https://gist.github.com/anonymous/997829#file-django-fcgi-init-sh'>link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/sh</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">PATH</span><span class="o">=</span>/sbin:/bin:/usr/sbin:/usr/bin
-</span><span class='line'>
-</span><span class='line'><span class="nv">FCGIHOST</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span>
-</span><span class='line'><span class="nv">FCGIPORT</span><span class="o">=</span><span class="s2">&quot;5000&quot;</span>
-</span><span class='line'><span class="nv">RUNAS</span><span class="o">=</span><span class="s2">&quot;projectuser:projectgroup&quot;</span>
-</span><span class='line'><span class="nv">UMASK</span><span class="o">=</span><span class="s2">&quot;200&quot;</span>
-</span><span class='line'><span class="nv">DAEMON</span><span class="o">=</span><span class="s2">&quot;/path/to/django/manage.py&quot;</span>
-</span><span class='line'><span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;MyProject&quot;</span>
-</span><span class='line'><span class="nv">DESC</span><span class="o">=</span><span class="s2">&quot;My Django Project&quot;</span>
-</span><span class='line'><span class="nv">RUNDIR</span><span class="o">=</span>/var/run/<span class="nv">$NAME</span>
-</span><span class='line'><span class="nv">PIDFILE</span><span class="o">=</span>/var/run/<span class="nv">$NAME</span>/<span class="nv">$NAME</span>.pid
-</span><span class='line'><span class="nv">ENV</span><span class="o">=</span><span class="s2">&quot;env -i LANG=C PATH=/usr/local/bin:/usr/bin:/bin&quot;</span>
-</span><span class='line'><span class="nv">SSD</span><span class="o">=</span><span class="s2">&quot;/sbin/start-stop-daemon&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">DAEMON_OPTS</span><span class="o">=</span><span class="s2">&quot;runfcgi host=$FCGIHOST port=$FCGIPORT pidfile=$PIDFILE</span>
-</span><span class='line'><span class="s2">daemonize=true&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">test</span> -x <span class="nv">$DAEMON</span> <span class="o">||</span> <span class="nb">exit </span>0
-</span><span class='line'>
-</span><span class='line'><span class="nb">set</span> -e
-</span><span class='line'>
-</span><span class='line'>. /lib/lsb/init-functions
-</span><span class='line'>
-</span><span class='line'><span class="c"># Set up /var/run directory to write out pidfile</span>
-</span><span class='line'>mkdir -p <span class="s2">&quot;$RUNDIR&quot;</span>
-</span><span class='line'>chown <span class="s2">&quot;$RUNAS&quot;</span> <span class="s2">&quot;$RUNDIR&quot;</span>
-</span><span class='line'>chmod 775 <span class="s2">&quot;$RUNDIR&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">case</span> <span class="s2">&quot;$1&quot;</span> in
-</span><span class='line'> start<span class="o">)</span>
-</span><span class='line'> log_daemon_msg <span class="s2">&quot;Starting $DESC&quot;</span> <span class="nv">$NAME</span>
-</span><span class='line'> <span class="k">if</span> ! start-stop-daemon --start --quiet --oknodo <span class="se">\</span>
-</span><span class='line'> --pidfile <span class="nv">$PIDFILE</span> --umask <span class="s2">&quot;$UMASK&quot;</span> --chuid <span class="s2">&quot;$RUNAS&quot;</span> <span class="se">\</span>
-</span><span class='line'> --exec <span class="nv">$DAEMON</span> -- <span class="nv">$DAEMON_OPTS</span>
-</span><span class='line'> <span class="k">then</span>
-</span><span class='line'><span class="k"> </span>log_end_msg 1
-</span><span class='line'> <span class="k">else</span>
-</span><span class='line'><span class="k"> </span>chmod 400 <span class="nv">$PIDFILE</span>
-</span><span class='line'> log_end_msg 0
-</span><span class='line'> <span class="k">fi</span>
-</span><span class='line'> ;;
-</span><span class='line'> stop<span class="o">)</span>
-</span><span class='line'> log_daemon_msg <span class="s2">&quot;Stopping $DESC&quot;</span> <span class="nv">$NAME</span>
-</span><span class='line'> <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$PIDFILE</span> <span class="o">]</span>; <span class="k">then</span>
-</span><span class='line'><span class="k"> </span><span class="nb">kill</span> <span class="sb">`</span>cat -- <span class="nv">$PIDFILE</span><span class="sb">`</span>
-</span><span class='line'> rm -f -- <span class="nv">$PIDFILE</span>
-</span><span class='line'> log_end_msg 0
-</span><span class='line'> <span class="k">fi</span>
-</span><span class='line'> ;;
-</span><span class='line'> restart|force-reload<span class="o">)</span>
-</span><span class='line'> <span class="nv">$0</span> stop
-</span><span class='line'> <span class="nv">$0</span> start
-</span><span class='line'> ;;
-</span><span class='line'> status<span class="o">)</span>
-</span><span class='line'> status_of_proc -p <span class="s2">&quot;$PIDFILE&quot;</span> <span class="s2">&quot;$DAEMON&quot;</span> <span class="s2">&quot;$NAME&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit </span>0 <span class="o">||</span> <span class="nb">exit</span> <span class="nv">$?</span>
-</span><span class='line'> ;;
-</span><span class='line'> *<span class="o">)</span>
-</span><span class='line'> <span class="nb">echo</span> <span class="s2">&quot;Usage: $0 {start|stop|restart|force-reload|status}&quot;</span> &gt;&amp;2
-</span><span class='line'> <span class="nb">exit </span>1
-</span><span class='line'> ;;
-</span><span class='line'><span class="k">esac</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">exit </span>0
-</span></code></pre></td></tr></table></div></figure>
-
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>django-fcgi-init.sh</span><a href="https://gist.github.com/anonymous/997829#file-django-fcgi-init-sh">link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="c">#!/bin/sh</span>
+</span><span class="line">
+</span><span class="line"><span class="nv">PATH</span><span class="o">=</span>/sbin:/bin:/usr/sbin:/usr/bin
+</span><span class="line">
+</span><span class="line"><span class="nv">FCGIHOST</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span>
+</span><span class="line"><span class="nv">FCGIPORT</span><span class="o">=</span><span class="s2">&quot;5000&quot;</span>
+</span><span class="line"><span class="nv">RUNAS</span><span class="o">=</span><span class="s2">&quot;projectuser:projectgroup&quot;</span>
+</span><span class="line"><span class="nv">UMASK</span><span class="o">=</span><span class="s2">&quot;200&quot;</span>
+</span><span class="line"><span class="nv">DAEMON</span><span class="o">=</span><span class="s2">&quot;/path/to/django/manage.py&quot;</span>
+</span><span class="line"><span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;MyProject&quot;</span>
+</span><span class="line"><span class="nv">DESC</span><span class="o">=</span><span class="s2">&quot;My Django Project&quot;</span>
+</span><span class="line"><span class="nv">RUNDIR</span><span class="o">=</span>/var/run/<span class="nv">$NAME</span>
+</span><span class="line"><span class="nv">PIDFILE</span><span class="o">=</span>/var/run/<span class="nv">$NAME</span>/<span class="nv">$NAME</span>.pid
+</span><span class="line"><span class="nv">ENV</span><span class="o">=</span><span class="s2">&quot;env -i LANG=C PATH=/usr/local/bin:/usr/bin:/bin&quot;</span>
+</span><span class="line"><span class="nv">SSD</span><span class="o">=</span><span class="s2">&quot;/sbin/start-stop-daemon&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="nv">DAEMON_OPTS</span><span class="o">=</span><span class="s2">&quot;runfcgi host=$FCGIHOST port=$FCGIPORT pidfile=$PIDFILE</span>
+</span><span class="line"><span class="s2">daemonize=true&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">test</span> -x <span class="nv">$DAEMON</span> <span class="o">||</span> <span class="nb">exit </span>0
+</span><span class="line">
+</span><span class="line"><span class="nb">set</span> -e
+</span><span class="line">
+</span><span class="line">. /lib/lsb/init-functions
+</span><span class="line">
+</span><span class="line"><span class="c"># Set up /var/run directory to write out pidfile</span>
+</span><span class="line">mkdir -p <span class="s2">&quot;$RUNDIR&quot;</span>
+</span><span class="line">chown <span class="s2">&quot;$RUNAS&quot;</span> <span class="s2">&quot;$RUNDIR&quot;</span>
+</span><span class="line">chmod 775 <span class="s2">&quot;$RUNDIR&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="k">case</span> <span class="s2">&quot;$1&quot;</span> in
+</span><span class="line"> start<span class="o">)</span>
+</span><span class="line"> log_daemon_msg <span class="s2">&quot;Starting $DESC&quot;</span> <span class="nv">$NAME</span>
+</span><span class="line"> <span class="k">if</span> ! start-stop-daemon --start --quiet --oknodo <span class="se">\</span>
+</span><span class="line"> --pidfile <span class="nv">$PIDFILE</span> --umask <span class="s2">&quot;$UMASK&quot;</span> --chuid <span class="s2">&quot;$RUNAS&quot;</span> <span class="se">\</span>
+</span><span class="line"> --exec <span class="nv">$DAEMON</span> -- <span class="nv">$DAEMON_OPTS</span>
+</span><span class="line"> <span class="k">then</span>
+</span><span class="line"><span class="k"> </span>log_end_msg 1
+</span><span class="line"> <span class="k">else</span>
+</span><span class="line"><span class="k"> </span>chmod 400 <span class="nv">$PIDFILE</span>
+</span><span class="line"> log_end_msg 0
+</span><span class="line"> <span class="k">fi</span>
+</span><span class="line"> ;;
+</span><span class="line"> stop<span class="o">)</span>
+</span><span class="line"> log_daemon_msg <span class="s2">&quot;Stopping $DESC&quot;</span> <span class="nv">$NAME</span>
+</span><span class="line"> <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$PIDFILE</span> <span class="o">]</span>; <span class="k">then</span>
+</span><span class="line"><span class="k"> </span><span class="nb">kill</span> <span class="sb">`</span>cat -- <span class="nv">$PIDFILE</span><span class="sb">`</span>
+</span><span class="line"> rm -f -- <span class="nv">$PIDFILE</span>
+</span><span class="line"> log_end_msg 0
+</span><span class="line"> <span class="k">fi</span>
+</span><span class="line"> ;;
+</span><span class="line"> restart|force-reload<span class="o">)</span>
+</span><span class="line"> <span class="nv">$0</span> stop
+</span><span class="line"> <span class="nv">$0</span> start
+</span><span class="line"> ;;
+</span><span class="line"> status<span class="o">)</span>
+</span><span class="line"> status_of_proc -p <span class="s2">&quot;$PIDFILE&quot;</span> <span class="s2">&quot;$DAEMON&quot;</span> <span class="s2">&quot;$NAME&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit </span>0 <span class="o">||</span> <span class="nb">exit</span> <span class="nv">$?</span>
+</span><span class="line"> ;;
+</span><span class="line"> *<span class="o">)</span>
+</span><span class="line"> <span class="nb">echo</span> <span class="s2">&quot;Usage: $0 {start|stop|restart|force-reload|status}&quot;</span> &gt;&amp;2
+</span><span class="line"> <span class="nb">exit </span>1
+</span><span class="line"> ;;
+</span><span class="line"><span class="k">esac</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">exit </span>0
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 </div>
   
@@ -527,7 +521,7 @@
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>For work study (or something like that,) I’ve been working on my school’s help desk. I find alot of humor in the way people behave when they feel that they “need” something to get done.</p>
 
@@ -535,19 +529,23 @@
 
 <p>Here’s another example of the way parents try to “get things done” through my school’s help desk. My first phone call of the day:</p>
 
-<blockquote><p>Me: ITS Help Desk, this is Charles, how may I help you?</p>
+<blockquote>
+  <p>Me: ITS Help Desk, this is Charles, how may I help you?</p>
 
-<p>Someone’s Mom: Look, I just really need to reset my son’s password. If I’m paying the one paying the fees, wouldn’t it make sense that I have access to his account?</p>
+  <p>Someone’s Mom: Look, I just really need to reset my son’s password. If I’m paying the one paying the fees, wouldn’t it make sense that I have access to his account?</p>
 
-<p>Me: I’m sorry, but we are not able to reset a student’s password for anyone other than the student per federal law.</p>
+  <p>Me: I’m sorry, but we are not able to reset a student’s password for anyone other than the student per federal law.</p>
 
-<p>Someone’s Mom: Fine, I’ll just keep calling back until I get someone to reset it for me. <strong>*click*</strong></p></blockquote>
+  <p>Someone’s Mom: Fine, I’ll just keep calling back until I get someone to reset it for me. <strong>*click*</strong></p>
+</blockquote>
 
 <p>My second phone call of the day:</p>
 
-<blockquote><p>Me: ITS Help Desk, this is Charles. How may I help you?</p>
+<blockquote>
+  <p>Me: ITS Help Desk, this is Charles. How may I help you?</p>
 
-<p>Someone’s Mom: Oops, I got you again. <strong>*click*</strong></p></blockquote>
+  <p>Someone’s Mom: Oops, I got you again. <strong>*click*</strong></p>
+</blockquote>
 
 <p>There are usually only 2-3 of us at any given time and phone calls come in round robin. We sit next to each other. This technique of “getting things done” doesn’t work in this environment.</p>
 </div>
@@ -585,24 +583,23 @@
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p><a href="http://www.nesit.net/">NESIT, a Connecticut hackerspace</a>, was burglarized Sunday morning between 3:00am and 4:30am and is offering a $500 reward for information leading to the arrest of the burglar. They have released some of their security footage from the burglary. They ask that anyone who recognizes the burglar or has information call them at 1-203-51-HACKS (1-203-514-2257).</p>
 
 <p>Within the first 10 seconds, you see what appears to be a camera in the hallway get covered up by something from behind. Afterwards, you can see someone calmly walking around the inside of the hackerspace for the next hour and a half with a headlamp on. The headlamp turns out to be pretty beneficial for NESIT, because as a Facebook commentator pointed out, you can see that the burglar is roughly as tall as one of the shelves in the space.</p>
 
-<p>What I found most interesting, however, is that around 8 minutes and 30 seconds into the footage you get a pretty nice shot of… cleavage? No, I’m not being a jokester. It <em>appeared </em>to me that the burglar was wearing a low-cut shirt with some type of line up the middle. It looked like cleavage to me and the second opinion of my girlfriend, but NESIT believes that this was actually a shirt that was wrapped around the burglar’s head. <strong>UPDATE</strong>: After a second, closer look at the surveillance footage, I agree with NESIT.</p>
+<p>What I found most interesting, however, is that around 8 minutes and 30 seconds into the footage you get a pretty nice shot of… cleavage? No, I’m not being a jokester. It *appeared *to me that the burglar was wearing a low-cut shirt with some type of line up the middle. It looked like cleavage to me and the second opinion of my girlfriend, but NESIT believes that this was actually a shirt that was wrapped around the burglar’s head. <strong>UPDATE</strong>: After a second, closer look at the surveillance footage, I agree with NESIT.</p>
 
 <p>Despite the security footage being black and white and fairly low in quality, it tells us quite a bit.</p>
 
 <ul>
-<li>The burglar was familiar enough with the location to know about the hallway surveillance camera.</li>
-<li>The burglar was <em>not</em> familiar enough to know about the other cameras inside the hackerspace.</li>
-<li>The burglar was comfortable enough to spend <strong>an hour and a half </strong>walking around and looking through boxes and drawers.</li>
-<li>The burglar’s height is roughly as tall as one of the shelves in the hackerspace. <strong>UPDATE</strong>: I’m told that the height is between 6’0″ and 6’2″.</li>
-<li>The burglar has enough strength to pry off the lock on the door and part of the concrete wall.</li>
+  <li>The burglar was familiar enough with the location to know about the hallway surveillance camera.</li>
+  <li>The burglar was <em>not</em> familiar enough to know about the other cameras inside the hackerspace.</li>
+  <li>The burglar was comfortable enough to spend **an hour and a half **walking around and looking through boxes and drawers.</li>
+  <li>The burglar’s height is roughly as tall as one of the shelves in the hackerspace. <strong>UPDATE</strong>: I’m told that the height is between 6’0″ and 6’2″.</li>
+  <li>The burglar has enough strength to pry off the lock on the door and part of the concrete wall.</li>
 </ul>
-
 
 <p>I sure hope they catch the bad guy.</p>
 </div>
@@ -640,23 +637,24 @@
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>With gardening season right around the corner, one of my desires was to set something up that would allow me to take automated, regular snapshots of some of my plants and upload them to flickr. After a few cumulative hours I finally cobbled together the solution.</p>
 
-<h2>Taking the Snapshots</h2>
+<h2 id="taking-the-snapshots">Taking the Snapshots</h2>
 
 <p>The first thing I needed to do was to take snapshots from an installed USB webcam and save them to a directory. This needed to be able to run from a cron script so obviously it needed to work without a GUI and without user-interaction. I read in a <a href="http://www.tldp.org/HOWTO/html_single/Webcam-HOWTO/#COMMAND">Webcam Howto</a> that I could do this using <strong>streamer</strong> so I installed it and wrote a short shell script that would iterate through the video devices installed on my PC and run the snapshot command. You can <a href="https://bitbucket.org/hoop/snapshot/src/98aa5d9a2038/snapshot">view the source of this script here</a>.</p>
 
-<h2>Uploading the Photos</h2>
+<h2 id="uploading-the-photos">Uploading the Photos</h2>
 
 <p>Next I wanted to automatically upload the files to Flickr. At first, I tried using a script I found called uploadr.py which worked OK, but I also wanted to add my photos to a specific set which this script didn’t do. I probably could have extended its functionality, but this script didn’t use or implement the full Flickr API which made this task seem unnecessary.</p>
 
 <p>Instead, I downloaded the <a href="http://stuvel.eu/flickrapi">Python Flickr API from Stuvel</a> and in less than 90 lines I had working code to upload a directory of images to Flickr and add them to a given set. You can view the source to my <a href="https://bitbucket.org/hoop/snapshot/src/98aa5d9a2038/simpleuploadr.py">flickr uploader script</a> here, which I’m calling <a href="https://bitbucket.org/hoop/snapshot">simpleuploadr.py</a> for now.</p>
 
-<h2>Results</h2>
+<h2 id="results">Results</h2>
 
 <p><a href="http://www.flickr.com/photos/hoop2w1/sets/72157626354700156/with/5620672632/">Here are my pretty pictures</a> :) My apologies for the quality, I’m using a really cheap webcam.</p>
+
 </div>
   
   
@@ -692,11 +690,11 @@
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
-<p>Yesterday, I wrote a blog post detailing <a href="http://www.charleshooper.net/blog/screen-scraping-search-results-for-information-retrieval/">how I crawled an entire MMORPG’s player database via their search page</a>. Since then, I have been analyzing that data in Minitab and trying to gain some insight into the state of affairs of that game. Today, I’m going to attempt to explain some of that data using statistics and common sense. In particular, we’re going to find out if there’s a relationship between <em>when players join the game </em>and <em>when they stop returning</em>.</p>
+<p>Yesterday, I wrote a blog post detailing <a href="http://www.charleshooper.net/blog/screen-scraping-search-results-for-information-retrieval/">how I crawled an entire MMORPG’s player database via their search page</a>. Since then, I have been analyzing that data in Minitab and trying to gain some insight into the state of affairs of that game. Today, I’m going to attempt to explain some of that data using statistics and common sense. In particular, we’re going to find out if there’s a relationship between <em>when players join the game *and *when they stop returning</em>.</p>
 
-<h2>Preparation</h2>
+<h2 id="preparation">Preparation</h2>
 
 <p>I’m new to the statistics software package I’m using, Minitab, and I’m not aware of an easy way to take measurements based on dates. So, my first order of business was to convert dates in the database to an easier metric for analysis, “days since today,” which is simply <em>today’s date</em> minus <em>date x</em>. I did this in my database (MongoDB) prior to export by adding a “last_seen_days” attribute to all documents (records). This attribute is simply the difference between today’s date and the date that the player stopped logging in – measured in days. I then did the same for the signup date. This was quickly done in the MongoDB console in just a few lines:</p>
 
@@ -706,33 +704,33 @@
 &gt; db.accounts.find().forEach(function (o) { o.date_joined_days = Math.ceil((today.getTime() - o.date_joined.getTime())/day); db.accounts.save(o); })
 </code></pre>
 
-<h2>The Scatterplot</h2>
+<h2 id="the-scatterplot">The Scatterplot</h2>
 
 <p>I then exported my data to CSV, loaded it in Minitab, and created a scatterplot between these two attributes. What I got was this:</p>
 
-<p><img src="http://cdn.subversity.net/cch-i/blogimgs/last_seen_vs_signup.jpg" title="Last Seen Date vs Signup Date" alt="Last Seen Date vs Signup Date" /></p>
+<p><img src="http://cdn.subversity.net/cch-i/blogimgs/last_seen_vs_signup.jpg" alt="Last Seen Date vs Signup Date" title="Last Seen Date vs Signup Date" /></p>
 
-<p>For the uninitiated, a <strong>scatterplot </strong>is a quick and easy way to visually see if there’s any type of relationship (correlation) between two variables. In this case, I used the signup date as my <strong>independent variable</strong> (<em>x</em>) and the “last seen” date as my <strong>dependent variable</strong> (<em>y</em>). Overall, there is <em>not </em>any real relationship between the signup date and the last seen date. However<em>,</em> there are two significant items in this graph that deserve to have some attention brought to them.</p>
+<p>For the uninitiated, a <strong>scatterplot **is a quick and easy way to visually see if there’s any type of relationship (correlation) between two variables. In this case, I used the signup date as my **independent variable</strong> (<em>x</em>) and the “last seen” date as my <strong>dependent variable</strong> (<em>y</em>). Overall, there is <em>not *any real relationship between the signup date and the last seen date. However</em>,* there are two significant items in this graph that deserve to have some attention brought to them.</p>
 
-<h2>Observations</h2>
+<h2 id="observations">Observations</h2>
 
 <p>The first and most obvious item is that <strong>there are not any points above the identity function</strong>. The identity function, or just <em>f(x) = x</em>, is the diagonal line directly across the center of the graph. This makes perfect sense since it’s impossible for a player to have their “last login” occur before they even sign up. I bring this up because this leads into my next observation:</p>
 
-<p><strong>There is a heavier concentration of data points plotted on or directly below the line of the identity function</strong>. For points exactly <em>on</em> the identity function, these are accounts that registered but were never logged into. For accounts <em>below </em>the identity function, these should be considered more significant to those who run the game. Why is that? Because, simply put, I believe that these accounts belong to players who went through the effort of joining; They signed up, validated their email address, logged in, and for whatever reason chose not to stick around. This is akin to the “<strong>bounce rate</strong>” so frequently mentioned in the context of web analytics.</p>
+<p><strong>There is a heavier concentration of data points plotted on or directly below the line of the identity function</strong>. For points exactly <em>on</em> the identity function, these are accounts that registered but were never logged into. For accounts *below *the identity function, these should be considered more significant to those who run the game. Why is that? Because, simply put, I believe that these accounts belong to players who went through the effort of joining; They signed up, validated their email address, logged in, and for whatever reason chose not to stick around. This is akin to the “<strong>bounce rate</strong>” so frequently mentioned in the context of web analytics.</p>
 
 <p>It’s possible that these new players didn’t  understand the interface and left, or maybe they thought the game play was too slow, or maybe… this list could go on. What’s important is that some attention is paid here. Some effort should be made to discover why these players are leaving and the number of these players (or almost-players) should be measured, monitored, and analyzed. Decreasing this metric (“bounce rate”) should be a regular goal as these players represent a potential revenue stream for the game’s owner as well as a potential contribution to the game for the rest of the players.</p>
 
-<h2>The Histogram</h2>
+<h2 id="the-histogram">The Histogram</h2>
 
 <p>While, in this case, the scatterplot helped us see that there are a noticeable amount of players who quickly “bounce” after joining the game, this type of graph doesn’t make it particularly easy to measure the magnitude of this phenomena. From observing this behavior, we next want to know how many players are leaving, or what our “bounce rate” is. Instead of first trying to quantitatively define the bounce rate so that we can measure it, it’s probably best if we first take a look at the total distribution of how long players are active for before leaving. For this, we’ll use the histogram of “Days Active”. <em>Days active</em> is simply <em>days since signup</em> minus <em>days since last login</em>.Here’s what we’ve got:</p>
 
-<p><img src="http://cdn.subversity.net/cch-i/blogimgs/days_active_hist.jpg" title="Histogram of Days Active (excl. lowest-ranked accounts)" alt="" /></p>
+<p><img src="http://cdn.subversity.net/cch-i/blogimgs/days_active_hist.jpg" alt="" title="Histogram of Days Active (excl. lowest-ranked accounts)" /></p>
 
 <p>In this histogram, I excluded the lowest rank from being included in the histogram. I did this because I was more interested in how many potentially-active players were leaving, as opposed to junk accounts. As such, our definition of the <em>bounce rate</em> is already becoming more different than the bounce rate in web analytics.</p>
 
 <p>Each bin (“bar”) in our histogram is 15 days wide. Knowing this, you can see from the histogram that the largest density of days active seems to be about from 15 days to 2.5 months. This chunk, while significant, doesn’t have much to do with our bounce rate mentioned above. What we’re instead interested in is the near-5% of players who become inactive in less than a week.</p>
 
-<h2>What’s Next?</h2>
+<h2 id="whats-next">What’s Next?</h2>
 
 <p>If this were my game (it’s not), I would work on defining what level of bounce rate is acceptable and set some goals based on that. I would then look into the large amount of players leaving within the first 2.5 months and try to increase player retention. Finally, I would automate these measurements and have them displaced in a nice administrative dashboard (I’ve always wanted one of those) so that I have to see them all the time.</p>
 </div>
@@ -770,7 +768,7 @@
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>Recently I found myself in a situation where I needed to gather a large amount of data from a website but there did not exist any API, index, or otherwise publicly-accessible map of the data. In fact, the only mechanism for uncovering data to be collected was a very limited search engine.</p>
 
@@ -779,24 +777,23 @@
 <p>The game’s search engine has these limitations and features:</p>
 
 <ul>
-<li>Search is performed on username only and implicitly places a wildcard after the search. For example, if you search for “bob” not only will “bob” be returned in the results, but also “bob123″ and “bobafett,”</li>
-<li>If a given search returns more than 35 results than only the first 35 results are returned,</li>
-<li>Results are sorted by username (alphabetically),</li>
-<li>Usernames are case-insensitive and can only contain alphanumeric characters, i.e. {ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890},</li>
-<li>Search queries cannot start with the character zero (“0″), but I happily overlook this,</li>
-<li>The search engine does allow you to filter out players who have been killed or banned.</li>
+  <li>Search is performed on username only and implicitly places a wildcard after the search. For example, if you search for “bob” not only will “bob” be returned in the results, but also “bob123″ and “bobafett,”</li>
+  <li>If a given search returns more than 35 results than only the first 35 results are returned,</li>
+  <li>Results are sorted by username (alphabetically),</li>
+  <li>Usernames are case-insensitive and can only contain alphanumeric characters, i.e. {ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890},</li>
+  <li>Search queries cannot start with the character zero (“0″), but I happily overlook this,</li>
+  <li>The search engine does allow you to filter out players who have been killed or banned.</li>
 </ul>
-
 
 <p>So, there I was, trying to crawl this game’s search feature using urllib and regular expressions. I first tried to search for “A”, then “B”, then ”C”, and so on, but there were some obvious flaws with this method. In particular, because of the limit on the number of results that can be returned, this method would only yield 1,260 usernames. This isn’t good enough because I knew from the game’s statistics page that I should be expecting a little more than 21,000 names!</p>
 
-<p>The logical extension of that search method is to tack on an extra letter. For example, try “AA”, then, “AB”, then “AC”, all the way down to “ZZ” (or, erm, “99″ on this case). This seems alot better because, hypothetically, the keyspace is large enough to return more than twice as many usernames than what I need – I believe the math is (36<sup>2)*35</sup> or 45,360 usernames.</p>
+<p>The logical extension of that search method is to tack on an extra letter. For example, try “AA”, then, “AB”, then “AC”, all the way down to “ZZ” (or, erm, “99″ on this case). This seems alot better because, hypothetically, the keyspace is large enough to return more than twice as many usernames than what I need – I believe the math is (36^2)*35 or 45,360 usernames.</p>
 
-<p>Unfortunately, this  method falls apart very quickly because there isn’t an even distribution of usernames across the keyspace. I could try to go one level deeper on the searches (e.g., “AAA” to “AAB”, and so forth) but now we’re looking at 36<sup>3</sup> or 46,656 search pages I have to crawl, so this method is out of the question.</p>
+<p>Unfortunately, this  method falls apart very quickly because there isn’t an even distribution of usernames across the keyspace. I could try to go one level deeper on the searches (e.g., “AAA” to “AAB”, and so forth) but now we’re looking at 36^3 or 46,656 search pages I have to crawl, so this method is out of the question.</p>
 
 <p>Making matters worse, I am completely naive as to what the distribution of usernames might actually look like.I know what it looks like <em>now</em>, but moving forward I had absolutely no idea what to expect. (Just in case you’re curious, you can see the actual distribution – sans accounts that start with “0″ – below.)</p>
 
-<p><img src="http://cdn.subversity.net/cch-i/blogimgs/letter_freq_dist.png" title="Account Distribution by First Character" alt="Account Distribution by First Character" /></p>
+<p><img src="http://cdn.subversity.net/cch-i/blogimgs/letter_freq_dist.png" alt="Account Distribution by First Character" title="Account Distribution by First Character" /></p>
 
 <p>I decided, then, that I would start with “A” to “Z” to “1″ to “9″ and dynamically and recursively expand one level deeper if only 35 results were returned from the search. <a href="https://bitbucket.org/hoop/bootcrawl/src/9a3714a9e24e/crawl.py">You can see this dynamic, search unfolding code here on Bitbucket (Python, lines 46 through 65)</a>.</p>
 
@@ -838,9 +835,10 @@
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>I just updated my <a href="http://apps.charleshooper.net/cost-behavior-analysis/">Cost Behavior Analyzer</a> webapp to allow for the editing of results. This way, if you want to add new data points at a later point in time, it’s no problem. Try it out!</p>
+
 </div>
   
   

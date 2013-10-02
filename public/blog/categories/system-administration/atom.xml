@@ -4,7 +4,7 @@
   <title><![CDATA[Category: System Administration | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/system-administration/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-09-25T06:35:41-07:00</updated>
+  <updated>2013-10-02T09:34:58-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -18,13 +18,14 @@
     <link href="http://www.charleshooper.net/blog/we-have-the-tools-but-what-about-the-techniques/"/>
     <updated>2012-01-02T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/we-have-the-tools-but-what-about-the-techniques</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>In my previously-written article “<a href="http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops/" title="Concurrent Engineering: The Foundation of DevOps">Concurrent Engineering: The Foundation of DevOps</a>” I wrote “<em>just because you use puppet does not necessarily mean your organization is practicing DevOps.</em>” I didn’t spend much time on it then, but I think it bears repeating and further explanation. The <strong>DevOps “movement” has seen</strong>, and will likely continue to see, <strong>a huge influx of new tools</strong> as organizations attempt to find ways to adopt DevOps within their organizations. These tools have included (and certainly have not been limited to) tools that aid in monitoring (statsd), configuration management (puppet), and continuous delivery (hubot).</p>
 
 <p>Operations engineers, software developers, and managers are in a mad dash to develop, utilize, and integrate these tools within their organizations. And that’s where we’re going wrong; we are focused on a single component of the Software/Systems Engineering Process. This process model contains three main components that are central to its existence: <em>methodologies</em>, <em>techniques</em>, and <em>tools</em> (Valacich 2009). While I don’t need to go into each one specifically, it’s clear that the tools are just a single factor in the overall process. Following the model further, it becomes clear that the makeup of each of these components influences the other components in the process.</p>
 
 <p>Put simply, <strong>DevOps is a methodology</strong> and, as such, it’s natural that we’re seeing a huge response in tools. What I feel we’re missing, however, is more information about the different techniques used throughout organizations in <em>their</em> software and operations engineering processes. An excellent example of this is <a href="http://scottchacon.com/2011/08/31/github-flow.html">Scott Chacon’s explanation of how Github uses Git (and Github!) to deliver continuous improvement</a> to their service. With that said, I would like to see more organizations refine their techniques and talk about <em>these</em> as much as they talk about their tools.</p>
+
 ]]></content>
   </entry>
   
@@ -33,9 +34,11 @@
     <link href="http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops/"/>
     <updated>2011-12-07T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<blockquote><p>DevOps is all about trying to avoid that epic failure and working smarter and more efficiently at the same time. It is a framework of ideas and principles designed to foster cooperation, learning and coordination between development and operational groups. In a DevOps environment, developers and sysadmins build relationships, processes, and tools that allow them to better interact and ultimately better service the customer (<a href="http://www.kartar.net/2010/02/what-devops-means-to-me/" title="What DevOps Means to Me">James Turnbull</a>).</p></blockquote>
+<blockquote>
+  <p>DevOps is all about trying to avoid that epic failure and working smarter and more efficiently at the same time. It is a framework of ideas and principles designed to foster cooperation, learning and coordination between development and operational groups. In a DevOps environment, developers and sysadmins build relationships, processes, and tools that allow them to better interact and ultimately better service the customer (<a href="http://www.kartar.net/2010/02/what-devops-means-to-me/" title="What DevOps Means to Me">James Turnbull</a>).</p>
+</blockquote>
 
 <p>At the time of writing, if you were to search for “devops” you would find eight results attempting to explain what devops is, one result for a conference, and one rather satirical article (although not necessarily incorrect) where the author answers the question of “how do you implement devops” with “<a href="http://teddziuba.com/2011/03/devops-scam.html" title="DevOps is a Poorly Executed Scam">nobody seems to know</a>” (Ted Dziuba).</p>
 
@@ -45,29 +48,30 @@
 
 <p>Well, get your product and management together because the truth is that DevOps is actually a form of Concurrent Engineering.</p>
 
-<blockquote><p>Concurrent Engineering (CE) is a systematic approach to integrated product development that emphasizes the response to customer expectations. It embodies team values of co-operation, trust and sharing in such a manner that decision making is by consensus, involving all perspectives in parallel, from the beginning of the product life-cycle (<a href="http://www.esa.int/esaMI/CDF/SEM1OF1P4HD_0.html" title="What is concurrent engineering?">ESA – Concurrent Engineering Facility</a>).</p></blockquote>
+<blockquote>
+  <p>Concurrent Engineering (CE) is a systematic approach to integrated product development that emphasizes the response to customer expectations. It embodies team values of co-operation, trust and sharing in such a manner that decision making is by consensus, involving all perspectives in parallel, from the beginning of the product life-cycle (<a href="http://www.esa.int/esaMI/CDF/SEM1OF1P4HD_0.html" title="What is concurrent engineering?">ESA – Concurrent Engineering Facility</a>).</p>
+</blockquote>
 
 <p>Concurrent Engineering encompasses several major principles which just so happen to fit the definition (however formal or informal) of devops.</p>
 
 <p>I’ll list them from the <a href="http://best.berkeley.edu/~pps/pps/concurrent.html#basic" title="Basic Principles of Concurrent Engineering">Synthesis Coalition</a> here:</p>
 
 <ul>
-<li>Get a strong commitment from senior management.</li>
-<li>Establish unified project goals and a clear business mission.</li>
-<li>Develop a detailed plan early in the process.</li>
-<li>Continually review your progress and revise your plan.</li>
-<li>Develop project leaders that have an overall vision of the project and goals.</li>
-<li>Analyze your market and know your customers.</li>
-<li>Suppress individualism and foster a team concept.</li>
-<li>Establish and cultivate cross-functional integration and collaboration.</li>
-<li>Break project into its natural phases.</li>
-<li>Develop metrics.</li>
-<li>Set milestones throughout the development process.</li>
-<li>Collectively work on all parts of project.</li>
-<li>Reduce costs and time to market.</li>
-<li>Complete tasks in parallel.</li>
+  <li>Get a strong commitment from senior management.</li>
+  <li>Establish unified project goals and a clear business mission.</li>
+  <li>Develop a detailed plan early in the process.</li>
+  <li>Continually review your progress and revise your plan.</li>
+  <li>Develop project leaders that have an overall vision of the project and goals.</li>
+  <li>Analyze your market and know your customers.</li>
+  <li>Suppress individualism and foster a team concept.</li>
+  <li>Establish and cultivate cross-functional integration and collaboration.</li>
+  <li>Break project into its natural phases.</li>
+  <li>Develop metrics.</li>
+  <li>Set milestones throughout the development process.</li>
+  <li>Collectively work on all parts of project.</li>
+  <li>Reduce costs and time to market.</li>
+  <li>Complete tasks in parallel.</li>
 </ul>
-
 
 <p>By approaching the issues of devops as  concurrent engineering and implementing it as such, you open the movement to a well-researched, well-documented, and well-accepted product design philosophy. By shedding this light on the devops methodologies, this enables those of us pushing the devops movement to finally put the movement into a more business-oriented perspective.</p>
 ]]></content>
@@ -78,11 +82,13 @@
     <link href="http://www.charleshooper.net/blog/problems-at-scale/"/>
     <updated>2011-08-13T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/problems-at-scale</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>Over on <a href="http://news.ycombinator.com/item?id=2881122">HackerNews</a>, saturn wrote that:</p>
 
-<blockquote><p>Cloud computing scales the efficiencies, yes. It also scales the problems.</p></blockquote>
+<blockquote>
+  <p>Cloud computing scales the efficiencies, yes. It also scales the problems.</p>
+</blockquote>
 
 <p>This is exactly right. Problems in simple architectures are relatively easy to solve. In fact, I’d go as far as to say that we’ve probably solved them in all of the traditional archetypes, both in theory and in practice.</p>
 
@@ -97,7 +103,7 @@
     <link href="http://www.charleshooper.net/blog/amazons-relational-database-service-rds-the-black-box-from-hell/"/>
     <updated>2011-08-10T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/amazons-relational-database-service-rds-the-black-box-from-hell</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>One morning I woke up early and checked my email. My plan was to check that my inbox was empty for some peace of mind and then go back to bed for a few more hours (I love Sundays). But that isn’t what happened. Instead, upon opening my inbox I was alerted that one of a client’s database servers was offline. I snapped out of my haze and immediately got to work.</p>
 
@@ -120,12 +126,11 @@
 <p>In summary, I’ll probably never know because on RDS you do not have access to the underlying OS. This means:</p>
 
 <ul>
-<li>You do not have access to the OS process list</li>
-<li>You do not have access to things like top, htop, iostat, or dstat</li>
-<li>You do not have access to the process list if the MySQL process isn’t accepting connections</li>
-<li>You do not have access to any system logs</li>
+  <li>You do not have access to the OS process list</li>
+  <li>You do not have access to things like top, htop, iostat, or dstat</li>
+  <li>You do not have access to the process list if the MySQL process isn’t accepting connections</li>
+  <li>You do not have access to any system logs</li>
 </ul>
-
 
 <p>If you just need a quick and dirty MySQL server and you almost never want to worry about the status of your backups, go ahead and use RDS. However, if you’re concerned about reliability (that you control,) being able to effectively troubleshoot problems, and knowing the state of your underlying OS, RDS is not right for you.</p>
 ]]></content>
@@ -136,7 +141,7 @@
     <link href="http://www.charleshooper.net/blog/common-single-point-of-failure-people/"/>
     <updated>2011-06-07T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/common-single-point-of-failure-people</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>Yesterday, when I arrived at my other job on my school’s help desk, I found out that my supervisor was not coming into work at all. This is OK; I enjoy the autonomy of working unsupervised. However, at this particular university’s help desk, my supervisor is the <em>only</em> person who can reset security profile information on student accounts. She is also the only person who assigns work orders to the technicians that work here. I’ll spare you the details, but probably 80-90% of our workload on any given day gets passed through this one person.</p>
 
@@ -146,13 +151,13 @@
 
 <p>All of these conditions are single points of failures (SPoF). Too often, we sysadmins, developers, and engineers only think of SPoFs in terms of hardware and software. But if we look at what actually makes up the entire information system (hardware, software, data, procedures, and <em>people)</em>, we see that we’re part of it too. This hoarding of knowledge often results in a failure of the system itself and very frequently makes existing failures worse.</p>
 
-<h1>Example</h1>
+<h1 id="example">Example</h1>
 
 <p>A customer-facing database server stops responding. You’re not really familiar with what database(s) it serves but customers are complaining that it’s down or very slow. There’s another guy that normally handles this system but he’s out of town and completely unreachable. You want to diagnose but you don’t even know how to access the system. Do you blindly reboot (risking data loss and corruption)? Sit and wait it out? Learn how to summon your co-worker’s spirit?</p>
 
-<p>One very real situation occurred when I worked at a small Internet Service Provider. A very big client of ours called and said that a very large portion of their network was down (we managed it, too). Did I have the credentials to the router in question? No. Did the client? No. Who did? <em>That guy </em>did, the one who is usually too busy running around to return calls (incidentally, the owner). He did finally return our cries for help… 3 hours later. Was the problem difficult to solve? No. In fact, it was fixed within minutes of receiving the proper credentials. (Funny story, one of their on-staff techs plugged a network camera into the network and accidentally assigned their router’s address as the camera’s IP :)) Sure, this mistake was dumb, but did this client need to suffer degraded availability for these 3 hours? Absolutely not.</p>
+<p>One very real situation occurred when I worked at a small Internet Service Provider. A very big client of ours called and said that a very large portion of their network was down (we managed it, too). Did I have the credentials to the router in question? No. Did the client? No. Who did? *That guy *did, the one who is usually too busy running around to return calls (incidentally, the owner). He did finally return our cries for help… 3 hours later. Was the problem difficult to solve? No. In fact, it was fixed within minutes of receiving the proper credentials. (Funny story, one of their on-staff techs plugged a network camera into the network and accidentally assigned their router’s address as the camera’s IP :)) Sure, this mistake was dumb, but did this client need to suffer degraded availability for these 3 hours? Absolutely not.</p>
 
-<h2>Solution</h2>
+<h2 id="solution">Solution</h2>
 
 <p>The obvious, and perhaps only, solution to this problem is to make as much of your knowledge available as possible. The more knowledge you offload from your brain, the better and more efficient the system becomes. I know to some this might seem a little counter-productive. After all, having this knowledge is job security…right?</p>
 
@@ -160,9 +165,9 @@
 
 <p>With that being said, please don’t spend all your energy and effort on documentation only to abandon the effort a month later. I was speaking to a friend of mine earlier when he mentioned that very often he comes across company Wikis all the time that usually contain outdated information and haven’t even been logged into in 6 months.</p>
 
-<p>Allow me to re-iterate, do<em> not</em> go on documentation sprees. Document everything <em>when</em> you do it and share that information <em>when </em>you do it. Regularly. Constantly. If you wait until you have alot of information to document, then you will probably become overwhelmed and just not do it. When I was in the Air Force, we had a saying:</p>
+<p>Allow me to re-iterate, do* not* go on documentation sprees. Document everything <em>when</em> you do it and share that information *when *you do it. Regularly. Constantly. If you wait until you have alot of information to document, then you will probably become overwhelmed and just not do it. When I was in the Air Force, we had a saying:</p>
 
-<h2>The job ain’t over till the paperwork is done.</h2>
+<h2 id="the-job-aint-over-till-the-paperwork-is-done">The job ain’t over till the paperwork is done.</h2>
 
 <p>Simply put, add documentation into your regular workflow. The investment is small and the returns are great.</p>
 ]]></content>

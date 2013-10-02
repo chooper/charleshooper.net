@@ -109,7 +109,7 @@
   </header>
 
 
-<div class="entry-content"><h1></h1>
+<div class="entry-content"><h1 id="section"></h1>
 
 <p>Recently I found myself in a situation where I needed to gather a large amount of data from a website but there did not exist any API, index, or otherwise publicly-accessible map of the data. In fact, the only mechanism for uncovering data to be collected was a very limited search engine.</p>
 
@@ -118,24 +118,23 @@
 <p>The game’s search engine has these limitations and features:</p>
 
 <ul>
-<li>Search is performed on username only and implicitly places a wildcard after the search. For example, if you search for “bob” not only will “bob” be returned in the results, but also “bob123″ and “bobafett,”</li>
-<li>If a given search returns more than 35 results than only the first 35 results are returned,</li>
-<li>Results are sorted by username (alphabetically),</li>
-<li>Usernames are case-insensitive and can only contain alphanumeric characters, i.e. {ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890},</li>
-<li>Search queries cannot start with the character zero (“0″), but I happily overlook this,</li>
-<li>The search engine does allow you to filter out players who have been killed or banned.</li>
+  <li>Search is performed on username only and implicitly places a wildcard after the search. For example, if you search for “bob” not only will “bob” be returned in the results, but also “bob123″ and “bobafett,”</li>
+  <li>If a given search returns more than 35 results than only the first 35 results are returned,</li>
+  <li>Results are sorted by username (alphabetically),</li>
+  <li>Usernames are case-insensitive and can only contain alphanumeric characters, i.e. {ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890},</li>
+  <li>Search queries cannot start with the character zero (“0″), but I happily overlook this,</li>
+  <li>The search engine does allow you to filter out players who have been killed or banned.</li>
 </ul>
-
 
 <p>So, there I was, trying to crawl this game’s search feature using urllib and regular expressions. I first tried to search for “A”, then “B”, then ”C”, and so on, but there were some obvious flaws with this method. In particular, because of the limit on the number of results that can be returned, this method would only yield 1,260 usernames. This isn’t good enough because I knew from the game’s statistics page that I should be expecting a little more than 21,000 names!</p>
 
-<p>The logical extension of that search method is to tack on an extra letter. For example, try “AA”, then, “AB”, then “AC”, all the way down to “ZZ” (or, erm, “99″ on this case). This seems alot better because, hypothetically, the keyspace is large enough to return more than twice as many usernames than what I need – I believe the math is (36<sup>2)*35</sup> or 45,360 usernames.</p>
+<p>The logical extension of that search method is to tack on an extra letter. For example, try “AA”, then, “AB”, then “AC”, all the way down to “ZZ” (or, erm, “99″ on this case). This seems alot better because, hypothetically, the keyspace is large enough to return more than twice as many usernames than what I need – I believe the math is (36^2)*35 or 45,360 usernames.</p>
 
-<p>Unfortunately, this  method falls apart very quickly because there isn’t an even distribution of usernames across the keyspace. I could try to go one level deeper on the searches (e.g., “AAA” to “AAB”, and so forth) but now we’re looking at 36<sup>3</sup> or 46,656 search pages I have to crawl, so this method is out of the question.</p>
+<p>Unfortunately, this  method falls apart very quickly because there isn’t an even distribution of usernames across the keyspace. I could try to go one level deeper on the searches (e.g., “AAA” to “AAB”, and so forth) but now we’re looking at 36^3 or 46,656 search pages I have to crawl, so this method is out of the question.</p>
 
 <p>Making matters worse, I am completely naive as to what the distribution of usernames might actually look like.I know what it looks like <em>now</em>, but moving forward I had absolutely no idea what to expect. (Just in case you’re curious, you can see the actual distribution – sans accounts that start with “0″ – below.)</p>
 
-<p><img src="http://cdn.subversity.net/cch-i/blogimgs/letter_freq_dist.png" title="Account Distribution by First Character" alt="Account Distribution by First Character" /></p>
+<p><img src="http://cdn.subversity.net/cch-i/blogimgs/letter_freq_dist.png" alt="Account Distribution by First Character" title="Account Distribution by First Character" /></p>
 
 <p>I decided, then, that I would start with “A” to “Z” to “1″ to “9″ and dynamically and recursively expand one level deeper if only 35 results were returned from the search. <a href="https://bitbucket.org/hoop/bootcrawl/src/9a3714a9e24e/crawl.py">You can see this dynamic, search unfolding code here on Bitbucket (Python, lines 46 through 65)</a>.</p>
 

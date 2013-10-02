@@ -4,7 +4,7 @@
   <title><![CDATA[Category: DevOps | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/devops/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-09-25T06:35:41-07:00</updated>
+  <updated>2013-10-02T09:34:58-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -18,9 +18,9 @@
     <link href="http://www.charleshooper.net/blog/intro-to-ops-metrics-collection/"/>
     <updated>2013-05-07T14:51:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/intro-to-operations-metrics-collection</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p><em>I'm writing a series of blog posts for managers and other people
+<p><em>I’m writing a series of blog posts for managers and other people
 without an operations background in order to introduce certain best
 practices regarding Operations. For the rest of the blog posts, please
 visit the <a href="/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
@@ -33,13 +33,15 @@ identifies them in <a href="http://www.amazon.com/Web-Operations-Keeping-Data-Ti
 are:</p>
 
 <ul>
-<li><strong>High-level business and application metrics</strong> (e.g. user sign-ups)</li>
-<li><strong>Feature-specific application-level metrics</strong> (e.g. widgets processed)</li>
-<li><strong>Systems and service-level metrics</strong> (e.g. server load or database queries per second)</li>
+  <li><strong>High-level business and application metrics</strong> (e.g. user sign-ups)</li>
+  <li><strong>Feature-specific application-level metrics</strong> (e.g. widgets processed)</li>
+  <li>
+    <p><strong>Systems and service-level metrics</strong> (e.g. server load or database queries per second)</p>
+
+  </li>
 </ul>
 
-
-<p>You'll note that there are two levels of "application-level" metrics.
+<p>You’ll note that there are two levels of “application-level” metrics.
 The higher-level application metrics are mostly those that can be tied
 to business objectives, while the other category of application metrics
 are generally more feature specific.</p>
@@ -47,8 +49,8 @@ are generally more feature specific.</p>
 <p>Benefits incurred by collecting these metrics are plentiful. For one,
 having quick access to these metrics is helpful during troubleshooting
 and incident response. For example, I was once hired under contract to
-look into why a certain company's API was unreliable for the previous
-few months. At least once per day, this company's API would time out and
+look into why a certain company’s API was unreliable for the previous
+few months. At least once per day, this company’s API would time out and
 not respond to client requests. After enabling basic metrics collection
 for the servers and services used by the API, it very quickly became
 obvious that the database servers were reaching their connection limits
@@ -63,7 +65,7 @@ some threshold or change significantly. Not only that, but analyzing
 these metrics will allow you to manage your capacity intelligently and
 build a business case to justify infrastructure expenditures. Finally,
 analyzing these metrics will also give you insight into your
-application, how it's used, and your business.</p>
+application, how it’s used, and your business.</p>
 
 <p>How you go about collecting and storing these metrics is up to you. Many
 engineers might be tempted to build their own solution; however, there
@@ -72,16 +74,16 @@ helpful. Key considerations when choosing which package or packages to
 use are:</p>
 
 <ul>
-<li>The ability to add new, custom metrics</li>
-<li>Configurable resolution/storage trade-off</li>
-<li>Integration with availability monitoring and alerting systems</li>
-<li>Graphing/visualization</li>
+  <li>The ability to add new, custom metrics</li>
+  <li>Configurable resolution/storage trade-off</li>
+  <li>Integration with availability monitoring and alerting systems</li>
+  <li>Graphing/visualization</li>
 </ul>
 
-
-<p>If your startup doesn't have any metrics then you should start
+<p>If your startup doesn’t have any metrics then you should start
 collecting them now. The visualization will help you in the short run
 and the historical data will help you in the long run.</p>
+
 ]]></content>
   </entry>
   
@@ -90,18 +92,18 @@ and the historical data will help you in the long run.</p>
     <link href="http://www.charleshooper.net/blog/intro-to-ops-availability-monitoring-alerting/"/>
     <updated>2013-05-05T21:57:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/intro-to-operations-availability-monitoring-and-alerting</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p><em>I'm writing a series of blog posts for managers and other people
+<p><em>I’m writing a series of blog posts for managers and other people
 without an operations background in order to introduce certain best
 practices regarding Operations. For the rest of the blog posts, please
 visit the <a href="/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
 
-<p>Another area I've seen alot of early stage startups lacking in is
+<p>Another area I’ve seen alot of early stage startups lacking in is
 <strong>availability monitoring and alerting</strong>. The essence of availability
 monitoring and alerting is being notified when your service is not
-working as expected, including when it's simply down, isn't meeting
-formal or informal SLAs (e.g., it's too slow), or certain functionality
+working as expected, including when it’s simply down, isn’t meeting
+formal or informal SLAs (e.g., it’s too slow), or certain functionality
 is broken.</p>
 
 <p>What I typically see is that some effort was made to set up this type of
@@ -117,66 +119,84 @@ Finding out that your service is down from your customers is not only
 embarrassing but it also shakes their confidence in you, affects your
 reputation, and may even lead to lost revenue.</p>
 
-<p>The good news is that it doesn't have to be this way. When availability
+<p>The good news is that it doesn’t have to be this way. When availability
 monitoring is set up properly, maintained, and you and your employees
 agree to approach alerts a specific way, you will be able to reap a
-variety of benefits. Here's what I recommend:</p>
+variety of benefits. Here’s what I recommend:</p>
 
 <ol>
-<li><p>First, collaborate with your employees to define who is in the pager
-rotation and the escalation policies. Ask yourself: What happens when
-the on call engineer is overwhelmed and needs backup? What happens when
-the engineer goes on vacation?</p></li>
-<li><p>Next, take inventory of what services you rely on and define an
-internal SLA for them. This does not have to be a super formal process,
-but this inventory and SLA will be helpful for deciding what thresholds
-to set in your monitoring to avoid false positives. Try to see the big
-picture and think about everything such as:</p>
+  <li>
+    <p>First, collaborate with your employees to define who is in the pager
+  rotation and the escalation policies. Ask yourself: What happens when
+  the on call engineer is overwhelmed and needs backup? What happens when
+  the engineer goes on vacation?</p>
+  </li>
+  <li>
+    <p>Next, take inventory of what services you rely on and define an
+  internal SLA for them. This does not have to be a super formal process,
+  but this inventory and SLA will be helpful for deciding what thresholds
+  to set in your monitoring to avoid false positives. Try to see the big
+  picture and think about everything such as:</p>
 
-<ul>
-<li>Servers,</li>
-<li>Self-managed supporting services like web servers, databases, email services,</li>
-<li>Application functionality and features - one strategy I like is exposing a "health check" service that can be checked by the monitoring agent,</li>
-<li>Third party services like remote APIs.</li>
-</ul>
-
-
-<p>Your inventory and SLA definition is a living document; remember to
-keep it up to date!</p></li>
-<li><p>Then set up whatever monitoring package you or your engineers decided
-to use (self-hosted or third party) such as <a href="http://www.nagios.org/">nagios</a>, <a href="http://www.zenoss.com/">Zenoss</a>,
-<a href="http://www.pingdom.com/">Pingdom</a>, or <a href="http://www.copperegg.com/">CopperEgg</a> and have your monitoring configured for
-those services. If you're really good, you'll <em>check your configuration
-into its own source control repository</em>. If you go the self-hosted
-route, it may also be worth having your monitoring server monitored
-externally.  Who's watching the watcher indeed.</p></li>
-<li><p>Think about integrating your monitoring with a pager service such as
-<a href="http://www.pagerduty.com/">PagerDuty</a>. Services like PagerDuty allow you to input your pager
-rotation and then define good rules for how to contact the on call
-engineer and when to escalate should the engineer be unavailable.</p></li>
-<li><p>With improved monitoring and alerting in place, you may want to think
-about giving certain customers "911" access. At a previous company I
-worked at, we had a secret email address our big customers could hit
-which would <em>open a support ticket</em> and then <em>page the on call engineer</em>
-with the ticket number. If you decide to go this route; however, you'll
-want to <em>train your customers</em> when it's appropriate to use this power
-and how to use it most effectively.</p></li>
-<li><p>Adjust alerts and fix problems as you get paged for them. Don't care
-that a particular API goes down during a known maintenance window?
-Schedule the notification policy accordingly.</p></li>
-<li><p>Finally, continue maintaining your inventory and monitoring
-service's configuration. For extra benefit, consider tracking your
-organization's <strong>Mean Time To Respond</strong> (how long it took for engineer to
-acknowledge that something is wrong) and your <strong>Mean Time To Recover</strong>
-(how long it took the engineer to resolve the issue <em>including</em> the Mean
-Time To Respond), your <strong>Mean Time Between Failures</strong> (self-explanatory,
-I hope), and <strong>Percent Availability</strong> (what percent of time your service
-is functional in a given period of time).</p></li>
+    <ul>
+      <li>Servers,</li>
+      <li>Self-managed supporting services like web servers, databases, email services,</li>
+      <li>Application functionality and features - one strategy I like is exposing a “health check” service that can be checked by the monitoring agent,</li>
+      <li>Third party services like remote APIs.</li>
+    </ul>
+  </li>
 </ol>
 
+<p>Your inventory and SLA definition is a living document; remember to
+  keep it up to date!</p>
+
+<ol>
+  <li>Then set up whatever monitoring package you or your engineers decided
+  to use (self-hosted or third party) such as <a href="http://www.nagios.org/">nagios</a>, <a href="http://www.zenoss.com/">Zenoss</a>,
+  <a href="http://www.pingdom.com/">Pingdom</a>, or <a href="http://www.copperegg.com/">CopperEgg</a> and have your monitoring configured for
+  those services. If you’re really good, you’ll <em>check your configuration
+  into its own source control repository</em>. If you go the self-hosted
+  route, it may also be worth having your monitoring server monitored
+  externally.  Who’s watching the watcher indeed. </li>
+</ol>
+
+<ol>
+  <li>Think about integrating your monitoring with a pager service such as
+  <a href="http://www.pagerduty.com/">PagerDuty</a>. Services like PagerDuty allow you to input your pager
+  rotation and then define good rules for how to contact the on call
+  engineer and when to escalate should the engineer be unavailable.</li>
+</ol>
+
+<ol>
+  <li>
+    <p>With improved monitoring and alerting in place, you may want to think
+  about giving certain customers “911” access. At a previous company I
+  worked at, we had a secret email address our big customers could hit
+  which would <em>open a support ticket</em> and then <em>page the on call engineer</em>
+  with the ticket number. If you decide to go this route; however, you’ll
+  want to <em>train your customers</em> when it’s appropriate to use this power
+  and how to use it most effectively.</p>
+  </li>
+  <li>
+    <p>Adjust alerts and fix problems as you get paged for them. Don’t care
+  that a particular API goes down during a known maintenance window?
+  Schedule the notification policy accordingly.</p>
+  </li>
+  <li>
+    <p>Finally, continue maintaining your inventory and monitoring
+  service’s configuration. For extra benefit, consider tracking your
+  organization’s <strong>Mean Time To Respond</strong> (how long it took for engineer to
+  acknowledge that something is wrong) and your <strong>Mean Time To Recover</strong>
+  (how long it took the engineer to resolve the issue <em>including</em> the Mean
+  Time To Respond), your <strong>Mean Time Between Failures</strong> (self-explanatory,
+  I hope), and <strong>Percent Availability</strong> (what percent of time your service
+  is functional in a given period of time). </p>
+  </li>
+</ol>
 
 <p>This concludes the management and non-ops introduction to operations; I
 hope you find this helpful.</p>
+
 ]]></content>
   </entry>
   
@@ -185,14 +205,14 @@ hope you find this helpful.</p>
     <link href="http://www.charleshooper.net/blog/intro-to-ops-config-management/"/>
     <updated>2013-05-05T20:12:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/intro-to-operations-configuration-management</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p><em>I'm writing a series of blog posts for managers and other people
+<p><em>I’m writing a series of blog posts for managers and other people
 without an operations background in order to introduce certain best
 practices regarding Operations. For the rest of the blog posts, please
 visit the <a href="/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
 
-<p>One of the areas I've witnessed early stage startups lacking in is
+<p>One of the areas I’ve witnessed early stage startups lacking in is
 <strong>configuration management</strong>. <em>Configuration management is the process of
 standardizing and enforcing configurations</em>. In other words,
 configuration management is about deciding on a specific configuration
@@ -215,7 +235,7 @@ changed over time and who changed it.</p>
 <p>In many of these early stage startups, there is either very little
 configuration management performed at all, or configuration management
 exists as a series of shell scripts cobbled together to do some
-post-hardware setup. If you're lucky, there exists a document somewhere
+post-hardware setup. If you’re lucky, there exists a document somewhere
 that describes when and how to run these scripts to deploy new services.</p>
 
 <p>The way configuration management works is that engineers create a
@@ -232,13 +252,14 @@ post-host-provisioning step where additional work is performed
 afterwards, such as checking out application code from a source control
 repository.</p>
 
-<p>If you're not using configuration management already then you should
-start now because, frankly, it's never too early. Starting configuration
+<p>If you’re not using configuration management already then you should
+start now because, frankly, it’s never too early. Starting configuration
 management now will not only help your first hired ops/systems engineer
 from working backwards to write these manifests later, but will also
 incur benefits (such as your developers spending less time away from
 shipping value-added code) that will outweigh the initial learning
 curve.</p>
+
 ]]></content>
   </entry>
   
@@ -247,24 +268,24 @@ curve.</p>
     <link href="http://www.charleshooper.net/blog/intro-to-ops-for-startups/"/>
     <updated>2013-05-04T21:37:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/intro-to-operations-for-early-stage-startups</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p>I've spent the last few years in a variety of roles for early stage tech
-startups. While in these roles, I've noticed a pattern: <em>Early stage
-startups don't give much thought to their operations. In particular,
-they typically don't hire anyone specifically for that role because they
+<p>I’ve spent the last few years in a variety of roles for early stage tech
+startups. While in these roles, I’ve noticed a pattern: <em>Early stage
+startups don’t give much thought to their operations. In particular,
+they typically don’t hire anyone specifically for that role because they
 are focused on building their product.</em> In other words, all of their
 technical hires are for developers.</p>
 
 <p>What tends to happen in my experience is that <em>their developers soon
 become overwhelmed</em> (especially after a growth spurt) and are unable to
-spend their time shipping code that's going to improve their product or
-make their company money. Eventually, if they're lucky, management catches
+spend their time shipping code that’s going to improve their product or
+make their company money. Eventually, if they’re lucky, management catches
 onto this and hires their first <strong>systems or operations engineer</strong>.</p>
 
-<p>Because I've had the opportunity to be first-hired systems engineer,
-what I've experienced is the effect of "working backwards" to undo a
-bunch of things that weren't done following best practices while
+<p>Because I’ve had the opportunity to be first-hired systems engineer,
+what I’ve experienced is the effect of “working backwards” to undo a
+bunch of things that weren’t done following best practices while
 simultaneously moving things forward to improve them.</p>
 
 <p>I decided to try to educate whoever would be willing to read this
@@ -273,23 +294,26 @@ not only save their future operations engineers some headache, but will
 also improve their business. Part of this education will happen in the
 form of one-on-one time with these startups. For example, I spent the
 last couple of days sitting in on office hours at a startup accelerator.
-The other part; however, will take place by writing "Intro to..."
+The other part; however, will take place by writing “Intro to…”
 articles and publishing them to a variety of places, including this blog.</p>
 
-<p>Specifically, the topics I've chosen to write about are:</p>
+<p>Specifically, the topics I’ve chosen to write about are:</p>
 
 <ul>
-<li><a href="/blog/intro-to-ops-config-management/">Configuration management</a></li>
-<li><a href="/blog/intro-to-ops-availability-monitoring-alerting/">Availability monitoring</a></li>
-<li><a href="/blog/intro-to-ops-metrics-collection/">Metrics collection</a></li>
-<li>Backups</li>
-<li>Security</li>
-<li>Disaster Recovery</li>
+  <li><a href="/blog/intro-to-ops-config-management/">Configuration management</a></li>
+  <li><a href="/blog/intro-to-ops-availability-monitoring-alerting/">Availability monitoring</a></li>
+  <li><a href="/blog/intro-to-ops-metrics-collection/">Metrics collection</a></li>
+  <li>Backups</li>
+  <li>Security</li>
+  <li>
+    <p>Disaster Recovery</p>
+
+  </li>
 </ul>
 
-
-<p>Over the next week or so, I'll write about each one of these topics and
+<p>Over the next week or so, I’ll write about each one of these topics and
 post them to this blog. I hope people find them helpful!</p>
+
 ]]></content>
   </entry>
   
@@ -298,20 +322,19 @@ post them to this blog. I hope people find them helpful!</p>
     <link href="http://www.charleshooper.net/blog/painless-instrumentation-of-celery-tasks-using-statsd-and-graphite/"/>
     <updated>2012-03-12T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/painless-instrumentation-of-celery-tasks-using-statsd-and-graphite</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p><img src="http://www.charleshooper.net/wp-content/uploads/400px-Steuerstand01-150x150.jpg" title="A Control Station" alt="" />
+<p><img src="http://www.charleshooper.net/wp-content/uploads/400px-Steuerstand01-150x150.jpg" alt="" title="A Control Station" />
 For one of my clients and side projects, we’ve been working hard to build in application-level metrics to our wide portfolio of services. Among these services is one built on top of the <a href="http://celeryproject.org/">Celery distributed task queue</a>. We wanted a system that required as little configuration as possible to publish new metrics. For this reason, we decided on using <a href="http://codeascraft.etsy.com/2011/02/15/measure-anything-measure-everything/">statsd</a> and <a href="http://graphite.wikidot.com/">graphite</a>. Getting statsd and graphite running was the easy part, but we needed a quick, painless way of adding the instrumentation code for the most basic metrics to our Celery-backed service.</p>
 
 <p>For us, those basic metrics consisted of:</p>
 
 <ul>
-<li>Number of times a worker starts on a specific task</li>
-<li>Number of times a task raises an exception</li>
-<li>Number of times a task completes successfully (no exceptions)</li>
-<li>How long each task takes to complete</li>
+  <li>Number of times a worker starts on a specific task</li>
+  <li>Number of times a task raises an exception</li>
+  <li>Number of times a task completes successfully (no exceptions)</li>
+  <li>How long each task takes to complete</li>
 </ul>
-
 
 <p>Since the code to enable these metrics just <em>wraps</em> the code being instrumented it seemed only natural to use a decorator. Below is the code I wrote to do just that.</p>
 
@@ -423,50 +446,53 @@ For one of my clients and side projects, we’ve been working hard to build in a
 <span class='line-number'>106</span>
 <span class='line-number'>107</span>
 <span class='line-number'>108</span>
+<span class='line-number'>109</span>
 </pre></td><td class='code'><pre><code class='py'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot;Decorator to quickly add statsd (graphite) instrumentation to Celery</span>
-</span><span class='line'><span class="s">task functions.&lt;/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="err">”</span><span class="s">&quot;”Decorator to quickly add statsd (graphite) instrumentation to Celery</span>
+</span><span class='line'><span class="n">task</span> <span class="n">functions</span><span class="o">.&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="s">&lt;p&gt;With some slight modification, this could be used to instrument just</span>
-</span><span class='line'><span class="s">about any (non-celery) function and be made abstract enough to customize</span>
-</span><span class='line'><span class="s">metric names, etc.&lt;/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">With</span> <span class="n">some</span> <span class="n">slight</span> <span class="n">modification</span><span class="p">,</span> <span class="n">this</span> <span class="n">could</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">instrument</span> <span class="n">just</span>
+</span><span class='line'><span class="n">about</span> <span class="nb">any</span> <span class="p">(</span><span class="n">non</span><span class="o">-</span><span class="n">celery</span><span class="p">)</span> <span class="n">function</span> <span class="ow">and</span> <span class="n">be</span> <span class="n">made</span> <span class="n">abstract</span> <span class="n">enough</span> <span class="n">to</span> <span class="n">customize</span>
+</span><span class='line'><span class="n">metric</span> <span class="n">names</span><span class="p">,</span> <span class="n">etc</span><span class="o">.&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="s">&lt;p&gt;Stats reported include number of times the task was accepted by a worker</span>
-</span><span class='line'><span class="s">(&lt;code&gt;started&lt;/code&gt;), the number of successes, and the number of times the task</span>
-</span><span class='line'><span class="s">raised an exception. In addition, it also reports how long the task took</span>
-</span><span class='line'><span class="s">to complete. Usage:&lt;/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Stats</span> <span class="n">reported</span> <span class="n">include</span> <span class="n">number</span> <span class="n">of</span> <span class="n">times</span> <span class="n">the</span> <span class="n">task</span> <span class="n">was</span> <span class="n">accepted</span> <span class="n">by</span> <span class="n">a</span> <span class="n">worker</span>
+</span><span class='line'><span class="p">(</span><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">started</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span><span class="p">),</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">successes</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">times</span> <span class="n">the</span> <span class="n">task</span>
+</span><span class='line'><span class="n">raised</span> <span class="n">an</span> <span class="n">exception</span><span class="o">.</span> <span class="n">In</span> <span class="n">addition</span><span class="p">,</span> <span class="n">it</span> <span class="n">also</span> <span class="n">reports</span> <span class="n">how</span> <span class="nb">long</span> <span class="n">the</span> <span class="n">task</span> <span class="n">took</span>
+</span><span class='line'><span class="n">to</span> <span class="n">complete</span><span class="o">.</span> <span class="n">Usage</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="s">&lt;blockquote&gt;&lt;blockquote&gt;&lt;blockquote&gt;&lt;p&gt;@task</span>
-</span><span class='line'><span class="s">@instrument_task</span>
-</span><span class='line'><span class="s">def mytask():&lt;/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">blockquote</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="n">blockquote</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">blockquote</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@task</span>
+</span><span class='line'><span class="nd">@instrument_task</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">mytask</span><span class="p">():</span>
+</span><span class='line'>    <span class="c"># do stuff</span>
+</span><span class='line'>    <span class="k">pass</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;/</span><span class="n">blockquote</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;/</span><span class="n">blockquote</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">blockquote</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="s">&lt;pre&gt;&lt;code&gt;# do stuff</span>
-</span><span class='line'><span class="s">pass</span>
-</span><span class='line'><span class="s">&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Please</span> <span class="n">note</span> <span class="n">that</span> <span class="n">the</span> <span class="n">order</span> <span class="n">of</span> <span class="n">decorators</span> <span class="ow">is</span> <span class="n">important</span> <span class="n">to</span> <span class="n">Celery</span><span class="o">.</span> <span class="n">See</span>
+</span><span class='line'><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ask</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">celery</span><span class="o">/</span><span class="n">userguide</span><span class="o">/</span><span class="n">tasks</span><span class="o">.</span><span class="n">html</span><span class="c">#decorating-tasks</span>
+</span><span class='line'><span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="s">&lt;p&gt;Please note that the order of decorators is important to Celery. See</span>
-</span><span class='line'><span class="s">http://ask.github.com/celery/userguide/tasks.html#decorating-tasks</span>
-</span><span class='line'><span class="s">for more information.&lt;/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Uses</span> <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">simple_decorator</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span> <span class="kn">from</span>
+</span><span class='line'><span class="nn">http</span><span class="p">:</span><span class="o">//</span><span class="n">wiki</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">moin</span><span class="o">/</span><span class="n">PythonDecoratorLibrary</span><span class="c">#Property_Definition&lt;/p&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="s">&lt;p&gt;Uses &lt;code&gt;simple_decorator&lt;/code&gt; from</span>
-</span><span class='line'><span class="s">http://wiki.python.org/moin/PythonDecoratorLibrary#Property_Definition&lt;/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Limitation</span><span class="p">:</span> <span class="n">Does</span> <span class="ow">not</span> <span class="n">readily</span> <span class="n">work</span> <span class="n">on</span> <span class="n">subclasses</span> <span class="n">of</span> <span class="n">celery</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">Task</span>
+</span><span class='line'><span class="n">because</span> <span class="n">it</span> <span class="n">always</span> <span class="n">reports</span> <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">task_name</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span> <span class="k">as</span> <span class="err">‘</span><span class="n">run</span><span class="err">’</span>
+</span><span class='line'><span class="err">“””</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="s">&lt;p&gt;Limitation: Does not readily work on subclasses of celery.tasks.Task</span>
-</span><span class='line'><span class="s">because it always reports &lt;code&gt;task_name&lt;/code&gt; as &#39;run&#39;</span>
-</span><span class='line'><span class="s">&quot;&quot;&quot;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">statsd</span> <span class="n">instrumentation</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span> <span class="nb">id</span><span class="o">=</span><span class="s">&quot;statsd-instrumentation&quot;</span><span class="o">&gt;</span><span class="n">statsd</span> <span class="n">instrumentation</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">current_app</span>
 </span><span class='line'><span class="kn">import</span> <span class="nn">statsd</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@simple_decorator</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">instrument_task</span><span class="p">(</span><span class="n">func</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">instrument_task</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+</span><span class='line'>    <span class="err">“</span><span class="s">&quot;”Wraps a celery task with statsd instrumentation code”””&lt;/p&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot;Wraps a celery task with statsd instrumentation code&quot;&quot;&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">instrument_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">instrument_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 </span><span class='line'>    <span class="n">stats_conn</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span>
 </span><span class='line'>        <span class="n">host</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="s">&#39;STATSD_HOST&#39;</span><span class="p">],</span>
 </span><span class='line'>        <span class="n">port</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="s">&#39;STATSD_PORT&#39;</span><span class="p">],</span>
@@ -500,38 +526,38 @@ For one of my clients and side projects, we’ve been working hard to build in a
 </span><span class='line'><span class="k">return</span> <span class="n">instrument_wrapper</span>
 </span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">simple_decorator</span><span class="p">(</span><span class="n">decorator</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">simple_decorator</span><span class="p">(</span><span class="n">decorator</span><span class="p">):</span>
+</span><span class='line'>    <span class="err">“</span><span class="s">&quot;”Borrowed from:</span>
+</span><span class='line'>    <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">wiki</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">moin</span><span class="o">/</span><span class="n">PythonDecoratorLibrary</span><span class="c">#Property_Definition&lt;/p&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot;Borrowed from:</span>
-</span><span class='line'><span class="s">http://wiki.python.org/moin/PythonDecoratorLibrary#Property_Definition</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">Original</span> <span class="n">docstring</span><span class="p">:</span>
+</span><span class='line'><span class="n">This</span> <span class="n">decorator</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">turn</span> <span class="n">simple</span> <span class="n">functions</span>
+</span><span class='line'><span class="n">into</span> <span class="n">well</span><span class="o">-</span><span class="n">behaved</span> <span class="n">decorators</span><span class="p">,</span> <span class="n">so</span> <span class="nb">long</span> <span class="k">as</span> <span class="n">the</span> <span class="n">decorators</span>
+</span><span class='line'><span class="n">are</span> <span class="n">fairly</span> <span class="n">simple</span><span class="o">.</span> <span class="n">If</span> <span class="n">a</span> <span class="n">decorator</span> <span class="n">expects</span> <span class="n">a</span> <span class="n">function</span> <span class="ow">and</span>
+</span><span class='line'><span class="n">returns</span> <span class="n">a</span> <span class="n">function</span> <span class="p">(</span><span class="n">no</span> <span class="n">descriptors</span><span class="p">),</span> <span class="ow">and</span> <span class="k">if</span> <span class="n">it</span> <span class="n">doesn</span><span class="s">&#39;t</span>
+</span><span class='line'><span class="n">modify</span> <span class="n">function</span> <span class="n">attributes</span> <span class="ow">or</span> <span class="n">docstring</span><span class="p">,</span> <span class="n">then</span> <span class="n">it</span> <span class="ow">is</span>
+</span><span class='line'><span class="n">eligible</span> <span class="n">to</span> <span class="n">use</span> <span class="n">this</span><span class="o">.</span> <span class="n">Simply</span> <span class="nb">apply</span> <span class="nd">@simple_decorator</span> <span class="n">to</span>
+</span><span class='line'><span class="n">your</span> <span class="n">decorator</span> <span class="ow">and</span> <span class="n">it</span> <span class="n">will</span> <span class="n">automatically</span> <span class="n">preserve</span> <span class="n">the</span>
+</span><span class='line'><span class="n">docstring</span> <span class="ow">and</span> <span class="n">function</span> <span class="n">attributes</span> <span class="n">of</span> <span class="n">functions</span> <span class="n">to</span> <span class="n">which</span>
+</span><span class='line'><span class="n">it</span> <span class="ow">is</span> <span class="n">applied</span><span class="o">.</span><span class="s">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="s">def new_decorator(f):</span>
+</span><span class='line'><span class="s">    g = decorator(f)</span>
+</span><span class='line'><span class="s">    g.__name__ = f.__name__</span>
+</span><span class='line'><span class="s">    g.__module__ = f.__module__ # or celery throws a fit</span>
+</span><span class='line'><span class="s">    g.__doc__ = f.__doc__</span>
+</span><span class='line'><span class="s">    g.__dict__.update(f.__dict__)</span>
+</span><span class='line'><span class="s">    return g</span>
+</span><span class='line'><span class="s"># Now a few lines needed to make simple_decorator itself</span>
+</span><span class='line'><span class="s"># be a well-behaved decorator.</span>
+</span><span class='line'><span class="s">new_decorator.__name__ = decorator.__name__</span>
+</span><span class='line'><span class="s">new_decorator.__doc__ = decorator.__doc__</span>
+</span><span class='line'><span class="s">new_decorator.__dict__.update(decorator.__dict__)</span>
+</span><span class='line'><span class="s">return new_decorator</span>
+</span><span class='line'><span class="s">&lt;/code&gt;&lt;/pre&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="s">Original docstring:</span>
-</span><span class='line'><span class="s">This decorator can be used to turn simple functions</span>
-</span><span class='line'><span class="s">into well-behaved decorators, so long as the decorators</span>
-</span><span class='line'><span class="s">are fairly simple. If a decorator expects a function and</span>
-</span><span class='line'><span class="s">returns a function (no descriptors), and if it doesn&#39;t</span>
-</span><span class='line'><span class="s">modify function attributes or docstring, then it is</span>
-</span><span class='line'><span class="s">eligible to use this. Simply apply @simple_decorator to</span>
-</span><span class='line'><span class="s">your decorator and it will automatically preserve the</span>
-</span><span class='line'><span class="s">docstring and function attributes of functions to which</span>
-</span><span class='line'><span class="s">it is applied.&quot;&quot;&quot;</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">new_decorator</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">g</span> <span class="o">=</span> <span class="n">decorator</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__name__</span>
-</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">__module__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__module__</span> <span class="c"># or celery throws a fit</span>
-</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__doc__</span>
-</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">g</span>
-</span><span class='line'><span class="c"># Now a few lines needed to make simple_decorator itself</span>
-</span><span class='line'><span class="c"># be a well-behaved decorator.</span>
-</span><span class='line'><span class="n">new_decorator</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="n">decorator</span><span class="o">.</span><span class="n">__name__</span>
-</span><span class='line'><span class="n">new_decorator</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">decorator</span><span class="o">.</span><span class="n">__doc__</span>
-</span><span class='line'><span class="n">new_decorator</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">decorator</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
-</span><span class='line'><span class="k">return</span> <span class="n">new_decorator</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="s">&lt;p&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
 ]]></content>
   </entry>
   

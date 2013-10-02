@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="I&#8217;m writing a series of blog posts for managers and other people
+  <meta name="description" content="I’m writing a series of blog posts for managers and other people
 without an operations background in order to introduce certain best
 practices &hellip;">
   
@@ -111,18 +111,18 @@ practices &hellip;">
   </header>
 
 
-<div class="entry-content"><h1></h1>
+<div class="entry-content"><h1 id="section"></h1>
 
-<p><em>I&#8217;m writing a series of blog posts for managers and other people
+<p><em>I’m writing a series of blog posts for managers and other people
 without an operations background in order to introduce certain best
 practices regarding Operations. For the rest of the blog posts, please
 visit the <a href="/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
 
-<p>Another area I&#8217;ve seen alot of early stage startups lacking in is
+<p>Another area I’ve seen alot of early stage startups lacking in is
 <strong>availability monitoring and alerting</strong>. The essence of availability
 monitoring and alerting is being notified when your service is not
-working as expected, including when it&#8217;s simply down, isn&#8217;t meeting
-formal or informal SLAs (e.g., it&#8217;s too slow), or certain functionality
+working as expected, including when it’s simply down, isn’t meeting
+formal or informal SLAs (e.g., it’s too slow), or certain functionality
 is broken.</p>
 
 <p>What I typically see is that some effort was made to set up this type of
@@ -138,66 +138,84 @@ Finding out that your service is down from your customers is not only
 embarrassing but it also shakes their confidence in you, affects your
 reputation, and may even lead to lost revenue.</p>
 
-<p>The good news is that it doesn&#8217;t have to be this way. When availability
+<p>The good news is that it doesn’t have to be this way. When availability
 monitoring is set up properly, maintained, and you and your employees
 agree to approach alerts a specific way, you will be able to reap a
-variety of benefits. Here&#8217;s what I recommend:</p>
+variety of benefits. Here’s what I recommend:</p>
 
 <ol>
-<li><p>First, collaborate with your employees to define who is in the pager
-rotation and the escalation policies. Ask yourself: What happens when
-the on call engineer is overwhelmed and needs backup? What happens when
-the engineer goes on vacation?</p></li>
-<li><p>Next, take inventory of what services you rely on and define an
-internal SLA for them. This does not have to be a super formal process,
-but this inventory and SLA will be helpful for deciding what thresholds
-to set in your monitoring to avoid false positives. Try to see the big
-picture and think about everything such as:</p>
+  <li>
+    <p>First, collaborate with your employees to define who is in the pager
+  rotation and the escalation policies. Ask yourself: What happens when
+  the on call engineer is overwhelmed and needs backup? What happens when
+  the engineer goes on vacation?</p>
+  </li>
+  <li>
+    <p>Next, take inventory of what services you rely on and define an
+  internal SLA for them. This does not have to be a super formal process,
+  but this inventory and SLA will be helpful for deciding what thresholds
+  to set in your monitoring to avoid false positives. Try to see the big
+  picture and think about everything such as:</p>
 
-<ul>
-<li>Servers,</li>
-<li>Self-managed supporting services like web servers, databases, email services,</li>
-<li>Application functionality and features - one strategy I like is exposing a &#8220;health check&#8221; service that can be checked by the monitoring agent,</li>
-<li>Third party services like remote APIs.</li>
-</ul>
-
-
-<p>Your inventory and SLA definition is a living document; remember to
-keep it up to date!</p></li>
-<li><p>Then set up whatever monitoring package you or your engineers decided
-to use (self-hosted or third party) such as <a href="http://www.nagios.org/">nagios</a>, <a href="http://www.zenoss.com/">Zenoss</a>,
-<a href="http://www.pingdom.com/">Pingdom</a>, or <a href="http://www.copperegg.com/">CopperEgg</a> and have your monitoring configured for
-those services. If you&#8217;re really good, you&#8217;ll <em>check your configuration
-into its own source control repository</em>. If you go the self-hosted
-route, it may also be worth having your monitoring server monitored
-externally.  Who&#8217;s watching the watcher indeed.</p></li>
-<li><p>Think about integrating your monitoring with a pager service such as
-<a href="http://www.pagerduty.com/">PagerDuty</a>. Services like PagerDuty allow you to input your pager
-rotation and then define good rules for how to contact the on call
-engineer and when to escalate should the engineer be unavailable.</p></li>
-<li><p>With improved monitoring and alerting in place, you may want to think
-about giving certain customers &#8220;911&#8221; access. At a previous company I
-worked at, we had a secret email address our big customers could hit
-which would <em>open a support ticket</em> and then <em>page the on call engineer</em>
-with the ticket number. If you decide to go this route; however, you&#8217;ll
-want to <em>train your customers</em> when it&#8217;s appropriate to use this power
-and how to use it most effectively.</p></li>
-<li><p>Adjust alerts and fix problems as you get paged for them. Don&#8217;t care
-that a particular API goes down during a known maintenance window?
-Schedule the notification policy accordingly.</p></li>
-<li><p>Finally, continue maintaining your inventory and monitoring
-service&#8217;s configuration. For extra benefit, consider tracking your
-organization&#8217;s <strong>Mean Time To Respond</strong> (how long it took for engineer to
-acknowledge that something is wrong) and your <strong>Mean Time To Recover</strong>
-(how long it took the engineer to resolve the issue <em>including</em> the Mean
-Time To Respond), your <strong>Mean Time Between Failures</strong> (self-explanatory,
-I hope), and <strong>Percent Availability</strong> (what percent of time your service
-is functional in a given period of time).</p></li>
+    <ul>
+      <li>Servers,</li>
+      <li>Self-managed supporting services like web servers, databases, email services,</li>
+      <li>Application functionality and features - one strategy I like is exposing a “health check” service that can be checked by the monitoring agent,</li>
+      <li>Third party services like remote APIs.</li>
+    </ul>
+  </li>
 </ol>
 
+<p>Your inventory and SLA definition is a living document; remember to
+  keep it up to date!</p>
+
+<ol>
+  <li>Then set up whatever monitoring package you or your engineers decided
+  to use (self-hosted or third party) such as <a href="http://www.nagios.org/">nagios</a>, <a href="http://www.zenoss.com/">Zenoss</a>,
+  <a href="http://www.pingdom.com/">Pingdom</a>, or <a href="http://www.copperegg.com/">CopperEgg</a> and have your monitoring configured for
+  those services. If you’re really good, you’ll <em>check your configuration
+  into its own source control repository</em>. If you go the self-hosted
+  route, it may also be worth having your monitoring server monitored
+  externally.  Who’s watching the watcher indeed. </li>
+</ol>
+
+<ol>
+  <li>Think about integrating your monitoring with a pager service such as
+  <a href="http://www.pagerduty.com/">PagerDuty</a>. Services like PagerDuty allow you to input your pager
+  rotation and then define good rules for how to contact the on call
+  engineer and when to escalate should the engineer be unavailable.</li>
+</ol>
+
+<ol>
+  <li>
+    <p>With improved monitoring and alerting in place, you may want to think
+  about giving certain customers “911” access. At a previous company I
+  worked at, we had a secret email address our big customers could hit
+  which would <em>open a support ticket</em> and then <em>page the on call engineer</em>
+  with the ticket number. If you decide to go this route; however, you’ll
+  want to <em>train your customers</em> when it’s appropriate to use this power
+  and how to use it most effectively.</p>
+  </li>
+  <li>
+    <p>Adjust alerts and fix problems as you get paged for them. Don’t care
+  that a particular API goes down during a known maintenance window?
+  Schedule the notification policy accordingly.</p>
+  </li>
+  <li>
+    <p>Finally, continue maintaining your inventory and monitoring
+  service’s configuration. For extra benefit, consider tracking your
+  organization’s <strong>Mean Time To Respond</strong> (how long it took for engineer to
+  acknowledge that something is wrong) and your <strong>Mean Time To Recover</strong>
+  (how long it took the engineer to resolve the issue <em>including</em> the Mean
+  Time To Respond), your <strong>Mean Time Between Failures</strong> (self-explanatory,
+  I hope), and <strong>Percent Availability</strong> (what percent of time your service
+  is functional in a given period of time). </p>
+  </li>
+</ol>
 
 <p>This concludes the management and non-ops introduction to operations; I
 hope you find this helpful.</p>
+
 </div>
 
 

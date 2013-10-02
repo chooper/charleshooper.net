@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Security | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/security/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-09-25T06:35:41-07:00</updated>
+  <updated>2013-10-02T09:34:58-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -18,45 +18,45 @@
     <link href="http://www.charleshooper.net/blog/my-def-con-21-experience/"/>
     <updated>2013-08-08T10:41:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/my-def-con-21-experience</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p>I've just returned from <a href="https://www.defcon.org/">DEF CON</a> this year and wanted to share my
-experience. I've only been to DEF CON one other time which I believe was
+<p>I’ve just returned from <a href="https://www.defcon.org/">DEF CON</a> this year and wanted to share my
+experience. I’ve only been to DEF CON one other time which I believe was
 DEF CON 16. During DEF CON 16, I mostly stuck to the hallway track and,
-to be perfectly honest, didn't get alot out of it as I mostly hung out
+to be perfectly honest, didn’t get alot out of it as I mostly hung out
 with coworkers.</p>
 
 <p>This time around I went with my good friend Japhy and no one else.</p>
 
-<h2>Logistics</h2>
+<h2 id="logistics">Logistics</h2>
 
 <p>We flew in separately on Thursday and stayed in the Bellagio. We
-initially chose the Bellagio because it was cheaper and we didn't think
+initially chose the Bellagio because it was cheaper and we didn’t think
 a 15 minute walk every day was going to be a big deal. As it turns out,
 the walk itself was fine (even with the 98F weather) but it meant we
 were effectively separated from the conference for most of the day. I
 think the next time I go I would like to stay in the same hotel as the
 conference.</p>
 
-<h2>Thursday</h2>
+<h2 id="thursday">Thursday</h2>
 
 <p>Thursday was my day of travel. The flight was late leaving SFO but this
-isn't unusual as planes to/from SFO are pretty much ever on time it
+isn’t unusual as planes to/from SFO are pretty much ever on time it
 seems. Blame the fog.</p>
 
 <p>Anyways, I arrived mid-afternoon and just hung out around the Bellagio
-since Japhy wasn't in yet. I ate some pho, drank some good bourbon, and
+since Japhy wasn’t in yet. I ate some pho, drank some good bourbon, and
 played some video poker. Eventually, Japhy arrived and we grabbed a beer
 together before turning in.</p>
 
-<h2>Friday</h2>
+<h2 id="friday">Friday</h2>
 
 <p>Friday morning we woke up and went and get our badges. They were pretty
 sweet looking and I was curious about the crypto challenge. There was
 apparently a talk where the badges were explained but I missed that and
 so I mostly chatted with random people about them and compared notes and
-hypothesis. My badge, the Ace of Phones, translated to "in the real
-order the". There was also an XOR gate on it but I never got far enough
+hypothesis. My badge, the Ace of Phones, translated to “in the real
+order the”. There was also an XOR gate on it but I never got far enough
 to know what it was for.</p>
 
 <p>Badges aside, Friday is the day that I went to the most talks.</p>
@@ -67,7 +67,7 @@ would be used by a forensics investigator during their attack. For
 example, an attacker could easily recover and steal files that were
 previously deleted. The talk was good but I felt that the speaker spent
 too much time trying to convince the audience that it was a good idea.
-My personal opinion, and that of the people I've talked to, all seemed
+My personal opinion, and that of the people I’ve talked to, all seemed
 to agree up front that it was a great idea.</p>
 
 <p>After leaving this talk I ended up catching the tail end of
@@ -82,11 +82,11 @@ you access.</p>
 <p>Next I caught the end of <a href="https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Bowne">Evil DoS Attacks and Strong Defenses</a> where
 Matt Prince (CEO of CloudFlare) described some very large DDoS attacks
 and what they looked like. Someone afterwards also showed a variety of
-online banking websites where the "logout" button doesn't actually do
+online banking websites where the “logout” button doesn’t actually do
 anything, leaving users vulnerable.</p>
 
 <p>Immediately following that session, two guys got up and gave their talk
-on <a href="https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Miu">Kill 'em All — DDoS Protection Total Annihilation!</a>. I enjoyed
+on <a href="https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Miu">Kill ‘em All — DDoS Protection Total Annihilation!</a>. I enjoyed
 the format of the talk, where the speakers would describe DDoS
 protection techniques and then how to bypass them. The bottom line is:
 a) look like a real client, b) perform whatever handshakes are necessary
@@ -97,40 +97,46 @@ below where anyone will notice you.</p>
 
 <p>At night, there were a bunch of DEF CON parties. At some point the fire
 alarm went off a few times. A voice came over the intercom shortly after
-stating that they weren't sure <em>why</em> their alarm system entered test
-mode but that "the cause was being investigated." Later, it happened
+stating that they weren’t sure <em>why</em> their alarm system entered test
+mode but that “the cause was being investigated.” Later, it happened
 again and the hallway strobes for the fire alarm stayed on, adding kind
 of a cool effect to the party. Hmm.</p>
 
-<h2>Saturday</h2>
+<h2 id="saturday">Saturday</h2>
 
 <p>On Saturday I only saw two talks.</p>
 
 <ol>
-<li><p>Wireless village - In the wireless village I listened to a Q&amp;A
+  <li>
+    <p>Wireless village - In the wireless village I listened to a Q&amp;A
 session by a pen tester whose expertise was in wireless assessments. My
 favorite quote from this talk was:</p>
 
-<blockquote><p>Q: When you do these wireless assessments, is your goal just to
+    <blockquote>
+      <p>Q: When you do these wireless assessments, is your goal just to
 get onto the network or do you look at wireless devices, such as
 printers, as well?</p>
 
-<p>A: I pulled 700 bank accounts from a financial institution 6 weeks
-ago [during a pen test]. We like printers.</p></blockquote></li>
-<li><p>Skytalks - One of the skytalks I saw the first half of was about "big
-data", the techniques used in analyzing this data, their weaknesses, and
+      <p>A: I pulled 700 bank accounts from a financial institution 6 weeks
+ago [during a pen test]. We like printers.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Skytalks - One of the skytalks I saw the first half of was about “big
+data”, the techniques used in analyzing this data, their weaknesses, and
 how you could use these techniques to stay below the radar so to speak.
-It was interesting but rather abstract and I'm not totally certain how
-to apply that in practice.</p></li>
+It was interesting but rather abstract and I’m not totally certain how
+to apply that in practice.</p>
+  </li>
 </ol>
-
 
 <p>For the rest of the day, I brought my laptop and just kind of tinkered
 with stuff.</p>
 
-<h2>Sunday</h2>
+<h2 id="sunday">Sunday</h2>
 
-<p>I flew home early Sunday morning so I didn't do anything on this day.</p>
+<p>I flew home early Sunday morning so I didn’t do anything on this day.</p>
+
 ]]></content>
   </entry>
   
@@ -139,24 +145,23 @@ with stuff.</p>
     <link href="http://www.charleshooper.net/blog/nesit-hackerspace-break-in/"/>
     <updated>2011-04-23T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/nesit-hackerspace-break-in</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p><a href="http://www.nesit.net/">NESIT, a Connecticut hackerspace</a>, was burglarized Sunday morning between 3:00am and 4:30am and is offering a $500 reward for information leading to the arrest of the burglar. They have released some of their security footage from the burglary. They ask that anyone who recognizes the burglar or has information call them at 1-203-51-HACKS (1-203-514-2257).</p>
 
 <p>Within the first 10 seconds, you see what appears to be a camera in the hallway get covered up by something from behind. Afterwards, you can see someone calmly walking around the inside of the hackerspace for the next hour and a half with a headlamp on. The headlamp turns out to be pretty beneficial for NESIT, because as a Facebook commentator pointed out, you can see that the burglar is roughly as tall as one of the shelves in the space.</p>
 
-<p>What I found most interesting, however, is that around 8 minutes and 30 seconds into the footage you get a pretty nice shot of… cleavage? No, I’m not being a jokester. It <em>appeared </em>to me that the burglar was wearing a low-cut shirt with some type of line up the middle. It looked like cleavage to me and the second opinion of my girlfriend, but NESIT believes that this was actually a shirt that was wrapped around the burglar’s head. <strong>UPDATE</strong>: After a second, closer look at the surveillance footage, I agree with NESIT.</p>
+<p>What I found most interesting, however, is that around 8 minutes and 30 seconds into the footage you get a pretty nice shot of… cleavage? No, I’m not being a jokester. It *appeared *to me that the burglar was wearing a low-cut shirt with some type of line up the middle. It looked like cleavage to me and the second opinion of my girlfriend, but NESIT believes that this was actually a shirt that was wrapped around the burglar’s head. <strong>UPDATE</strong>: After a second, closer look at the surveillance footage, I agree with NESIT.</p>
 
 <p>Despite the security footage being black and white and fairly low in quality, it tells us quite a bit.</p>
 
 <ul>
-<li>The burglar was familiar enough with the location to know about the hallway surveillance camera.</li>
-<li>The burglar was <em>not</em> familiar enough to know about the other cameras inside the hackerspace.</li>
-<li>The burglar was comfortable enough to spend <strong>an hour and a half </strong>walking around and looking through boxes and drawers.</li>
-<li>The burglar’s height is roughly as tall as one of the shelves in the hackerspace. <strong>UPDATE</strong>: I’m told that the height is between 6’0″ and 6’2″.</li>
-<li>The burglar has enough strength to pry off the lock on the door and part of the concrete wall.</li>
+  <li>The burglar was familiar enough with the location to know about the hallway surveillance camera.</li>
+  <li>The burglar was <em>not</em> familiar enough to know about the other cameras inside the hackerspace.</li>
+  <li>The burglar was comfortable enough to spend **an hour and a half **walking around and looking through boxes and drawers.</li>
+  <li>The burglar’s height is roughly as tall as one of the shelves in the hackerspace. <strong>UPDATE</strong>: I’m told that the height is between 6’0″ and 6’2″.</li>
+  <li>The burglar has enough strength to pry off the lock on the door and part of the concrete wall.</li>
 </ul>
-
 
 <p>I sure hope they catch the bad guy.</p>
 ]]></content>
@@ -167,25 +172,25 @@ with stuff.</p>
     <link href="http://www.charleshooper.net/blog/picking-applications-to-audit/"/>
     <updated>2010-12-23T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/picking-applications-to-audit</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>I’m sure almost any programmer will tell you that at some point they felt the need to work on a project but had no idea what to work on. This happens to me, too, even when it comes down to choosing what applications or services I want to audit. With practice, I’ve come up with a pretty good list of categories to choose software from and I would like to share them with you.</p>
 
-<h2>1. Applications or Service You Use</h2>
+<h2 id="applications-or-service-youuse">1. Applications or Service You Use</h2>
 
-<p>This is probably to most obvious way to choose what application or service to audit. However, to me, it’s also one of the hardest. The reason why it is so difficult is because it involves breaking out of your mental “user” mode where you’re just <em>using</em> the application or service. I know that when <em>I’m </em>in “user” mode, I probably am not even fully conscious of the amount of software or services I use every day and how much I rely on them.</p>
+<p>This is probably to most obvious way to choose what application or service to audit. However, to me, it’s also one of the hardest. The reason why it is so difficult is because it involves breaking out of your mental “user” mode where you’re just <em>using</em> the application or service. I know that when *I’m *in “user” mode, I probably am not even fully conscious of the amount of software or services I use every day and how much I rely on them.</p>
 
 <p>The solution, then, is to break out of “user” mode. Once out of “user” mode (and in “audit” or “attack” mode) everything becomes clearer. For example, I recently submitted a vulnerability to a pretty large service provider (I can’t say who yet); was the vulnerability in some back page or a piece of functionality that nobody uses? No, surprisingly, this vulnerability was part of a key piece of functionality that I actually <em>use</em> frequently.</p>
 
-<h2>2. Applications or Services That You “Like” or “Believe In”</h2>
+<h2 id="applications-or-services-thatyou-like-or-believe-in">2. Applications or Services That You “Like” or “Believe In”</h2>
 
 <p>This is more of an extension than the item above, but it’s worth stressing. If there’s an application or service that you think has potential, go ahead and audit it. New applications and services are often full of low-hanging fruit. By auditing these and reporting the vulnerabilities, you are helping to make these applications and services better.</p>
 
-<h2>3. Applications and Services That Make It “Economically Beneficial” to Audit Them</h2>
+<h2 id="applications-and-services-that-make-it-economically-beneficial-to-audit-them">3. Applications and Services That Make It “Economically Beneficial” to Audit Them</h2>
 
 <p>This is a no-brainer. If you’re being offered money to audit an application or service (and the person offering the money has the authority to give you permission to do so,) then this is a pretty good place to start. Google, for example, has a <a href="http://googleonlinesecurity.blogspot.com/2010/11/rewarding-web-application-security.html">Vulnerability Rewards Program</a>.</p>
 
-<h2>Closing</h2>
+<h2 id="closing">Closing</h2>
 
 <p>These are just three of the categories to look for applications or services to audit. It’s certainly not complete as there is a plethora of software out there waiting to be audited, but I hope that this gives you a good head start.</p>
 ]]></content>
@@ -196,67 +201,68 @@ with stuff.</p>
     <link href="http://www.charleshooper.net/blog/so-you-just-received-a-vulnerability-report-now-what/"/>
     <updated>2010-12-22T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/so-you-just-received-a-vulnerability-report-now-what</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>It has come to my attention that there is still at least one group of people that doesn’t know <strong>how to responsibly deal with vulnerability reports</strong>. No, I’m not talking about the security researchers, the blackhats, or the script kiddies. It’s true that there is already alot of  controversy surrounding proper (or responsible) disclosure etiquette, but that doesn’t concern the group I’m referring to right now. I’m talking about the maintainer of the resource that the vulnerability report is for. That means you, project maintainers!</p>
 
-<h2>Before Receiving a Report</h2>
+<h2 id="before-receiving-a-report">Before Receiving a Report</h2>
 
 <p>One of the biggest difficulties I’ve been having lately is finding contact information for a project maintainer or their security contact. On multi-developer projects, there should be at least one person who is responsible for fielding security-related reports that come in. They should have the ability to put fixes for security vulnerabilities on high priority for the developers.</p>
 
 <p>Your “security guy’s” email should be easy to find or guess. For example, Google’s is security@google.com and this address is <a href="http://www.google.com/corporate/security.html">easy to find</a>. You could also achieve this effect by using support/bug report forums, but be sure that any bug or report marked as security-related should be automatically hidden from public view. Regardless of if you decide to use a dedicated email box/alias or support forums for your security reports,  it is most important to make <em>someone</em> responsible for making sure that security reports are reacted to quickly and professionally.</p>
 
-<h2>After Receiving a Report</h2>
+<h2 id="after-receiving-a-report">After Receiving a Report</h2>
 
 <p>As soon as the first human has eyes on the report, it should be assigned to an individual and a confirmation should be sent to the person who provided it. Here’s is one such confirmation:</p>
 
-<blockquote><p>Thank you for reporting this to us! We have opened a security
+<blockquote>
+  <p>Thank you for reporting this to us! We have opened a security
 investigation to track this issue. The case number for your tracking
-is MSRC [XXXX]. XXXX is the Security Program Manger assigned to the case and he will be working with you and the Microsoft.com team to investigate the issue. She will be following up with you shortly.</p></blockquote>
+is MSRC [XXXX]. XXXX is the Security Program Manger assigned to the case and he will be working with you and the Microsoft.com team to investigate the issue. She will be following up with you shortly.</p>
+</blockquote>
 
 <p>This step is super important because many of the people who take the time to report vulnerabilities to the vendor are only just waiting to release the report to the public. You don’t want to still be working on the fix when the news of your project’s security flaw is released.</p>
 
 <p>Once you have a someone assigned to the bug, have them send a brief introduction. I never received my introduction from “XXXX” above, so I sent another email inquiring on the status of the bug. Here is the response:</p>
 
-<blockquote><p>Thank you very much for your message! My name is YYYY and I have taken over this case from XXXX. Earlier this week, the online services team has started testing a fix for the original issue you have reported, and we are currently verifying this, which includes variation testing and a review of the whole page. The added details you have provided to us in the below message will certainly help us in this process, so thanks a lot!</p>
+<blockquote>
+  <p>Thank you very much for your message! My name is YYYY and I have taken over this case from XXXX. Earlier this week, the online services team has started testing a fix for the original issue you have reported, and we are currently verifying this, which includes variation testing and a review of the whole page. The added details you have provided to us in the below message will certainly help us in this process, so thanks a lot!</p>
 
-<p>I will contact you as soon as the fix is deployed, and of course, if you have any further information or questions, please don’t hesitate to let us know.</p></blockquote>
+  <p>I will contact you as soon as the fix is deployed, and of course, if you have any further information or questions, please don’t hesitate to let us know.</p>
+</blockquote>
 
 <p>This email is short, brief, yet contains all the information I would ever want to know. In particular it includes:</p>
 
 <ul>
-<li>An actual person I can continue to provide information to</li>
-<li>The status of the vulnerability/bug</li>
-<li>The next step(s) in their review process</li>
-<li>When I can expect to hear from them next</li>
+  <li>An actual person I can continue to provide information to</li>
+  <li>The status of the vulnerability/bug</li>
+  <li>The next step(s) in their review process</li>
+  <li>When I can expect to hear from them next</li>
 </ul>
-
 
 <p>Just like the MSRC said I would, I heard from them when the fix made it to production. (In case you were wondering, it was 5 calendar days later.) At this point, they made arrangements to acknowledge me on the “Security Researchers Acknowledgment” page. While this is certainly a nice perk, you don’t have to do this.</p>
 
-<h3>A valid question at this point is “How long do I have to fix this vulnerability?”</h3>
+<h3 id="a-valid-question-at-this-point-is-how-long-do-i-have-to-fix-this-vulnerability">A valid question at this point is “How long do I have to fix this vulnerability?”</h3>
 
 <p>It depends, but as the vendor that’s up for you to figure out. If you’re receiving a vulnerability report from a non-public source, then consider yourself lucky. The person reporting the vulnerability likely believes in responsible disclosure (inherent of the fact that you got the report first) and will be willing to negotiate on the timeline. Be honest with this person. I once waited two months to report a minor SQL injection vulnerability in a trivial web application because the (sole) project maintainer was on vacation when I emailed him initially.</p>
 
-<h2>Summary (tl;dr)</h2>
+<h2 id="summary-tldr">Summary (tl;dr)</h2>
 
 <p>Many of the security researchers who will reach out to you believe in responsible (but full) disclosure. That means that your project’s security flaws <em>will</em> make it to the public sooner or later. To ensure the best experience for your users and the preservation of your project’s reputation, you need to handle your vulnerability reports quickly and properly. That means:</p>
 
 <ul>
-<li>Making it easy to find out where to send vulnerability reports to</li>
-<li>Communicating with the source of the report to confirm receipt of their report</li>
-<li>Communicating with the source of the report your intentions for their report
-
-<ul>
-<li>Who did the vulnerability get assigned to?</li>
-<li>What is the status of this vulnerability?</li>
-<li>What are the next steps in the review process for this vulnerability?</li>
-<li>When they can expect to hear from you next</li>
+  <li>Making it easy to find out where to send vulnerability reports to</li>
+  <li>Communicating with the source of the report to confirm receipt of their report</li>
+  <li>Communicating with the source of the report your intentions for their report 
+    <ul>
+      <li>Who did the vulnerability get assigned to?</li>
+      <li>What is the status of this vulnerability?</li>
+      <li>What are the next steps in the review process for this vulnerability?</li>
+      <li>When they can expect to hear from you next</li>
+    </ul>
+  </li>
+  <li>Communicating with the source when you believe the vulnerability is fixed</li>
 </ul>
-</li>
-<li>Communicating with the source when you believe the vulnerability is fixed</li>
-</ul>
-
 
 <p>What is all boils down to is this: React quickly and keep open lines of communication between your project and the security researcher who took the time to report a vulnerability to you. If you do this, you’ll minimize the damage to your user base and your reputation.</p>
 ]]></content>
@@ -267,18 +273,18 @@ is MSRC [XXXX]. XXXX is the Security Program Manger assigned to the case and he 
     <link href="http://www.charleshooper.net/blog/finding-web-vulnerabilities/"/>
     <updated>2010-12-21T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/finding-web-vulnerabilities</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>At the <a href="http://www.nesit.net/">NESIT Hackathon</a> on Saturday, I was talking to a group of people about discovering web vulnerabilities and I was asked “Which scanner or tools do you use?” The absolute shortest answer I can provide is “I don’t use a scanner.” Despite the lack of a vuln scanner in my toolset, I am still able to consistently find vulnerabilities in web applications. Here’s how:</p>
 
 <ol>
-<li>I first begin by <strong>finding or setting up an adequate test environment</strong>. If the project is freely available (aka open source/free software,) I set up a test environment. If the project is not freely available, then I look for a site that uses the platform or application I’m trying to audit. I don’t normally recommend the latter case, but if I’m testing a 3rd party web service then I don’t have any other choice.</li>
-<li>I then <strong>get familiar with the application</strong>. What does it do? What problem does it try to solve? What does a normal use case look like?</li>
-<li>Then I <strong>get really, <em>really</em> familiar with the application</strong>. In this stage, I’m really interested in the lesser-used functionality (such as error handling) and making things break. How does the application handle errors? How verbose are the error messages? Are any pages particularly slower than the others? Where does the application get most of its data? Request variables? Cookies? A database? A third party API?I usually do this step with the <a href="http://getfirebug.com/">Firebug plugin for Firefox</a>. I want to know exactly what parameters are being passed to the application, how those variables are being handled, and if (and how) those variables are being spit back out to the user.</li>
-<li>My secret weapon is not being afraid to <strong>look through the code</strong>, if it’s available. If the code is lengthy and I just want to take a cursory glance at it, I grep for “red flags.” Because most vulnerabilities are the result of unescaped, unsanitized user-input, these red flags are usually connected to user-provided variables. For example, If I’m auditing PHP scripts for vulnerabilities, I look for code referencing the $_GET, $_POST, $_REQUEST, and $_COOKIE variables. This step does wonders for finding Cross-Site Scripting and SQL injection vulnerabilities.</li>
-<li>In very small projects, like WordPress plugins, I’ll <strong>read through each</strong> <strong>file</strong> and try to figure out what story the code is telling. This is very much like reading a short story. I want to know what the application is <em>trying</em> to do.</li>
-<li>I’ll then <strong>read the code more in-depth</strong>. This is akin to analyzing poetry in a Literature class. Things like the actual names of variables and the syntax become much more important here. Now I want to know what the application is <em>actually</em> doing.
-I recently discovered Cross-Site Scripting SQL injection vulnerabilities in an URL field of an application that was <em>trying</em> to escape it’s input. The problem, however, was that the application was validating and sanitizing <em>$url_var</em> when the value of their user-input was <em>$var_url</em>. The combination of the lack of testing and the lack of error reporting allowed this bug to be introduced into production which created XSS and SQL injection vulnerabilities. Being able to read the code helps find other issues such as direct-request (authentication/authorization bypass) vulnerabilities.<br/>
+  <li>I first begin by <strong>finding or setting up an adequate test environment</strong>. If the project is freely available (aka open source/free software,) I set up a test environment. If the project is not freely available, then I look for a site that uses the platform or application I’m trying to audit. I don’t normally recommend the latter case, but if I’m testing a 3rd party web service then I don’t have any other choice.</li>
+  <li>I then <strong>get familiar with the application</strong>. What does it do? What problem does it try to solve? What does a normal use case look like?</li>
+  <li>Then I <strong>get really, <em>really</em> familiar with the application</strong>. In this stage, I’m really interested in the lesser-used functionality (such as error handling) and making things break. How does the application handle errors? How verbose are the error messages? Are any pages particularly slower than the others? Where does the application get most of its data? Request variables? Cookies? A database? A third party API?I usually do this step with the <a href="http://getfirebug.com/">Firebug plugin for Firefox</a>. I want to know exactly what parameters are being passed to the application, how those variables are being handled, and if (and how) those variables are being spit back out to the user.</li>
+  <li>My secret weapon is not being afraid to <strong>look through the code</strong>, if it’s available. If the code is lengthy and I just want to take a cursory glance at it, I grep for “red flags.” Because most vulnerabilities are the result of unescaped, unsanitized user-input, these red flags are usually connected to user-provided variables. For example, If I’m auditing PHP scripts for vulnerabilities, I look for code referencing the $_GET, $_POST, $_REQUEST, and $_COOKIE variables. This step does wonders for finding Cross-Site Scripting and SQL injection vulnerabilities.</li>
+  <li>In very small projects, like WordPress plugins, I’ll <strong>read through each</strong> <strong>file</strong> and try to figure out what story the code is telling. This is very much like reading a short story. I want to know what the application is <em>trying</em> to do.</li>
+  <li>I’ll then <strong>read the code more in-depth</strong>. This is akin to analyzing poetry in a Literature class. Things like the actual names of variables and the syntax become much more important here. Now I want to know what the application is <em>actually</em> doing. 
+I recently discovered Cross-Site Scripting SQL injection vulnerabilities in an URL field of an application that was <em>trying</em> to escape it’s input. The problem, however, was that the application was validating and sanitizing <em>$url_var</em> when the value of their user-input was <em>$var_url</em>. The combination of the lack of testing and the lack of error reporting allowed this bug to be introduced into production which created XSS and SQL injection vulnerabilities. Being able to read the code helps find other issues such as direct-request (authentication/authorization bypass) vulnerabilities.<br />
 I can’t stress bug/vulnerability hunting outside the normal execution paths of any given application. If a blog platform seems pretty solid, try exploiting its dynamically-generated RSS feed. If a 3rd party web-service looks perfect, try exploiting its support forums or its help site in a different language or character set. <strong>Think outside of the box.</strong> That phrase is cliche, but it’s cliche for a reason.</li>
 </ol>
 

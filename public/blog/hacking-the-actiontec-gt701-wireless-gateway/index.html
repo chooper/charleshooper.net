@@ -110,7 +110,7 @@ gateway. There are a couple of other websites out there with the &hellip;">
   </header>
 
 
-<div class="entry-content"><h1></h1>
+<div class="entry-content"><h1 id="section"></h1>
 
 <p><strong>Introduction</strong></p>
 
@@ -136,13 +136,12 @@ to Texas Instruments displaying a serial/UART interface on the AR7
 diagrams, several pins being attached to the board, and due to the
 following ADAM2 variables:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>modetty0        38400,n,8,1,hw  
-</span><span class='line'>modetty1        38400,n,8,1,hw  
-</span><span class='line'>bootserport     tty0  </span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">modetty0        38400,n,8,1,hw  
+</span><span class="line">modetty1        38400,n,8,1,hw  
+</span><span class="line">bootserport     tty0  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><strong>ADAM2</strong></p>
 
@@ -153,81 +152,79 @@ environment variables in flash used during both boot-time and run-time,
 as well as a boot-loader of some sort. We also know that it’s
 responsible for storing the MAC addresses, as found in our mtd dump:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Error: environment variable "maca" not set.  
-</span><span class='line'>Setting default mac address : 00:e0:a0:a6:66:70  </span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">Error: environment variable "maca" not set.  
+</span><span class="line">Setting default mac address : 00:e0:a0:a6:66:70  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The following is a dump of <code>/proc/ticfg/env</code>, which is the <code>/proc</code> interface to ADAM2.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># cat /proc/ticfg/env  
-</span><span class='line'>memsize 0x01000000  
-</span><span class='line'>flashsize       0x00400000  
-</span><span class='line'>modetty0        38400,n,8,1,hw  
-</span><span class='line'>modetty1        38400,n,8,1,hw  
-</span><span class='line'>bootserport     tty0  
-</span><span class='line'>cpufrequency    150000000  
-</span><span class='line'>sysfrequency    125000000  
-</span><span class='line'>bootloaderVersion       0.22.02  
-</span><span class='line'>ProductID       GT701-WG  
-</span><span class='line'>HWRevision      2A  
-</span><span class='line'>SerialNumber    none  
-</span><span class='line'>AEIBootVersion  0.2i  
-</span><span class='line'>my_ipaddress    192.168.0.1  
-</span><span class='line'>prompt  Adam2_AR7DB  
-</span><span class='line'>firstfreeaddress        0x9401d328  
-</span><span class='line'>req_fullrate_freq       125000000  
-</span><span class='line'>maca    00:20:E0:1D:95:F4  
-</span><span class='line'>mtd2    0x90000000,0x90010000  
-</span><span class='line'>mtd1    0x90010000,0x900d0000  
-</span><span class='line'>mtd0    0x900d0000,0x903e0000  
-</span><span class='line'>mtd3    0x903f0000,0x90400000  
-</span><span class='line'>macb    00:20:E0:1D:95:F5  
-</span><span class='line'>macc    00:20:E0:1D:95:F6  
-</span><span class='line'>usb_board_mac   00:20:E0:1D:95:F8  
-</span><span class='line'>usb_rndis_mac   00:20:E0:1D:95:F9  
-</span><span class='line'>mac_ap  00:20:E0:1D:95:F7  
-</span><span class='line'>autoload        1  
-</span><span class='line'>mtd4    0x903e0000,0x903f0000  
-</span><span class='line'>usb_pid 0x6010  
-</span><span class='line'>usb_vid 0x1668  
-</span><span class='line'>man     Actiontec Electronics, Inc.  
-</span><span class='line'>prod    Actiontec USB/Ethernet Home DSL Modem  </span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+</pre></td><td class="code"><pre><code class=""><span class="line"># cat /proc/ticfg/env  
+</span><span class="line">memsize 0x01000000  
+</span><span class="line">flashsize       0x00400000  
+</span><span class="line">modetty0        38400,n,8,1,hw  
+</span><span class="line">modetty1        38400,n,8,1,hw  
+</span><span class="line">bootserport     tty0  
+</span><span class="line">cpufrequency    150000000  
+</span><span class="line">sysfrequency    125000000  
+</span><span class="line">bootloaderVersion       0.22.02  
+</span><span class="line">ProductID       GT701-WG  
+</span><span class="line">HWRevision      2A  
+</span><span class="line">SerialNumber    none  
+</span><span class="line">AEIBootVersion  0.2i  
+</span><span class="line">my_ipaddress    192.168.0.1  
+</span><span class="line">prompt  Adam2_AR7DB  
+</span><span class="line">firstfreeaddress        0x9401d328  
+</span><span class="line">req_fullrate_freq       125000000  
+</span><span class="line">maca    00:20:E0:1D:95:F4  
+</span><span class="line">mtd2    0x90000000,0x90010000  
+</span><span class="line">mtd1    0x90010000,0x900d0000  
+</span><span class="line">mtd0    0x900d0000,0x903e0000  
+</span><span class="line">mtd3    0x903f0000,0x90400000  
+</span><span class="line">macb    00:20:E0:1D:95:F5  
+</span><span class="line">macc    00:20:E0:1D:95:F6  
+</span><span class="line">usb_board_mac   00:20:E0:1D:95:F8  
+</span><span class="line">usb_rndis_mac   00:20:E0:1D:95:F9  
+</span><span class="line">mac_ap  00:20:E0:1D:95:F7  
+</span><span class="line">autoload        1  
+</span><span class="line">mtd4    0x903e0000,0x903f0000  
+</span><span class="line">usb_pid 0x6010  
+</span><span class="line">usb_vid 0x1668  
+</span><span class="line">man     Actiontec Electronics, Inc.  
+</span><span class="line">prod    Actiontec USB/Ethernet Home DSL Modem  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>When you hold down the Reset button during boot, an FTP server is
 spawned on the default port (TCP/21) typically allowing you to flash new
@@ -236,150 +233,144 @@ variables.</p>
 
 <p>The following is a list of commands that the ADAM2 FTP server supports.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>REBOOT          UNSETENV        SETENV          GETENV  
-</span><span class='line'>MEDIA           RETR            TYPE            STOR  
-</span><span class='line'>P@SW            PASV            SYST            PASS  
-</span><span class='line'>USER            PORT            QUIT            ABOR  </span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">REBOOT          UNSETENV        SETENV          GETENV  
+</span><span class="line">MEDIA           RETR            TYPE            STOR  
+</span><span class="line">P@SW            PASV            SYST            PASS  
+</span><span class="line">USER            PORT            QUIT            ABOR  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>When Actiontec’s recovery app is run, it also sends a UDP packet to port
 5035, and then initiates a connection to the FTP port. The following is
 the output of a sniffed connection of a typical firmware upgrade.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>UDP broadcast port 5035: (16 bytes)  
-</span><span class='line'>0x00 0x00 0x16 0x02 0x01 0x00 0x00 0x00  
-</span><span class='line'>0xc0 0xa8 0x00 0x01 0x00 0x00 0x00 0x00  
-</span><span class='line'>
-</span><span class='line'>UDP response from modem to port 5035: (16 bytes)  
-</span><span class='line'>0x00 0x00 0x16 0x02 0x02 0x00 0x00 0x00  
-</span><span class='line'>0x01 0x00 0xa8 0xc0 0x00 0x00 0x00 0x00  
-</span><span class='line'>  
-</span><span class='line'>220 ADAM2 FTP Server ready.  
-</span><span class='line'>USER adam2  
-</span><span class='line'>331 Password required for adam2.  
-</span><span class='line'>PASS adam2  
-</span><span class='line'>230 User adam2 successfully logged in.  
-</span><span class='line'>TYPE I  
-</span><span class='line'>200 Type set to I.  
-</span><span class='line'>MEDIA FLSH  
-</span><span class='line'>200 Media set to FLSH.  
-</span><span class='line'>PORT 192,168,0,102,130,11  
-</span><span class='line'>200 Port command successful.  
-</span><span class='line'>STOR nsp.ar7wrd.squashfs.img mtd0  
-</span><span class='line'>150 Opening BINARY mode data connection for file transfer.  
-</span><span class='line'>226 Transfer complete.  
-</span><span class='line'>TYPE I  
-</span><span class='line'>200 Type set to I.  
-</span><span class='line'>MEDIA FLSH  
-</span><span class='line'>200 Media set to FLSH.  
-</span><span class='line'>PORT 192,168,0,102,130,12  
-</span><span class='line'>200 Port command successful.  
-</span><span class='line'>STOR ram_zimage_pad.ar7wrd.nsp.squashfs.bin mtd1  
-</span><span class='line'>150 Opening BINARY mode data connection for file transfer.  
-</span><span class='line'>226 Transfer complete.  
-</span><span class='line'>TYPE I  
-</span><span class='line'>200 Type set to I.  
-</span><span class='line'>MEDIA FLSH  
-</span><span class='line'>200 Media set to FLSH.  
-</span><span class='line'>PORT 192,168,0,102,130,13  
-</span><span class='line'>200 Port command successful.  
-</span><span class='line'>STOR config.xml mtd3  
-</span><span class='line'>150 Opening BINARY mode data connection for file transfer.  
-</span><span class='line'>226 Transfer complete.  
-</span><span class='line'>REBOOT  
-</span><span class='line'>221-Thank you for using the FTP service on ADAM2.  
-</span><span class='line'>221 Goodbye.  
-</span><span class='line'>QUIT  </span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">UDP broadcast port 5035: (16 bytes)  
+</span><span class="line">0x00 0x00 0x16 0x02 0x01 0x00 0x00 0x00  
+</span><span class="line">0xc0 0xa8 0x00 0x01 0x00 0x00 0x00 0x00  
+</span><span class="line">
+</span><span class="line">UDP response from modem to port 5035: (16 bytes)  
+</span><span class="line">0x00 0x00 0x16 0x02 0x02 0x00 0x00 0x00  
+</span><span class="line">0x01 0x00 0xa8 0xc0 0x00 0x00 0x00 0x00  
+</span><span class="line">  
+</span><span class="line">220 ADAM2 FTP Server ready.  
+</span><span class="line">USER adam2  
+</span><span class="line">331 Password required for adam2.  
+</span><span class="line">PASS adam2  
+</span><span class="line">230 User adam2 successfully logged in.  
+</span><span class="line">TYPE I  
+</span><span class="line">200 Type set to I.  
+</span><span class="line">MEDIA FLSH  
+</span><span class="line">200 Media set to FLSH.  
+</span><span class="line">PORT 192,168,0,102,130,11  
+</span><span class="line">200 Port command successful.  
+</span><span class="line">STOR nsp.ar7wrd.squashfs.img mtd0  
+</span><span class="line">150 Opening BINARY mode data connection for file transfer.  
+</span><span class="line">226 Transfer complete.  
+</span><span class="line">TYPE I  
+</span><span class="line">200 Type set to I.  
+</span><span class="line">MEDIA FLSH  
+</span><span class="line">200 Media set to FLSH.  
+</span><span class="line">PORT 192,168,0,102,130,12  
+</span><span class="line">200 Port command successful.  
+</span><span class="line">STOR ram_zimage_pad.ar7wrd.nsp.squashfs.bin mtd1  
+</span><span class="line">150 Opening BINARY mode data connection for file transfer.  
+</span><span class="line">226 Transfer complete.  
+</span><span class="line">TYPE I  
+</span><span class="line">200 Type set to I.  
+</span><span class="line">MEDIA FLSH  
+</span><span class="line">200 Media set to FLSH.  
+</span><span class="line">PORT 192,168,0,102,130,13  
+</span><span class="line">200 Port command successful.  
+</span><span class="line">STOR config.xml mtd3  
+</span><span class="line">150 Opening BINARY mode data connection for file transfer.  
+</span><span class="line">226 Transfer complete.  
+</span><span class="line">REBOOT  
+</span><span class="line">221-Thank you for using the FTP service on ADAM2.  
+</span><span class="line">221 Goodbye.  
+</span><span class="line">QUIT  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The Actiontec GT701′s MTD blocks are set up as follows:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mtd0            3,136K     Root (SquashFS - compressed filesystem)  
-</span><span class='line'>mtd1            768K       Kernel  
-</span><span class='line'>mtd2            64K        ADAM2  
-</span><span class='line'>mtd3            64K        config.xml  
-</span><span class='line'>mtd4            64K        unknown/unused  </span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">mtd0            3,136K     Root (SquashFS - compressed filesystem)  
+</span><span class="line">mtd1            768K       Kernel  
+</span><span class="line">mtd2            64K        ADAM2  
+</span><span class="line">mtd3            64K        config.xml  
+</span><span class="line">mtd4            64K        unknown/unused  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>We’re not too sure what else it is capable of, but there are some hints
 of it being able to boot off the network (DHCP,) and/or booting
 specified images. Here are some ADAM2 commands, though we haven’t
 actually been able to test these yet:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>fixenv         Defragment for Env. space  
-</span><span class='line'>unsetenv       Unsets the Env. variable   
-</span><span class='line'>setenv         Sets Env. variable  with a value   
-</span><span class='line'>printenv       Displays Env. Variables  
-</span><span class='line'>erase          Erase Flash except Adam2 Kernel and Env space  
-</span><span class='line'>setmfreq       Configures/dumps the system and cpu frequencies  
-</span><span class='line'>memop          Memory Optimization  
-</span><span class='line'>info           Displays board information  
-</span><span class='line'>h/help         Displays the commands supported  </span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">fixenv         Defragment for Env. space  
+</span><span class="line">unsetenv       Unsets the Env. variable   
+</span><span class="line">setenv         Sets Env. variable  with a value   
+</span><span class="line">printenv       Displays Env. Variables  
+</span><span class="line">erase          Erase Flash except Adam2 Kernel and Env space  
+</span><span class="line">setmfreq       Configures/dumps the system and cpu frequencies  
+</span><span class="line">memop          Memory Optimization  
+</span><span class="line">info           Displays board information  
+</span><span class="line">h/help         Displays the commands supported  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>There are others, but some of the command names didn’t show up, only the
 descriptions, and we don’t have a console hooked up to see them for
@@ -392,9 +383,8 @@ ATM, SquashFS, and pre-empt (not enabled.) The kernel is provided by
 MontaVista and is believed to be the MontaVista Carrier Grade Linux
 kernel version 2.1.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Linux version 2.4.17\_mvl21-malta-mips\_fp_le () (gcc version 2.95.3 20010315 (release/MontaVista)) #24 Fri Jul 16 13:22:25 PDT 2004</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">Linux version 2.4.17\_mvl21-malta-mips\_fp_le () (gcc version 2.95.3 20010315 (release/MontaVista)) #24 Fri Jul 16 13:22:25 PDT 2004</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Along with the kernel, the GT701 also runs on top of Busybox 0.61.pre
 with uClibc libraries (version 0.9.19.) The root filesystem uses
@@ -409,50 +399,43 @@ user-land tools. Once this is complete your first step would be to
 either extract <code>nsp.ar7wrd.squashfs.img</code> from the recovery tool, or do
 something similar to the following (while running a tftp server):</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># dd if=/dev/mtdblock/0 of=/var/mtd0  
-</span><span class='line'>6272 0 records in  
-</span><span class='line'>6272 0 records out  
-</span><span class='line'># tftp -p -l /var/mtd0 -p mtd0.img</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line"># dd if=/dev/mtdblock/0 of=/var/mtd0  
+</span><span class="line">6272 0 records in  
+</span><span class="line">6272 0 records out  
+</span><span class="line"># tftp -p -l /var/mtd0 -p mtd0.img</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>This will give you a mountable SquashFS image wherever you you placed
 your tftp root. In order to to write to it though, you will need to copy
 a mounted SquashFS directory to a non-SquashFS directory as follows:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># mkdir temp fs  
-</span><span class='line'># mount -o loop -t squashfs mtd0.img temp/  
-</span><span class='line'># cp -R temp/ fs/  </span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line"># mkdir temp fs  
+</span><span class="line"># mount -o loop -t squashfs mtd0.img temp/  
+</span><span class="line"># cp -R temp/ fs/  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>And you now have a write-able directory to edit/delete or whatever else
 may please you. Re-creating the image is just as easy:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># mksquashfs target.old/ target.img -noappend -check_data  
-</span><span class='line'>Creating little endian filesystem on target.img, block size 32768.  
-</span><span class='line'>  
-</span><span class='line'>Little endian filesystem, data block size 32768, compressed data, compressed metadata  
-</span><span class='line'>Filesystem size 1897.99 Kbytes (1.85 Mbytes)  
-</span><span class='line'>33.35% of uncompressed filesystem size (5691.04 Kbytes)  
-</span><span class='line'>--- Output cut ---  </span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class=""><span class="line"># mksquashfs target.old/ target.img -noappend -check_data  
+</span><span class="line">Creating little endian filesystem on target.img, block size 32768.  
+</span><span class="line">  
+</span><span class="line">Little endian filesystem, data block size 32768, compressed data, compressed metadata  
+</span><span class="line">Filesystem size 1897.99 Kbytes (1.85 Mbytes)  
+</span><span class="line">33.35% of uncompressed filesystem size (5691.04 Kbytes)  
+</span><span class="line">--- Output cut ---  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>There are two things to keep in mind while building filesystem images.
 The first is that the GT701 can only STORE 3,136KB (compressed) on the
@@ -478,19 +461,16 @@ happens to become corrupted, it will repopulate the block with
 
 <p>The list of configuration programs is as follows:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cm_pc             Started at boot, stdout is /dev/tts/0,starts cm_logic  and cm_monitor  
-</span><span class='line'>cm_logic          Monitors and re-populates mtd3  
-</span><span class='line'>cm_monitor        ? ... Not exactly sure.  
-</span><span class='line'>cm_cli            Used to perform the actual updating of the config files.  
-</span><span class='line'>webcm             Handles web-based configuration changes, sends them off  to cm_cli</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">cm_pc             Started at boot, stdout is /dev/tts/0,starts cm_logic  and cm_monitor  
+</span><span class="line">cm_logic          Monitors and re-populates mtd3  
+</span><span class="line">cm_monitor        ? ... Not exactly sure.  
+</span><span class="line">cm_cli            Used to perform the actual updating of the config files.  
+</span><span class="line">webcm             Handles web-based configuration changes, sends them off  to cm_cli</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Webcm is used in conjunction with <code>thttpd</code> to provide a small, yet
 working, web-based interface to allow you to make changes to your
@@ -523,6 +503,7 @@ squashFS 1.x images and the base Linux system is run on BusyBox with the
 uClibc libraries. If one were to set up a cross-compile environment and
 use the squashFS tools they could generate new firmware images with
 great ease.</p>
+
 </div>
 
 

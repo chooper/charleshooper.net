@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Networking | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/networking/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-09-25T06:35:41-07:00</updated>
+  <updated>2013-10-02T09:34:58-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -18,9 +18,9 @@
     <link href="http://www.charleshooper.net/blog/link-aggregation-on-cisco-catalysts-foundry-switches/"/>
     <updated>2009-12-04T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/link-aggregation-on-cisco-catalysts-foundry-switches</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p>LACP, or <strong>Link Aggregation Control Protocol</strong>, allows you to configure multiple ethernet ports to act as a single device. This is sometimes referred to as <strong>channel bonding</strong> or <strong>trunking</strong>. Link Aggregation provides several benefits: <em>Increased bandwidth</em>, <em>load balancing</em>, and allows you to create <em>redundant ethernet links</em>. If a link in your ethernet channel goes down, the switches, routers, or servers you have configured to use LACP will automatically fail over to the links that are still up and remain connected. With the right hardware and the right firmware, setting this up is very simple.
+<p>LACP, or <strong>Link Aggregation Control Protocol</strong>, allows you to configure multiple ethernet ports to act as a single device. This is sometimes referred to as <strong>channel bonding</strong> or <strong>trunking</strong>. Link Aggregation provides several benefits: <em>Increased bandwidth</em>, <em>load balancing</em>, and allows you to create <em>redundant ethernet links</em>. If a link in your ethernet channel goes down, the switches, routers, or servers you have configured to use LACP will automatically fail over to the links that are still up and remain connected. With the right hardware and the right firmware, setting this up is very simple. 
 On a Cisco Catalyst switch running IOS, once logged in, you will need to perform the following steps:</p>
 
 <p><code>
@@ -68,6 +68,7 @@ bond ports 1 &amp; 2 — but it does mean that you can’t bond ports 3 &amp; 4.
 *   <a href="http://www.cisco.com/en/US/docs/switches/lan/catalyst3550/software/release/12.1_13_ea1/configuration/guide/swethchl.html#wp1033981">Configuring EtherChannels on the Cisco Catalyst 3550</a>
 *   <a href="http://www.foundrynetworks.co.jp/services/documentation/sribcg/Trunking.html">Foundry Switch and Router Installation and Basic Configuration — Dynamic Link Aggregation</a>
 *   <a href="http://en.wikipedia.org/wiki/IEEE_802.3ad">Link aggregation article on Wikipedia</a></p>
+
 ]]></content>
   </entry>
   
@@ -76,7 +77,7 @@ bond ports 1 &amp; 2 — but it does mean that you can’t bond ports 3 &amp; 4.
     <link href="http://www.charleshooper.net/blog/link-aggregation-on-a-redhat-centos-server-and-a-cisco-catalyst-switch/"/>
     <updated>2009-12-04T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/link-aggregation-on-a-redhat-centos-server-and-a-cisco-catalyst-switch</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>IEEE 802.3ad, more commonly known as <strong>Link Aggregation</strong>, allows you to configure multiple Ethernet ports to act as a single device. This is sometimes referred to as <strong>channel bonding</strong>, <strong>Ethernet bonding</strong>, or <strong>trunking</strong>. Link Aggregation provides several benefits: <em>Increased bandwidth</em>, <em>load balancing</em>, and allows you to create <em>redundant ethernet links</em>. If a link in your ethernet channel goes down, the switches, routers, or servers you have configured to use LACP will automatically fail over to the links that are still up and remain connected. On a RedHat-based Linux distribution, such as CentOS or Fedora, the configuration may look a little complex, but in fact, it is very straight-forward.</p>
 
@@ -134,7 +135,7 @@ cisco#write mem
     <link href="http://www.charleshooper.net/blog/etherchannel-trunking-between-a-foundry-switch-and-cisco-catalyst/"/>
     <updated>2009-12-04T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/etherchannel-trunking-between-a-foundry-switch-and-cisco-catalyst</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>In my other article, <a href="http://charleshooper.posterous.com/link-aggregation-on-cisco-catalysts-and-found">LACP on Cisco Catalysts &amp; Foundry switches</a>, I describe how to configure aggregated links using LACP (802.3ad) on a Cisco Catalyst and Foundry switch. In this howto, I will be describing how to configure trunked ports using <strong>EtherChannel</strong> — LACP’s predecessor.</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-09-25T06:35:41-07:00</updated>
+  <updated>2013-10-02T09:34:58-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -18,45 +18,45 @@
     <link href="http://www.charleshooper.net/blog/my-def-con-21-experience/"/>
     <updated>2013-08-08T10:41:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/my-def-con-21-experience</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p>I&#8217;ve just returned from <a href="https://www.defcon.org/">DEF CON</a> this year and wanted to share my
-experience. I&#8217;ve only been to DEF CON one other time which I believe was
+<p>I’ve just returned from <a href="https://www.defcon.org/">DEF CON</a> this year and wanted to share my
+experience. I’ve only been to DEF CON one other time which I believe was
 DEF CON 16. During DEF CON 16, I mostly stuck to the hallway track and,
-to be perfectly honest, didn&#8217;t get alot out of it as I mostly hung out
+to be perfectly honest, didn’t get alot out of it as I mostly hung out
 with coworkers.</p>
 
 <p>This time around I went with my good friend Japhy and no one else.</p>
 
-<h2>Logistics</h2>
+<h2 id="logistics">Logistics</h2>
 
 <p>We flew in separately on Thursday and stayed in the Bellagio. We
-initially chose the Bellagio because it was cheaper and we didn&#8217;t think
+initially chose the Bellagio because it was cheaper and we didn’t think
 a 15 minute walk every day was going to be a big deal. As it turns out,
 the walk itself was fine (even with the 98F weather) but it meant we
 were effectively separated from the conference for most of the day. I
 think the next time I go I would like to stay in the same hotel as the
 conference.</p>
 
-<h2>Thursday</h2>
+<h2 id="thursday">Thursday</h2>
 
 <p>Thursday was my day of travel. The flight was late leaving SFO but this
-isn&#8217;t unusual as planes to/from SFO are pretty much ever on time it
+isn’t unusual as planes to/from SFO are pretty much ever on time it
 seems. Blame the fog.</p>
 
 <p>Anyways, I arrived mid-afternoon and just hung out around the Bellagio
-since Japhy wasn&#8217;t in yet. I ate some pho, drank some good bourbon, and
+since Japhy wasn’t in yet. I ate some pho, drank some good bourbon, and
 played some video poker. Eventually, Japhy arrived and we grabbed a beer
 together before turning in.</p>
 
-<h2>Friday</h2>
+<h2 id="friday">Friday</h2>
 
 <p>Friday morning we woke up and went and get our badges. They were pretty
 sweet looking and I was curious about the crypto challenge. There was
 apparently a talk where the badges were explained but I missed that and
 so I mostly chatted with random people about them and compared notes and
-hypothesis. My badge, the Ace of Phones, translated to &#8220;in the real
-order the&#8221;. There was also an XOR gate on it but I never got far enough
+hypothesis. My badge, the Ace of Phones, translated to “in the real
+order the”. There was also an XOR gate on it but I never got far enough
 to know what it was for.</p>
 
 <p>Badges aside, Friday is the day that I went to the most talks.</p>
@@ -67,7 +67,7 @@ would be used by a forensics investigator during their attack. For
 example, an attacker could easily recover and steal files that were
 previously deleted. The talk was good but I felt that the speaker spent
 too much time trying to convince the audience that it was a good idea.
-My personal opinion, and that of the people I&#8217;ve talked to, all seemed
+My personal opinion, and that of the people I’ve talked to, all seemed
 to agree up front that it was a great idea.</p>
 
 <p>After leaving this talk I ended up catching the tail end of
@@ -82,11 +82,11 @@ you access.</p>
 <p>Next I caught the end of <a href="https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Bowne">Evil DoS Attacks and Strong Defenses</a> where
 Matt Prince (CEO of CloudFlare) described some very large DDoS attacks
 and what they looked like. Someone afterwards also showed a variety of
-online banking websites where the &#8220;logout&#8221; button doesn&#8217;t actually do
+online banking websites where the “logout” button doesn’t actually do
 anything, leaving users vulnerable.</p>
 
 <p>Immediately following that session, two guys got up and gave their talk
-on <a href="https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Miu">Kill &#8216;em All — DDoS Protection Total Annihilation!</a>. I enjoyed
+on <a href="https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Miu">Kill ‘em All — DDoS Protection Total Annihilation!</a>. I enjoyed
 the format of the talk, where the speakers would describe DDoS
 protection techniques and then how to bypass them. The bottom line is:
 a) look like a real client, b) perform whatever handshakes are necessary
@@ -97,40 +97,46 @@ below where anyone will notice you.</p>
 
 <p>At night, there were a bunch of DEF CON parties. At some point the fire
 alarm went off a few times. A voice came over the intercom shortly after
-stating that they weren&#8217;t sure <em>why</em> their alarm system entered test
-mode but that &#8220;the cause was being investigated.&#8221; Later, it happened
+stating that they weren’t sure <em>why</em> their alarm system entered test
+mode but that “the cause was being investigated.” Later, it happened
 again and the hallway strobes for the fire alarm stayed on, adding kind
 of a cool effect to the party. Hmm.</p>
 
-<h2>Saturday</h2>
+<h2 id="saturday">Saturday</h2>
 
 <p>On Saturday I only saw two talks.</p>
 
 <ol>
-<li><p>Wireless village - In the wireless village I listened to a Q&amp;A
+  <li>
+    <p>Wireless village - In the wireless village I listened to a Q&amp;A
 session by a pen tester whose expertise was in wireless assessments. My
 favorite quote from this talk was:</p>
 
-<blockquote><p>Q: When you do these wireless assessments, is your goal just to
+    <blockquote>
+      <p>Q: When you do these wireless assessments, is your goal just to
 get onto the network or do you look at wireless devices, such as
 printers, as well?</p>
 
-<p>A: I pulled 700 bank accounts from a financial institution 6 weeks
-ago [during a pen test]. We like printers.</p></blockquote></li>
-<li><p>Skytalks - One of the skytalks I saw the first half of was about &#8220;big
-data&#8221;, the techniques used in analyzing this data, their weaknesses, and
+      <p>A: I pulled 700 bank accounts from a financial institution 6 weeks
+ago [during a pen test]. We like printers.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Skytalks - One of the skytalks I saw the first half of was about “big
+data”, the techniques used in analyzing this data, their weaknesses, and
 how you could use these techniques to stay below the radar so to speak.
-It was interesting but rather abstract and I&#8217;m not totally certain how
-to apply that in practice.</p></li>
+It was interesting but rather abstract and I’m not totally certain how
+to apply that in practice.</p>
+  </li>
 </ol>
-
 
 <p>For the rest of the day, I brought my laptop and just kind of tinkered
 with stuff.</p>
 
-<h2>Sunday</h2>
+<h2 id="sunday">Sunday</h2>
 
-<p>I flew home early Sunday morning so I didn&#8217;t do anything on this day.</p>
+<p>I flew home early Sunday morning so I didn’t do anything on this day.</p>
+
 ]]></content>
   </entry>
   
@@ -139,25 +145,25 @@ with stuff.</p>
     <link href="http://www.charleshooper.net/blog/why-i-moved-to-san-francisco/"/>
     <updated>2013-07-21T00:33:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/why-i-moved-to-san-francisco</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p>It&#8217;s been three months since I first moved to San Francisco and decided
+<p>It’s been three months since I first moved to San Francisco and decided
 I should share why I moved here in the first place. The primary reasons
 why I moved to San Francisco are for my career and to be around more
 like-minded people.</p>
 
 <p>Career-wise, what made San Francisco appealing to me is the number and
 diversity of employment opportunities. In Connecticut, if you want to
-work with &#8220;technology&#8221; then you work for one of the many insurance
+work with “technology” then you work for one of the many insurance
 companies headquartered there or an agency of some kind. In addition to
 available opportunities, there is also more parity between the job
 market in the bay area and my skill set and experience. For example,
-today <a href="http://www.indeed.com/">Indeed.com</a> reports 184 results for the &#8220;Python&#8221; in the entire
+today <a href="http://www.indeed.com/">Indeed.com</a> reports 184 results for the “Python” in the entire
 state of Connecticut, while there are nearly 2,700 results for the San
 Francisco Bay Area. At one point in my life, I was told I was wasting my
 life messing around with GNU/Linux and other Open Source software.
 Things would have been a little better if I moved two hours away to
-either Boston or New York, but if I&#8217;m going to move then I might as well
+either Boston or New York, but if I’m going to move then I might as well
 get better weather out of it, too.</p>
 
 <p>I also moved to San Francisco to be around more like-minded people.
@@ -168,32 +174,38 @@ up to their events. Often times, the groups failed early due to a lack
 of participation (including the hackerspace I founded but that story is
 for another day).</p>
 
-<h2>Thoughts so far</h2>
+<h2 id="thoughts-so-far">Thoughts so far</h2>
 
-<p>As I mentioned, I&#8217;ve now been here for three months. My thoughts so far
+<p>As I mentioned, I’ve now been here for three months. My thoughts so far
 are:</p>
 
 <ul>
-<li><p>The place really is quite small. Especially in tech. Everyone seems to
+  <li>
+    <p>The place really is quite small. Especially in tech. Everyone seems to
 know everyone, which can be fun socially, but you need to watch what
-you say when you&#8217;re talking shop.</p></li>
-<li><p>The Sillicon Valley/SF Bay tech isolation chamber is real (and so is
-the echo chamber). Companies sometimes seem huge when you&#8217;re in the
-bay, but if you talk to anyone from outside of the area, they&#8217;re like
-&#8221;<em>Who?</em>&#8221;</p></li>
-<li><p>San Francisco&#8217;s neighborhoods are really awesome. SF
+you say when you’re talking shop.</p>
+  </li>
+  <li>
+    <p>The Sillicon Valley/SF Bay tech isolation chamber is real (and so is
+the echo chamber). Companies sometimes seem huge when you’re in the
+bay, but if you talk to anyone from outside of the area, they’re like
+“<em>Who?</em>”</p>
+  </li>
+  <li>
+    <p>San Francisco’s neighborhoods are really awesome. SF
 is divided into a bunch of small neighborhoods, each with their own
-unique attributes. There really is a place for everyone.</p></li>
+unique attributes. There really is a place for everyone.</p>
+  </li>
 </ul>
 
-
-<h2>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 
 <p>I moved to San Francisco because I thought it would be good for my
 career and because I thought I would meet more like-minded people. This
 has certainly proved to be the case. What I was not expecting but have
 experienced so far is how small and isolated the SF tech scene actually
 is.</p>
+
 ]]></content>
   </entry>
   
@@ -202,10 +214,10 @@ is.</p>
     <link href="http://www.charleshooper.net/blog/how-i-hacked-my-high-school/"/>
     <updated>2013-07-18T10:59:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/how-i-hacked-my-high-school</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>When I was a freshman or sophomore in high school, I cracked my high
-school and got in &#8220;a lot of trouble&#8221; for it. I&#8217;ve only told the story
+school and got in “a lot of trouble” for it. I’ve only told the story
 maybe half a dozen times in my life, but after telling it a few times in
 the past month or so, I decided to write about.</p>
 
@@ -213,30 +225,30 @@ the past month or so, I decided to write about.</p>
 apparently had enough money to build several computer labs in each
 school, network them all together as a single autonomous network, and
 provide reasonably fast Internet access. This was somewhere between the
-year 1999 and the year 2000, the exact year I can&#8217;t quite remember.</p>
+year 1999 and the year 2000, the exact year I can’t quite remember.</p>
 
 <p>Another interesting thing to note about my high school was that it
 carried with it an 80-hour community service requirement for graduation.
-I&#8217;ve always been into computers and networking
+I’ve always been into computers and networking
 so it was natural for me volunteer to do my community service assisting
 the technical staff in the computer labs. Community service in this way
 typically involved installing printer drivers, updating software, and
 pushing boxes around on a cart.</p>
 
-<p>My school&#8217;s computer network consisted of a mix of sevaral flavors of
+<p>My school’s computer network consisted of a mix of sevaral flavors of
 Windows including Windows 95, Windows 98, and Windows NT 4.0. Despite
 the large Microsoft-only network, we were using Novell for
 authentication and authorization. Each school in the district was
 networked together and part of this same Novell network.</p>
 
 <p>My school had reasonable filtering and monitoring in place for web
-traffic and it wasn&#8217;t uncommon to hear of students getting into trouble
-for looking at, let&#8217;s say &#8220;questionable content.&#8221;</p>
+traffic and it wasn’t uncommon to hear of students getting into trouble
+for looking at, let’s say “questionable content.”</p>
 
 <p>One weird thing my school did was restrict access to the local hard
-drive. If you went into Explorer, the <code>C:\</code> volume simply wasn&#8217;t listed.
+drive. If you went into Explorer, the <code>C:\</code> volume simply wasn’t listed.
 This was supposedly because we were supposed to use our network-attached
-&#8220;S drive&#8221; which was unique to each user. The &#8220;Run&#8221; dialog from the Start
+“S drive” which was unique to each user. The “Run” dialog from the Start
 menu was also disabled.</p>
 
 <p>This had its flaws; however, and one day I hand-wrote (in English class)
@@ -244,12 +256,11 @@ a 6 page paper detailing the variety of ways even an unskilled person
 could bypass this precaution. Most notably this included:</p>
 
 <ul>
-<li>Create a shortcut on the desktop to <code>C:\</code></li>
-<li>Open internet explorer and browse to <code>file:///...</code></li>
-<li>Certain &#8220;Save As&#8221; and &#8220;Open&#8221; dialogs still listed the C-drive and was browsable</li>
-<li>You could still get to a &#8220;Run&#8221; dialog by opening the task manager and finding it in there. This allowed you to a) Browse to the C-drive anyway, and b) Open up a command prompt</li>
+  <li>Create a shortcut on the desktop to <code>C:\</code></li>
+  <li>Open internet explorer and browse to <code>file:///...</code></li>
+  <li>Certain “Save As” and “Open” dialogs still listed the C-drive and was browsable</li>
+  <li>You could still get to a “Run” dialog by opening the task manager and finding it in there. This allowed you to a) Browse to the C-drive anyway, and b) Open up a command prompt</li>
 </ul>
-
 
 <p>There were probably some other flaws I missed. I argued that restricting
 access to the local disk was rather pointless as people could simply
@@ -257,28 +268,28 @@ drop to it during boot (which many students were already doing in order
 to get a kick out of doing <code>deltree C:\Windows</code> for some reason) and
 that the real issue was that local password caching was enabled. In
 other words, whenever a user logged in, a hashed version of their
-password was stored in the form of a windows &#8220;PWL file.&#8221;</p>
+password was stored in the form of a windows “PWL file.”</p>
 
 <p>The next time I did my community service, I handed my paper to the head
-technician which he responded &#8220;What? This could never happen&#8221;
+technician which he responded “What? This could never happen”
 and threw my paper in the garbage.</p>
 
-<p>What?! I couldn&#8217;t believe that someone would actually throw away what
-was, at the time, the longest paper I&#8217;ve ever written after barely
+<p>What?! I couldn’t believe that someone would actually throw away what
+was, at the time, the longest paper I’ve ever written after barely
 having read it. And to do this with a 4-word response no less!</p>
 
 <p>Due to my shock and what was apparent lack of maturity, I decided
 that I would show them. I mean, when you approach someone with what you
-think is an obvious, logical opinion and they don&#8217;t believe you, your
+think is an obvious, logical opinion and they don’t believe you, your
 next option is to show them, right? <em>Right?</em></p>
 
-<p>It didn&#8217;t take me too long to gather up a fairly large collection of
-these so-called &#8220;PWL files&#8221; on a floppy disk. Distinguishing between
+<p>It didn’t take me too long to gather up a fairly large collection of
+these so-called “PWL files” on a floppy disk. Distinguishing between
 staff and students was trivial too due to the naming convention in
-place. Students&#8217; usernames were always in the form of
+place. Students’ usernames were always in the form of
 <code>{ExpectedGraduationYear}{LastName}{FirstInitial}</code>. Mine was
 <code>03hooperc</code>. Faculty and staff, on the other hand, simply followed the
-convention <code>{FirstInitial}{LastName}</code>. I decided that I didn&#8217;t care for
+convention <code>{FirstInitial}{LastName}</code>. I decided that I didn’t care for
 any of the student logins and just discarded them.</p>
 
 <p>When I had a good collection of staff PWL files, I used a tool called
@@ -298,9 +309,9 @@ insecure. It consisted of two three-letter words in all caps:</p>
 attack. I went to the computer lab during lunch and waited for the
 opportunity to log into my new staff account. I had to be careful,
 though, as my school set the background of staff accounts to something
-very noticable and I didn&#8217;t want the computer lab attendant sitting in
-the back to notice that I was on an account that didn&#8217;t belong to me. At
-some point, she left briefly and I quickly logged onto The Man&#8217;s
+very noticable and I didn’t want the computer lab attendant sitting in
+the back to notice that I was on an account that didn’t belong to me. At
+some point, she left briefly and I quickly logged onto The Man’s
 account.</p>
 
 <p>Once I was logged in, I was more in excited and nervous than
@@ -308,7 +319,7 @@ anything. Even still, I moved onto the next step of creating a backdoor
 account with admin privileges. I made up a name and created a new
 account following the faculty/staff naming convention and granted it
 every privilege I could. As soon as I was done, I logged off. The
-log-off couldn&#8217;t be slower. I felt like Peter in Office Space when he&#8217;s
+log-off couldn’t be slower. I felt like Peter in Office Space when he’s
 trying to duck out of work early and his computer keeps coming up with
 a bunch of last-minute tasks before it can log off.</p>
 
@@ -324,37 +335,37 @@ hosts based on a Debian derivative?</p>
 
 <p>Some months later, I start hearing from other students that my buddy has
 told a bunch of people my secret and has even been logging into the
-account to prove it (OK, I definitely shouldn&#8217;t have shared the
+account to prove it (OK, I definitely shouldn’t have shared the
 credentials!) I decided that the best thing to do in this case was to
 confess to the Director of Information Technology, who I used to bug
-from time to time and ask why we didn&#8217;t use Linux since it&#8217;s free (Yes,
+from time to time and ask why we didn’t use Linux since it’s free (Yes,
 I was probably a very annoying fifteen year old) For those wondering, he
-said it was because of a &#8220;licensing issue&#8221; which I think was
-professional speak for &#8220;fuck off, kid&#8221;). So, I walked into his office
+said it was because of a “licensing issue” which I think was
+professional speak for “fuck off, kid”). So, I walked into his office
 one day and dropped the bomb.</p>
 
-<p>I honestly don&#8217;t know what I was expecting to happen. He listened to my
+<p>I honestly don’t know what I was expecting to happen. He listened to my
 story, asked me how long I had this access for. When I told him, he
-remarked that their backups didn&#8217;t back that far and that, in any case,
-he&#8217;d have to report me to the administration. He walked me over to the
-dean of disclipline&#8217;s office and I went through a grueling session of
+remarked that their backups didn’t back that far and that, in any case,
+he’d have to report me to the administration. He walked me over to the
+dean of disclipline’s office and I went through a grueling session of
 more questions.</p>
 
 <p>Something I should probably note is that this during a period where a
 bunch of schools, including mine, had decided to institute a
-so-called &#8220;zero tolerance policy.&#8221; What these zero-tolerance policies
-were was simply a matrix of &#8220;Violations&#8221; on one axis and
-&#8220;Number of prior offenses&#8221; on the other. In other words, getting caught
+so-called “zero tolerance policy.” What these zero-tolerance policies
+were was simply a matrix of “Violations” on one axis and
+“Number of prior offenses” on the other. In other words, getting caught
 smoking in the bathroom for the first time carried a pre-determined
 penalty which was slightly less bad than getting caught doing that for
-the second time. Students could never argue that they didn&#8217;t know they
+the second time. Students could never argue that they didn’t know they
 would get in so much trouble for anything because this matrix and every
 other school/district policy was distributed to us at the beginning of
 the year and we were required to have it on us at all times.</p>
 
 <p>The obvious flaw with this policy, besides the fact that it ignores
-additional circumstances, is that in 1999 there wasn&#8217;t a row describing
-the penalties for any of the things I had done. In fact, I hadn&#8217;t
+additional circumstances, is that in 1999 there wasn’t a row describing
+the penalties for any of the things I had done. In fact, I hadn’t
 technically violated any of the school or district policies at all!
 (Federal and local crimes may be another issue). I was sent home with
 the dean of discipline still deciding what to do with me, but I figured
@@ -365,12 +376,12 @@ surprisingly, they said I did the right thing (albeit many months late).
 Something else amazing happened though. My parents called the school
 and, after talking to the dean, we learned that my school was actually
 considering <strong>expulsion!</strong> My parents made some phone calls and tried to
-pull some strings that we didn&#8217;t think we had but ultimately told me that
-we wouldn&#8217;t know my fate until the next day at school.</p>
+pull some strings that we didn’t think we had but ultimately told me that
+we wouldn’t know my fate until the next day at school.</p>
 
 <p>The next day I went into school and was immediately called into the
-dean&#8217;s office. He explained that they had decided that what I was guilty
-of stealing and kept using this &#8220;stole the key to the bank&#8221; metaphor. He
+dean’s office. He explained that they had decided that what I was guilty
+of stealing and kept using this “stole the key to the bank” metaphor. He
 actually told me that had I not brought the password files home on a
 floppy disk, I would probably be in less trouble. What the fuck?</p>
 
@@ -379,12 +390,11 @@ floppy disk, I would probably be in less trouble. What the fuck?</p>
 <p>Ten days! That was <em>huge</em>. For comparison:</p>
 
 <ul>
-<li>Ten days in the maximum amount of time you could be suspended for. Anything longer would be considered an expulsion and would require a hearing of some kind.</li>
-<li>You could punch someone in the face (you know, assault) and the punishment for doing that would be 4-6 days&#8230; on the second offense.</li>
+  <li>Ten days in the maximum amount of time you could be suspended for. Anything longer would be considered an expulsion and would require a hearing of some kind.</li>
+  <li>You could punch someone in the face (you know, assault) and the punishment for doing that would be 4-6 days… on the second offense.</li>
 </ul>
 
-
-<p>I don&#8217;t remember how I got home but it was like my parents weren&#8217;t even
+<p>I don’t remember how I got home but it was like my parents weren’t even
 mad. In fact, they seemed more proud than anything. I think they even
 thought that this incident would get me hired somewhere someday, too.</p>
 
@@ -394,7 +404,8 @@ computers at school. This lasted over a year and, after signing a paper
 agreeing to let my school sue me if I commit another offence, I was
 given my computer access back.</p>
 
-<p>I&#8217;m terrible at concluding stories so&#8230; The End.</p>
+<p>I’m terrible at concluding stories so… The End.</p>
+
 ]]></content>
   </entry>
   
@@ -403,50 +414,52 @@ given my computer access back.</p>
     <link href="http://www.charleshooper.net/blog/personal-kaizen-self-improvement/"/>
     <updated>2013-07-04T11:27:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/my-personal-kaizen</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p>Kaizen is Japenese for &#8220;good change&#8221; or &#8220;improvement&#8221; and is frequently
-used within the context of lean manufacturing. Today though, I&#8217;m going
+<p>Kaizen is Japenese for “good change” or “improvement” and is frequently
+used within the context of lean manufacturing. Today though, I’m going
 to talk about a few things I want to improve for myself, both personally
 and professionally.</p>
 
-<h2>Hard Skills</h2>
+<h2 id="hard-skills">Hard Skills</h2>
 
-<p>I&#8217;m fascinated by new technology and new ways of doing work, so
-polishing up on some of my so-called &#8220;hard skills&#8221; comes relatively
+<p>I’m fascinated by new technology and new ways of doing work, so
+polishing up on some of my so-called “hard skills” comes relatively
 natural to me. Things like learning a new programming language or a new
-tool require only time which I&#8217;m more than willing and able to invest.
-Without further ado, here are the hard skills I&#8217;d like to improve:</p>
+tool require only time which I’m more than willing and able to invest.
+Without further ado, here are the hard skills I’d like to improve:</p>
 
 <ul>
-<li>Become proficient in <strong>Go</strong>. I find Go very appealing as a
+  <li>Become proficient in <strong>Go</strong>. I find Go very appealing as a
 language, specifically for systems-level uses.</li>
-<li>Become proficient in <strong>Ruby</strong>. Alot of the software I&#8217;m
+  <li>Become proficient in <strong>Ruby</strong>. Alot of the software I’m
 responsible for maintaining at Heroku is written in Ruby.</li>
-<li>Become proficient in a <strong>functional programming language</strong>,
-such as <strong>Erlang</strong>. I&#8217;ve been interested in learning a functional
+  <li>
+    <p>Become proficient in a <strong>functional programming language</strong>,
+such as <strong>Erlang</strong>. I’ve been interested in learning a functional
 programming language for a while. I decided on Erlang after hearing a
 talk from <a href="http://christophermeiklejohn.com/">Chris Meiklejohn</a> (of Basho) about Riak and watching
-several talks about Erlang and Erlang/OTP.</li>
+several talks about Erlang and Erlang/OTP.</p>
+
+  </li>
 </ul>
 
+<h2 id="soft-skills">Soft Skills</h2>
 
-<h2>Soft Skills</h2>
-
-<p>Addressing soft skills is something that&#8217;s a little more difficult for
-me, but something that I think is important. These are the soft skills I&#8217;d
+<p>Addressing soft skills is something that’s a little more difficult for
+me, but something that I think is important. These are the soft skills I’d
 like to improve:</p>
 
 <ul>
-<li>Become better at <strong>empathy</strong>. Sometimes when listening to someone,
-it&#8217;s easy to jump to conclusions about what they are trying to say or
+  <li>Become better at <strong>empathy</strong>. Sometimes when listening to someone,
+it’s easy to jump to conclusions about what they are trying to say or
 how they came to that point. What I have been working on, however, is
 understanding <em>why</em> they feel a certain way in particular.</li>
-<li>Become a <strong>better listener</strong>. I have been working on this for a while,
+  <li>Become a <strong>better listener</strong>. I have been working on this for a while,
 but one area I would still like to improve is learning to ask the the right
-questions. I&#8217;m always impressed when someone follows up something I
+questions. I’m always impressed when someone follows up something I
 said with an engaging question, and I would love to gain that ability.</li>
-<li>Become more <strong>well-spoken</strong>. I&#8217;d like to be a better public speaker,
+  <li>Become more <strong>well-spoken</strong>. I’d like to be a better public speaker,
 both publicly and privately.</li>
 </ul>
 
@@ -458,26 +471,26 @@ both publicly and privately.</li>
     <link href="http://www.charleshooper.net/blog/about-this-site-technical/"/>
     <updated>2013-06-22T11:58:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/about-this-site-technical</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p>I was playing around with my site today and realized that I hadn&#8217;t
-disclosed much about how it works. Here&#8217;s that nerd &#8220;look at my site
-architecture you guys&#8221; post.</p>
+<p>I was playing around with my site today and realized that I hadn’t
+disclosed much about how it works. Here’s that nerd “look at my site
+architecture you guys” post.</p>
 
-<p>If you couldn&#8217;t tell by the default theme, my blogging software of
-choice is <a href="http://octopress.org/">Octopress</a>, which generates my site&#8217;s HTML from Markdown.
+<p>If you couldn’t tell by the default theme, my blogging software of
+choice is <a href="http://octopress.org/">Octopress</a>, which generates my site’s HTML from Markdown.
 I use <code>vim</code> for most of my editing and do so on my Lenovo Thinkpad X220
 running Ubuntu desktop. I use a tiling window manager called <a href="http://awesome.naquadah.org/">Awesome
 WM</a>.</p>
 
 <p>I also use <a href="http://www.fastly.com/">Fastly</a> for my caching layer. For the purposes of this
-dicussion, let&#8217;s just call Fastly &#8220;varnish as a service.&#8221;</p>
+dicussion, let’s just call Fastly “varnish as a service.”</p>
 
 <p>Prior to today, I just used a single <a href="http://www.linode.com/?r=2fce38a23c4154c3a1abb4f99aafd6371ee78ecc">Linode</a> in the Newark, NJ datacenter
 as my web server. The Linode runs Ubuntu server and serves static HTML
 with <a href="http://nginx.org/">nginx</a>.</p>
 
-<p>As of today, though, I&#8217;m experimenting with <a href="http://www.heroku.com/">Heroku US</a> and have
+<p>As of today, though, I’m experimenting with <a href="http://www.heroku.com/">Heroku US</a> and have
 configured my Heroku clone of the site as a second backend server for
 Fastly. Octopress does some magic here by serving the HTML through
 <a href="http://rack.github.io/">Rack</a>, a minimal webserver for ruby.</p>
@@ -488,7 +501,7 @@ metrics collection.</p>
 <p>There are some really amazing takeaways from this. For one, my only
 expense currently is the roughly $20/mo I pay for the <a href="http://www.linode.com/?r=2fce38a23c4154c3a1abb4f99aafd6371ee78ecc">Linode</a>. I
 would happily pay for any of these services for a real, money-making
-website but, for this site, I&#8217;ll continue to use the free plans.</p>
+website but, for this site, I’ll continue to use the free plans.</p>
 
 <p>Second is how much technology is available to us these days. I own
 <em>zero</em> physical infrastructure and the only thing slightly resembling
@@ -499,9 +512,10 @@ literally host a website for nothing!</p>
 
 <p>This second point is why I think I love working in the PaaS
 (platform-as-a-service) space so much. PaaS is still young enough that
-many skeptics don&#8217;t believe it&#8217;s a working model. I think we&#8217;ve proven
+many skeptics don’t believe it’s a working model. I think we’ve proven
 that it works, now we just need to prove we can grow with the needs of
 our customers.</p>
+
 ]]></content>
   </entry>
   
@@ -510,23 +524,22 @@ our customers.</p>
     <link href="http://www.charleshooper.net/blog/catching-up/"/>
     <updated>2013-06-22T04:45:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/catching-up</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<h2>tl;dr</h2>
+<h2 id="tldr">tl;dr</h2>
 
 <ul>
-<li>Moved to San Francisco</li>
-<li>Took time off to decompress</li>
-<li>Joined team at Heroku</li>
-<li>Loving it</li>
+  <li>Moved to San Francisco</li>
+  <li>Took time off to decompress</li>
+  <li>Joined team at Heroku</li>
+  <li>Loving it</li>
 </ul>
 
+<h2 id="code--verbosecode"><code>--verbose</code></h2>
 
-<h2><code>--verbose</code></h2>
-
-<p>It&#8217;s been a while since I&#8217;ve posted, but I wanted to let you know that
-I&#8217;m still alive! Things were very hectic due to a few life changes but I
-much of the dust has settled now and I&#8217;m excited to talk about what
+<p>It’s been a while since I’ve posted, but I wanted to let you know that
+I’m still alive! Things were very hectic due to a few life changes but I
+much of the dust has settled now and I’m excited to talk about what
 those changes are.</p>
 
 <p>But first, some history.</p>
@@ -534,21 +547,20 @@ those changes are.</p>
 <p>In 2011, I was a junior at university studying Business
 Information Systems. I had some prior systems engineering and operations
 experience and was paying my tuition by performing contract work for a
-company that doesn&#8217;t exist today. While at this company, I worked very
+company that doesn’t exist today. While at this company, I worked very
 closely with a developer and the two of us were responsible for running
-this company&#8217;s infrastructure. Neither of us had the time or the
+this company’s infrastructure. Neither of us had the time or the
 willpower to be bothered by operational tasks, so we automated
 everything. Even though our environment was much smaller (somewhere
 between 30-50 instances in EC2) than many others, we had alot of things
 that many companies are lacking:</p>
 
 <ul>
-<li>New services were in configuration management</li>
-<li>New deployments were almost entirely automated</li>
-<li>We had good visibility with a variety of metrics being reported to Ganglia and Graphite</li>
-<li>We even had a reasonable nagios configuration</li>
+  <li>New services were in configuration management</li>
+  <li>New deployments were almost entirely automated</li>
+  <li>We had good visibility with a variety of metrics being reported to Ganglia and Graphite</li>
+  <li>We even had a reasonable nagios configuration</li>
 </ul>
-
 
 <p>Around this time, the term <strong>devops</strong> was being tossed around on twitter
 on a more frequent basis. I can remember actually having a Google Alert
@@ -556,19 +568,19 @@ for the term to email me when there were new blog posts about it and it
 <em>not</em> being spammy. I have a love/hate relationship with the term, and
 in December 2011 I wrote my blog post <a href="http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops/">Concurrent Engineering: The
 Foundation of DevOps</a> in which I argued that the ideas behind devops
-weren&#8217;t new, but were maybe old ideas from business that were recently
+weren’t new, but were maybe old ideas from business that were recently
 independtly re-discovered.</p>
 
-<p>The blog post wasn&#8217;t very popular, but Solomon Hykes (CEO of dotCloud)
+<p>The blog post wasn’t very popular, but Solomon Hykes (CEO of dotCloud)
 managed to see it and, thinking we had very similar ideas about devops,
 invited me to interview for a position on their newly formed Site
 Reliability Engineering team. I got the job at dotCloud, and up until
-April of this year that&#8217;s where I stayed.</p>
+April of this year that’s where I stayed.</p>
 
 <p>In mid-April, I resigned from my position at dotCloud and moved to San
 Francisco. There were a number of reasons for the resignation but chief
 among them was that I needed some time to decompress and all of my paid
-time-off had been used up following my youngest brother&#8217;s car accident.
+time-off had been used up following my youngest brother’s car accident.
 This ended up being an awesome decision because it gave me my
 much-needed decompression time and I was able to explore my new city.</p>
 
@@ -577,17 +589,20 @@ search. The move to San Francisco and the job search alone could fill
 two entirely-too-verbose blog posts but the end result was that I moved
 here safely and joined the team at <a href="http://www.heroku.com/">Heroku</a>!</p>
 
-<p>Fast forward to today and I&#8217;ve just finished my third week at Heroku.
-It&#8217;s an amazing experience, a great team, and an awesome culture that is
+<p>Fast forward to today and I’ve just finished my third week at Heroku.
+It’s an amazing experience, a great team, and an awesome culture that is
 encapsulated in the following quote:</p>
 
-<blockquote><p>I like our culture. We welcome failure into our house and then kick
-its teeth in.</p></blockquote>
+<blockquote>
+  <p>I like our culture. We welcome failure into our house and then kick
+its teeth in.</p>
+</blockquote>
 
-<p>I&#8217;ll write more about this another time. For now, thank you for
+<p>I’ll write more about this another time. For now, thank you for
 listening to my story.</p>
 
-<p>&mdash; Charles</p>
+<p>— Charles</p>
+
 ]]></content>
   </entry>
   
@@ -596,9 +611,9 @@ listening to my story.</p>
     <link href="http://www.charleshooper.net/blog/intro-to-ops-metrics-collection/"/>
     <updated>2013-05-07T14:51:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/intro-to-operations-metrics-collection</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p><em>I&#8217;m writing a series of blog posts for managers and other people
+<p><em>I’m writing a series of blog posts for managers and other people
 without an operations background in order to introduce certain best
 practices regarding Operations. For the rest of the blog posts, please
 visit the <a href="http://www.charleshooper.net/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
@@ -611,13 +626,15 @@ identifies them in <a href="http://www.amazon.com/Web-Operations-Keeping-Data-Ti
 are:</p>
 
 <ul>
-<li><strong>High-level business and application metrics</strong> (e.g. user sign-ups)</li>
-<li><strong>Feature-specific application-level metrics</strong> (e.g. widgets processed)</li>
-<li><strong>Systems and service-level metrics</strong> (e.g. server load or database queries per second)</li>
+  <li><strong>High-level business and application metrics</strong> (e.g. user sign-ups)</li>
+  <li><strong>Feature-specific application-level metrics</strong> (e.g. widgets processed)</li>
+  <li>
+    <p><strong>Systems and service-level metrics</strong> (e.g. server load or database queries per second)</p>
+
+  </li>
 </ul>
 
-
-<p>You&#8217;ll note that there are two levels of &#8220;application-level&#8221; metrics.
+<p>You’ll note that there are two levels of “application-level” metrics.
 The higher-level application metrics are mostly those that can be tied
 to business objectives, while the other category of application metrics
 are generally more feature specific.</p>
@@ -625,8 +642,8 @@ are generally more feature specific.</p>
 <p>Benefits incurred by collecting these metrics are plentiful. For one,
 having quick access to these metrics is helpful during troubleshooting
 and incident response. For example, I was once hired under contract to
-look into why a certain company&#8217;s API was unreliable for the previous
-few months. At least once per day, this company&#8217;s API would time out and
+look into why a certain company’s API was unreliable for the previous
+few months. At least once per day, this company’s API would time out and
 not respond to client requests. After enabling basic metrics collection
 for the servers and services used by the API, it very quickly became
 obvious that the database servers were reaching their connection limits
@@ -641,7 +658,7 @@ some threshold or change significantly. Not only that, but analyzing
 these metrics will allow you to manage your capacity intelligently and
 build a business case to justify infrastructure expenditures. Finally,
 analyzing these metrics will also give you insight into your
-application, how it&#8217;s used, and your business.</p>
+application, how it’s used, and your business.</p>
 
 <p>How you go about collecting and storing these metrics is up to you. Many
 engineers might be tempted to build their own solution; however, there
@@ -650,16 +667,16 @@ helpful. Key considerations when choosing which package or packages to
 use are:</p>
 
 <ul>
-<li>The ability to add new, custom metrics</li>
-<li>Configurable resolution/storage trade-off</li>
-<li>Integration with availability monitoring and alerting systems</li>
-<li>Graphing/visualization</li>
+  <li>The ability to add new, custom metrics</li>
+  <li>Configurable resolution/storage trade-off</li>
+  <li>Integration with availability monitoring and alerting systems</li>
+  <li>Graphing/visualization</li>
 </ul>
 
-
-<p>If your startup doesn&#8217;t have any metrics then you should start
+<p>If your startup doesn’t have any metrics then you should start
 collecting them now. The visualization will help you in the short run
 and the historical data will help you in the long run.</p>
+
 ]]></content>
   </entry>
   
@@ -668,18 +685,18 @@ and the historical data will help you in the long run.</p>
     <link href="http://www.charleshooper.net/blog/intro-to-ops-availability-monitoring-alerting/"/>
     <updated>2013-05-05T21:57:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/intro-to-operations-availability-monitoring-and-alerting</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p><em>I&#8217;m writing a series of blog posts for managers and other people
+<p><em>I’m writing a series of blog posts for managers and other people
 without an operations background in order to introduce certain best
 practices regarding Operations. For the rest of the blog posts, please
 visit the <a href="http://www.charleshooper.net/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
 
-<p>Another area I&#8217;ve seen alot of early stage startups lacking in is
+<p>Another area I’ve seen alot of early stage startups lacking in is
 <strong>availability monitoring and alerting</strong>. The essence of availability
 monitoring and alerting is being notified when your service is not
-working as expected, including when it&#8217;s simply down, isn&#8217;t meeting
-formal or informal SLAs (e.g., it&#8217;s too slow), or certain functionality
+working as expected, including when it’s simply down, isn’t meeting
+formal or informal SLAs (e.g., it’s too slow), or certain functionality
 is broken.</p>
 
 <p>What I typically see is that some effort was made to set up this type of
@@ -695,66 +712,84 @@ Finding out that your service is down from your customers is not only
 embarrassing but it also shakes their confidence in you, affects your
 reputation, and may even lead to lost revenue.</p>
 
-<p>The good news is that it doesn&#8217;t have to be this way. When availability
+<p>The good news is that it doesn’t have to be this way. When availability
 monitoring is set up properly, maintained, and you and your employees
 agree to approach alerts a specific way, you will be able to reap a
-variety of benefits. Here&#8217;s what I recommend:</p>
+variety of benefits. Here’s what I recommend:</p>
 
 <ol>
-<li><p>First, collaborate with your employees to define who is in the pager
-rotation and the escalation policies. Ask yourself: What happens when
-the on call engineer is overwhelmed and needs backup? What happens when
-the engineer goes on vacation?</p></li>
-<li><p>Next, take inventory of what services you rely on and define an
-internal SLA for them. This does not have to be a super formal process,
-but this inventory and SLA will be helpful for deciding what thresholds
-to set in your monitoring to avoid false positives. Try to see the big
-picture and think about everything such as:</p>
+  <li>
+    <p>First, collaborate with your employees to define who is in the pager
+  rotation and the escalation policies. Ask yourself: What happens when
+  the on call engineer is overwhelmed and needs backup? What happens when
+  the engineer goes on vacation?</p>
+  </li>
+  <li>
+    <p>Next, take inventory of what services you rely on and define an
+  internal SLA for them. This does not have to be a super formal process,
+  but this inventory and SLA will be helpful for deciding what thresholds
+  to set in your monitoring to avoid false positives. Try to see the big
+  picture and think about everything such as:</p>
 
-<ul>
-<li>Servers,</li>
-<li>Self-managed supporting services like web servers, databases, email services,</li>
-<li>Application functionality and features - one strategy I like is exposing a &#8220;health check&#8221; service that can be checked by the monitoring agent,</li>
-<li>Third party services like remote APIs.</li>
-</ul>
-
-
-<p>Your inventory and SLA definition is a living document; remember to
-keep it up to date!</p></li>
-<li><p>Then set up whatever monitoring package you or your engineers decided
-to use (self-hosted or third party) such as <a href="http://www.nagios.org/">nagios</a>, <a href="http://www.zenoss.com/">Zenoss</a>,
-<a href="http://www.pingdom.com/">Pingdom</a>, or <a href="http://www.copperegg.com/">CopperEgg</a> and have your monitoring configured for
-those services. If you&#8217;re really good, you&#8217;ll <em>check your configuration
-into its own source control repository</em>. If you go the self-hosted
-route, it may also be worth having your monitoring server monitored
-externally.  Who&#8217;s watching the watcher indeed.</p></li>
-<li><p>Think about integrating your monitoring with a pager service such as
-<a href="http://www.pagerduty.com/">PagerDuty</a>. Services like PagerDuty allow you to input your pager
-rotation and then define good rules for how to contact the on call
-engineer and when to escalate should the engineer be unavailable.</p></li>
-<li><p>With improved monitoring and alerting in place, you may want to think
-about giving certain customers &#8220;911&#8221; access. At a previous company I
-worked at, we had a secret email address our big customers could hit
-which would <em>open a support ticket</em> and then <em>page the on call engineer</em>
-with the ticket number. If you decide to go this route; however, you&#8217;ll
-want to <em>train your customers</em> when it&#8217;s appropriate to use this power
-and how to use it most effectively.</p></li>
-<li><p>Adjust alerts and fix problems as you get paged for them. Don&#8217;t care
-that a particular API goes down during a known maintenance window?
-Schedule the notification policy accordingly.</p></li>
-<li><p>Finally, continue maintaining your inventory and monitoring
-service&#8217;s configuration. For extra benefit, consider tracking your
-organization&#8217;s <strong>Mean Time To Respond</strong> (how long it took for engineer to
-acknowledge that something is wrong) and your <strong>Mean Time To Recover</strong>
-(how long it took the engineer to resolve the issue <em>including</em> the Mean
-Time To Respond), your <strong>Mean Time Between Failures</strong> (self-explanatory,
-I hope), and <strong>Percent Availability</strong> (what percent of time your service
-is functional in a given period of time).</p></li>
+    <ul>
+      <li>Servers,</li>
+      <li>Self-managed supporting services like web servers, databases, email services,</li>
+      <li>Application functionality and features - one strategy I like is exposing a “health check” service that can be checked by the monitoring agent,</li>
+      <li>Third party services like remote APIs.</li>
+    </ul>
+  </li>
 </ol>
 
+<p>Your inventory and SLA definition is a living document; remember to
+  keep it up to date!</p>
+
+<ol>
+  <li>Then set up whatever monitoring package you or your engineers decided
+  to use (self-hosted or third party) such as <a href="http://www.nagios.org/">nagios</a>, <a href="http://www.zenoss.com/">Zenoss</a>,
+  <a href="http://www.pingdom.com/">Pingdom</a>, or <a href="http://www.copperegg.com/">CopperEgg</a> and have your monitoring configured for
+  those services. If you’re really good, you’ll <em>check your configuration
+  into its own source control repository</em>. If you go the self-hosted
+  route, it may also be worth having your monitoring server monitored
+  externally.  Who’s watching the watcher indeed. </li>
+</ol>
+
+<ol>
+  <li>Think about integrating your monitoring with a pager service such as
+  <a href="http://www.pagerduty.com/">PagerDuty</a>. Services like PagerDuty allow you to input your pager
+  rotation and then define good rules for how to contact the on call
+  engineer and when to escalate should the engineer be unavailable.</li>
+</ol>
+
+<ol>
+  <li>
+    <p>With improved monitoring and alerting in place, you may want to think
+  about giving certain customers “911” access. At a previous company I
+  worked at, we had a secret email address our big customers could hit
+  which would <em>open a support ticket</em> and then <em>page the on call engineer</em>
+  with the ticket number. If you decide to go this route; however, you’ll
+  want to <em>train your customers</em> when it’s appropriate to use this power
+  and how to use it most effectively.</p>
+  </li>
+  <li>
+    <p>Adjust alerts and fix problems as you get paged for them. Don’t care
+  that a particular API goes down during a known maintenance window?
+  Schedule the notification policy accordingly.</p>
+  </li>
+  <li>
+    <p>Finally, continue maintaining your inventory and monitoring
+  service’s configuration. For extra benefit, consider tracking your
+  organization’s <strong>Mean Time To Respond</strong> (how long it took for engineer to
+  acknowledge that something is wrong) and your <strong>Mean Time To Recover</strong>
+  (how long it took the engineer to resolve the issue <em>including</em> the Mean
+  Time To Respond), your <strong>Mean Time Between Failures</strong> (self-explanatory,
+  I hope), and <strong>Percent Availability</strong> (what percent of time your service
+  is functional in a given period of time). </p>
+  </li>
+</ol>
 
 <p>This concludes the management and non-ops introduction to operations; I
 hope you find this helpful.</p>
+
 ]]></content>
   </entry>
   
@@ -763,14 +798,14 @@ hope you find this helpful.</p>
     <link href="http://www.charleshooper.net/blog/intro-to-ops-config-management/"/>
     <updated>2013-05-05T20:12:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/intro-to-operations-configuration-management</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p><em>I&#8217;m writing a series of blog posts for managers and other people
+<p><em>I’m writing a series of blog posts for managers and other people
 without an operations background in order to introduce certain best
 practices regarding Operations. For the rest of the blog posts, please
 visit the <a href="http://www.charleshooper.net/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
 
-<p>One of the areas I&#8217;ve witnessed early stage startups lacking in is
+<p>One of the areas I’ve witnessed early stage startups lacking in is
 <strong>configuration management</strong>. <em>Configuration management is the process of
 standardizing and enforcing configurations</em>. In other words,
 configuration management is about deciding on a specific configuration
@@ -793,7 +828,7 @@ changed over time and who changed it.</p>
 <p>In many of these early stage startups, there is either very little
 configuration management performed at all, or configuration management
 exists as a series of shell scripts cobbled together to do some
-post-hardware setup. If you&#8217;re lucky, there exists a document somewhere
+post-hardware setup. If you’re lucky, there exists a document somewhere
 that describes when and how to run these scripts to deploy new services.</p>
 
 <p>The way configuration management works is that engineers create a
@@ -810,13 +845,14 @@ post-host-provisioning step where additional work is performed
 afterwards, such as checking out application code from a source control
 repository.</p>
 
-<p>If you&#8217;re not using configuration management already then you should
-start now because, frankly, it&#8217;s never too early. Starting configuration
+<p>If you’re not using configuration management already then you should
+start now because, frankly, it’s never too early. Starting configuration
 management now will not only help your first hired ops/systems engineer
 from working backwards to write these manifests later, but will also
 incur benefits (such as your developers spending less time away from
 shipping value-added code) that will outweigh the initial learning
 curve.</p>
+
 ]]></content>
   </entry>
   
@@ -825,14 +861,15 @@ curve.</p>
     <link href="http://www.charleshooper.net/blog/new-platform/sorry-for-rss-spam/"/>
     <updated>2013-05-05T15:58:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/new-platform/new-platform-sorry-for-the-rss-spam</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>Sorry for the RSS spam, everyone. I switched blogging platforms recently
 from <a href="http://wordpress.org/">Wordpress</a> to <a href="http://octopress.org/">Octopress</a>. When I updated my feed URL in
-<a href="http://feedburner.google.com/">Feedburner</a>; however, I&#8217;m told it re-posted all of my previous blog
+<a href="http://feedburner.google.com/">Feedburner</a>; however, I’m told it re-posted all of my previous blog
 posts in multiple RSS readers as unread. This resulted in a ton of
 annoying spam for alot of people, particularly those using <a href="http://www.feedly.com/">Feedly</a>
 and Google Reader.</p>
+
 ]]></content>
   </entry>
   
@@ -841,24 +878,24 @@ and Google Reader.</p>
     <link href="http://www.charleshooper.net/blog/intro-to-ops-for-startups/"/>
     <updated>2013-05-04T21:37:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/intro-to-operations-for-early-stage-startups</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p>I&#8217;ve spent the last few years in a variety of roles for early stage tech
-startups. While in these roles, I&#8217;ve noticed a pattern: <em>Early stage
-startups don&#8217;t give much thought to their operations. In particular,
-they typically don&#8217;t hire anyone specifically for that role because they
+<p>I’ve spent the last few years in a variety of roles for early stage tech
+startups. While in these roles, I’ve noticed a pattern: <em>Early stage
+startups don’t give much thought to their operations. In particular,
+they typically don’t hire anyone specifically for that role because they
 are focused on building their product.</em> In other words, all of their
 technical hires are for developers.</p>
 
 <p>What tends to happen in my experience is that <em>their developers soon
 become overwhelmed</em> (especially after a growth spurt) and are unable to
-spend their time shipping code that&#8217;s going to improve their product or
-make their company money. Eventually, if they&#8217;re lucky, management catches
+spend their time shipping code that’s going to improve their product or
+make their company money. Eventually, if they’re lucky, management catches
 onto this and hires their first <strong>systems or operations engineer</strong>.</p>
 
-<p>Because I&#8217;ve had the opportunity to be first-hired systems engineer,
-what I&#8217;ve experienced is the effect of &#8220;working backwards&#8221; to undo a
-bunch of things that weren&#8217;t done following best practices while
+<p>Because I’ve had the opportunity to be first-hired systems engineer,
+what I’ve experienced is the effect of “working backwards” to undo a
+bunch of things that weren’t done following best practices while
 simultaneously moving things forward to improve them.</p>
 
 <p>I decided to try to educate whoever would be willing to read this
@@ -867,23 +904,26 @@ not only save their future operations engineers some headache, but will
 also improve their business. Part of this education will happen in the
 form of one-on-one time with these startups. For example, I spent the
 last couple of days sitting in on office hours at a startup accelerator.
-The other part; however, will take place by writing &#8220;Intro to&#8230;&#8221;
+The other part; however, will take place by writing “Intro to…”
 articles and publishing them to a variety of places, including this blog.</p>
 
-<p>Specifically, the topics I&#8217;ve chosen to write about are:</p>
+<p>Specifically, the topics I’ve chosen to write about are:</p>
 
 <ul>
-<li><a href="http://www.charleshooper.net/blog/intro-to-ops-config-management/">Configuration management</a></li>
-<li><a href="http://www.charleshooper.net/blog/intro-to-ops-availability-monitoring-alerting/">Availability monitoring</a></li>
-<li><a href="http://www.charleshooper.net/blog/intro-to-ops-metrics-collection/">Metrics collection</a></li>
-<li>Backups</li>
-<li>Security</li>
-<li>Disaster Recovery</li>
+  <li><a href="http://www.charleshooper.net/blog/intro-to-ops-config-management/">Configuration management</a></li>
+  <li><a href="http://www.charleshooper.net/blog/intro-to-ops-availability-monitoring-alerting/">Availability monitoring</a></li>
+  <li><a href="http://www.charleshooper.net/blog/intro-to-ops-metrics-collection/">Metrics collection</a></li>
+  <li>Backups</li>
+  <li>Security</li>
+  <li>
+    <p>Disaster Recovery</p>
+
+  </li>
 </ul>
 
-
-<p>Over the next week or so, I&#8217;ll write about each one of these topics and
+<p>Over the next week or so, I’ll write about each one of these topics and
 post them to this blog. I hope people find them helpful!</p>
+
 ]]></content>
   </entry>
   
@@ -892,18 +932,17 @@ post them to this blog. I hope people find them helpful!</p>
     <link href="http://www.charleshooper.net/blog/2012-annual-review/"/>
     <updated>2013-01-14T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/2012-annual-review</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>Here are some stats from 2012:</p>
 
 <ul>
-<li>Only 3 posts published.</li>
-<li>50,791 pageviews.</li>
-<li>36,176 visitors (32,007 unique)</li>
-<li>71.97% bounce rate.</li>
-<li>Same great position at dotCloud!</li>
+  <li>Only 3 posts published.</li>
+  <li>50,791 pageviews.</li>
+  <li>36,176 visitors (32,007 unique)</li>
+  <li>71.97% bounce rate.</li>
+  <li>Same great position at dotCloud!</li>
 </ul>
-
 
 <p>Interestingly, my stats compared to last year aren’t too different, despite the fact that I only wrote 3 blog posts this year (instead of 10 last year). What’s also interesting is the HUGE spike in bounce rate (which used to be almost non-existent). This spike begins right around the time I hit a “home run” in terms of driving new traffic.</p>
 
@@ -916,26 +955,24 @@ post them to this blog. I hope people find them helpful!</p>
     <link href="http://www.charleshooper.net/blog/year-end-highlights/"/>
     <updated>2012-12-16T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/year-end-highlights</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>Since I’ve only written 3 blog posts so far this year and alot has changed, here’s a brief summary of what I’ll be writing about in my annual review:</p>
 
 <ul>
-<li>I stopped doing contract work and started working for dotCloud part time,</li>
-<li>As of tomorrow, I’ll officially have completed the requirements for my Bachelor’s degree,</li>
-<li>I found myself, politically (I won’t be writing about this, but it is a big deal to me).</li>
+  <li>I stopped doing contract work and started working for dotCloud part time,</li>
+  <li>As of tomorrow, I’ll officially have completed the requirements for my Bachelor’s degree,</li>
+  <li>I found myself, politically (I won’t be writing about this, but it is a big deal to me).</li>
 </ul>
-
 
 <p>What does the future hold for me?</p>
 
 <ul>
-<li>dotCloud offered me a full time position and I accepted; I will start January 2nd,</li>
-<li>I have a variety of side projects planned but it’s too soon to tell how much of my free time I’ll want to spend on them,</li>
-<li>I hope to become more involved with my local community and the ACM,</li>
-<li>I’ve made the decision to stop writing so much on Facebook and Twitter and write more here.</li>
+  <li>dotCloud offered me a full time position and I accepted; I will start January 2nd,</li>
+  <li>I have a variety of side projects planned but it’s too soon to tell how much of my free time I’ll want to spend on them,</li>
+  <li>I hope to become more involved with my local community and the ACM,</li>
+  <li>I’ve made the decision to stop writing so much on Facebook and Twitter and write more here.</li>
 </ul>
-
 
 <p>That last item has big implications for this blog. It means that I’ll be writing about more personal subjects and opinions I have instead of wasting that effort on Twitter and Facebook (where relatives I haven’t seen in 20 years take the opportunities to rant on my wall). Some of these opinions may also be controversial and, that’s OK, we’re meant to disagree on some things. Some of them may even be ill-formed as they’ll be outside of my area of expertise. That’s OK too, just write me and educate me.</p>
 ]]></content>
@@ -946,220 +983,217 @@ post them to this blog. I hope people find them helpful!</p>
     <link href="http://www.charleshooper.net/blog/painless-instrumentation-of-celery-tasks-using-statsd-and-graphite/"/>
     <updated>2012-03-12T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/painless-instrumentation-of-celery-tasks-using-statsd-and-graphite</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p><img src="http://www.charleshooper.net/wp-content/uploads/400px-Steuerstand01-150x150.jpg" title="A Control Station" alt="" />
+<p><img src="http://www.charleshooper.net/wp-content/uploads/400px-Steuerstand01-150x150.jpg" alt="" title="A Control Station" />
 For one of my clients and side projects, we’ve been working hard to build in application-level metrics to our wide portfolio of services. Among these services is one built on top of the <a href="http://celeryproject.org/">Celery distributed task queue</a>. We wanted a system that required as little configuration as possible to publish new metrics. For this reason, we decided on using <a href="http://codeascraft.etsy.com/2011/02/15/measure-anything-measure-everything/">statsd</a> and <a href="http://graphite.wikidot.com/">graphite</a>. Getting statsd and graphite running was the easy part, but we needed a quick, painless way of adding the instrumentation code for the most basic metrics to our Celery-backed service.</p>
 
 <p>For us, those basic metrics consisted of:</p>
 
 <ul>
-<li>Number of times a worker starts on a specific task</li>
-<li>Number of times a task raises an exception</li>
-<li>Number of times a task completes successfully (no exceptions)</li>
-<li>How long each task takes to complete</li>
+  <li>Number of times a worker starts on a specific task</li>
+  <li>Number of times a task raises an exception</li>
+  <li>Number of times a task completes successfully (no exceptions)</li>
+  <li>How long each task takes to complete</li>
 </ul>
-
 
 <p>Since the code to enable these metrics just <em>wraps</em> the code being instrumented it seemed only natural to use a decorator. Below is the code I wrote to do just that.</p>
 
-<figure class='code'><figcaption><span>statsd_instrument.py</span><a href='https://gist.github.com/chooper/2018362'>link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-<span class='line-number'>79</span>
-<span class='line-number'>80</span>
-<span class='line-number'>81</span>
-<span class='line-number'>82</span>
-<span class='line-number'>83</span>
-<span class='line-number'>84</span>
-<span class='line-number'>85</span>
-<span class='line-number'>86</span>
-<span class='line-number'>87</span>
-<span class='line-number'>88</span>
-<span class='line-number'>89</span>
-<span class='line-number'>90</span>
-<span class='line-number'>91</span>
-<span class='line-number'>92</span>
-<span class='line-number'>93</span>
-<span class='line-number'>94</span>
-<span class='line-number'>95</span>
-<span class='line-number'>96</span>
-<span class='line-number'>97</span>
-</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="sd">&quot;&quot;&quot;Decorator to quickly add statsd (graphite) instrumentation to Celery</span>
-</span><span class='line'><span class="sd">task functions.</span>
-</span><span class='line'>
-</span><span class='line'><span class="sd">With some slight modification, this could be used to instrument just</span>
-</span><span class='line'><span class="sd">about any (non-celery) function and be made abstract enough to customize</span>
-</span><span class='line'><span class="sd">metric names, etc.</span>
-</span><span class='line'>
-</span><span class='line'><span class="sd">Stats reported include number of times the task was accepted by a worker</span>
-</span><span class='line'><span class="sd">(`started`), the number of successes, and the number of times the task</span>
-</span><span class='line'><span class="sd">raised an exception. In addition, it also reports how long the task took</span>
-</span><span class='line'><span class="sd">to complete. Usage:</span>
-</span><span class='line'>
-</span><span class='line'><span class="sd">&gt;&gt;&gt; @task</span>
-</span><span class='line'><span class="sd">&gt;&gt;&gt; @instrument_task</span>
-</span><span class='line'><span class="sd">&gt;&gt;&gt; def mytask():</span>
-</span><span class='line'><span class="sd">&gt;&gt;&gt;     # do stuff</span>
-</span><span class='line'><span class="sd">&gt;&gt;&gt;     pass</span>
-</span><span class='line'>
-</span><span class='line'><span class="sd">Please note that the order of decorators is important to Celery. See</span>
-</span><span class='line'><span class="sd">http://ask.github.com/celery/userguide/tasks.html#decorating-tasks</span>
-</span><span class='line'><span class="sd">for more information.</span>
-</span><span class='line'>
-</span><span class='line'><span class="sd">Uses `simple_decorator` from</span>
-</span><span class='line'><span class="sd">http://wiki.python.org/moin/PythonDecoratorLibrary#Property_Definition</span>
-</span><span class='line'>
-</span><span class='line'><span class="sd">Limitation: Does not readily work on subclasses of celery.tasks.Task</span>
-</span><span class='line'><span class="sd">because it always reports `task_name` as &#39;run&#39;</span>
-</span><span class='line'><span class="sd">&quot;&quot;&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># statsd instrumentation</span>
-</span><span class='line'><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">current_app</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">statsd</span>
-</span><span class='line'>
-</span><span class='line'><span class="nd">@simple_decorator</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">instrument_task</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-</span><span class='line'>    <span class="sd">&quot;&quot;&quot;Wraps a celery task with statsd instrumentation code&quot;&quot;&quot;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">instrument_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span class='line'>        <span class="n">stats_conn</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span>
-</span><span class='line'>            <span class="n">host</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="s">&#39;STATSD_HOST&#39;</span><span class="p">],</span>
-</span><span class='line'>            <span class="n">port</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="s">&#39;STATSD_PORT&#39;</span><span class="p">],</span>
-</span><span class='line'>            <span class="n">sample_rate</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">task_name</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">__name__</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">counter</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">counter</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="s">&#39;celery.tasks.status&#39;</span><span class="p">,</span><span class="n">stats_conn</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">counter</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="s">&#39;{task_name}.started&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">timer</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;celery.tasks.duration&#39;</span><span class="p">,</span> <span class="n">stats_conn</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="k">try</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">ret</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">except</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">counter</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="s">&#39;{task_name}.exceptions&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
-</span><span class='line'>            <span class="k">raise</span>
-</span><span class='line'>        <span class="k">else</span><span class="p">:</span>
-</span><span class='line'>            <span class="n">counter</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="s">&#39;{task_name}.success&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
-</span><span class='line'>            <span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="s">&#39;{task_name}.success&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
-</span><span class='line'>            <span class="k">return</span> <span class="n">ret</span>
-</span><span class='line'>        <span class="k">finally</span><span class="p">:</span>
-</span><span class='line'>            <span class="k">try</span><span class="p">:</span>
-</span><span class='line'>                <span class="k">del</span> <span class="n">timer</span>
-</span><span class='line'>                <span class="k">del</span> <span class="n">counter</span>
-</span><span class='line'>                <span class="k">del</span> <span class="n">stats_conn</span>
-</span><span class='line'>            <span class="k">except</span><span class="p">:</span>
-</span><span class='line'>                <span class="k">pass</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">return</span> <span class="n">instrument_wrapper</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">simple_decorator</span><span class="p">(</span><span class="n">decorator</span><span class="p">):</span>
-</span><span class='line'>    <span class="sd">&quot;&quot;&quot;Borrowed from:</span>
-</span><span class='line'><span class="sd">    http://wiki.python.org/moin/PythonDecoratorLibrary#Property_Definition</span>
-</span><span class='line'>
-</span><span class='line'><span class="sd">    Original docstring:</span>
-</span><span class='line'><span class="sd">    This decorator can be used to turn simple functions</span>
-</span><span class='line'><span class="sd">    into well-behaved decorators, so long as the decorators</span>
-</span><span class='line'><span class="sd">    are fairly simple. If a decorator expects a function and</span>
-</span><span class='line'><span class="sd">    returns a function (no descriptors), and if it doesn&#39;t</span>
-</span><span class='line'><span class="sd">    modify function attributes or docstring, then it is</span>
-</span><span class='line'><span class="sd">    eligible to use this. Simply apply @simple_decorator to</span>
-</span><span class='line'><span class="sd">    your decorator and it will automatically preserve the</span>
-</span><span class='line'><span class="sd">    docstring and function attributes of functions to which</span>
-</span><span class='line'><span class="sd">    it is applied.&quot;&quot;&quot;</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">new_decorator</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
-</span><span class='line'>        <span class="n">g</span> <span class="o">=</span> <span class="n">decorator</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">g</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__name__</span>
-</span><span class='line'>        <span class="n">g</span><span class="o">.</span><span class="n">__module__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__module__</span> <span class="c"># or celery throws a fit</span>
-</span><span class='line'>        <span class="n">g</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__doc__</span>
-</span><span class='line'>        <span class="n">g</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">g</span>
-</span><span class='line'>    <span class="c"># Now a few lines needed to make simple_decorator itself</span>
-</span><span class='line'>    <span class="c"># be a well-behaved decorator.</span>
-</span><span class='line'>    <span class="n">new_decorator</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="n">decorator</span><span class="o">.</span><span class="n">__name__</span>
-</span><span class='line'>    <span class="n">new_decorator</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">decorator</span><span class="o">.</span><span class="n">__doc__</span>
-</span><span class='line'>    <span class="n">new_decorator</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">decorator</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">new_decorator</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>statsd_instrument.py</span><a href="https://gist.github.com/chooper/2018362">link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+<span class="line-number">66</span>
+<span class="line-number">67</span>
+<span class="line-number">68</span>
+<span class="line-number">69</span>
+<span class="line-number">70</span>
+<span class="line-number">71</span>
+<span class="line-number">72</span>
+<span class="line-number">73</span>
+<span class="line-number">74</span>
+<span class="line-number">75</span>
+<span class="line-number">76</span>
+<span class="line-number">77</span>
+<span class="line-number">78</span>
+<span class="line-number">79</span>
+<span class="line-number">80</span>
+<span class="line-number">81</span>
+<span class="line-number">82</span>
+<span class="line-number">83</span>
+<span class="line-number">84</span>
+<span class="line-number">85</span>
+<span class="line-number">86</span>
+<span class="line-number">87</span>
+<span class="line-number">88</span>
+<span class="line-number">89</span>
+<span class="line-number">90</span>
+<span class="line-number">91</span>
+<span class="line-number">92</span>
+<span class="line-number">93</span>
+<span class="line-number">94</span>
+<span class="line-number">95</span>
+<span class="line-number">96</span>
+<span class="line-number">97</span>
+</pre></td><td class="code"><pre><code class="py"><span class="line"><span class="sd">&quot;&quot;&quot;Decorator to quickly add statsd (graphite) instrumentation to Celery</span>
+</span><span class="line"><span class="sd">task functions.</span>
+</span><span class="line">
+</span><span class="line"><span class="sd">With some slight modification, this could be used to instrument just</span>
+</span><span class="line"><span class="sd">about any (non-celery) function and be made abstract enough to customize</span>
+</span><span class="line"><span class="sd">metric names, etc.</span>
+</span><span class="line">
+</span><span class="line"><span class="sd">Stats reported include number of times the task was accepted by a worker</span>
+</span><span class="line"><span class="sd">(`started`), the number of successes, and the number of times the task</span>
+</span><span class="line"><span class="sd">raised an exception. In addition, it also reports how long the task took</span>
+</span><span class="line"><span class="sd">to complete. Usage:</span>
+</span><span class="line">
+</span><span class="line"><span class="sd">&gt;&gt;&gt; @task</span>
+</span><span class="line"><span class="sd">&gt;&gt;&gt; @instrument_task</span>
+</span><span class="line"><span class="sd">&gt;&gt;&gt; def mytask():</span>
+</span><span class="line"><span class="sd">&gt;&gt;&gt;     # do stuff</span>
+</span><span class="line"><span class="sd">&gt;&gt;&gt;     pass</span>
+</span><span class="line">
+</span><span class="line"><span class="sd">Please note that the order of decorators is important to Celery. See</span>
+</span><span class="line"><span class="sd">http://ask.github.com/celery/userguide/tasks.html#decorating-tasks</span>
+</span><span class="line"><span class="sd">for more information.</span>
+</span><span class="line">
+</span><span class="line"><span class="sd">Uses `simple_decorator` from</span>
+</span><span class="line"><span class="sd">http://wiki.python.org/moin/PythonDecoratorLibrary#Property_Definition</span>
+</span><span class="line">
+</span><span class="line"><span class="sd">Limitation: Does not readily work on subclasses of celery.tasks.Task</span>
+</span><span class="line"><span class="sd">because it always reports `task_name` as &#39;run&#39;</span>
+</span><span class="line"><span class="sd">&quot;&quot;&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="c"># statsd instrumentation</span>
+</span><span class="line"><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">current_app</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">statsd</span>
+</span><span class="line">
+</span><span class="line"><span class="nd">@simple_decorator</span>
+</span><span class="line"><span class="k">def</span> <span class="nf">instrument_task</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+</span><span class="line">    <span class="sd">&quot;&quot;&quot;Wraps a celery task with statsd instrumentation code&quot;&quot;&quot;</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">def</span> <span class="nf">instrument_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span class="line">        <span class="n">stats_conn</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span>
+</span><span class="line">            <span class="n">host</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="s">&#39;STATSD_HOST&#39;</span><span class="p">],</span>
+</span><span class="line">            <span class="n">port</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="s">&#39;STATSD_PORT&#39;</span><span class="p">],</span>
+</span><span class="line">            <span class="n">sample_rate</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">task_name</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">__name__</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">counter</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">counter</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="s">&#39;celery.tasks.status&#39;</span><span class="p">,</span><span class="n">stats_conn</span><span class="p">)</span>
+</span><span class="line">        <span class="n">counter</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="s">&#39;{task_name}.started&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
+</span><span class="line">
+</span><span class="line">        <span class="n">timer</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;celery.tasks.duration&#39;</span><span class="p">,</span> <span class="n">stats_conn</span><span class="p">)</span>
+</span><span class="line">        <span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line">        <span class="k">try</span><span class="p">:</span>
+</span><span class="line">            <span class="n">ret</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span class="line">        <span class="k">except</span><span class="p">:</span>
+</span><span class="line">            <span class="n">counter</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="s">&#39;{task_name}.exceptions&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
+</span><span class="line">            <span class="k">raise</span>
+</span><span class="line">        <span class="k">else</span><span class="p">:</span>
+</span><span class="line">            <span class="n">counter</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="s">&#39;{task_name}.success&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
+</span><span class="line">            <span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="s">&#39;{task_name}.success&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
+</span><span class="line">            <span class="k">return</span> <span class="n">ret</span>
+</span><span class="line">        <span class="k">finally</span><span class="p">:</span>
+</span><span class="line">            <span class="k">try</span><span class="p">:</span>
+</span><span class="line">                <span class="k">del</span> <span class="n">timer</span>
+</span><span class="line">                <span class="k">del</span> <span class="n">counter</span>
+</span><span class="line">                <span class="k">del</span> <span class="n">stats_conn</span>
+</span><span class="line">            <span class="k">except</span><span class="p">:</span>
+</span><span class="line">                <span class="k">pass</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">return</span> <span class="n">instrument_wrapper</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">simple_decorator</span><span class="p">(</span><span class="n">decorator</span><span class="p">):</span>
+</span><span class="line">    <span class="sd">&quot;&quot;&quot;Borrowed from:</span>
+</span><span class="line"><span class="sd">    http://wiki.python.org/moin/PythonDecoratorLibrary#Property_Definition</span>
+</span><span class="line">
+</span><span class="line"><span class="sd">    Original docstring:</span>
+</span><span class="line"><span class="sd">    This decorator can be used to turn simple functions</span>
+</span><span class="line"><span class="sd">    into well-behaved decorators, so long as the decorators</span>
+</span><span class="line"><span class="sd">    are fairly simple. If a decorator expects a function and</span>
+</span><span class="line"><span class="sd">    returns a function (no descriptors), and if it doesn&#39;t</span>
+</span><span class="line"><span class="sd">    modify function attributes or docstring, then it is</span>
+</span><span class="line"><span class="sd">    eligible to use this. Simply apply @simple_decorator to</span>
+</span><span class="line"><span class="sd">    your decorator and it will automatically preserve the</span>
+</span><span class="line"><span class="sd">    docstring and function attributes of functions to which</span>
+</span><span class="line"><span class="sd">    it is applied.&quot;&quot;&quot;</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">new_decorator</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+</span><span class="line">        <span class="n">g</span> <span class="o">=</span> <span class="n">decorator</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</span><span class="line">        <span class="n">g</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__name__</span>
+</span><span class="line">        <span class="n">g</span><span class="o">.</span><span class="n">__module__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__module__</span> <span class="c"># or celery throws a fit</span>
+</span><span class="line">        <span class="n">g</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__doc__</span>
+</span><span class="line">        <span class="n">g</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">g</span>
+</span><span class="line">    <span class="c"># Now a few lines needed to make simple_decorator itself</span>
+</span><span class="line">    <span class="c"># be a well-behaved decorator.</span>
+</span><span class="line">    <span class="n">new_decorator</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="n">decorator</span><span class="o">.</span><span class="n">__name__</span>
+</span><span class="line">    <span class="n">new_decorator</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">decorator</span><span class="o">.</span><span class="n">__doc__</span>
+</span><span class="line">    <span class="n">new_decorator</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">decorator</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">new_decorator</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 ]]></content>
   </entry>
@@ -1169,13 +1203,14 @@ For one of my clients and side projects, we’ve been working hard to build in a
     <link href="http://www.charleshooper.net/blog/we-have-the-tools-but-what-about-the-techniques/"/>
     <updated>2012-01-02T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/we-have-the-tools-but-what-about-the-techniques</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>In my previously-written article “<a href="http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops/" title="Concurrent Engineering: The Foundation of DevOps">Concurrent Engineering: The Foundation of DevOps</a>” I wrote “<em>just because you use puppet does not necessarily mean your organization is practicing DevOps.</em>” I didn’t spend much time on it then, but I think it bears repeating and further explanation. The <strong>DevOps “movement” has seen</strong>, and will likely continue to see, <strong>a huge influx of new tools</strong> as organizations attempt to find ways to adopt DevOps within their organizations. These tools have included (and certainly have not been limited to) tools that aid in monitoring (statsd), configuration management (puppet), and continuous delivery (hubot).</p>
 
 <p>Operations engineers, software developers, and managers are in a mad dash to develop, utilize, and integrate these tools within their organizations. And that’s where we’re going wrong; we are focused on a single component of the Software/Systems Engineering Process. This process model contains three main components that are central to its existence: <em>methodologies</em>, <em>techniques</em>, and <em>tools</em> (Valacich 2009). While I don’t need to go into each one specifically, it’s clear that the tools are just a single factor in the overall process. Following the model further, it becomes clear that the makeup of each of these components influences the other components in the process.</p>
 
 <p>Put simply, <strong>DevOps is a methodology</strong> and, as such, it’s natural that we’re seeing a huge response in tools. What I feel we’re missing, however, is more information about the different techniques used throughout organizations in <em>their</em> software and operations engineering processes. An excellent example of this is <a href="http://scottchacon.com/2011/08/31/github-flow.html">Scott Chacon’s explanation of how Github uses Git (and Github!) to deliver continuous improvement</a> to their service. With that said, I would like to see more organizations refine their techniques and talk about <em>these</em> as much as they talk about their tools.</p>
+
 ]]></content>
   </entry>
   
@@ -1184,20 +1219,19 @@ For one of my clients and side projects, we’ve been working hard to build in a
     <link href="http://www.charleshooper.net/blog/year-end-and-new-year-updates/"/>
     <updated>2012-01-01T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/year-end-and-new-year-updates</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>Happy New Years, everyone.</p>
 
 <p>I thought I’d ring in the new year with some site stats from 2011.</p>
 
 <ul>
-<li>Only 10 posts published.</li>
-<li>59,238 pageviews.</li>
-<li>24,829 visitors (22,634 unique)</li>
-<li>1.32% bounce rate.</li>
-<li>Multiple job and business opportunities in direct response to articles I wrote including a new job (more details below).</li>
+  <li>Only 10 posts published.</li>
+  <li>59,238 pageviews.</li>
+  <li>24,829 visitors (22,634 unique)</li>
+  <li>1.32% bounce rate.</li>
+  <li>Multiple job and business opportunities in direct response to articles I wrote including a new job (more details below).</li>
 </ul>
-
 
 <p>I really want to write more. My resolution then is to “<strong>write more</strong>.” Using a more quantified approach, <strong>I will spend at least 30 minutes a day writing for at least five days a week</strong>. That doesn’t mean I will publish five articles a week. One of my big issues with writing is the amount of time that goes into each post. I approach my writing very academically and try to back up my ideas with citations; this research takes time. I also, very frequently, solicit feedback from other people before publishing. But I really enjoy writing and I really enjoy receiving feedback on my ideas through this blog so I would like to continue doing it.</p>
 
@@ -1218,9 +1252,11 @@ For one of my clients and side projects, we’ve been working hard to build in a
     <link href="http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops/"/>
     <updated>2011-12-07T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<blockquote><p>DevOps is all about trying to avoid that epic failure and working smarter and more efficiently at the same time. It is a framework of ideas and principles designed to foster cooperation, learning and coordination between development and operational groups. In a DevOps environment, developers and sysadmins build relationships, processes, and tools that allow them to better interact and ultimately better service the customer (<a href="http://www.kartar.net/2010/02/what-devops-means-to-me/" title="What DevOps Means to Me">James Turnbull</a>).</p></blockquote>
+<blockquote>
+  <p>DevOps is all about trying to avoid that epic failure and working smarter and more efficiently at the same time. It is a framework of ideas and principles designed to foster cooperation, learning and coordination between development and operational groups. In a DevOps environment, developers and sysadmins build relationships, processes, and tools that allow them to better interact and ultimately better service the customer (<a href="http://www.kartar.net/2010/02/what-devops-means-to-me/" title="What DevOps Means to Me">James Turnbull</a>).</p>
+</blockquote>
 
 <p>At the time of writing, if you were to search for “devops” you would find eight results attempting to explain what devops is, one result for a conference, and one rather satirical article (although not necessarily incorrect) where the author answers the question of “how do you implement devops” with “<a href="http://teddziuba.com/2011/03/devops-scam.html" title="DevOps is a Poorly Executed Scam">nobody seems to know</a>” (Ted Dziuba).</p>
 
@@ -1230,29 +1266,30 @@ For one of my clients and side projects, we’ve been working hard to build in a
 
 <p>Well, get your product and management together because the truth is that DevOps is actually a form of Concurrent Engineering.</p>
 
-<blockquote><p>Concurrent Engineering (CE) is a systematic approach to integrated product development that emphasizes the response to customer expectations. It embodies team values of co-operation, trust and sharing in such a manner that decision making is by consensus, involving all perspectives in parallel, from the beginning of the product life-cycle (<a href="http://www.esa.int/esaMI/CDF/SEM1OF1P4HD_0.html" title="What is concurrent engineering?">ESA – Concurrent Engineering Facility</a>).</p></blockquote>
+<blockquote>
+  <p>Concurrent Engineering (CE) is a systematic approach to integrated product development that emphasizes the response to customer expectations. It embodies team values of co-operation, trust and sharing in such a manner that decision making is by consensus, involving all perspectives in parallel, from the beginning of the product life-cycle (<a href="http://www.esa.int/esaMI/CDF/SEM1OF1P4HD_0.html" title="What is concurrent engineering?">ESA – Concurrent Engineering Facility</a>).</p>
+</blockquote>
 
 <p>Concurrent Engineering encompasses several major principles which just so happen to fit the definition (however formal or informal) of devops.</p>
 
 <p>I’ll list them from the <a href="http://best.berkeley.edu/~pps/pps/concurrent.html#basic" title="Basic Principles of Concurrent Engineering">Synthesis Coalition</a> here:</p>
 
 <ul>
-<li>Get a strong commitment from senior management.</li>
-<li>Establish unified project goals and a clear business mission.</li>
-<li>Develop a detailed plan early in the process.</li>
-<li>Continually review your progress and revise your plan.</li>
-<li>Develop project leaders that have an overall vision of the project and goals.</li>
-<li>Analyze your market and know your customers.</li>
-<li>Suppress individualism and foster a team concept.</li>
-<li>Establish and cultivate cross-functional integration and collaboration.</li>
-<li>Break project into its natural phases.</li>
-<li>Develop metrics.</li>
-<li>Set milestones throughout the development process.</li>
-<li>Collectively work on all parts of project.</li>
-<li>Reduce costs and time to market.</li>
-<li>Complete tasks in parallel.</li>
+  <li>Get a strong commitment from senior management.</li>
+  <li>Establish unified project goals and a clear business mission.</li>
+  <li>Develop a detailed plan early in the process.</li>
+  <li>Continually review your progress and revise your plan.</li>
+  <li>Develop project leaders that have an overall vision of the project and goals.</li>
+  <li>Analyze your market and know your customers.</li>
+  <li>Suppress individualism and foster a team concept.</li>
+  <li>Establish and cultivate cross-functional integration and collaboration.</li>
+  <li>Break project into its natural phases.</li>
+  <li>Develop metrics.</li>
+  <li>Set milestones throughout the development process.</li>
+  <li>Collectively work on all parts of project.</li>
+  <li>Reduce costs and time to market.</li>
+  <li>Complete tasks in parallel.</li>
 </ul>
-
 
 <p>By approaching the issues of devops as  concurrent engineering and implementing it as such, you open the movement to a well-researched, well-documented, and well-accepted product design philosophy. By shedding this light on the devops methodologies, this enables those of us pushing the devops movement to finally put the movement into a more business-oriented perspective.</p>
 ]]></content>
@@ -1263,7 +1300,7 @@ For one of my clients and side projects, we’ve been working hard to build in a
     <link href="http://www.charleshooper.net/blog/hypersensitivity-and-political-correctness/"/>
     <updated>2011-08-19T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/hypersensitivity-and-political-correctness</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>I wrote a blog post this week on how <a href="http://www.charleshooper.net/blog/stop-letting-tech-people-be-socially-inept/" title="Stop Letting Technical People Get Away With Social Ineptitude">engineers or “technical people” don’t have to, and shouldn’t, be jerks</a>. My argument was that the stereotype that <em>technically-minded people are bad at social skills</em> was just that, a stereotype, and that employers should stop allowing us to get away with it. I knew it was going to be controversial when I wrote it, especially because the type of people who find my blog (HackerNewsers) <em>are</em> usually technically-minded people (with a nod to the rest of you entrepreneurs, biz, and VC folk). As expected, a large chunk of commentors (both on HN and on my blog) disagreed with my argument and a large chunk agreed.</p>
 
@@ -1282,22 +1319,23 @@ For one of my clients and side projects, we’ve been working hard to build in a
     <link href="http://www.charleshooper.net/blog/stop-letting-tech-people-be-socially-inept/"/>
     <updated>2011-08-17T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/stop-letting-tech-people-be-socially-inept</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>As a technical person who has worked many customer-facing support roles, I’m offended by the often-cited notion that technical people have poor people skills or are poor at filling customer support roles. Earlier this week, a web host incited a Public Relations nightmare when their “Technical Director” responded childishly to some customers, disabled their accounts, and deleted their backups. The company’s response was to create a new customer support position so they could keep their Technical Director yet isolate him from their customers. In this new customer support personnel’s recap of the situation, he wrote:</p>
 
-<blockquote><p>Jules is the Technical Director. Jules does a fantastic job looking after things and keeping the infrastructure running well. Unfortunately though, as is often the case with very technically minded people, customer service is not always his strong point.</p></blockquote>
+<blockquote>
+  <p>Jules is the Technical Director. Jules does a fantastic job looking after things and keeping the infrastructure running well. Unfortunately though, as is often the case with very technically minded people, customer service is not always his strong point.</p>
+</blockquote>
 
 <p>As I stated above, I find this absolutely offensive. Unfortunately, it’s often believed to be true because there <em>are</em> so many engineers and technical personnel with poor people skills. I never have seen statistics to support the notion that the ratio is <em>higher</em> in these professions than in others, yet employers often find that people filling these roles with poor people skills are still employable. This needs to stop.</p>
 
 <p>I’m of the opinion that every position is customer-facing. Sure, some positions might not interface with the <em>company’s</em> customers, but the position is likely to have customers of its own – whether internal or external. All it takes for someone to be good at customer service is:</p>
 
 <ul>
-<li>The understanding that they represent their employer and that people are relying on them,</li>
-<li>A compassionate, helpful, and courteous attitude,</li>
-<li>The knowledge of whatever they’re supporting.</li>
+  <li>The understanding that they represent their employer and that people are relying on them,</li>
+  <li>A compassionate, helpful, and courteous attitude,</li>
+  <li>The knowledge of whatever they’re supporting.</li>
 </ul>
-
 
 <p>Frankly, if you don’t have those qualities, how can you work with anyone at all?</p>
 ]]></content>
@@ -1308,11 +1346,13 @@ For one of my clients and side projects, we’ve been working hard to build in a
     <link href="http://www.charleshooper.net/blog/problems-at-scale/"/>
     <updated>2011-08-13T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/problems-at-scale</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>Over on <a href="http://news.ycombinator.com/item?id=2881122">HackerNews</a>, saturn wrote that:</p>
 
-<blockquote><p>Cloud computing scales the efficiencies, yes. It also scales the problems.</p></blockquote>
+<blockquote>
+  <p>Cloud computing scales the efficiencies, yes. It also scales the problems.</p>
+</blockquote>
 
 <p>This is exactly right. Problems in simple architectures are relatively easy to solve. In fact, I’d go as far as to say that we’ve probably solved them in all of the traditional archetypes, both in theory and in practice.</p>
 

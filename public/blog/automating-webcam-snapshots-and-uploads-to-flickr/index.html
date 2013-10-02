@@ -109,23 +109,24 @@
   </header>
 
 
-<div class="entry-content"><h1></h1>
+<div class="entry-content"><h1 id="section"></h1>
 
 <p>With gardening season right around the corner, one of my desires was to set something up that would allow me to take automated, regular snapshots of some of my plants and upload them to flickr. After a few cumulative hours I finally cobbled together the solution.</p>
 
-<h2>Taking the Snapshots</h2>
+<h2 id="taking-the-snapshots">Taking the Snapshots</h2>
 
 <p>The first thing I needed to do was to take snapshots from an installed USB webcam and save them to a directory. This needed to be able to run from a cron script so obviously it needed to work without a GUI and without user-interaction. I read in a <a href="http://www.tldp.org/HOWTO/html_single/Webcam-HOWTO/#COMMAND">Webcam Howto</a> that I could do this using <strong>streamer</strong> so I installed it and wrote a short shell script that would iterate through the video devices installed on my PC and run the snapshot command. You can <a href="https://bitbucket.org/hoop/snapshot/src/98aa5d9a2038/snapshot">view the source of this script here</a>.</p>
 
-<h2>Uploading the Photos</h2>
+<h2 id="uploading-the-photos">Uploading the Photos</h2>
 
 <p>Next I wanted to automatically upload the files to Flickr. At first, I tried using a script I found called uploadr.py which worked OK, but I also wanted to add my photos to a specific set which this script didn’t do. I probably could have extended its functionality, but this script didn’t use or implement the full Flickr API which made this task seem unnecessary.</p>
 
 <p>Instead, I downloaded the <a href="http://stuvel.eu/flickrapi">Python Flickr API from Stuvel</a> and in less than 90 lines I had working code to upload a directory of images to Flickr and add them to a given set. You can view the source to my <a href="https://bitbucket.org/hoop/snapshot/src/98aa5d9a2038/simpleuploadr.py">flickr uploader script</a> here, which I’m calling <a href="https://bitbucket.org/hoop/snapshot">simpleuploadr.py</a> for now.</p>
 
-<h2>Results</h2>
+<h2 id="results">Results</h2>
 
 <p><a href="http://www.flickr.com/photos/hoop2w1/sets/72157626354700156/with/5620672632/">Here are my pretty pictures</a> :) My apologies for the quality, I’m using a really cheap webcam.</p>
+
 </div>
 
 

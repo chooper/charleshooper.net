@@ -110,95 +110,88 @@ Advisory URL: http://www.charleshooper.net/blog/multiple-vulnerabilities-in- &he
   </header>
 
 
-<div class="entry-content"><h1></h1>
+<div class="entry-content"><h1 id="section"></h1>
 
-<p>Title: Multiple Vulnerabilities in Mingle Forum (WordPress Plugin)<br/>
-Advisory URL: http://www.charleshooper.net/blog/multiple-vulnerabilities-in-mingle-forum-wordpress-plugin/<br/>
-Date Published: January 8th, 2011<br/>
+<p>Title: Multiple Vulnerabilities in Mingle Forum (WordPress Plugin)<br />
+Advisory URL: http://www.charleshooper.net/blog/multiple-vulnerabilities-in-mingle-forum-wordpress-plugin/<br />
+Date Published: January 8th, 2011<br />
 Vendors Contacted: Paul Carter – Maintainer of plugin.</p>
 
 <ol>
-<li>Summary</li>
+  <li>Summary</li>
 </ol>
 
-
-<p>Mingle Forum is a plugin for the popular blog tool and publishing<br/>
-platform, WordPress. According to the author of Mingle Forum, “Mingle<br/>
-Forum has been modified to be lightweight, solid, secure, quick to<br/>
+<p>Mingle Forum is a plugin for the popular blog tool and publishing<br />
+platform, WordPress. According to the author of Mingle Forum, “Mingle<br />
+Forum has been modified to be lightweight, solid, secure, quick to<br />
 setup, and easy to use.”</p>
 
-<p>There exist multiple vulnerabilities in Mingle Forum, SQL injection<br/>
+<p>There exist multiple vulnerabilities in Mingle Forum, SQL injection<br />
 being among them.</p>
 
 <ol>
-<li>Vulnerability Information</li>
+  <li>Vulnerability Information</li>
 </ol>
-
 
 <p>Packages/Versions Affected: Confirmed on 1.0.24 and 1.0.26</p>
 
-<p>3a. Type: SQL Injection [CWE-89]<br/>
-3a. Impact: Read application data.<br/>
-3a. Discussion: There is a SQL injection vulnerability present in the<br/>
-RSS feed generator. By crafting specific URLs an attacker can retrieve<br/>
+<p>3a. Type: SQL Injection [CWE-89]<br />
+3a. Impact: Read application data.<br />
+3a. Discussion: There is a SQL injection vulnerability present in the<br />
+RSS feed generator. By crafting specific URLs an attacker can retrieve<br />
 information from the MySQL database.</p>
 
-<p>3b. Type: SQL Injection [CWE-89]<br/>
-3b. Impact: Read application data.<br/>
-3b. Discussion: There is a SQL injection vulnerability present in the<br/>
-`edit post` functionality. By crafting specific URLs an attacker can<br/>
+<p>3b. Type: SQL Injection [CWE-89]<br />
+3b. Impact: Read application data.<br />
+3b. Discussion: There is a SQL injection vulnerability present in the<br />
+`edit post` functionality. By crafting specific URLs an attacker can<br />
 retrieve information from the MySQL database.</p>
 
-<p>3c. Type: Auth Bypass via Direct Request [CWE-425]<br/>
-3c. Impact: AuthZ is not performed for `edit post` functionality.<br/>
-3c. Discussion: By browsing directly to the `edit post` page a user can<br/>
+<p>3c. Type: Auth Bypass via Direct Request [CWE-425]<br />
+3c. Impact: AuthZ is not performed for `edit post` functionality.<br />
+3c. Discussion: By browsing directly to the `edit post` page a user can<br />
 view and edit any page.</p>
 
 <ol>
-<li>PoC &amp; Technical Description</li>
+  <li>PoC &amp; Technical Description</li>
 </ol>
 
+<p>4a.<br />
+<a href="http://path.to/wordpress/wp-content/plugins/mingle-forum/feed.php?topic=0 UNION SELECT 1,user_email,3,4,5,user_login,7 FROM wp_users #">http://path.to/wordpress/wp-content/plugins/mingle-forum/feed.php?topic=0 UNION SELECT 1,user_email,3,4,5,user_login,7 FROM wp_users #</a></p>
 
-<p>4a.<br/>
-<a href="http://path.to/wordpress/wp-content/plugins/mingle-forum/feed.php?topic=0">http://path.to/wordpress/wp-content/plugins/mingle-forum/feed.php?topic=0 UNION SELECT 1,user_email,3,4,5,user_login,7 FROM wp_users #</a></p>
+<p>4b.  </p>
 
-<p>4b.</p>
-
-<p>4c.</p>
+<p>4c. </p>
 
 <ol>
-<li>Report Timeline</li>
+  <li>Report Timeline</li>
 </ol>
 
-
-<p>12/17/2010 Initial email sent to plugin maintainer.<br/>
-12/22/2010 Confirmation of first email requested.<br/>
-12/31/2010 Correct email address obtained. Maintainer contacted again on<br/>
-this date.<br/>
-01/01/2011 Received response from plugin maintainer.<br/>
-01/07/2011 Plugin maintainer releases update that addresses these<br/>
+<p>12/17/2010 Initial email sent to plugin maintainer.<br />
+12/22/2010 Confirmation of first email requested.<br />
+12/31/2010 Correct email address obtained. Maintainer contacted again on<br />
+this date.<br />
+01/01/2011 Received response from plugin maintainer.<br />
+01/07/2011 Plugin maintainer releases update that addresses these<br />
 vulnerabilities.</p>
 
 <ol>
-<li>References</li>
+  <li>References</li>
 </ol>
 
-
-<p>6a. The WordPress Plugin page for Mingle Forum:</p>
+<p>6a. The WordPress Plugin page for Mingle Forum:  </p>
 
 <ol>
-<li>Legalese</li>
+  <li>Legalese</li>
 </ol>
 
-
-<p>This vulnerability report by Charles Hooper &lt;  > is<br/>
-licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br/>
+<p>This vulnerability report by Charles Hooper &lt;  &gt; is<br />
+licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br />
 3.0 Unported License.</p>
 
 <ol>
-<li>Signature</li>
+  <li>Signature</li>
 </ol>
-
 
 <p>Public Key: Obtainable via pool.sks-keyservers.net</p>
 </div>

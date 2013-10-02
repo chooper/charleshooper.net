@@ -109,7 +109,7 @@
   </header>
 
 
-<div class="entry-content"><h1></h1>
+<div class="entry-content"><h1 id="section"></h1>
 
 <p>I have been modifying <a href="http://www.honeynet.org/tools/sebek/">Sebek</a> to get it to work in more recent 2.6 series (~2.6.18) kernels and ran into some snags. Most notably, I could not intercept/redirect/wrap any system calls. As it turns out, Sebek couldn’t find the system call table. The code Sebek was using to find the system call table is 100% identical to the code found in <a href="http://kerneltrap.org/node/6416">this article on KernelTrap</a>.</p>
 

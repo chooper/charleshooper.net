@@ -112,36 +112,34 @@
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
-<p>Lately I’ve been working on some code to process tweets coming out of the <em>Gardenhose</em>. The <strong>Gardenhose</strong> is the name given to the lowest level of access to <a href="http://apiwiki.twitter.com/Streaming-API-Documentation">Twitter’s streaming API</a>. Oddly enough however, my connections to the Twitter API were dropping, causing my program to hang and my CPU to remain maxed out at 100% usage.
-After much debugging and banging my head on my desk, <a href="http://github.com/joshthecoder/tweepy">joshthecoder (creator of tweepy)</a> and uuid (#twitterapi / freenode) pointed out that I may be filling some type of buffer or queue, causing this condition. They suggested that my current workflow of <em>“receive tweet, process, store to DB”</em> all in the same thread might be too slow. After removing key parts of my processing code, what once took 100% now only took 1-3% CPU, I was receiving a much higher volume of tweets, and my connections were no longer dropping. This meant that the culprit of my general slowness was the <strong>sqlite database</strong>.
-Basically, all I was doing with these tweets was tokenizing them, tallying up their contents, and then updating a corpus (stored in a sqlite database) that would track how many tweets each word appeared in. Having this data would allow me to perform accurate <a href="http://nlp.stanford.edu/IR-book/html/htmledition/tf-idf-weighting-1.html">Tf-idf</a> scoring later on. <a href="http://codepad.org/8OkD5AGM">You can see the original (and admittedly not-very-well documented) version of this program here (Python)</a>.
+<p>Lately I’ve been working on some code to process tweets coming out of the <em>Gardenhose</em>. The <strong>Gardenhose</strong> is the name given to the lowest level of access to <a href="http://apiwiki.twitter.com/Streaming-API-Documentation">Twitter’s streaming API</a>. Oddly enough however, my connections to the Twitter API were dropping, causing my program to hang and my CPU to remain maxed out at 100% usage. 
+After much debugging and banging my head on my desk, <a href="http://github.com/joshthecoder/tweepy">joshthecoder (creator of tweepy)</a> and uuid (#twitterapi / freenode) pointed out that I may be filling some type of buffer or queue, causing this condition. They suggested that my current workflow of <em>“receive tweet, process, store to DB”</em> all in the same thread might be too slow. After removing key parts of my processing code, what once took 100% now only took 1-3% CPU, I was receiving a much higher volume of tweets, and my connections were no longer dropping. This meant that the culprit of my general slowness was the <strong>sqlite database</strong>. 
+Basically, all I was doing with these tweets was tokenizing them, tallying up their contents, and then updating a corpus (stored in a sqlite database) that would track how many tweets each word appeared in. Having this data would allow me to perform accurate <a href="http://nlp.stanford.edu/IR-book/html/htmledition/tf-idf-weighting-1.html">Tf-idf</a> scoring later on. <a href="http://codepad.org/8OkD5AGM">You can see the original (and admittedly not-very-well documented) version of this program here (Python)</a>. 
 Fixing this problem is a two-step solution:</p>
 
 <ol>
-<li>Break off the processing code into another thread</li>
-<li>Replace the sqlite database with something faster</li>
+  <li>Break off the processing code into another thread</li>
+  <li>Replace the sqlite database with something faster</li>
 </ol>
-
 
 <p>The first step, moving the process code into its own thread, is a pretty easy feat. In fact, I’m testing my proof-of-concept as I write. The second step, however, is going to require alot more research and thought. In my proof-of-concept, I place Status (Tweet) objects into a queue which another thread then processes. Using sqlite, my queue never gets any smaller, as you can see below.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ ./bootstrap-stream.py
-</span><span class='line'>Streaming timelines...
-</span><span class='line'>Tue Dec 15 10:56:01 2009 | Queue: 93 items
-</span><span class='line'>Tue Dec 15 10:56:08 2009 | Queue: 183 items
-</span><span class='line'>Tue Dec 15 10:56:13 2009 | Queue: 278 items
-</span><span class='line'>...
-</span><span class='line'>Tue Dec 15 10:58:02 2009 | Queue: 1859 items</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">$ ./bootstrap-stream.py
+</span><span class="line">Streaming timelines...
+</span><span class="line">Tue Dec 15 10:56:01 2009 | Queue: 93 items
+</span><span class="line">Tue Dec 15 10:56:08 2009 | Queue: 183 items
+</span><span class="line">Tue Dec 15 10:56:13 2009 | Queue: 278 items
+</span><span class="line">...
+</span><span class="line">Tue Dec 15 10:58:02 2009 | Queue: 1859 items</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>My next step will probably be to test storing these items in a MySQL (InnoDB) database, simply because it’s easy enough to swap out the sqlite module with the MySQLdb module in Python, although I  have a feeling that what I really need is a key-value store. Speaking of which, does any one have any recommendations as far as databases, hash tables, or key-value stores go? Bonus points if I can replicate the data.</p>
 </div>
@@ -179,41 +177,38 @@ Fixing this problem is a two-step solution:</p>
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
-<p>Previously, I raised the question: “<a href="http://subversity.net/if-you-were-it-and-walked-into-a-company-with">If you were IT and walked into a company with no monitoring or logging, what would your priorities be?</a>” If I were in this situation, I would ask myself three questions: “<em>What should I be monitoring</em>,” “<em>How should I prioritize the alerts of each monitored item</em>,” and “<em>What items should I consider critical</em>?”
+<p>Previously, I raised the question: “<a href="http://subversity.net/if-you-were-it-and-walked-into-a-company-with">If you were IT and walked into a company with no monitoring or logging, what would your priorities be?</a>” If I were in this situation, I would ask myself three questions: “<em>What should I be monitoring</em>,” “<em>How should I prioritize the alerts of each monitored item</em>,” and “<em>What items should I consider critical</em>?” 
 I’d first start by answering the question “What should I be monitoring.” In addition to security events (which are outside the scope of this discussion,) I would begin monitoring of the pertinent items in the following order:</p>
 
 <ol>
-<li>Host-level availability</li>
-<li>Service-level availability</li>
-<li>Service-level performance (response times/timeouts etc)</li>
-<li>Host-level health/performance/resources (CPU, memory, and disk usage)</li>
+  <li>Host-level availability</li>
+  <li>Service-level availability</li>
+  <li>Service-level performance (response times/timeouts etc)</li>
+  <li>Host-level health/performance/resources (CPU, memory, and disk usage)</li>
 </ol>
-
 
 <p>Once I have a plan to begin monitoring all of the neccessary items, I would then tackle the question “How should I prioritize the alerts of each monitored item.” I would do so using the list below as a guide. This list is by no means law. In fact, <strong>priority should be determined on a per-case basis depending on your or your organization’s needs</strong> and not some cookie-cutter list.</p>
 
 <ol>
-<li>Network infrastructure (core routers, switches)</li>
-<li>Servers hosting critical services</li>
-<li>Critical services</li>
-<li>Maxed resources (low disk usage, heavy swap usage, etc)</li>
-<li>Everything else</li>
+  <li>Network infrastructure (core routers, switches)</li>
+  <li>Servers hosting critical services</li>
+  <li>Critical services</li>
+  <li>Maxed resources (low disk usage, heavy swap usage, etc)</li>
+  <li>Everything else</li>
 </ol>
-
 
 <p>The final question (which is arguably an extension of the previous question) that needs to be answered is “What items should I consider critical.” This too is based off of your or your organization’s needs, but I would use the following as starting point.</p>
 
 <ul>
-<li>Connectivity</li>
-<li>Infrastructure (DNS, LDAP, etc)</li>
-<li>Communications (Exchange/Email, etc)</li>
-<li>Forward-facing services</li>
-<li>Line of Business applications and services</li>
-<li>Anything else critical to the operation and sustainability of the organization</li>
+  <li>Connectivity</li>
+  <li>Infrastructure (DNS, LDAP, etc)</li>
+  <li>Communications (Exchange/Email, etc)</li>
+  <li>Forward-facing services</li>
+  <li>Line of Business applications and services</li>
+  <li>Anything else critical to the operation and sustainability of the organization</li>
 </ul>
-
 
 <p>To sum it up, given the question “What would your priorities be if you walked into a company without any monitoring” I would approach the issue by asking myself and answering three questions. Those questions are “What should I be monitoring,” “How should I prioritize the alerts of each monitored item,” and “What items should I consider critical?” Once answered, it should be easy to develop a monitoring plan.</p>
 </div>
@@ -252,11 +247,13 @@ I’d first start by answering the question “What should I be monitoring.” I
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>I sense a very big lack in service-oriented monitoring and reporting, primarily in the SMB market. So I ask you:</p>
 
-<blockquote><p>If you were IT and walked into a company with no service monitoring or logging, what would your priorities be?</p></blockquote>
+<blockquote>
+  <p>If you were IT and walked into a company with no service monitoring or logging, what would your priorities be?</p>
+</blockquote>
 </div>
   
   
@@ -292,19 +289,22 @@ I’d first start by answering the question “What should I be monitoring.” I
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
-<blockquote><h2>Basic Concepts of Ruby</h2>
+<blockquote>
+  <h2 id="basic-concepts-of-ruby">Basic Concepts of Ruby</h2>
 
-<p>Ruby is an object-oriented<br/>
-language, but before you skip this section because you think you know<br/>
-what this is all about because you have used C or some other<br/>
-unfortunate excuse for an object-oriented language, then please pause<br/>
-and at least read the following sentence.</p></blockquote>
+  <p>Ruby is an object-oriented<br />
+language, but before you skip this section because you think you know<br />
+what this is all about because you have used C or some other<br />
+unfortunate excuse for an object-oriented language, then please pause<br />
+and at least read the following sentence.</p>
+</blockquote>
 
 <p>via <a href="http://www.humblelittlerubybook.com/book/html/chapter1.html">humblelittlerubybook.com</a></p>
 
 <p>A friend of mine gave some pretty convincing reasons for checking out Ruby (and eventually, Rails,) so I’m giving it a shot and doing some reading.</p>
+
 </div>
   
   
@@ -340,29 +340,27 @@ and at least read the following sentence.</p></blockquote>
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>Well, I just completed my first ruby app. It’s a fairly <a href="http://codepad.org/o9AHsly9">simple subnet
 calculator</a> that takes an IP address and subnet mask and calculates
 the broadcast address, network address, and maximum number of hosts that
-subnet can support.  Should you find any errors, let me know!</p>
+subnet can support.  Should you find any errors, let me know! </p>
 
-<p><strong>Example</strong></p>
+<p><strong>Example</strong>  </p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ ./ip.rb 10.0.0.0 255.0.0.0
-</span><span class='line'>Subnetting information for 10.0.0.0/8
-</span><span class='line'>Subnet mask: 255.0.0.0
-</span><span class='line'>Network Address: 10.0.0.0
-</span><span class='line'>Broadcast: 10.255.255.255
-</span><span class='line'>Max hosts: 16777213</span></code></pre></td></tr></table></div></figure>
-
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">$ ./ip.rb 10.0.0.0 255.0.0.0
+</span><span class="line">Subnetting information for 10.0.0.0/8
+</span><span class="line">Subnet mask: 255.0.0.0
+</span><span class="line">Network Address: 10.0.0.0
+</span><span class="line">Broadcast: 10.255.255.255
+</span><span class="line">Max hosts: 16777213</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 </div>
   
@@ -399,40 +397,52 @@ subnet can support.  Should you find any errors, let me know!</p>
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>I wrote a very simple program to read Minesweeper’s memory and display a grid showing where the bombs are. I used OllyDbg for disassembly and reversing and CheatEngine for quickly finding known values in memory. During this process, I found that Minesweeper will sometimes <em>assist you</em> and move bombs away from where you are clicking on. Originally, I thought that Minesweeper was only “spawning” about half of the bombs, but as it turns out I misunderstood the way minefield was represented in memory and all bombs <em>are</em> generated at the <em>beginning</em> of the game and not first click or any later clicks.</p>
 
 <p>My error was in thinking that minefield was stored in a 2-dimensional array (ie: <code>minefield[x][y] = FLAGS</code>) where <em>max(x)</em> (and <em>max(y)</em>) are the size of the grid (ie: 9×9 on Beginner) but as <a href="http://www.reddit.com/user/xumiiz/">xumiiz on Reddit</a> pointed out:</p>
 
-<blockquote><p>His program is buggy. It’s not reading the grid in correctly – it’s a constant width of 32 bytes, but a window from the top left is taken for the actual size of the playing field. So, first bugfix to his source:</p>
+<blockquote>
+  <p>His program is buggy. It’s not reading the grid in correctly – it’s a constant width of 32 bytes, but a window from the top left is taken for the actual size of the playing field. So, first bugfix to his source:</p>
 
-<p><code>for(DWORD grid_loc = 0; grid_loc &lt; grid_height * grid_width; grid_loc  ) {</code></p>
+  <p><code> for(DWORD grid_loc = 0; grid_loc &lt; grid_height * grid_width; grid_loc  ) {</code></p>
 
-<p>should be:</p>
+  <p>should be:</p>
 
-<p><code>for(DWORD grid_loc = 0; grid_loc &lt; grid_height * 32; grid_loc  = ((grid_loc2)==(grid_width-1)) ? (32-grid_width 1):1) {</code></p>
+  <p><code> for(DWORD grid_loc = 0; grid_loc &lt; grid_height * 32; grid_loc  = ((grid_loc2)==(grid_width-1)) ? (32-grid_width 1):1) {</code></p>
 
-<p>And:</p>
+  <p>And:</p>
 
-<p><code>if((grid_loc % grid_width) == (grid_width - 1))</code></p>
+  <p><code>if((grid_loc % grid_width) == (grid_width - 1))</code></p>
 
-<p>should be changed to:</p>
+  <p>should be changed to:</p>
 
-<p><code>if((grid_loc % 32) == (grid_width - 1))</code></p>
+  <p><code> if((grid_loc % 32) == (grid_width - 1))</code></p>
 
-<p>With these fixes, it reads all the bombs properly.</p></blockquote>
+  <p>With these fixes, it reads all the bombs properly.</p>
+</blockquote>
 
 <p>And also <a href="http://www.subversity.net/reversing/hacking-minesweeper#comment-33">this comment from Anonymous</a>:</p>
 
-<blockquote><p>Sorry but your program is reading the grid incorrectly. Minesweeper uses a grid with a fixed width of 32 bytes and the playing field is taken as a window of that grid from the top left. e.g. beginner mode uses bytes 0 to 8 and skips bytes 9 to 31 per every 32 byte row.<em> Fixing the program to read based on that patten shows that Minesweeper only moves the mine if it happens to be the first square you click on. Apart from that, all mines are randomly placed at the start of the game. (</em> Actually it would use bytes 0 to 10, where bytes 0 and 10 are 0×10 which is to indicate the border of the mine field, and bytes 1 to 9 are the actual squares. but that’s not really relevant to the analysis if you’re just &amp;ing with 0×80 to find bombs.)</p></blockquote>
+<blockquote>
+  <p>Sorry but your program is reading the grid incorrectly. Minesweeper uses a grid with a fixed width of 32 bytes and the playing field is taken as a window of that grid from the top left. e.g. beginner mode uses bytes 0 to 8 and skips bytes 9 to 31 per every 32 byte row.* Fixing the program to read based on that patten shows that Minesweeper only moves the mine if it happens to be the first square you click on. Apart from that, all mines are randomly placed at the start of the game. (* Actually it would use bytes 0 to 10, where bytes 0 and 10 are 0×10 which is to indicate the border of the mine field, and bytes 1 to 9 are the actual squares. but that’s not really relevant to the analysis if you’re just &amp;ing with 0×80 to find bombs.)</p>
+</blockquote>
 
-<p>The program is available here: <a href="http://cdn.subversity.net/minehack/minehack.cpp">Minehack Source</a> | <a href="http://cdn.subversity.net/minehack/minehack.zip">Minehack Source &amp; Binary (ZIP)</a></p>
+<table>
+  <tbody>
+    <tr>
+      <td>The program is available here: <a href="http://cdn.subversity.net/minehack/minehack.cpp">Minehack Source</a></td>
+      <td><a href="http://cdn.subversity.net/minehack/minehack.zip">Minehack Source &amp; Binary (ZIP)</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <p><em>I have released a binary, and the software has been placed under the
 <a href="http://cdn.subversity.net/minehack/license.txt">BSD License</a>. Many thanks to the people and sites who linked me,
 people who posted comments, most definitely the contributors, but most
 importantly: the readers.</em></p>
+
 </div>
   
   
@@ -468,34 +478,33 @@ importantly: the readers.</em></p>
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
-<p>LACP, or <strong>Link Aggregation Control Protocol</strong>, allows you to configure multiple ethernet ports to act as a single device. This is sometimes referred to as <strong>channel bonding</strong> or <strong>trunking</strong>. Link Aggregation provides several benefits: <em>Increased bandwidth</em>, <em>load balancing</em>, and allows you to create <em>redundant ethernet links</em>. If a link in your ethernet channel goes down, the switches, routers, or servers you have configured to use LACP will automatically fail over to the links that are still up and remain connected. With the right hardware and the right firmware, setting this up is very simple.
+<p>LACP, or <strong>Link Aggregation Control Protocol</strong>, allows you to configure multiple ethernet ports to act as a single device. This is sometimes referred to as <strong>channel bonding</strong> or <strong>trunking</strong>. Link Aggregation provides several benefits: <em>Increased bandwidth</em>, <em>load balancing</em>, and allows you to create <em>redundant ethernet links</em>. If a link in your ethernet channel goes down, the switches, routers, or servers you have configured to use LACP will automatically fail over to the links that are still up and remain connected. With the right hardware and the right firmware, setting this up is very simple. 
 On a Cisco Catalyst switch running IOS, once logged in, you will need to perform the following steps:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cisco&gt;enable  
-</span><span class='line'>Password: *enter password*  
-</span><span class='line'>cisco#config term  
-</span><span class='line'>cisco(config)#int Gi0/1  
-</span><span class='line'>cisco(config-if)#channel-group 1 mode active  
-</span><span class='line'>cisco(config-if)#channel-protocol lacp  
-</span><span class='line'>cisco(config-if)#int Gi0/2  
-</span><span class='line'>cisco(config-if)#channel-group 1 mode active  
-</span><span class='line'>cisco(config-if)#channel-protocol lacp  
-</span><span class='line'>cisco(config-if)#end  
-</span><span class='line'>cisco#write mem</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">cisco&gt;enable  
+</span><span class="line">Password: *enter password*  
+</span><span class="line">cisco#config term  
+</span><span class="line">cisco(config)#int Gi0/1  
+</span><span class="line">cisco(config-if)#channel-group 1 mode active  
+</span><span class="line">cisco(config-if)#channel-protocol lacp  
+</span><span class="line">cisco(config-if)#int Gi0/2  
+</span><span class="line">cisco(config-if)#channel-group 1 mode active  
+</span><span class="line">cisco(config-if)#channel-protocol lacp  
+</span><span class="line">cisco(config-if)#end  
+</span><span class="line">cisco#write mem</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>It also helps to label your ports and to be sure that your bonded ports
 are configured in the right VLAN or set up for <em>VLAN trunking</em>.  If your
@@ -505,25 +514,24 @@ ports connecting the two devices.  However, if you are configuring a
 Foundry switch, your configuration is just as easy, but slightly
 different.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>BR-telnet@foundry&gt;enable  
-</span><span class='line'>Password: *enter password*  
-</span><span class='line'>BR-telnet@foundry#config term  
-</span><span class='line'>BR-telnet@foundry(config)#interface ethernet 1  
-</span><span class='line'>BR-telnet@foundry(config-if-e1000-1)#link-aggregate active  
-</span><span class='line'>BR-telnet@foundry(config-if-e1000-1)#interface ethernet 2  
-</span><span class='line'>BR-telnet@foundry(config-if-e1000-2)#link-aggregate active  
-</span><span class='line'>BR-telnet@foundry(config-if-e1000-2)#end  
-</span><span class='line'>BR-telnet@foundry#write mem</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">BR-telnet@foundry&gt;enable  
+</span><span class="line">Password: *enter password*  
+</span><span class="line">BR-telnet@foundry#config term  
+</span><span class="line">BR-telnet@foundry(config)#interface ethernet 1  
+</span><span class="line">BR-telnet@foundry(config-if-e1000-1)#link-aggregate active  
+</span><span class="line">BR-telnet@foundry(config-if-e1000-1)#interface ethernet 2  
+</span><span class="line">BR-telnet@foundry(config-if-e1000-2)#link-aggregate active  
+</span><span class="line">BR-telnet@foundry(config-if-e1000-2)#end  
+</span><span class="line">BR-telnet@foundry#write mem</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Provided you don’t have a complicated VLAN set up, you’re all set! One
 thing you should note about the Foundry devices, is that you can only
@@ -536,6 +544,7 @@ bond ports 1 &amp; 2 — but it does mean that you can’t bond ports 3 &amp; 4.
 *   <a href="http://www.cisco.com/en/US/docs/switches/lan/catalyst3550/software/release/12.1_13_ea1/configuration/guide/swethchl.html#wp1033981">Configuring EtherChannels on the Cisco Catalyst 3550</a>
 *   <a href="http://www.foundrynetworks.co.jp/services/documentation/sribcg/Trunking.html">Foundry Switch and Router Installation and Basic Configuration — Dynamic Link Aggregation</a>
 *   <a href="http://en.wikipedia.org/wiki/IEEE_802.3ad">Link aggregation article on Wikipedia</a></p>
+
 </div>
   
   
@@ -571,7 +580,7 @@ bond ports 1 &amp; 2 — but it does mean that you can’t bond ports 3 &amp; 4.
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>IEEE 802.3ad, more commonly known as <strong>Link Aggregation</strong>, allows you to configure multiple Ethernet ports to act as a single device. This is sometimes referred to as <strong>channel bonding</strong>, <strong>Ethernet bonding</strong>, or <strong>trunking</strong>. Link Aggregation provides several benefits: <em>Increased bandwidth</em>, <em>load balancing</em>, and allows you to create <em>redundant ethernet links</em>. If a link in your ethernet channel goes down, the switches, routers, or servers you have configured to use LACP will automatically fail over to the links that are still up and remain connected. On a RedHat-based Linux distribution, such as CentOS or Fedora, the configuration may look a little complex, but in fact, it is very straight-forward.</p>
 
@@ -656,7 +665,7 @@ cisco#write mem
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p><strong>Introduction</strong></p>
 
@@ -682,13 +691,12 @@ to Texas Instruments displaying a serial/UART interface on the AR7
 diagrams, several pins being attached to the board, and due to the
 following ADAM2 variables:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>modetty0        38400,n,8,1,hw  
-</span><span class='line'>modetty1        38400,n,8,1,hw  
-</span><span class='line'>bootserport     tty0  </span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">modetty0        38400,n,8,1,hw  
+</span><span class="line">modetty1        38400,n,8,1,hw  
+</span><span class="line">bootserport     tty0  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p><strong>ADAM2</strong></p>
 
@@ -699,81 +707,79 @@ environment variables in flash used during both boot-time and run-time,
 as well as a boot-loader of some sort. We also know that it’s
 responsible for storing the MAC addresses, as found in our mtd dump:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Error: environment variable "maca" not set.  
-</span><span class='line'>Setting default mac address : 00:e0:a0:a6:66:70  </span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">Error: environment variable "maca" not set.  
+</span><span class="line">Setting default mac address : 00:e0:a0:a6:66:70  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The following is a dump of <code>/proc/ticfg/env</code>, which is the <code>/proc</code> interface to ADAM2.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># cat /proc/ticfg/env  
-</span><span class='line'>memsize 0x01000000  
-</span><span class='line'>flashsize       0x00400000  
-</span><span class='line'>modetty0        38400,n,8,1,hw  
-</span><span class='line'>modetty1        38400,n,8,1,hw  
-</span><span class='line'>bootserport     tty0  
-</span><span class='line'>cpufrequency    150000000  
-</span><span class='line'>sysfrequency    125000000  
-</span><span class='line'>bootloaderVersion       0.22.02  
-</span><span class='line'>ProductID       GT701-WG  
-</span><span class='line'>HWRevision      2A  
-</span><span class='line'>SerialNumber    none  
-</span><span class='line'>AEIBootVersion  0.2i  
-</span><span class='line'>my_ipaddress    192.168.0.1  
-</span><span class='line'>prompt  Adam2_AR7DB  
-</span><span class='line'>firstfreeaddress        0x9401d328  
-</span><span class='line'>req_fullrate_freq       125000000  
-</span><span class='line'>maca    00:20:E0:1D:95:F4  
-</span><span class='line'>mtd2    0x90000000,0x90010000  
-</span><span class='line'>mtd1    0x90010000,0x900d0000  
-</span><span class='line'>mtd0    0x900d0000,0x903e0000  
-</span><span class='line'>mtd3    0x903f0000,0x90400000  
-</span><span class='line'>macb    00:20:E0:1D:95:F5  
-</span><span class='line'>macc    00:20:E0:1D:95:F6  
-</span><span class='line'>usb_board_mac   00:20:E0:1D:95:F8  
-</span><span class='line'>usb_rndis_mac   00:20:E0:1D:95:F9  
-</span><span class='line'>mac_ap  00:20:E0:1D:95:F7  
-</span><span class='line'>autoload        1  
-</span><span class='line'>mtd4    0x903e0000,0x903f0000  
-</span><span class='line'>usb_pid 0x6010  
-</span><span class='line'>usb_vid 0x1668  
-</span><span class='line'>man     Actiontec Electronics, Inc.  
-</span><span class='line'>prod    Actiontec USB/Ethernet Home DSL Modem  </span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+</pre></td><td class="code"><pre><code class=""><span class="line"># cat /proc/ticfg/env  
+</span><span class="line">memsize 0x01000000  
+</span><span class="line">flashsize       0x00400000  
+</span><span class="line">modetty0        38400,n,8,1,hw  
+</span><span class="line">modetty1        38400,n,8,1,hw  
+</span><span class="line">bootserport     tty0  
+</span><span class="line">cpufrequency    150000000  
+</span><span class="line">sysfrequency    125000000  
+</span><span class="line">bootloaderVersion       0.22.02  
+</span><span class="line">ProductID       GT701-WG  
+</span><span class="line">HWRevision      2A  
+</span><span class="line">SerialNumber    none  
+</span><span class="line">AEIBootVersion  0.2i  
+</span><span class="line">my_ipaddress    192.168.0.1  
+</span><span class="line">prompt  Adam2_AR7DB  
+</span><span class="line">firstfreeaddress        0x9401d328  
+</span><span class="line">req_fullrate_freq       125000000  
+</span><span class="line">maca    00:20:E0:1D:95:F4  
+</span><span class="line">mtd2    0x90000000,0x90010000  
+</span><span class="line">mtd1    0x90010000,0x900d0000  
+</span><span class="line">mtd0    0x900d0000,0x903e0000  
+</span><span class="line">mtd3    0x903f0000,0x90400000  
+</span><span class="line">macb    00:20:E0:1D:95:F5  
+</span><span class="line">macc    00:20:E0:1D:95:F6  
+</span><span class="line">usb_board_mac   00:20:E0:1D:95:F8  
+</span><span class="line">usb_rndis_mac   00:20:E0:1D:95:F9  
+</span><span class="line">mac_ap  00:20:E0:1D:95:F7  
+</span><span class="line">autoload        1  
+</span><span class="line">mtd4    0x903e0000,0x903f0000  
+</span><span class="line">usb_pid 0x6010  
+</span><span class="line">usb_vid 0x1668  
+</span><span class="line">man     Actiontec Electronics, Inc.  
+</span><span class="line">prod    Actiontec USB/Ethernet Home DSL Modem  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>When you hold down the Reset button during boot, an FTP server is
 spawned on the default port (TCP/21) typically allowing you to flash new
@@ -782,150 +788,144 @@ variables.</p>
 
 <p>The following is a list of commands that the ADAM2 FTP server supports.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>REBOOT          UNSETENV        SETENV          GETENV  
-</span><span class='line'>MEDIA           RETR            TYPE            STOR  
-</span><span class='line'>P@SW            PASV            SYST            PASS  
-</span><span class='line'>USER            PORT            QUIT            ABOR  </span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">REBOOT          UNSETENV        SETENV          GETENV  
+</span><span class="line">MEDIA           RETR            TYPE            STOR  
+</span><span class="line">P@SW            PASV            SYST            PASS  
+</span><span class="line">USER            PORT            QUIT            ABOR  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>When Actiontec’s recovery app is run, it also sends a UDP packet to port
 5035, and then initiates a connection to the FTP port. The following is
 the output of a sniffed connection of a typical firmware upgrade.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>UDP broadcast port 5035: (16 bytes)  
-</span><span class='line'>0x00 0x00 0x16 0x02 0x01 0x00 0x00 0x00  
-</span><span class='line'>0xc0 0xa8 0x00 0x01 0x00 0x00 0x00 0x00  
-</span><span class='line'>
-</span><span class='line'>UDP response from modem to port 5035: (16 bytes)  
-</span><span class='line'>0x00 0x00 0x16 0x02 0x02 0x00 0x00 0x00  
-</span><span class='line'>0x01 0x00 0xa8 0xc0 0x00 0x00 0x00 0x00  
-</span><span class='line'>  
-</span><span class='line'>220 ADAM2 FTP Server ready.  
-</span><span class='line'>USER adam2  
-</span><span class='line'>331 Password required for adam2.  
-</span><span class='line'>PASS adam2  
-</span><span class='line'>230 User adam2 successfully logged in.  
-</span><span class='line'>TYPE I  
-</span><span class='line'>200 Type set to I.  
-</span><span class='line'>MEDIA FLSH  
-</span><span class='line'>200 Media set to FLSH.  
-</span><span class='line'>PORT 192,168,0,102,130,11  
-</span><span class='line'>200 Port command successful.  
-</span><span class='line'>STOR nsp.ar7wrd.squashfs.img mtd0  
-</span><span class='line'>150 Opening BINARY mode data connection for file transfer.  
-</span><span class='line'>226 Transfer complete.  
-</span><span class='line'>TYPE I  
-</span><span class='line'>200 Type set to I.  
-</span><span class='line'>MEDIA FLSH  
-</span><span class='line'>200 Media set to FLSH.  
-</span><span class='line'>PORT 192,168,0,102,130,12  
-</span><span class='line'>200 Port command successful.  
-</span><span class='line'>STOR ram_zimage_pad.ar7wrd.nsp.squashfs.bin mtd1  
-</span><span class='line'>150 Opening BINARY mode data connection for file transfer.  
-</span><span class='line'>226 Transfer complete.  
-</span><span class='line'>TYPE I  
-</span><span class='line'>200 Type set to I.  
-</span><span class='line'>MEDIA FLSH  
-</span><span class='line'>200 Media set to FLSH.  
-</span><span class='line'>PORT 192,168,0,102,130,13  
-</span><span class='line'>200 Port command successful.  
-</span><span class='line'>STOR config.xml mtd3  
-</span><span class='line'>150 Opening BINARY mode data connection for file transfer.  
-</span><span class='line'>226 Transfer complete.  
-</span><span class='line'>REBOOT  
-</span><span class='line'>221-Thank you for using the FTP service on ADAM2.  
-</span><span class='line'>221 Goodbye.  
-</span><span class='line'>QUIT  </span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">UDP broadcast port 5035: (16 bytes)  
+</span><span class="line">0x00 0x00 0x16 0x02 0x01 0x00 0x00 0x00  
+</span><span class="line">0xc0 0xa8 0x00 0x01 0x00 0x00 0x00 0x00  
+</span><span class="line">
+</span><span class="line">UDP response from modem to port 5035: (16 bytes)  
+</span><span class="line">0x00 0x00 0x16 0x02 0x02 0x00 0x00 0x00  
+</span><span class="line">0x01 0x00 0xa8 0xc0 0x00 0x00 0x00 0x00  
+</span><span class="line">  
+</span><span class="line">220 ADAM2 FTP Server ready.  
+</span><span class="line">USER adam2  
+</span><span class="line">331 Password required for adam2.  
+</span><span class="line">PASS adam2  
+</span><span class="line">230 User adam2 successfully logged in.  
+</span><span class="line">TYPE I  
+</span><span class="line">200 Type set to I.  
+</span><span class="line">MEDIA FLSH  
+</span><span class="line">200 Media set to FLSH.  
+</span><span class="line">PORT 192,168,0,102,130,11  
+</span><span class="line">200 Port command successful.  
+</span><span class="line">STOR nsp.ar7wrd.squashfs.img mtd0  
+</span><span class="line">150 Opening BINARY mode data connection for file transfer.  
+</span><span class="line">226 Transfer complete.  
+</span><span class="line">TYPE I  
+</span><span class="line">200 Type set to I.  
+</span><span class="line">MEDIA FLSH  
+</span><span class="line">200 Media set to FLSH.  
+</span><span class="line">PORT 192,168,0,102,130,12  
+</span><span class="line">200 Port command successful.  
+</span><span class="line">STOR ram_zimage_pad.ar7wrd.nsp.squashfs.bin mtd1  
+</span><span class="line">150 Opening BINARY mode data connection for file transfer.  
+</span><span class="line">226 Transfer complete.  
+</span><span class="line">TYPE I  
+</span><span class="line">200 Type set to I.  
+</span><span class="line">MEDIA FLSH  
+</span><span class="line">200 Media set to FLSH.  
+</span><span class="line">PORT 192,168,0,102,130,13  
+</span><span class="line">200 Port command successful.  
+</span><span class="line">STOR config.xml mtd3  
+</span><span class="line">150 Opening BINARY mode data connection for file transfer.  
+</span><span class="line">226 Transfer complete.  
+</span><span class="line">REBOOT  
+</span><span class="line">221-Thank you for using the FTP service on ADAM2.  
+</span><span class="line">221 Goodbye.  
+</span><span class="line">QUIT  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The Actiontec GT701′s MTD blocks are set up as follows:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mtd0            3,136K     Root (SquashFS - compressed filesystem)  
-</span><span class='line'>mtd1            768K       Kernel  
-</span><span class='line'>mtd2            64K        ADAM2  
-</span><span class='line'>mtd3            64K        config.xml  
-</span><span class='line'>mtd4            64K        unknown/unused  </span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">mtd0            3,136K     Root (SquashFS - compressed filesystem)  
+</span><span class="line">mtd1            768K       Kernel  
+</span><span class="line">mtd2            64K        ADAM2  
+</span><span class="line">mtd3            64K        config.xml  
+</span><span class="line">mtd4            64K        unknown/unused  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>We’re not too sure what else it is capable of, but there are some hints
 of it being able to boot off the network (DHCP,) and/or booting
 specified images. Here are some ADAM2 commands, though we haven’t
 actually been able to test these yet:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>fixenv         Defragment for Env. space  
-</span><span class='line'>unsetenv       Unsets the Env. variable   
-</span><span class='line'>setenv         Sets Env. variable  with a value   
-</span><span class='line'>printenv       Displays Env. Variables  
-</span><span class='line'>erase          Erase Flash except Adam2 Kernel and Env space  
-</span><span class='line'>setmfreq       Configures/dumps the system and cpu frequencies  
-</span><span class='line'>memop          Memory Optimization  
-</span><span class='line'>info           Displays board information  
-</span><span class='line'>h/help         Displays the commands supported  </span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">fixenv         Defragment for Env. space  
+</span><span class="line">unsetenv       Unsets the Env. variable   
+</span><span class="line">setenv         Sets Env. variable  with a value   
+</span><span class="line">printenv       Displays Env. Variables  
+</span><span class="line">erase          Erase Flash except Adam2 Kernel and Env space  
+</span><span class="line">setmfreq       Configures/dumps the system and cpu frequencies  
+</span><span class="line">memop          Memory Optimization  
+</span><span class="line">info           Displays board information  
+</span><span class="line">h/help         Displays the commands supported  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>There are others, but some of the command names didn’t show up, only the
 descriptions, and we don’t have a console hooked up to see them for
@@ -938,9 +938,8 @@ ATM, SquashFS, and pre-empt (not enabled.) The kernel is provided by
 MontaVista and is believed to be the MontaVista Carrier Grade Linux
 kernel version 2.1.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Linux version 2.4.17\_mvl21-malta-mips\_fp_le () (gcc version 2.95.3 20010315 (release/MontaVista)) #24 Fri Jul 16 13:22:25 PDT 2004</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">Linux version 2.4.17\_mvl21-malta-mips\_fp_le () (gcc version 2.95.3 20010315 (release/MontaVista)) #24 Fri Jul 16 13:22:25 PDT 2004</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Along with the kernel, the GT701 also runs on top of Busybox 0.61.pre
 with uClibc libraries (version 0.9.19.) The root filesystem uses
@@ -955,50 +954,43 @@ user-land tools. Once this is complete your first step would be to
 either extract <code>nsp.ar7wrd.squashfs.img</code> from the recovery tool, or do
 something similar to the following (while running a tftp server):</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># dd if=/dev/mtdblock/0 of=/var/mtd0  
-</span><span class='line'>6272 0 records in  
-</span><span class='line'>6272 0 records out  
-</span><span class='line'># tftp -p -l /var/mtd0 -p mtd0.img</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line"># dd if=/dev/mtdblock/0 of=/var/mtd0  
+</span><span class="line">6272 0 records in  
+</span><span class="line">6272 0 records out  
+</span><span class="line"># tftp -p -l /var/mtd0 -p mtd0.img</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>This will give you a mountable SquashFS image wherever you you placed
 your tftp root. In order to to write to it though, you will need to copy
 a mounted SquashFS directory to a non-SquashFS directory as follows:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># mkdir temp fs  
-</span><span class='line'># mount -o loop -t squashfs mtd0.img temp/  
-</span><span class='line'># cp -R temp/ fs/  </span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line"># mkdir temp fs  
+</span><span class="line"># mount -o loop -t squashfs mtd0.img temp/  
+</span><span class="line"># cp -R temp/ fs/  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>And you now have a write-able directory to edit/delete or whatever else
 may please you. Re-creating the image is just as easy:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># mksquashfs target.old/ target.img -noappend -check_data  
-</span><span class='line'>Creating little endian filesystem on target.img, block size 32768.  
-</span><span class='line'>  
-</span><span class='line'>Little endian filesystem, data block size 32768, compressed data, compressed metadata  
-</span><span class='line'>Filesystem size 1897.99 Kbytes (1.85 Mbytes)  
-</span><span class='line'>33.35% of uncompressed filesystem size (5691.04 Kbytes)  
-</span><span class='line'>--- Output cut ---  </span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class=""><span class="line"># mksquashfs target.old/ target.img -noappend -check_data  
+</span><span class="line">Creating little endian filesystem on target.img, block size 32768.  
+</span><span class="line">  
+</span><span class="line">Little endian filesystem, data block size 32768, compressed data, compressed metadata  
+</span><span class="line">Filesystem size 1897.99 Kbytes (1.85 Mbytes)  
+</span><span class="line">33.35% of uncompressed filesystem size (5691.04 Kbytes)  
+</span><span class="line">--- Output cut ---  </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>There are two things to keep in mind while building filesystem images.
 The first is that the GT701 can only STORE 3,136KB (compressed) on the
@@ -1024,19 +1016,16 @@ happens to become corrupted, it will repopulate the block with
 
 <p>The list of configuration programs is as follows:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cm_pc             Started at boot, stdout is /dev/tts/0,starts cm_logic  and cm_monitor  
-</span><span class='line'>cm_logic          Monitors and re-populates mtd3  
-</span><span class='line'>cm_monitor        ? ... Not exactly sure.  
-</span><span class='line'>cm_cli            Used to perform the actual updating of the config files.  
-</span><span class='line'>webcm             Handles web-based configuration changes, sends them off  to cm_cli</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">cm_pc             Started at boot, stdout is /dev/tts/0,starts cm_logic  and cm_monitor  
+</span><span class="line">cm_logic          Monitors and re-populates mtd3  
+</span><span class="line">cm_monitor        ? ... Not exactly sure.  
+</span><span class="line">cm_cli            Used to perform the actual updating of the config files.  
+</span><span class="line">webcm             Handles web-based configuration changes, sends them off  to cm_cli</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Webcm is used in conjunction with <code>thttpd</code> to provide a small, yet
 working, web-based interface to allow you to make changes to your
@@ -1069,6 +1058,7 @@ squashFS 1.x images and the base Linux system is run on BusyBox with the
 uClibc libraries. If one were to set up a cross-compile environment and
 use the squashFS tools they could generate new firmware images with
 great ease.</p>
+
 </div>
   
   
@@ -1104,7 +1094,7 @@ great ease.</p>
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>I have been modifying <a href="http://www.honeynet.org/tools/sebek/">Sebek</a> to get it to work in more recent 2.6 series (~2.6.18) kernels and ran into some snags. Most notably, I could not intercept/redirect/wrap any system calls. As it turns out, Sebek couldn’t find the system call table. The code Sebek was using to find the system call table is 100% identical to the code found in <a href="http://kerneltrap.org/node/6416">this article on KernelTrap</a>.</p>
 

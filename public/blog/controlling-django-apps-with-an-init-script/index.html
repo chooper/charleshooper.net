@@ -109,145 +109,143 @@
   </header>
 
 
-<div class="entry-content"><h1></h1>
+<div class="entry-content"><h1 id="section"></h1>
 
 <p>If you’re reading this, you probably already know that an init script is a specific style of script that allows you to control daemon processes. In particular, they are used to start processes at boot and terminate them at shutdown. What follows is an example script I use to control one of my Django FastCGI projects. This particular example was written for Ubuntu and Debian but could probably be modified for RedHat/CentOS or other distros.</p>
 
 <p>Please refer to your Distro’s documentation on how to install and activate init scripts (hint: See /etc/init.d/ and the man page for update-rc.d if on Debian or Ubuntu.)</p>
 
-<figure class='code'><figcaption><span>django-fcgi-init.sh</span><a href='https://gist.github.com/anonymous/997829#file-django-fcgi-init-sh'>link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/sh</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">PATH</span><span class="o">=</span>/sbin:/bin:/usr/sbin:/usr/bin
-</span><span class='line'>
-</span><span class='line'><span class="nv">FCGIHOST</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span>
-</span><span class='line'><span class="nv">FCGIPORT</span><span class="o">=</span><span class="s2">&quot;5000&quot;</span>
-</span><span class='line'><span class="nv">RUNAS</span><span class="o">=</span><span class="s2">&quot;projectuser:projectgroup&quot;</span>
-</span><span class='line'><span class="nv">UMASK</span><span class="o">=</span><span class="s2">&quot;200&quot;</span>
-</span><span class='line'><span class="nv">DAEMON</span><span class="o">=</span><span class="s2">&quot;/path/to/django/manage.py&quot;</span>
-</span><span class='line'><span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;MyProject&quot;</span>
-</span><span class='line'><span class="nv">DESC</span><span class="o">=</span><span class="s2">&quot;My Django Project&quot;</span>
-</span><span class='line'><span class="nv">RUNDIR</span><span class="o">=</span>/var/run/<span class="nv">$NAME</span>
-</span><span class='line'><span class="nv">PIDFILE</span><span class="o">=</span>/var/run/<span class="nv">$NAME</span>/<span class="nv">$NAME</span>.pid
-</span><span class='line'><span class="nv">ENV</span><span class="o">=</span><span class="s2">&quot;env -i LANG=C PATH=/usr/local/bin:/usr/bin:/bin&quot;</span>
-</span><span class='line'><span class="nv">SSD</span><span class="o">=</span><span class="s2">&quot;/sbin/start-stop-daemon&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">DAEMON_OPTS</span><span class="o">=</span><span class="s2">&quot;runfcgi host=$FCGIHOST port=$FCGIPORT pidfile=$PIDFILE</span>
-</span><span class='line'><span class="s2">daemonize=true&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">test</span> -x <span class="nv">$DAEMON</span> <span class="o">||</span> <span class="nb">exit </span>0
-</span><span class='line'>
-</span><span class='line'><span class="nb">set</span> -e
-</span><span class='line'>
-</span><span class='line'>. /lib/lsb/init-functions
-</span><span class='line'>
-</span><span class='line'><span class="c"># Set up /var/run directory to write out pidfile</span>
-</span><span class='line'>mkdir -p <span class="s2">&quot;$RUNDIR&quot;</span>
-</span><span class='line'>chown <span class="s2">&quot;$RUNAS&quot;</span> <span class="s2">&quot;$RUNDIR&quot;</span>
-</span><span class='line'>chmod 775 <span class="s2">&quot;$RUNDIR&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">case</span> <span class="s2">&quot;$1&quot;</span> in
-</span><span class='line'> start<span class="o">)</span>
-</span><span class='line'> log_daemon_msg <span class="s2">&quot;Starting $DESC&quot;</span> <span class="nv">$NAME</span>
-</span><span class='line'> <span class="k">if</span> ! start-stop-daemon --start --quiet --oknodo <span class="se">\</span>
-</span><span class='line'> --pidfile <span class="nv">$PIDFILE</span> --umask <span class="s2">&quot;$UMASK&quot;</span> --chuid <span class="s2">&quot;$RUNAS&quot;</span> <span class="se">\</span>
-</span><span class='line'> --exec <span class="nv">$DAEMON</span> -- <span class="nv">$DAEMON_OPTS</span>
-</span><span class='line'> <span class="k">then</span>
-</span><span class='line'><span class="k"> </span>log_end_msg 1
-</span><span class='line'> <span class="k">else</span>
-</span><span class='line'><span class="k"> </span>chmod 400 <span class="nv">$PIDFILE</span>
-</span><span class='line'> log_end_msg 0
-</span><span class='line'> <span class="k">fi</span>
-</span><span class='line'> ;;
-</span><span class='line'> stop<span class="o">)</span>
-</span><span class='line'> log_daemon_msg <span class="s2">&quot;Stopping $DESC&quot;</span> <span class="nv">$NAME</span>
-</span><span class='line'> <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$PIDFILE</span> <span class="o">]</span>; <span class="k">then</span>
-</span><span class='line'><span class="k"> </span><span class="nb">kill</span> <span class="sb">`</span>cat -- <span class="nv">$PIDFILE</span><span class="sb">`</span>
-</span><span class='line'> rm -f -- <span class="nv">$PIDFILE</span>
-</span><span class='line'> log_end_msg 0
-</span><span class='line'> <span class="k">fi</span>
-</span><span class='line'> ;;
-</span><span class='line'> restart|force-reload<span class="o">)</span>
-</span><span class='line'> <span class="nv">$0</span> stop
-</span><span class='line'> <span class="nv">$0</span> start
-</span><span class='line'> ;;
-</span><span class='line'> status<span class="o">)</span>
-</span><span class='line'> status_of_proc -p <span class="s2">&quot;$PIDFILE&quot;</span> <span class="s2">&quot;$DAEMON&quot;</span> <span class="s2">&quot;$NAME&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit </span>0 <span class="o">||</span> <span class="nb">exit</span> <span class="nv">$?</span>
-</span><span class='line'> ;;
-</span><span class='line'> *<span class="o">)</span>
-</span><span class='line'> <span class="nb">echo</span> <span class="s2">&quot;Usage: $0 {start|stop|restart|force-reload|status}&quot;</span> &gt;&amp;2
-</span><span class='line'> <span class="nb">exit </span>1
-</span><span class='line'> ;;
-</span><span class='line'><span class="k">esac</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">exit </span>0
-</span></code></pre></td></tr></table></div></figure>
-
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>django-fcgi-init.sh</span><a href="https://gist.github.com/anonymous/997829#file-django-fcgi-init-sh">link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="c">#!/bin/sh</span>
+</span><span class="line">
+</span><span class="line"><span class="nv">PATH</span><span class="o">=</span>/sbin:/bin:/usr/sbin:/usr/bin
+</span><span class="line">
+</span><span class="line"><span class="nv">FCGIHOST</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span>
+</span><span class="line"><span class="nv">FCGIPORT</span><span class="o">=</span><span class="s2">&quot;5000&quot;</span>
+</span><span class="line"><span class="nv">RUNAS</span><span class="o">=</span><span class="s2">&quot;projectuser:projectgroup&quot;</span>
+</span><span class="line"><span class="nv">UMASK</span><span class="o">=</span><span class="s2">&quot;200&quot;</span>
+</span><span class="line"><span class="nv">DAEMON</span><span class="o">=</span><span class="s2">&quot;/path/to/django/manage.py&quot;</span>
+</span><span class="line"><span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;MyProject&quot;</span>
+</span><span class="line"><span class="nv">DESC</span><span class="o">=</span><span class="s2">&quot;My Django Project&quot;</span>
+</span><span class="line"><span class="nv">RUNDIR</span><span class="o">=</span>/var/run/<span class="nv">$NAME</span>
+</span><span class="line"><span class="nv">PIDFILE</span><span class="o">=</span>/var/run/<span class="nv">$NAME</span>/<span class="nv">$NAME</span>.pid
+</span><span class="line"><span class="nv">ENV</span><span class="o">=</span><span class="s2">&quot;env -i LANG=C PATH=/usr/local/bin:/usr/bin:/bin&quot;</span>
+</span><span class="line"><span class="nv">SSD</span><span class="o">=</span><span class="s2">&quot;/sbin/start-stop-daemon&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="nv">DAEMON_OPTS</span><span class="o">=</span><span class="s2">&quot;runfcgi host=$FCGIHOST port=$FCGIPORT pidfile=$PIDFILE</span>
+</span><span class="line"><span class="s2">daemonize=true&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">test</span> -x <span class="nv">$DAEMON</span> <span class="o">||</span> <span class="nb">exit </span>0
+</span><span class="line">
+</span><span class="line"><span class="nb">set</span> -e
+</span><span class="line">
+</span><span class="line">. /lib/lsb/init-functions
+</span><span class="line">
+</span><span class="line"><span class="c"># Set up /var/run directory to write out pidfile</span>
+</span><span class="line">mkdir -p <span class="s2">&quot;$RUNDIR&quot;</span>
+</span><span class="line">chown <span class="s2">&quot;$RUNAS&quot;</span> <span class="s2">&quot;$RUNDIR&quot;</span>
+</span><span class="line">chmod 775 <span class="s2">&quot;$RUNDIR&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="k">case</span> <span class="s2">&quot;$1&quot;</span> in
+</span><span class="line"> start<span class="o">)</span>
+</span><span class="line"> log_daemon_msg <span class="s2">&quot;Starting $DESC&quot;</span> <span class="nv">$NAME</span>
+</span><span class="line"> <span class="k">if</span> ! start-stop-daemon --start --quiet --oknodo <span class="se">\</span>
+</span><span class="line"> --pidfile <span class="nv">$PIDFILE</span> --umask <span class="s2">&quot;$UMASK&quot;</span> --chuid <span class="s2">&quot;$RUNAS&quot;</span> <span class="se">\</span>
+</span><span class="line"> --exec <span class="nv">$DAEMON</span> -- <span class="nv">$DAEMON_OPTS</span>
+</span><span class="line"> <span class="k">then</span>
+</span><span class="line"><span class="k"> </span>log_end_msg 1
+</span><span class="line"> <span class="k">else</span>
+</span><span class="line"><span class="k"> </span>chmod 400 <span class="nv">$PIDFILE</span>
+</span><span class="line"> log_end_msg 0
+</span><span class="line"> <span class="k">fi</span>
+</span><span class="line"> ;;
+</span><span class="line"> stop<span class="o">)</span>
+</span><span class="line"> log_daemon_msg <span class="s2">&quot;Stopping $DESC&quot;</span> <span class="nv">$NAME</span>
+</span><span class="line"> <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$PIDFILE</span> <span class="o">]</span>; <span class="k">then</span>
+</span><span class="line"><span class="k"> </span><span class="nb">kill</span> <span class="sb">`</span>cat -- <span class="nv">$PIDFILE</span><span class="sb">`</span>
+</span><span class="line"> rm -f -- <span class="nv">$PIDFILE</span>
+</span><span class="line"> log_end_msg 0
+</span><span class="line"> <span class="k">fi</span>
+</span><span class="line"> ;;
+</span><span class="line"> restart|force-reload<span class="o">)</span>
+</span><span class="line"> <span class="nv">$0</span> stop
+</span><span class="line"> <span class="nv">$0</span> start
+</span><span class="line"> ;;
+</span><span class="line"> status<span class="o">)</span>
+</span><span class="line"> status_of_proc -p <span class="s2">&quot;$PIDFILE&quot;</span> <span class="s2">&quot;$DAEMON&quot;</span> <span class="s2">&quot;$NAME&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">exit </span>0 <span class="o">||</span> <span class="nb">exit</span> <span class="nv">$?</span>
+</span><span class="line"> ;;
+</span><span class="line"> *<span class="o">)</span>
+</span><span class="line"> <span class="nb">echo</span> <span class="s2">&quot;Usage: $0 {start|stop|restart|force-reload|status}&quot;</span> &gt;&amp;2
+</span><span class="line"> <span class="nb">exit </span>1
+</span><span class="line"> ;;
+</span><span class="line"><span class="k">esac</span>
+</span><span class="line">
+</span><span class="line"><span class="nb">exit </span>0
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 </div>
 

@@ -109,7 +109,7 @@
   </header>
 
 
-<div class="entry-content"><h1></h1>
+<div class="entry-content"><h1 id="section"></h1>
 
 <p>One morning I woke up early and checked my email. My plan was to check that my inbox was empty for some peace of mind and then go back to bed for a few more hours (I love Sundays). But that isn’t what happened. Instead, upon opening my inbox I was alerted that one of a client’s database servers was offline. I snapped out of my haze and immediately got to work.</p>
 
@@ -132,12 +132,11 @@
 <p>In summary, I’ll probably never know because on RDS you do not have access to the underlying OS. This means:</p>
 
 <ul>
-<li>You do not have access to the OS process list</li>
-<li>You do not have access to things like top, htop, iostat, or dstat</li>
-<li>You do not have access to the process list if the MySQL process isn’t accepting connections</li>
-<li>You do not have access to any system logs</li>
+  <li>You do not have access to the OS process list</li>
+  <li>You do not have access to things like top, htop, iostat, or dstat</li>
+  <li>You do not have access to the process list if the MySQL process isn’t accepting connections</li>
+  <li>You do not have access to any system logs</li>
 </ul>
-
 
 <p>If you just need a quick and dirty MySQL server and you almost never want to worry about the status of your backups, go ahead and use RDS. However, if you’re concerned about reliability (that you control,) being able to effectively troubleshoot problems, and knowing the state of your underlying OS, RDS is not right for you.</p>
 </div>

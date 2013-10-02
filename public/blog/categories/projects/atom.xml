@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Projects | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/projects/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-09-25T06:35:41-07:00</updated>
+  <updated>2013-10-02T09:34:58-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -18,20 +18,19 @@
     <link href="http://www.charleshooper.net/blog/painless-instrumentation-of-celery-tasks-using-statsd-and-graphite/"/>
     <updated>2012-03-12T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/painless-instrumentation-of-celery-tasks-using-statsd-and-graphite</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p><img src="http://www.charleshooper.net/wp-content/uploads/400px-Steuerstand01-150x150.jpg" title="A Control Station" alt="" />
+<p><img src="http://www.charleshooper.net/wp-content/uploads/400px-Steuerstand01-150x150.jpg" alt="" title="A Control Station" />
 For one of my clients and side projects, we’ve been working hard to build in application-level metrics to our wide portfolio of services. Among these services is one built on top of the <a href="http://celeryproject.org/">Celery distributed task queue</a>. We wanted a system that required as little configuration as possible to publish new metrics. For this reason, we decided on using <a href="http://codeascraft.etsy.com/2011/02/15/measure-anything-measure-everything/">statsd</a> and <a href="http://graphite.wikidot.com/">graphite</a>. Getting statsd and graphite running was the easy part, but we needed a quick, painless way of adding the instrumentation code for the most basic metrics to our Celery-backed service.</p>
 
 <p>For us, those basic metrics consisted of:</p>
 
 <ul>
-<li>Number of times a worker starts on a specific task</li>
-<li>Number of times a task raises an exception</li>
-<li>Number of times a task completes successfully (no exceptions)</li>
-<li>How long each task takes to complete</li>
+  <li>Number of times a worker starts on a specific task</li>
+  <li>Number of times a task raises an exception</li>
+  <li>Number of times a task completes successfully (no exceptions)</li>
+  <li>How long each task takes to complete</li>
 </ul>
-
 
 <p>Since the code to enable these metrics just <em>wraps</em> the code being instrumented it seemed only natural to use a decorator. Below is the code I wrote to do just that.</p>
 
@@ -143,50 +142,53 @@ For one of my clients and side projects, we’ve been working hard to build in a
 <span class='line-number'>106</span>
 <span class='line-number'>107</span>
 <span class='line-number'>108</span>
+<span class='line-number'>109</span>
 </pre></td><td class='code'><pre><code class='py'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot;Decorator to quickly add statsd (graphite) instrumentation to Celery</span>
-</span><span class='line'><span class="s">task functions.&lt;/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="err">”</span><span class="s">&quot;”Decorator to quickly add statsd (graphite) instrumentation to Celery</span>
+</span><span class='line'><span class="n">task</span> <span class="n">functions</span><span class="o">.&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="s">&lt;p&gt;With some slight modification, this could be used to instrument just</span>
-</span><span class='line'><span class="s">about any (non-celery) function and be made abstract enough to customize</span>
-</span><span class='line'><span class="s">metric names, etc.&lt;/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">With</span> <span class="n">some</span> <span class="n">slight</span> <span class="n">modification</span><span class="p">,</span> <span class="n">this</span> <span class="n">could</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">instrument</span> <span class="n">just</span>
+</span><span class='line'><span class="n">about</span> <span class="nb">any</span> <span class="p">(</span><span class="n">non</span><span class="o">-</span><span class="n">celery</span><span class="p">)</span> <span class="n">function</span> <span class="ow">and</span> <span class="n">be</span> <span class="n">made</span> <span class="n">abstract</span> <span class="n">enough</span> <span class="n">to</span> <span class="n">customize</span>
+</span><span class='line'><span class="n">metric</span> <span class="n">names</span><span class="p">,</span> <span class="n">etc</span><span class="o">.&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="s">&lt;p&gt;Stats reported include number of times the task was accepted by a worker</span>
-</span><span class='line'><span class="s">(&lt;code&gt;started&lt;/code&gt;), the number of successes, and the number of times the task</span>
-</span><span class='line'><span class="s">raised an exception. In addition, it also reports how long the task took</span>
-</span><span class='line'><span class="s">to complete. Usage:&lt;/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Stats</span> <span class="n">reported</span> <span class="n">include</span> <span class="n">number</span> <span class="n">of</span> <span class="n">times</span> <span class="n">the</span> <span class="n">task</span> <span class="n">was</span> <span class="n">accepted</span> <span class="n">by</span> <span class="n">a</span> <span class="n">worker</span>
+</span><span class='line'><span class="p">(</span><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">started</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span><span class="p">),</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">successes</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">times</span> <span class="n">the</span> <span class="n">task</span>
+</span><span class='line'><span class="n">raised</span> <span class="n">an</span> <span class="n">exception</span><span class="o">.</span> <span class="n">In</span> <span class="n">addition</span><span class="p">,</span> <span class="n">it</span> <span class="n">also</span> <span class="n">reports</span> <span class="n">how</span> <span class="nb">long</span> <span class="n">the</span> <span class="n">task</span> <span class="n">took</span>
+</span><span class='line'><span class="n">to</span> <span class="n">complete</span><span class="o">.</span> <span class="n">Usage</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="s">&lt;blockquote&gt;&lt;blockquote&gt;&lt;blockquote&gt;&lt;p&gt;@task</span>
-</span><span class='line'><span class="s">@instrument_task</span>
-</span><span class='line'><span class="s">def mytask():&lt;/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">blockquote</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="n">blockquote</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">blockquote</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@task</span>
+</span><span class='line'><span class="nd">@instrument_task</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">mytask</span><span class="p">():</span>
+</span><span class='line'>    <span class="c"># do stuff</span>
+</span><span class='line'>    <span class="k">pass</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;/</span><span class="n">blockquote</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;/</span><span class="n">blockquote</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">blockquote</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="s">&lt;pre&gt;&lt;code&gt;# do stuff</span>
-</span><span class='line'><span class="s">pass</span>
-</span><span class='line'><span class="s">&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Please</span> <span class="n">note</span> <span class="n">that</span> <span class="n">the</span> <span class="n">order</span> <span class="n">of</span> <span class="n">decorators</span> <span class="ow">is</span> <span class="n">important</span> <span class="n">to</span> <span class="n">Celery</span><span class="o">.</span> <span class="n">See</span>
+</span><span class='line'><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ask</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">celery</span><span class="o">/</span><span class="n">userguide</span><span class="o">/</span><span class="n">tasks</span><span class="o">.</span><span class="n">html</span><span class="c">#decorating-tasks</span>
+</span><span class='line'><span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="s">&lt;p&gt;Please note that the order of decorators is important to Celery. See</span>
-</span><span class='line'><span class="s">http://ask.github.com/celery/userguide/tasks.html#decorating-tasks</span>
-</span><span class='line'><span class="s">for more information.&lt;/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Uses</span> <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">simple_decorator</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span> <span class="kn">from</span>
+</span><span class='line'><span class="nn">http</span><span class="p">:</span><span class="o">//</span><span class="n">wiki</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">moin</span><span class="o">/</span><span class="n">PythonDecoratorLibrary</span><span class="c">#Property_Definition&lt;/p&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="s">&lt;p&gt;Uses &lt;code&gt;simple_decorator&lt;/code&gt; from</span>
-</span><span class='line'><span class="s">http://wiki.python.org/moin/PythonDecoratorLibrary#Property_Definition&lt;/p&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Limitation</span><span class="p">:</span> <span class="n">Does</span> <span class="ow">not</span> <span class="n">readily</span> <span class="n">work</span> <span class="n">on</span> <span class="n">subclasses</span> <span class="n">of</span> <span class="n">celery</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">Task</span>
+</span><span class='line'><span class="n">because</span> <span class="n">it</span> <span class="n">always</span> <span class="n">reports</span> <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">task_name</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span> <span class="k">as</span> <span class="err">‘</span><span class="n">run</span><span class="err">’</span>
+</span><span class='line'><span class="err">“””</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="s">&lt;p&gt;Limitation: Does not readily work on subclasses of celery.tasks.Task</span>
-</span><span class='line'><span class="s">because it always reports &lt;code&gt;task_name&lt;/code&gt; as &#39;run&#39;</span>
-</span><span class='line'><span class="s">&quot;&quot;&quot;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">statsd</span> <span class="n">instrumentation</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span> <span class="nb">id</span><span class="o">=</span><span class="s">&quot;statsd-instrumentation&quot;</span><span class="o">&gt;</span><span class="n">statsd</span> <span class="n">instrumentation</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">current_app</span>
 </span><span class='line'><span class="kn">import</span> <span class="nn">statsd</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@simple_decorator</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">instrument_task</span><span class="p">(</span><span class="n">func</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">instrument_task</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+</span><span class='line'>    <span class="err">“</span><span class="s">&quot;”Wraps a celery task with statsd instrumentation code”””&lt;/p&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot;Wraps a celery task with statsd instrumentation code&quot;&quot;&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">instrument_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">instrument_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 </span><span class='line'>    <span class="n">stats_conn</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span>
 </span><span class='line'>        <span class="n">host</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="s">&#39;STATSD_HOST&#39;</span><span class="p">],</span>
 </span><span class='line'>        <span class="n">port</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="s">&#39;STATSD_PORT&#39;</span><span class="p">],</span>
@@ -220,38 +222,38 @@ For one of my clients and side projects, we’ve been working hard to build in a
 </span><span class='line'><span class="k">return</span> <span class="n">instrument_wrapper</span>
 </span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">simple_decorator</span><span class="p">(</span><span class="n">decorator</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">simple_decorator</span><span class="p">(</span><span class="n">decorator</span><span class="p">):</span>
+</span><span class='line'>    <span class="err">“</span><span class="s">&quot;”Borrowed from:</span>
+</span><span class='line'>    <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">wiki</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">moin</span><span class="o">/</span><span class="n">PythonDecoratorLibrary</span><span class="c">#Property_Definition&lt;/p&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="s">&quot;&quot;&quot;Borrowed from:</span>
-</span><span class='line'><span class="s">http://wiki.python.org/moin/PythonDecoratorLibrary#Property_Definition</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">Original</span> <span class="n">docstring</span><span class="p">:</span>
+</span><span class='line'><span class="n">This</span> <span class="n">decorator</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">turn</span> <span class="n">simple</span> <span class="n">functions</span>
+</span><span class='line'><span class="n">into</span> <span class="n">well</span><span class="o">-</span><span class="n">behaved</span> <span class="n">decorators</span><span class="p">,</span> <span class="n">so</span> <span class="nb">long</span> <span class="k">as</span> <span class="n">the</span> <span class="n">decorators</span>
+</span><span class='line'><span class="n">are</span> <span class="n">fairly</span> <span class="n">simple</span><span class="o">.</span> <span class="n">If</span> <span class="n">a</span> <span class="n">decorator</span> <span class="n">expects</span> <span class="n">a</span> <span class="n">function</span> <span class="ow">and</span>
+</span><span class='line'><span class="n">returns</span> <span class="n">a</span> <span class="n">function</span> <span class="p">(</span><span class="n">no</span> <span class="n">descriptors</span><span class="p">),</span> <span class="ow">and</span> <span class="k">if</span> <span class="n">it</span> <span class="n">doesn</span><span class="s">&#39;t</span>
+</span><span class='line'><span class="n">modify</span> <span class="n">function</span> <span class="n">attributes</span> <span class="ow">or</span> <span class="n">docstring</span><span class="p">,</span> <span class="n">then</span> <span class="n">it</span> <span class="ow">is</span>
+</span><span class='line'><span class="n">eligible</span> <span class="n">to</span> <span class="n">use</span> <span class="n">this</span><span class="o">.</span> <span class="n">Simply</span> <span class="nb">apply</span> <span class="nd">@simple_decorator</span> <span class="n">to</span>
+</span><span class='line'><span class="n">your</span> <span class="n">decorator</span> <span class="ow">and</span> <span class="n">it</span> <span class="n">will</span> <span class="n">automatically</span> <span class="n">preserve</span> <span class="n">the</span>
+</span><span class='line'><span class="n">docstring</span> <span class="ow">and</span> <span class="n">function</span> <span class="n">attributes</span> <span class="n">of</span> <span class="n">functions</span> <span class="n">to</span> <span class="n">which</span>
+</span><span class='line'><span class="n">it</span> <span class="ow">is</span> <span class="n">applied</span><span class="o">.</span><span class="s">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="s">def new_decorator(f):</span>
+</span><span class='line'><span class="s">    g = decorator(f)</span>
+</span><span class='line'><span class="s">    g.__name__ = f.__name__</span>
+</span><span class='line'><span class="s">    g.__module__ = f.__module__ # or celery throws a fit</span>
+</span><span class='line'><span class="s">    g.__doc__ = f.__doc__</span>
+</span><span class='line'><span class="s">    g.__dict__.update(f.__dict__)</span>
+</span><span class='line'><span class="s">    return g</span>
+</span><span class='line'><span class="s"># Now a few lines needed to make simple_decorator itself</span>
+</span><span class='line'><span class="s"># be a well-behaved decorator.</span>
+</span><span class='line'><span class="s">new_decorator.__name__ = decorator.__name__</span>
+</span><span class='line'><span class="s">new_decorator.__doc__ = decorator.__doc__</span>
+</span><span class='line'><span class="s">new_decorator.__dict__.update(decorator.__dict__)</span>
+</span><span class='line'><span class="s">return new_decorator</span>
+</span><span class='line'><span class="s">&lt;/code&gt;&lt;/pre&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="s">Original docstring:</span>
-</span><span class='line'><span class="s">This decorator can be used to turn simple functions</span>
-</span><span class='line'><span class="s">into well-behaved decorators, so long as the decorators</span>
-</span><span class='line'><span class="s">are fairly simple. If a decorator expects a function and</span>
-</span><span class='line'><span class="s">returns a function (no descriptors), and if it doesn&#39;t</span>
-</span><span class='line'><span class="s">modify function attributes or docstring, then it is</span>
-</span><span class='line'><span class="s">eligible to use this. Simply apply @simple_decorator to</span>
-</span><span class='line'><span class="s">your decorator and it will automatically preserve the</span>
-</span><span class='line'><span class="s">docstring and function attributes of functions to which</span>
-</span><span class='line'><span class="s">it is applied.&quot;&quot;&quot;</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">new_decorator</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
-</span><span class='line'>    <span class="n">g</span> <span class="o">=</span> <span class="n">decorator</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__name__</span>
-</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">__module__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__module__</span> <span class="c"># or celery throws a fit</span>
-</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__doc__</span>
-</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">g</span>
-</span><span class='line'><span class="c"># Now a few lines needed to make simple_decorator itself</span>
-</span><span class='line'><span class="c"># be a well-behaved decorator.</span>
-</span><span class='line'><span class="n">new_decorator</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="n">decorator</span><span class="o">.</span><span class="n">__name__</span>
-</span><span class='line'><span class="n">new_decorator</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">decorator</span><span class="o">.</span><span class="n">__doc__</span>
-</span><span class='line'><span class="n">new_decorator</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">decorator</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
-</span><span class='line'><span class="k">return</span> <span class="n">new_decorator</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="s">&lt;p&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
 ]]></content>
   </entry>
   
@@ -260,23 +262,24 @@ For one of my clients and side projects, we’ve been working hard to build in a
     <link href="http://www.charleshooper.net/blog/automating-webcam-snapshots-and-uploads-to-flickr/"/>
     <updated>2011-03-26T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/automating-webcam-snapshots-and-uploads-to-flickr</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>With gardening season right around the corner, one of my desires was to set something up that would allow me to take automated, regular snapshots of some of my plants and upload them to flickr. After a few cumulative hours I finally cobbled together the solution.</p>
 
-<h2>Taking the Snapshots</h2>
+<h2 id="taking-the-snapshots">Taking the Snapshots</h2>
 
 <p>The first thing I needed to do was to take snapshots from an installed USB webcam and save them to a directory. This needed to be able to run from a cron script so obviously it needed to work without a GUI and without user-interaction. I read in a <a href="http://www.tldp.org/HOWTO/html_single/Webcam-HOWTO/#COMMAND">Webcam Howto</a> that I could do this using <strong>streamer</strong> so I installed it and wrote a short shell script that would iterate through the video devices installed on my PC and run the snapshot command. You can <a href="https://bitbucket.org/hoop/snapshot/src/98aa5d9a2038/snapshot">view the source of this script here</a>.</p>
 
-<h2>Uploading the Photos</h2>
+<h2 id="uploading-the-photos">Uploading the Photos</h2>
 
 <p>Next I wanted to automatically upload the files to Flickr. At first, I tried using a script I found called uploadr.py which worked OK, but I also wanted to add my photos to a specific set which this script didn’t do. I probably could have extended its functionality, but this script didn’t use or implement the full Flickr API which made this task seem unnecessary.</p>
 
 <p>Instead, I downloaded the <a href="http://stuvel.eu/flickrapi">Python Flickr API from Stuvel</a> and in less than 90 lines I had working code to upload a directory of images to Flickr and add them to a given set. You can view the source to my <a href="https://bitbucket.org/hoop/snapshot/src/98aa5d9a2038/simpleuploadr.py">flickr uploader script</a> here, which I’m calling <a href="https://bitbucket.org/hoop/snapshot">simpleuploadr.py</a> for now.</p>
 
-<h2>Results</h2>
+<h2 id="results">Results</h2>
 
 <p><a href="http://www.flickr.com/photos/hoop2w1/sets/72157626354700156/with/5620672632/">Here are my pretty pictures</a> :) My apologies for the quality, I’m using a really cheap webcam.</p>
+
 ]]></content>
   </entry>
   
@@ -285,11 +288,11 @@ For one of my clients and side projects, we’ve been working hard to build in a
     <link href="http://www.charleshooper.net/blog/correlating-last-login-dates-with-signup-dates-from-a-mmorpg/"/>
     <updated>2011-03-24T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/correlating-last-login-dates-with-signup-dates-from-a-mmorpg</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p>Yesterday, I wrote a blog post detailing <a href="http://www.charleshooper.net/blog/screen-scraping-search-results-for-information-retrieval/">how I crawled an entire MMORPG’s player database via their search page</a>. Since then, I have been analyzing that data in Minitab and trying to gain some insight into the state of affairs of that game. Today, I’m going to attempt to explain some of that data using statistics and common sense. In particular, we’re going to find out if there’s a relationship between <em>when players join the game </em>and <em>when they stop returning</em>.</p>
+<p>Yesterday, I wrote a blog post detailing <a href="http://www.charleshooper.net/blog/screen-scraping-search-results-for-information-retrieval/">how I crawled an entire MMORPG’s player database via their search page</a>. Since then, I have been analyzing that data in Minitab and trying to gain some insight into the state of affairs of that game. Today, I’m going to attempt to explain some of that data using statistics and common sense. In particular, we’re going to find out if there’s a relationship between <em>when players join the game *and *when they stop returning</em>.</p>
 
-<h2>Preparation</h2>
+<h2 id="preparation">Preparation</h2>
 
 <p>I’m new to the statistics software package I’m using, Minitab, and I’m not aware of an easy way to take measurements based on dates. So, my first order of business was to convert dates in the database to an easier metric for analysis, “days since today,” which is simply <em>today’s date</em> minus <em>date x</em>. I did this in my database (MongoDB) prior to export by adding a “last_seen_days” attribute to all documents (records). This attribute is simply the difference between today’s date and the date that the player stopped logging in – measured in days. I then did the same for the signup date. This was quickly done in the MongoDB console in just a few lines:</p>
 
@@ -299,33 +302,33 @@ For one of my clients and side projects, we’ve been working hard to build in a
 &gt; db.accounts.find().forEach(function (o) { o.date_joined_days = Math.ceil((today.getTime() - o.date_joined.getTime())/day); db.accounts.save(o); })
 </code></pre>
 
-<h2>The Scatterplot</h2>
+<h2 id="the-scatterplot">The Scatterplot</h2>
 
 <p>I then exported my data to CSV, loaded it in Minitab, and created a scatterplot between these two attributes. What I got was this:</p>
 
-<p><img src="http://cdn.subversity.net/cch-i/blogimgs/last_seen_vs_signup.jpg" title="Last Seen Date vs Signup Date" alt="Last Seen Date vs Signup Date" /></p>
+<p><img src="http://cdn.subversity.net/cch-i/blogimgs/last_seen_vs_signup.jpg" alt="Last Seen Date vs Signup Date" title="Last Seen Date vs Signup Date" /></p>
 
-<p>For the uninitiated, a <strong>scatterplot </strong>is a quick and easy way to visually see if there’s any type of relationship (correlation) between two variables. In this case, I used the signup date as my <strong>independent variable</strong> (<em>x</em>) and the “last seen” date as my <strong>dependent variable</strong> (<em>y</em>). Overall, there is <em>not </em>any real relationship between the signup date and the last seen date. However<em>,</em> there are two significant items in this graph that deserve to have some attention brought to them.</p>
+<p>For the uninitiated, a <strong>scatterplot **is a quick and easy way to visually see if there’s any type of relationship (correlation) between two variables. In this case, I used the signup date as my **independent variable</strong> (<em>x</em>) and the “last seen” date as my <strong>dependent variable</strong> (<em>y</em>). Overall, there is <em>not *any real relationship between the signup date and the last seen date. However</em>,* there are two significant items in this graph that deserve to have some attention brought to them.</p>
 
-<h2>Observations</h2>
+<h2 id="observations">Observations</h2>
 
 <p>The first and most obvious item is that <strong>there are not any points above the identity function</strong>. The identity function, or just <em>f(x) = x</em>, is the diagonal line directly across the center of the graph. This makes perfect sense since it’s impossible for a player to have their “last login” occur before they even sign up. I bring this up because this leads into my next observation:</p>
 
-<p><strong>There is a heavier concentration of data points plotted on or directly below the line of the identity function</strong>. For points exactly <em>on</em> the identity function, these are accounts that registered but were never logged into. For accounts <em>below </em>the identity function, these should be considered more significant to those who run the game. Why is that? Because, simply put, I believe that these accounts belong to players who went through the effort of joining; They signed up, validated their email address, logged in, and for whatever reason chose not to stick around. This is akin to the “<strong>bounce rate</strong>” so frequently mentioned in the context of web analytics.</p>
+<p><strong>There is a heavier concentration of data points plotted on or directly below the line of the identity function</strong>. For points exactly <em>on</em> the identity function, these are accounts that registered but were never logged into. For accounts *below *the identity function, these should be considered more significant to those who run the game. Why is that? Because, simply put, I believe that these accounts belong to players who went through the effort of joining; They signed up, validated their email address, logged in, and for whatever reason chose not to stick around. This is akin to the “<strong>bounce rate</strong>” so frequently mentioned in the context of web analytics.</p>
 
 <p>It’s possible that these new players didn’t  understand the interface and left, or maybe they thought the game play was too slow, or maybe… this list could go on. What’s important is that some attention is paid here. Some effort should be made to discover why these players are leaving and the number of these players (or almost-players) should be measured, monitored, and analyzed. Decreasing this metric (“bounce rate”) should be a regular goal as these players represent a potential revenue stream for the game’s owner as well as a potential contribution to the game for the rest of the players.</p>
 
-<h2>The Histogram</h2>
+<h2 id="the-histogram">The Histogram</h2>
 
 <p>While, in this case, the scatterplot helped us see that there are a noticeable amount of players who quickly “bounce” after joining the game, this type of graph doesn’t make it particularly easy to measure the magnitude of this phenomena. From observing this behavior, we next want to know how many players are leaving, or what our “bounce rate” is. Instead of first trying to quantitatively define the bounce rate so that we can measure it, it’s probably best if we first take a look at the total distribution of how long players are active for before leaving. For this, we’ll use the histogram of “Days Active”. <em>Days active</em> is simply <em>days since signup</em> minus <em>days since last login</em>.Here’s what we’ve got:</p>
 
-<p><img src="http://cdn.subversity.net/cch-i/blogimgs/days_active_hist.jpg" title="Histogram of Days Active (excl. lowest-ranked accounts)" alt="" /></p>
+<p><img src="http://cdn.subversity.net/cch-i/blogimgs/days_active_hist.jpg" alt="" title="Histogram of Days Active (excl. lowest-ranked accounts)" /></p>
 
 <p>In this histogram, I excluded the lowest rank from being included in the histogram. I did this because I was more interested in how many potentially-active players were leaving, as opposed to junk accounts. As such, our definition of the <em>bounce rate</em> is already becoming more different than the bounce rate in web analytics.</p>
 
 <p>Each bin (“bar”) in our histogram is 15 days wide. Knowing this, you can see from the histogram that the largest density of days active seems to be about from 15 days to 2.5 months. This chunk, while significant, doesn’t have much to do with our bounce rate mentioned above. What we’re instead interested in is the near-5% of players who become inactive in less than a week.</p>
 
-<h2>What’s Next?</h2>
+<h2 id="whats-next">What’s Next?</h2>
 
 <p>If this were my game (it’s not), I would work on defining what level of bounce rate is acceptable and set some goals based on that. I would then look into the large amount of players leaving within the first 2.5 months and try to increase player retention. Finally, I would automate these measurements and have them displaced in a nice administrative dashboard (I’ve always wanted one of those) so that I have to see them all the time.</p>
 ]]></content>
@@ -336,7 +339,7 @@ For one of my clients and side projects, we’ve been working hard to build in a
     <link href="http://www.charleshooper.net/blog/screen-scraping-search-results-for-information-retrieval/"/>
     <updated>2011-03-23T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/screen-scraping-search-results-for-information-retrieval</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>Recently I found myself in a situation where I needed to gather a large amount of data from a website but there did not exist any API, index, or otherwise publicly-accessible map of the data. In fact, the only mechanism for uncovering data to be collected was a very limited search engine.</p>
 
@@ -345,24 +348,23 @@ For one of my clients and side projects, we’ve been working hard to build in a
 <p>The game’s search engine has these limitations and features:</p>
 
 <ul>
-<li>Search is performed on username only and implicitly places a wildcard after the search. For example, if you search for “bob” not only will “bob” be returned in the results, but also “bob123″ and “bobafett,”</li>
-<li>If a given search returns more than 35 results than only the first 35 results are returned,</li>
-<li>Results are sorted by username (alphabetically),</li>
-<li>Usernames are case-insensitive and can only contain alphanumeric characters, i.e. {ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890},</li>
-<li>Search queries cannot start with the character zero (“0″), but I happily overlook this,</li>
-<li>The search engine does allow you to filter out players who have been killed or banned.</li>
+  <li>Search is performed on username only and implicitly places a wildcard after the search. For example, if you search for “bob” not only will “bob” be returned in the results, but also “bob123″ and “bobafett,”</li>
+  <li>If a given search returns more than 35 results than only the first 35 results are returned,</li>
+  <li>Results are sorted by username (alphabetically),</li>
+  <li>Usernames are case-insensitive and can only contain alphanumeric characters, i.e. {ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890},</li>
+  <li>Search queries cannot start with the character zero (“0″), but I happily overlook this,</li>
+  <li>The search engine does allow you to filter out players who have been killed or banned.</li>
 </ul>
-
 
 <p>So, there I was, trying to crawl this game’s search feature using urllib and regular expressions. I first tried to search for “A”, then “B”, then ”C”, and so on, but there were some obvious flaws with this method. In particular, because of the limit on the number of results that can be returned, this method would only yield 1,260 usernames. This isn’t good enough because I knew from the game’s statistics page that I should be expecting a little more than 21,000 names!</p>
 
-<p>The logical extension of that search method is to tack on an extra letter. For example, try “AA”, then, “AB”, then “AC”, all the way down to “ZZ” (or, erm, “99″ on this case). This seems alot better because, hypothetically, the keyspace is large enough to return more than twice as many usernames than what I need – I believe the math is (36<sup>2)*35</sup> or 45,360 usernames.</p>
+<p>The logical extension of that search method is to tack on an extra letter. For example, try “AA”, then, “AB”, then “AC”, all the way down to “ZZ” (or, erm, “99″ on this case). This seems alot better because, hypothetically, the keyspace is large enough to return more than twice as many usernames than what I need – I believe the math is (36^2)*35 or 45,360 usernames.</p>
 
-<p>Unfortunately, this  method falls apart very quickly because there isn’t an even distribution of usernames across the keyspace. I could try to go one level deeper on the searches (e.g., “AAA” to “AAB”, and so forth) but now we’re looking at 36<sup>3</sup> or 46,656 search pages I have to crawl, so this method is out of the question.</p>
+<p>Unfortunately, this  method falls apart very quickly because there isn’t an even distribution of usernames across the keyspace. I could try to go one level deeper on the searches (e.g., “AAA” to “AAB”, and so forth) but now we’re looking at 36^3 or 46,656 search pages I have to crawl, so this method is out of the question.</p>
 
 <p>Making matters worse, I am completely naive as to what the distribution of usernames might actually look like.I know what it looks like <em>now</em>, but moving forward I had absolutely no idea what to expect. (Just in case you’re curious, you can see the actual distribution – sans accounts that start with “0″ – below.)</p>
 
-<p><img src="http://cdn.subversity.net/cch-i/blogimgs/letter_freq_dist.png" title="Account Distribution by First Character" alt="Account Distribution by First Character" /></p>
+<p><img src="http://cdn.subversity.net/cch-i/blogimgs/letter_freq_dist.png" alt="Account Distribution by First Character" title="Account Distribution by First Character" /></p>
 
 <p>I decided, then, that I would start with “A” to “Z” to “1″ to “9″ and dynamically and recursively expand one level deeper if only 35 results were returned from the search. <a href="https://bitbucket.org/hoop/bootcrawl/src/9a3714a9e24e/crawl.py">You can see this dynamic, search unfolding code here on Bitbucket (Python, lines 46 through 65)</a>.</p>
 
@@ -377,9 +379,10 @@ For one of my clients and side projects, we’ve been working hard to build in a
     <link href="http://www.charleshooper.net/blog/cost-behavior-analyzer-update-edit-functionality/"/>
     <updated>2011-02-09T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/cost-behavior-analyzer-update-edit-functionality</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>I just updated my <a href="http://apps.charleshooper.net/cost-behavior-analysis/">Cost Behavior Analyzer</a> webapp to allow for the editing of results. This way, if you want to add new data points at a later point in time, it’s no problem. Try it out!</p>
+
 ]]></content>
   </entry>
   

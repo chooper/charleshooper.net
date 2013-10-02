@@ -109,40 +109,52 @@
   </header>
 
 
-<div class="entry-content"><h1></h1>
+<div class="entry-content"><h1 id="section"></h1>
 
 <p>I wrote a very simple program to read Minesweeper’s memory and display a grid showing where the bombs are. I used OllyDbg for disassembly and reversing and CheatEngine for quickly finding known values in memory. During this process, I found that Minesweeper will sometimes <em>assist you</em> and move bombs away from where you are clicking on. Originally, I thought that Minesweeper was only “spawning” about half of the bombs, but as it turns out I misunderstood the way minefield was represented in memory and all bombs <em>are</em> generated at the <em>beginning</em> of the game and not first click or any later clicks.</p>
 
 <p>My error was in thinking that minefield was stored in a 2-dimensional array (ie: <code>minefield[x][y] = FLAGS</code>) where <em>max(x)</em> (and <em>max(y)</em>) are the size of the grid (ie: 9×9 on Beginner) but as <a href="http://www.reddit.com/user/xumiiz/">xumiiz on Reddit</a> pointed out:</p>
 
-<blockquote><p>His program is buggy. It’s not reading the grid in correctly – it’s a constant width of 32 bytes, but a window from the top left is taken for the actual size of the playing field. So, first bugfix to his source:</p>
+<blockquote>
+  <p>His program is buggy. It’s not reading the grid in correctly – it’s a constant width of 32 bytes, but a window from the top left is taken for the actual size of the playing field. So, first bugfix to his source:</p>
 
-<p><code>for(DWORD grid_loc = 0; grid_loc &lt; grid_height * grid_width; grid_loc  ) {</code></p>
+  <p><code> for(DWORD grid_loc = 0; grid_loc &lt; grid_height * grid_width; grid_loc  ) {</code></p>
 
-<p>should be:</p>
+  <p>should be:</p>
 
-<p><code>for(DWORD grid_loc = 0; grid_loc &lt; grid_height * 32; grid_loc  = ((grid_loc2)==(grid_width-1)) ? (32-grid_width 1):1) {</code></p>
+  <p><code> for(DWORD grid_loc = 0; grid_loc &lt; grid_height * 32; grid_loc  = ((grid_loc2)==(grid_width-1)) ? (32-grid_width 1):1) {</code></p>
 
-<p>And:</p>
+  <p>And:</p>
 
-<p><code>if((grid_loc % grid_width) == (grid_width - 1))</code></p>
+  <p><code>if((grid_loc % grid_width) == (grid_width - 1))</code></p>
 
-<p>should be changed to:</p>
+  <p>should be changed to:</p>
 
-<p><code>if((grid_loc % 32) == (grid_width - 1))</code></p>
+  <p><code> if((grid_loc % 32) == (grid_width - 1))</code></p>
 
-<p>With these fixes, it reads all the bombs properly.</p></blockquote>
+  <p>With these fixes, it reads all the bombs properly.</p>
+</blockquote>
 
 <p>And also <a href="http://www.subversity.net/reversing/hacking-minesweeper#comment-33">this comment from Anonymous</a>:</p>
 
-<blockquote><p>Sorry but your program is reading the grid incorrectly. Minesweeper uses a grid with a fixed width of 32 bytes and the playing field is taken as a window of that grid from the top left. e.g. beginner mode uses bytes 0 to 8 and skips bytes 9 to 31 per every 32 byte row.<em> Fixing the program to read based on that patten shows that Minesweeper only moves the mine if it happens to be the first square you click on. Apart from that, all mines are randomly placed at the start of the game. (</em> Actually it would use bytes 0 to 10, where bytes 0 and 10 are 0×10 which is to indicate the border of the mine field, and bytes 1 to 9 are the actual squares. but that’s not really relevant to the analysis if you’re just &amp;ing with 0×80 to find bombs.)</p></blockquote>
+<blockquote>
+  <p>Sorry but your program is reading the grid incorrectly. Minesweeper uses a grid with a fixed width of 32 bytes and the playing field is taken as a window of that grid from the top left. e.g. beginner mode uses bytes 0 to 8 and skips bytes 9 to 31 per every 32 byte row.* Fixing the program to read based on that patten shows that Minesweeper only moves the mine if it happens to be the first square you click on. Apart from that, all mines are randomly placed at the start of the game. (* Actually it would use bytes 0 to 10, where bytes 0 and 10 are 0×10 which is to indicate the border of the mine field, and bytes 1 to 9 are the actual squares. but that’s not really relevant to the analysis if you’re just &amp;ing with 0×80 to find bombs.)</p>
+</blockquote>
 
-<p>The program is available here: <a href="http://cdn.subversity.net/minehack/minehack.cpp">Minehack Source</a> | <a href="http://cdn.subversity.net/minehack/minehack.zip">Minehack Source &amp; Binary (ZIP)</a></p>
+<table>
+  <tbody>
+    <tr>
+      <td>The program is available here: <a href="http://cdn.subversity.net/minehack/minehack.cpp">Minehack Source</a></td>
+      <td><a href="http://cdn.subversity.net/minehack/minehack.zip">Minehack Source &amp; Binary (ZIP)</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <p><em>I have released a binary, and the software has been placed under the
 <a href="http://cdn.subversity.net/minehack/license.txt">BSD License</a>. Many thanks to the people and sites who linked me,
 people who posted comments, most definitely the contributors, but most
 importantly: the readers.</em></p>
+
 </div>
 
 

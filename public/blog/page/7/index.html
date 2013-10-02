@@ -112,17 +112,20 @@
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
-<blockquote><h3><a href="http://blog.mongodb.org/post/137788967/32-bit-limitations">32-bit limitations</a></h3>
+<blockquote>
+  <h3 id="bit-limitations1"><a href="http://blog.mongodb.org/post/137788967/32-bit-limitations">32-bit limitations</a></h3>
 
-<p>32-bit MongoDB processes are limited to about 2.5 gb of data.  This has come as a surprise to a lot of people who are used to not having to worry about that.  The reason for this is that the MongoDB storage engine uses memory-mapped files for performance.</p>
+  <p>32-bit MongoDB processes are limited to about 2.5 gb of data.  This has come as a surprise to a lot of people who are used to not having to worry about that.  The reason for this is that the MongoDB storage engine uses memory-mapped files for performance.</p>
 
-<p>By not supporting more than 2gb on 32-bit, we%u2019ve been able to keep our code much simpler and cleaner.  This greatly reduces the number of bugs, and reduces the time that we need to release a 1.0 product. The world is moving toward all 64-bit very quickly.  Right now there aren%u2019t too many people for whom 64-bit is a problem, and in the long term, we think this will be a non-issue.</p>
+  <p>By not supporting more than 2gb on 32-bit, we%u2019ve been able to keep our code much simpler and cleaner.  This greatly reduces the number of bugs, and reduces the time that we need to release a 1.0 product. The world is moving toward all 64-bit very quickly.  Right now there aren%u2019t too many people for whom 64-bit is a problem, and in the long term, we think this will be a non-issue.</p>
 
-<p><a href="http://blog.mongodb.org/post/137788967/32-bit-limitations">7 months ago</a>   via <a href="http://blog.mongodb.org/post/137788967/32-bit-limitations">blog.mongodb.org</a></p>
+  <p><a href="http://blog.mongodb.org/post/137788967/32-bit-limitations">7 months ago</a>   via <a href="http://blog.mongodb.org/post/137788967/32-bit-limitations">blog.mongodb.org</a></p>
 
-<p>This is more recommended reading for those that are considering using MongoDB. For some, this is a deal-breaker. I don’t necessarily agree with this decision, but I do hope that 64bit support by hypervisors and VPS providers is more mature by the time Mongo matures.</p></blockquote>
+  <p>This is more recommended reading for those that are considering using MongoDB. For some, this is a deal-breaker. I don’t necessarily agree with this decision, but I do hope that 64bit support by hypervisors and VPS providers is more mature by the time Mongo matures.</p>
+</blockquote>
+
 </div>
   
   
@@ -158,38 +161,40 @@
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
-<blockquote><h3><a href="http://blog.mongodb.org/post/381927266/what-about-durability">What about Durability?</a></h3>
+<blockquote>
+  <h3 id="what-about-durability1"><a href="http://blog.mongodb.org/post/381927266/what-about-durability">What about Durability?</a></h3>
 
-<p>We get lots of questions about why MongoDB doesn’t have full single server durability, and there are many people that think this is a major problem.  We wanted to shed some light on why we haven’t done single server durability, what our suggestions are, and our future plans.</p>
+  <p>We get lots of questions about why MongoDB doesn’t have full single server durability, and there are many people that think this is a major problem.  We wanted to shed some light on why we haven’t done single server durability, what our suggestions are, and our future plans.</p>
 
-<p>To start, there are some very practical reasons why we think single server durability is overvalued.  First, there are many scenarios in which that server loses all its data no matter what.  If there is water damage, fire, some hardware problems, etc… no matter how durable the software is, data can be lost.  Yes – there are ways to mitigate some of these, but those add another layer of complexity, that has to be tested, proofed, and adds more variables which can fail.</p>
+  <p>To start, there are some very practical reasons why we think single server durability is overvalued.  First, there are many scenarios in which that server loses all its data no matter what.  If there is water damage, fire, some hardware problems, etc… no matter how durable the software is, data can be lost.  Yes – there are ways to mitigate some of these, but those add another layer of complexity, that has to be tested, proofed, and adds more variables which can fail.</p>
 
-<p>In the real world, traditional durability often isn’t even done correctly.  If you are using a DBMS that uses a transaction log for durability, you either have to turn off hardware buffering or have a battery backed RAID controller.  Without hardware buffering, transaction logs are very slow.  Battery backed raid controllers will work well, but you have to really have one.  With the move towards the cloud and outsourced hosting, custom hardware is not always an option.</p>
+  <p>In the real world, traditional durability often isn’t even done correctly.  If you are using a DBMS that uses a transaction log for durability, you either have to turn off hardware buffering or have a battery backed RAID controller.  Without hardware buffering, transaction logs are very slow.  Battery backed raid controllers will work well, but you have to really have one.  With the move towards the cloud and outsourced hosting, custom hardware is not always an option.</p>
 
-<p>Requirements for web applications are also changing.  99.99% uptime is no longer the goal, people want 100% uptime as much as possible.  If you have durability through a transaction log, then you have to replay it to come back up.  If you have a master and slave in the same data center and you lose power, both will have to recover which could take 5-30 minutes.<a href="http://blog.mongodb.org/post/381927266/what-about-durability">1</a></p>
+  <p>Requirements for web applications are also changing.  99.99% uptime is no longer the goal, people want 100% uptime as much as possible.  If you have durability through a transaction log, then you have to replay it to come back up.  If you have a master and slave in the same data center and you lose power, both will have to recover which could take 5-30 minutes.<a href="http://blog.mongodb.org/post/381927266/what-about-durability">1</a></p>
 
-<p>Another feature of new non-relational databases is horizontal scalability.  While MongoDB’s auto-sharding is still in Alpha, we still feel this is a core component. With horizontal scalability comes many servers.  If you have a 100 node cluster, worrying about every machine is a liability.  If a machine goes down in the middle of the night, you want the system to recover as fast as possible, without human intervention.  Given that, and that a high percentage of failures are hardware, the best thing is to just mark that server as inactive, and ignore it until someone can look at it easily (could be hours or days).</p>
+  <p>Another feature of new non-relational databases is horizontal scalability.  While MongoDB’s auto-sharding is still in Alpha, we still feel this is a core component. With horizontal scalability comes many servers.  If you have a 100 node cluster, worrying about every machine is a liability.  If a machine goes down in the middle of the night, you want the system to recover as fast as possible, without human intervention.  Given that, and that a high percentage of failures are hardware, the best thing is to just mark that server as inactive, and ignore it until someone can look at it easily (could be hours or days).</p>
 
-<p>Given all this, we’re not saying durability isn’t important, we just think that single server durability isn’t the best way to get true durability.  We think the right path to durability is replication (local and remote) and snapshotting.  That’s why we’ve spent so much time making replication fast and easy and work over wide area networks in MongoDB.</p>
+  <p>Given all this, we’re not saying durability isn’t important, we just think that single server durability isn’t the best way to get true durability.  We think the right path to durability is replication (local and remote) and snapshotting.  That’s why we’ve spent so much time making replication fast and easy and work over wide area networks in MongoDB.</p>
 
-<p>We are currently planning many more enhancements to replication to make it better.</p>
+  <p>We are currently planning many more enhancements to replication to make it better.</p>
 
-<ul>
-<li>psuedo real-time with optional blocking for writes until on multiple servers</li>
-<li>replica sets instead of replica pairs</li>
-<li>easier to create new slaves with large data sets</li>
-</ul>
+  <ul>
+    <li>psuedo real-time with optional blocking for writes until on multiple servers</li>
+    <li>replica sets instead of replica pairs</li>
+    <li>easier to create new slaves with large data sets</li>
+  </ul>
 
+  <p>Now – there are definitely some cases where single server durability is the best option.  It is on our road map, its just not on the short list right now.  We know what we want to do and how we want to do it, it’s just a matter of code :)</p>
 
-<p>Now – there are definitely some cases where single server durability is the best option.  It is on our road map, its just not on the short list right now.  We know what we want to do and how we want to do it, it’s just a matter of code :)</p>
+  <p><a href="http://blog.mongodb.org/post/381927266/what-about-durability">1</a> Some databases such as CouchDB use an append only model that allows for instantaneous restarts. However, this type of design usually requires compaction routines to be run periodically, so can be costly in high update scenarios.</p>
 
-<p><a href="http://blog.mongodb.org/post/381927266/what-about-durability">1</a> Some databases such as CouchDB use an append only model that allows for instantaneous restarts. However, this type of design usually requires compaction routines to be run periodically, so can be costly in high update scenarios.</p>
+  <p><a href="http://blog.mongodb.org/post/381927266/what-about-durability">1 day ago</a>   via <a href="http://blog.mongodb.org/post/381927266/what-about-durability">blog.mongodb.org</a></p>
 
-<p><a href="http://blog.mongodb.org/post/381927266/what-about-durability">1 day ago</a>   via <a href="http://blog.mongodb.org/post/381927266/what-about-durability">blog.mongodb.org</a></p>
+  <p>This is very important to consider for anyone who is thinking about (or already is) using MongoDB.</p>
+</blockquote>
 
-<p>This is very important to consider for anyone who is thinking about (or already is) using MongoDB.</p></blockquote>
 </div>
   
   
@@ -225,10 +230,11 @@
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
-<p>Twitter BookSuggest is a web app that attempts to make book recommendations based on a person&#8217;s last 20 tweets. <strong>Clicking</strong> on a book cover will present you with a description of the book, as well as a clickable link to <a href="http://www.amazon.com/?tag=botter-20">Amazon.com</a> where you can purchase the book or add it to your wishlist.
-I&#8217;ve been working on this project for at the past couple of weeks, so please check it out. If you don&#8217;t use Twitter then just hang tight, I&#8217;ll be releasing a Facebook version shortly.</p>
+<p>Twitter BookSuggest is a web app that attempts to make book recommendations based on a person’s last 20 tweets. <strong>Clicking</strong> on a book cover will present you with a description of the book, as well as a clickable link to <a href="http://www.amazon.com/?tag=botter-20">Amazon.com</a> where you can purchase the book or add it to your wishlist. 
+I’ve been working on this project for at the past couple of weeks, so please check it out. If you don’t use Twitter then just hang tight, I’ll be releasing a Facebook version shortly. </p>
+
 </div>
   
   
@@ -264,11 +270,11 @@ I&#8217;ve been working on this project for at the past couple of weeks, so plea
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p><img src="http://www.charleshooper.net/wp-content/uploads/superbowl-300x164.png" alt="" /></p>
 
-<p>Spritzer or &#8220;sample&#8221; or whatever it&#8217;s called. Entry-level streaming API access.</p>
+<p>Spritzer or “sample” or whatever it’s called. Entry-level streaming API access.</p>
 </div>
   
   
@@ -304,9 +310,10 @@ I&#8217;ve been working on this project for at the past couple of weeks, so plea
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p><img src="http://www.charleshooper.net/wp-content/uploads/pbr.plumata.net-booksuggest_ra-300x164.png" alt="" /></p>
+
 </div>
   
   
@@ -342,28 +349,27 @@ I&#8217;ve been working on this project for at the past couple of weeks, so plea
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
-<p>Just received this fantastic recipe in my SPAM folder from an address I&#8217;ve never seen before. I&#8217;m assuming that this was just an attempt to verify the email address (no bounce = email is verified!) Or maybe it&#8217;s poison?</p>
-
-<blockquote><p>Recipe for great BBQ Sauce:
-INGREDIENTS<br/>
-1 quart apple cider vinegar<br/>
-1 (20 ounce) bottle ketchup<br/>
-1/4 cup paprika<br/>
-1 pound dark brown sugar<br/>
-1/4 cup salt<br/>
-1 tablespoon black pepper<br/>
-2 tablespoons red pepper flakes<br/>
-1 tablespoon garlic powder<br/>
-1/4 cup Worcestershire sauce<br/>
-1/2 cup lemon juice
-DIRECTIONS<br/>
-In a large container, mix together the apple cider vinegar, ketchup,<br/>
-paprika, brown sugar, salt, pepper, red pepper flakes, garlic powder,<br/>
-Worcestershire sauce and lemon juice. Pour into an empty vinegar bottle,<br/>
-ketchup bottle or other container and store in the refrigerator for up to<br/>
-1 month.</p></blockquote>
+<p>Just received this fantastic recipe in my SPAM folder from an address I’ve never seen before. I’m assuming that this was just an attempt to verify the email address (no bounce = email is verified!) Or maybe it’s poison? 
+&gt; Recipe for great BBQ Sauce: 
+&gt; INGREDIENTS<br />
+&gt; 1 quart apple cider vinegar<br />
+&gt; 1 (20 ounce) bottle ketchup<br />
+&gt; 1/4 cup paprika<br />
+&gt; 1 pound dark brown sugar<br />
+&gt; 1/4 cup salt<br />
+&gt; 1 tablespoon black pepper<br />
+&gt; 2 tablespoons red pepper flakes<br />
+&gt; 1 tablespoon garlic powder<br />
+&gt; 1/4 cup Worcestershire sauce<br />
+&gt; 1/2 cup lemon juice 
+&gt; DIRECTIONS<br />
+&gt; In a large container, mix together the apple cider vinegar, ketchup,<br />
+&gt; paprika, brown sugar, salt, pepper, red pepper flakes, garlic powder,<br />
+&gt; Worcestershire sauce and lemon juice. Pour into an empty vinegar bottle,<br />
+&gt; ketchup bottle or other container and store in the refrigerator for up to<br />
+&gt; 1 month.</p>
 </div>
   
   
@@ -400,20 +406,19 @@ ketchup bottle or other container and store in the refrigerator for up to<br/>
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>The relationship between an employer and his or her employees isn’t special. It’s also very simple; <em>It’s based on money</em>. The employee works for the employer typically for 1-2 weeks at a time. Following this time period, the employer pays the employee and they’re even again. <em>You’re not friends</em>.</p>
 
 <p>From a management perspective, it is true that you should pay attention to the human element of your employees, this falls under the behavioral approach to management. More specifically, employees that receive attention from their supervisors are, in general, more productive. This is known has the <strong>Hawthorne Effect</strong>. However, <em>this potential increase in productivity is moot if your employees aren’t getting paid</em>. Speaking from experience, here’s what will happen if you’re not paying your employees:</p>
 
 <ol>
-<li>Your employees will show up for work late with increasing frequency</li>
-<li>Some days, they might not come in at all</li>
-<li>They’ll take long lunches</li>
-<li>They’ll leave early</li>
-<li>They’ll fuck off provided they actually do show up. Productivity will be down</li>
+  <li>Your employees will show up for work late with increasing frequency</li>
+  <li>Some days, they might not come in at all</li>
+  <li>They’ll take long lunches</li>
+  <li>They’ll leave early</li>
+  <li>They’ll fuck off provided they actually do show up. Productivity will be down</li>
 </ol>
-
 
 <p>And here’s why: When I worked for a company that hadn’t paid anyone in two months, everyone gained a <strong>sense of entitlement</strong>. “They <em>owe</em>us. They’re lucky we’re even showing up for work at all!”</p>
 
@@ -421,7 +426,7 @@ ketchup bottle or other container and store in the refrigerator for up to<br/>
 
 <p>Here’s what’s worse: If an unpaid employee decides to leave or you decide to fire or lay them off, you are opening yourself up for a <strong>huge liability</strong>. In some states an employee is due their check the day that they leave (California, if given notice) or by the following payday (<a href="http://www.ctdol.state.ct.us/wgwkstnd/laws-regs/wglaws.htm">Connecticut Labor Law</a>.) <em>If you can’t pay your employee, they have the option of reporting you to the Department of Labor</em>. What happens then? You’re forced to pay the employee and fined additional monies. For what amounted to ~$200 unpaid wages, another former employer of mine would have been liable for an additional $500-$1000 in fines. In addition to the monetary penalties, you also risk getting audited. As a bookkeeper friend once told me: <em>You never want to open your books for anybody.</em>(Cool backstory, she had to open hers for a grand jury.)</p>
 
-<p>If for some reason you really can’t pay your employees on time, you’re going to have to work something out with each of them on an individual basis. Make a <em>payment plan </em>with each them that you actually manage. Most importantly, <strong>GET YOUR AGREEMENT IN WRITING AND SIGNED BY BOTH PARTIES!</strong>Do not try to get the employee to waive amounts of their pay. In some states, this is illegal!</p>
+<p>If for some reason you really can’t pay your employees on time, you’re going to have to work something out with each of them on an individual basis. Make a *payment plan *with each them that you actually manage. Most importantly, <strong>GET YOUR AGREEMENT IN WRITING AND SIGNED BY BOTH PARTIES!</strong>Do not try to get the employee to waive amounts of their pay. In some states, this is illegal!</p>
 
 <p>So, seriously, pay your employees or there may be serious consequences. If you can’t, work out a payment plan and get it in writing and signed.</p>
 
@@ -461,15 +466,15 @@ ketchup bottle or other container and store in the refrigerator for up to<br/>
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
-<p>Last night I finally released the <a href="http://code.google.com/p/twitter-repeater/">source to my twitter-repeater bot</a>.</p>
+<p>Last night I finally released the <a href="http://code.google.com/p/twitter-repeater/">source to my twitter-repeater bot</a>. 
+&gt; twitter-repeater is a bot that automatically retweets any tweets in which its name is “mentioned” in. In order for a tweet to be retweeted, the bot account must be following the original user who tweeted it, that user must not be on the ignore list, and the tweet must pass some basic quality tests. 
+&gt; The idea was originally inspired by the <a href="http://twitter.com/sanmo">@SanMo</a> bot and was created so I could use something similar for <a href="http://twitter.com/NLCT">New London, CT (@NLCT)</a></p>
 
-<blockquote><p>twitter-repeater is a bot that automatically retweets any tweets in which its name is &#8220;mentioned&#8221; in. In order for a tweet to be retweeted, the bot account must be following the original user who tweeted it, that user must not be on the ignore list, and the tweet must pass some basic quality tests.
-The idea was originally inspired by the <a href="http://twitter.com/sanmo">@SanMo</a> bot and was created so I could use something similar for <a href="http://twitter.com/NLCT">New London, CT (@NLCT)</a></p></blockquote>
-
-<p>The bot is released under the MIT license and makes use of the <a href="http://github.com/joshthecoder/tweepy">tweepy library.</a><br/>
+<p>The bot is released under the MIT license and makes use of the <a href="http://github.com/joshthecoder/tweepy">tweepy library.</a><br />
  </p>
+
 </div>
   
   
@@ -505,18 +510,19 @@ The idea was originally inspired by the <a href="http://twitter.com/sanmo">@SanM
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
 <p>My Tweet harvester stats look something like this. Base “sample” streaming level. Times are GMT or UTC.</p>
 
-<p><img src="http://www.charleshooper.net/wp-content/uploads/bowserjr.plumata.net-harvester-300x171.png" alt="a" /><br/>
-<img src="http://www.charleshooper.net/wp-content/uploads/bowserjr.plumata.net-munin_rat-300x164.png" alt="b" /><br/>
-<img src="http://www.charleshooper.net/wp-content/uploads/magichat.plumata.net-mysql_slo-300x164.png" alt="c" /><br/>
-<img src="http://www.charleshooper.net/wp-content/uploads/magichat.plumata.net-mysql_que-300x207.png" alt="d" /><br/>
-<img src="http://www.charleshooper.net/wp-content/uploads/bowserjr.plumata.net-if_eth0-d-300x164.png" alt="e" /><br/>
+<p><img src="http://www.charleshooper.net/wp-content/uploads/bowserjr.plumata.net-harvester-300x171.png" alt="a" /><br />
+<img src="http://www.charleshooper.net/wp-content/uploads/bowserjr.plumata.net-munin_rat-300x164.png" alt="b" /><br />
+<img src="http://www.charleshooper.net/wp-content/uploads/magichat.plumata.net-mysql_slo-300x164.png" alt="c" /><br />
+<img src="http://www.charleshooper.net/wp-content/uploads/magichat.plumata.net-mysql_que-300x207.png" alt="d" /><br />
+<img src="http://www.charleshooper.net/wp-content/uploads/bowserjr.plumata.net-if_eth0-d-300x164.png" alt="e" /><br />
 <img src="http://www.charleshooper.net/wp-content/uploads/bowserjr.plumata.net-munin_que-300x164.png" alt="f" /></p>
 
 <p>Edit: I’m actually on spritzer, or whatever the base access level is. However, “drinking from the gardenhose” is a much cooler title.</p>
+
 </div>
   
   
@@ -552,14 +558,15 @@ The idea was originally inspired by the <a href="http://twitter.com/sanmo">@SanM
   </header>
 
 
-  <div class="entry-content"><h1></h1>
+  <div class="entry-content"><h1 id="section"></h1>
 
-<p>Previously I blogged about a <a href="http://subversity.net/drinking-from-the-gardenhose">storage/database bottleneck causing dropped connections while utilizing Twitter’s streaming API</a>.
+<p>Previously I blogged about a <a href="http://subversity.net/drinking-from-the-gardenhose">storage/database bottleneck causing dropped connections while utilizing Twitter’s streaming API</a>. 
 I’m happy to report that the switch from <em>sqlite to MySQL</em> resulted in an immediate increase in <strong>throughput</strong>. I went from processing <strong>~5 updates/second</strong> to processing just over <strong>11 updates/second</strong>, almost doubling my capacity.</p>
 
 <p>I also saw great improvement in terms of <strong>CPU usage</strong> as well. Previously, I was pegging my CPU at <strong>100% usage</strong>. Since the switch to MySQL, which runs on another (similarly spec’d) host, I now use less than <strong>5% CPU</strong> on the stream listening/processing host and less than <strong>10% CPU</strong> on the MySQL host with the same dataset as before. I believe that parallelizing my code even further would allow me to take greater advantage of my resources and achieve higher throughput.</p>
 
-<p>Resolving this issue has allowed me to turn my focus back on what I originally started this project for: Building a large enough corpus to do accurate <a href="http://en.wikipedia.org/wiki/Tf%E2%80%93idf">Tf-idf scoring</a>.</p>
+<p>Resolving this issue has allowed me to turn my focus back on what I originally started this project for: Building a large enough corpus to do accurate <a href="http://en.wikipedia.org/wiki/Tf–idf">Tf-idf scoring</a>.</p>
+
 </div>
   
   

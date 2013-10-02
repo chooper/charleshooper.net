@@ -9,8 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="Previously I blogged about a storage/database bottleneck causing dropped connections while utilizing Twitter’s streaming API.
-I’m happy to report &hellip;">
+  <meta name="description" content="Previously I blogged about a storage/database bottleneck causing dropped connections while utilizing Twitter’s streaming API. I’m happy to report &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -110,14 +109,15 @@ I’m happy to report &hellip;">
   </header>
 
 
-<div class="entry-content"><h1></h1>
+<div class="entry-content"><h1 id="section"></h1>
 
-<p>Previously I blogged about a <a href="http://subversity.net/drinking-from-the-gardenhose">storage/database bottleneck causing dropped connections while utilizing Twitter’s streaming API</a>.
+<p>Previously I blogged about a <a href="http://subversity.net/drinking-from-the-gardenhose">storage/database bottleneck causing dropped connections while utilizing Twitter’s streaming API</a>. 
 I’m happy to report that the switch from <em>sqlite to MySQL</em> resulted in an immediate increase in <strong>throughput</strong>. I went from processing <strong>~5 updates/second</strong> to processing just over <strong>11 updates/second</strong>, almost doubling my capacity.</p>
 
 <p>I also saw great improvement in terms of <strong>CPU usage</strong> as well. Previously, I was pegging my CPU at <strong>100% usage</strong>. Since the switch to MySQL, which runs on another (similarly spec’d) host, I now use less than <strong>5% CPU</strong> on the stream listening/processing host and less than <strong>10% CPU</strong> on the MySQL host with the same dataset as before. I believe that parallelizing my code even further would allow me to take greater advantage of my resources and achieve higher throughput.</p>
 
-<p>Resolving this issue has allowed me to turn my focus back on what I originally started this project for: Building a large enough corpus to do accurate <a href="http://en.wikipedia.org/wiki/Tf%E2%80%93idf">Tf-idf scoring</a>.</p>
+<p>Resolving this issue has allowed me to turn my focus back on what I originally started this project for: Building a large enough corpus to do accurate <a href="http://en.wikipedia.org/wiki/Tf–idf">Tf-idf scoring</a>.</p>
+
 </div>
 
 

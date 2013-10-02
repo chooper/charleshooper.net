@@ -109,41 +109,38 @@
   </header>
 
 
-<div class="entry-content"><h1></h1>
+<div class="entry-content"><h1 id="section"></h1>
 
-<p>Previously, I raised the question: “<a href="http://subversity.net/if-you-were-it-and-walked-into-a-company-with">If you were IT and walked into a company with no monitoring or logging, what would your priorities be?</a>” If I were in this situation, I would ask myself three questions: “<em>What should I be monitoring</em>,” “<em>How should I prioritize the alerts of each monitored item</em>,” and “<em>What items should I consider critical</em>?”
+<p>Previously, I raised the question: “<a href="http://subversity.net/if-you-were-it-and-walked-into-a-company-with">If you were IT and walked into a company with no monitoring or logging, what would your priorities be?</a>” If I were in this situation, I would ask myself three questions: “<em>What should I be monitoring</em>,” “<em>How should I prioritize the alerts of each monitored item</em>,” and “<em>What items should I consider critical</em>?” 
 I’d first start by answering the question “What should I be monitoring.” In addition to security events (which are outside the scope of this discussion,) I would begin monitoring of the pertinent items in the following order:</p>
 
 <ol>
-<li>Host-level availability</li>
-<li>Service-level availability</li>
-<li>Service-level performance (response times/timeouts etc)</li>
-<li>Host-level health/performance/resources (CPU, memory, and disk usage)</li>
+  <li>Host-level availability</li>
+  <li>Service-level availability</li>
+  <li>Service-level performance (response times/timeouts etc)</li>
+  <li>Host-level health/performance/resources (CPU, memory, and disk usage)</li>
 </ol>
-
 
 <p>Once I have a plan to begin monitoring all of the neccessary items, I would then tackle the question “How should I prioritize the alerts of each monitored item.” I would do so using the list below as a guide. This list is by no means law. In fact, <strong>priority should be determined on a per-case basis depending on your or your organization’s needs</strong> and not some cookie-cutter list.</p>
 
 <ol>
-<li>Network infrastructure (core routers, switches)</li>
-<li>Servers hosting critical services</li>
-<li>Critical services</li>
-<li>Maxed resources (low disk usage, heavy swap usage, etc)</li>
-<li>Everything else</li>
+  <li>Network infrastructure (core routers, switches)</li>
+  <li>Servers hosting critical services</li>
+  <li>Critical services</li>
+  <li>Maxed resources (low disk usage, heavy swap usage, etc)</li>
+  <li>Everything else</li>
 </ol>
-
 
 <p>The final question (which is arguably an extension of the previous question) that needs to be answered is “What items should I consider critical.” This too is based off of your or your organization’s needs, but I would use the following as starting point.</p>
 
 <ul>
-<li>Connectivity</li>
-<li>Infrastructure (DNS, LDAP, etc)</li>
-<li>Communications (Exchange/Email, etc)</li>
-<li>Forward-facing services</li>
-<li>Line of Business applications and services</li>
-<li>Anything else critical to the operation and sustainability of the organization</li>
+  <li>Connectivity</li>
+  <li>Infrastructure (DNS, LDAP, etc)</li>
+  <li>Communications (Exchange/Email, etc)</li>
+  <li>Forward-facing services</li>
+  <li>Line of Business applications and services</li>
+  <li>Anything else critical to the operation and sustainability of the organization</li>
 </ul>
-
 
 <p>To sum it up, given the question “What would your priorities be if you walked into a company without any monitoring” I would approach the issue by asking myself and answering three questions. Those questions are “What should I be monitoring,” “How should I prioritize the alerts of each monitored item,” and “What items should I consider critical?” Once answered, it should be easy to develop a monitoring plan.</p>
 </div>

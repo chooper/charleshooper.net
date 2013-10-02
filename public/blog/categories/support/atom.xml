@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Support | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/support/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-09-25T06:35:41-07:00</updated>
+  <updated>2013-10-02T09:34:58-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -18,7 +18,7 @@
     <link href="http://www.charleshooper.net/blog/hypersensitivity-and-political-correctness/"/>
     <updated>2011-08-19T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/hypersensitivity-and-political-correctness</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>I wrote a blog post this week on how <a href="http://www.charleshooper.net/blog/stop-letting-tech-people-be-socially-inept/" title="Stop Letting Technical People Get Away With Social Ineptitude">engineers or “technical people” don’t have to, and shouldn’t, be jerks</a>. My argument was that the stereotype that <em>technically-minded people are bad at social skills</em> was just that, a stereotype, and that employers should stop allowing us to get away with it. I knew it was going to be controversial when I wrote it, especially because the type of people who find my blog (HackerNewsers) <em>are</em> usually technically-minded people (with a nod to the rest of you entrepreneurs, biz, and VC folk). As expected, a large chunk of commentors (both on HN and on my blog) disagreed with my argument and a large chunk agreed.</p>
 
@@ -37,22 +37,23 @@
     <link href="http://www.charleshooper.net/blog/stop-letting-tech-people-be-socially-inept/"/>
     <updated>2011-08-17T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/stop-letting-tech-people-be-socially-inept</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>As a technical person who has worked many customer-facing support roles, I’m offended by the often-cited notion that technical people have poor people skills or are poor at filling customer support roles. Earlier this week, a web host incited a Public Relations nightmare when their “Technical Director” responded childishly to some customers, disabled their accounts, and deleted their backups. The company’s response was to create a new customer support position so they could keep their Technical Director yet isolate him from their customers. In this new customer support personnel’s recap of the situation, he wrote:</p>
 
-<blockquote><p>Jules is the Technical Director. Jules does a fantastic job looking after things and keeping the infrastructure running well. Unfortunately though, as is often the case with very technically minded people, customer service is not always his strong point.</p></blockquote>
+<blockquote>
+  <p>Jules is the Technical Director. Jules does a fantastic job looking after things and keeping the infrastructure running well. Unfortunately though, as is often the case with very technically minded people, customer service is not always his strong point.</p>
+</blockquote>
 
 <p>As I stated above, I find this absolutely offensive. Unfortunately, it’s often believed to be true because there <em>are</em> so many engineers and technical personnel with poor people skills. I never have seen statistics to support the notion that the ratio is <em>higher</em> in these professions than in others, yet employers often find that people filling these roles with poor people skills are still employable. This needs to stop.</p>
 
 <p>I’m of the opinion that every position is customer-facing. Sure, some positions might not interface with the <em>company’s</em> customers, but the position is likely to have customers of its own – whether internal or external. All it takes for someone to be good at customer service is:</p>
 
 <ul>
-<li>The understanding that they represent their employer and that people are relying on them,</li>
-<li>A compassionate, helpful, and courteous attitude,</li>
-<li>The knowledge of whatever they’re supporting.</li>
+  <li>The understanding that they represent their employer and that people are relying on them,</li>
+  <li>A compassionate, helpful, and courteous attitude,</li>
+  <li>The knowledge of whatever they’re supporting.</li>
 </ul>
-
 
 <p>Frankly, if you don’t have those qualities, how can you work with anyone at all?</p>
 ]]></content>
@@ -63,7 +64,7 @@
     <link href="http://www.charleshooper.net/blog/one-moms-way-of-getting-things-done/"/>
     <updated>2011-04-26T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/one-moms-way-of-getting-things-done</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>For work study (or something like that,) I’ve been working on my school’s help desk. I find alot of humor in the way people behave when they feel that they “need” something to get done.</p>
 
@@ -71,19 +72,23 @@
 
 <p>Here’s another example of the way parents try to “get things done” through my school’s help desk. My first phone call of the day:</p>
 
-<blockquote><p>Me: ITS Help Desk, this is Charles, how may I help you?</p>
+<blockquote>
+  <p>Me: ITS Help Desk, this is Charles, how may I help you?</p>
 
-<p>Someone’s Mom: Look, I just really need to reset my son’s password. If I’m paying the one paying the fees, wouldn’t it make sense that I have access to his account?</p>
+  <p>Someone’s Mom: Look, I just really need to reset my son’s password. If I’m paying the one paying the fees, wouldn’t it make sense that I have access to his account?</p>
 
-<p>Me: I’m sorry, but we are not able to reset a student’s password for anyone other than the student per federal law.</p>
+  <p>Me: I’m sorry, but we are not able to reset a student’s password for anyone other than the student per federal law.</p>
 
-<p>Someone’s Mom: Fine, I’ll just keep calling back until I get someone to reset it for me. <strong>*click*</strong></p></blockquote>
+  <p>Someone’s Mom: Fine, I’ll just keep calling back until I get someone to reset it for me. <strong>*click*</strong></p>
+</blockquote>
 
 <p>My second phone call of the day:</p>
 
-<blockquote><p>Me: ITS Help Desk, this is Charles. How may I help you?</p>
+<blockquote>
+  <p>Me: ITS Help Desk, this is Charles. How may I help you?</p>
 
-<p>Someone’s Mom: Oops, I got you again. <strong>*click*</strong></p></blockquote>
+  <p>Someone’s Mom: Oops, I got you again. <strong>*click*</strong></p>
+</blockquote>
 
 <p>There are usually only 2-3 of us at any given time and phone calls come in round robin. We sit next to each other. This technique of “getting things done” doesn’t work in this environment.</p>
 ]]></content>

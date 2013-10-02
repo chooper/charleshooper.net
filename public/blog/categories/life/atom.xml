@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Life | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/life/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-09-25T06:35:41-07:00</updated>
+  <updated>2013-10-02T09:34:58-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -18,25 +18,25 @@
     <link href="http://www.charleshooper.net/blog/why-i-moved-to-san-francisco/"/>
     <updated>2013-07-21T00:33:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/why-i-moved-to-san-francisco</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<p>It's been three months since I first moved to San Francisco and decided
+<p>It’s been three months since I first moved to San Francisco and decided
 I should share why I moved here in the first place. The primary reasons
 why I moved to San Francisco are for my career and to be around more
 like-minded people.</p>
 
 <p>Career-wise, what made San Francisco appealing to me is the number and
 diversity of employment opportunities. In Connecticut, if you want to
-work with "technology" then you work for one of the many insurance
+work with “technology” then you work for one of the many insurance
 companies headquartered there or an agency of some kind. In addition to
 available opportunities, there is also more parity between the job
 market in the bay area and my skill set and experience. For example,
-today <a href="http://www.indeed.com/">Indeed.com</a> reports 184 results for the "Python" in the entire
+today <a href="http://www.indeed.com/">Indeed.com</a> reports 184 results for the “Python” in the entire
 state of Connecticut, while there are nearly 2,700 results for the San
 Francisco Bay Area. At one point in my life, I was told I was wasting my
 life messing around with GNU/Linux and other Open Source software.
 Things would have been a little better if I moved two hours away to
-either Boston or New York, but if I'm going to move then I might as well
+either Boston or New York, but if I’m going to move then I might as well
 get better weather out of it, too.</p>
 
 <p>I also moved to San Francisco to be around more like-minded people.
@@ -47,32 +47,38 @@ up to their events. Often times, the groups failed early due to a lack
 of participation (including the hackerspace I founded but that story is
 for another day).</p>
 
-<h2>Thoughts so far</h2>
+<h2 id="thoughts-so-far">Thoughts so far</h2>
 
-<p>As I mentioned, I've now been here for three months. My thoughts so far
+<p>As I mentioned, I’ve now been here for three months. My thoughts so far
 are:</p>
 
 <ul>
-<li><p>The place really is quite small. Especially in tech. Everyone seems to
+  <li>
+    <p>The place really is quite small. Especially in tech. Everyone seems to
 know everyone, which can be fun socially, but you need to watch what
-you say when you're talking shop.</p></li>
-<li><p>The Sillicon Valley/SF Bay tech isolation chamber is real (and so is
-the echo chamber). Companies sometimes seem huge when you're in the
-bay, but if you talk to anyone from outside of the area, they're like
-"<em>Who?</em>"</p></li>
-<li><p>San Francisco's neighborhoods are really awesome. SF
+you say when you’re talking shop.</p>
+  </li>
+  <li>
+    <p>The Sillicon Valley/SF Bay tech isolation chamber is real (and so is
+the echo chamber). Companies sometimes seem huge when you’re in the
+bay, but if you talk to anyone from outside of the area, they’re like
+“<em>Who?</em>”</p>
+  </li>
+  <li>
+    <p>San Francisco’s neighborhoods are really awesome. SF
 is divided into a bunch of small neighborhoods, each with their own
-unique attributes. There really is a place for everyone.</p></li>
+unique attributes. There really is a place for everyone.</p>
+  </li>
 </ul>
 
-
-<h2>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 
 <p>I moved to San Francisco because I thought it would be good for my
 career and because I thought I would meet more like-minded people. This
 has certainly proved to be the case. What I was not expecting but have
 experienced so far is how small and isolated the SF tech scene actually
 is.</p>
+
 ]]></content>
   </entry>
   
@@ -81,10 +87,10 @@ is.</p>
     <link href="http://www.charleshooper.net/blog/how-i-hacked-my-high-school/"/>
     <updated>2013-07-18T10:59:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/how-i-hacked-my-high-school</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
 <p>When I was a freshman or sophomore in high school, I cracked my high
-school and got in "a lot of trouble" for it. I've only told the story
+school and got in “a lot of trouble” for it. I’ve only told the story
 maybe half a dozen times in my life, but after telling it a few times in
 the past month or so, I decided to write about.</p>
 
@@ -92,30 +98,30 @@ the past month or so, I decided to write about.</p>
 apparently had enough money to build several computer labs in each
 school, network them all together as a single autonomous network, and
 provide reasonably fast Internet access. This was somewhere between the
-year 1999 and the year 2000, the exact year I can't quite remember.</p>
+year 1999 and the year 2000, the exact year I can’t quite remember.</p>
 
 <p>Another interesting thing to note about my high school was that it
 carried with it an 80-hour community service requirement for graduation.
-I've always been into computers and networking
+I’ve always been into computers and networking
 so it was natural for me volunteer to do my community service assisting
 the technical staff in the computer labs. Community service in this way
 typically involved installing printer drivers, updating software, and
 pushing boxes around on a cart.</p>
 
-<p>My school's computer network consisted of a mix of sevaral flavors of
+<p>My school’s computer network consisted of a mix of sevaral flavors of
 Windows including Windows 95, Windows 98, and Windows NT 4.0. Despite
 the large Microsoft-only network, we were using Novell for
 authentication and authorization. Each school in the district was
 networked together and part of this same Novell network.</p>
 
 <p>My school had reasonable filtering and monitoring in place for web
-traffic and it wasn't uncommon to hear of students getting into trouble
-for looking at, let's say "questionable content."</p>
+traffic and it wasn’t uncommon to hear of students getting into trouble
+for looking at, let’s say “questionable content.”</p>
 
 <p>One weird thing my school did was restrict access to the local hard
-drive. If you went into Explorer, the <code>C:\</code> volume simply wasn't listed.
+drive. If you went into Explorer, the <code>C:\</code> volume simply wasn’t listed.
 This was supposedly because we were supposed to use our network-attached
-"S drive" which was unique to each user. The "Run" dialog from the Start
+“S drive” which was unique to each user. The “Run” dialog from the Start
 menu was also disabled.</p>
 
 <p>This had its flaws; however, and one day I hand-wrote (in English class)
@@ -123,12 +129,11 @@ a 6 page paper detailing the variety of ways even an unskilled person
 could bypass this precaution. Most notably this included:</p>
 
 <ul>
-<li>Create a shortcut on the desktop to <code>C:\</code></li>
-<li>Open internet explorer and browse to <code>file:///...</code></li>
-<li>Certain "Save As" and "Open" dialogs still listed the C-drive and was browsable</li>
-<li>You could still get to a "Run" dialog by opening the task manager and finding it in there. This allowed you to a) Browse to the C-drive anyway, and b) Open up a command prompt</li>
+  <li>Create a shortcut on the desktop to <code>C:\</code></li>
+  <li>Open internet explorer and browse to <code>file:///...</code></li>
+  <li>Certain “Save As” and “Open” dialogs still listed the C-drive and was browsable</li>
+  <li>You could still get to a “Run” dialog by opening the task manager and finding it in there. This allowed you to a) Browse to the C-drive anyway, and b) Open up a command prompt</li>
 </ul>
-
 
 <p>There were probably some other flaws I missed. I argued that restricting
 access to the local disk was rather pointless as people could simply
@@ -136,28 +141,28 @@ drop to it during boot (which many students were already doing in order
 to get a kick out of doing <code>deltree C:\Windows</code> for some reason) and
 that the real issue was that local password caching was enabled. In
 other words, whenever a user logged in, a hashed version of their
-password was stored in the form of a windows "PWL file."</p>
+password was stored in the form of a windows “PWL file.”</p>
 
 <p>The next time I did my community service, I handed my paper to the head
-technician which he responded "What? This could never happen"
+technician which he responded “What? This could never happen”
 and threw my paper in the garbage.</p>
 
-<p>What?! I couldn't believe that someone would actually throw away what
-was, at the time, the longest paper I've ever written after barely
+<p>What?! I couldn’t believe that someone would actually throw away what
+was, at the time, the longest paper I’ve ever written after barely
 having read it. And to do this with a 4-word response no less!</p>
 
 <p>Due to my shock and what was apparent lack of maturity, I decided
 that I would show them. I mean, when you approach someone with what you
-think is an obvious, logical opinion and they don't believe you, your
+think is an obvious, logical opinion and they don’t believe you, your
 next option is to show them, right? <em>Right?</em></p>
 
-<p>It didn't take me too long to gather up a fairly large collection of
-these so-called "PWL files" on a floppy disk. Distinguishing between
+<p>It didn’t take me too long to gather up a fairly large collection of
+these so-called “PWL files” on a floppy disk. Distinguishing between
 staff and students was trivial too due to the naming convention in
-place. Students' usernames were always in the form of
+place. Students’ usernames were always in the form of
 <code>{ExpectedGraduationYear}{LastName}{FirstInitial}</code>. Mine was
 <code>03hooperc</code>. Faculty and staff, on the other hand, simply followed the
-convention <code>{FirstInitial}{LastName}</code>. I decided that I didn't care for
+convention <code>{FirstInitial}{LastName}</code>. I decided that I didn’t care for
 any of the student logins and just discarded them.</p>
 
 <p>When I had a good collection of staff PWL files, I used a tool called
@@ -177,9 +182,9 @@ insecure. It consisted of two three-letter words in all caps:</p>
 attack. I went to the computer lab during lunch and waited for the
 opportunity to log into my new staff account. I had to be careful,
 though, as my school set the background of staff accounts to something
-very noticable and I didn't want the computer lab attendant sitting in
-the back to notice that I was on an account that didn't belong to me. At
-some point, she left briefly and I quickly logged onto The Man's
+very noticable and I didn’t want the computer lab attendant sitting in
+the back to notice that I was on an account that didn’t belong to me. At
+some point, she left briefly and I quickly logged onto The Man’s
 account.</p>
 
 <p>Once I was logged in, I was more in excited and nervous than
@@ -187,7 +192,7 @@ anything. Even still, I moved onto the next step of creating a backdoor
 account with admin privileges. I made up a name and created a new
 account following the faculty/staff naming convention and granted it
 every privilege I could. As soon as I was done, I logged off. The
-log-off couldn't be slower. I felt like Peter in Office Space when he's
+log-off couldn’t be slower. I felt like Peter in Office Space when he’s
 trying to duck out of work early and his computer keeps coming up with
 a bunch of last-minute tasks before it can log off.</p>
 
@@ -203,37 +208,37 @@ hosts based on a Debian derivative?</p>
 
 <p>Some months later, I start hearing from other students that my buddy has
 told a bunch of people my secret and has even been logging into the
-account to prove it (OK, I definitely shouldn't have shared the
+account to prove it (OK, I definitely shouldn’t have shared the
 credentials!) I decided that the best thing to do in this case was to
 confess to the Director of Information Technology, who I used to bug
-from time to time and ask why we didn't use Linux since it's free (Yes,
+from time to time and ask why we didn’t use Linux since it’s free (Yes,
 I was probably a very annoying fifteen year old) For those wondering, he
-said it was because of a "licensing issue" which I think was
-professional speak for "fuck off, kid"). So, I walked into his office
+said it was because of a “licensing issue” which I think was
+professional speak for “fuck off, kid”). So, I walked into his office
 one day and dropped the bomb.</p>
 
-<p>I honestly don't know what I was expecting to happen. He listened to my
+<p>I honestly don’t know what I was expecting to happen. He listened to my
 story, asked me how long I had this access for. When I told him, he
-remarked that their backups didn't back that far and that, in any case,
-he'd have to report me to the administration. He walked me over to the
-dean of disclipline's office and I went through a grueling session of
+remarked that their backups didn’t back that far and that, in any case,
+he’d have to report me to the administration. He walked me over to the
+dean of disclipline’s office and I went through a grueling session of
 more questions.</p>
 
 <p>Something I should probably note is that this during a period where a
 bunch of schools, including mine, had decided to institute a
-so-called "zero tolerance policy." What these zero-tolerance policies
-were was simply a matrix of "Violations" on one axis and
-"Number of prior offenses" on the other. In other words, getting caught
+so-called “zero tolerance policy.” What these zero-tolerance policies
+were was simply a matrix of “Violations” on one axis and
+“Number of prior offenses” on the other. In other words, getting caught
 smoking in the bathroom for the first time carried a pre-determined
 penalty which was slightly less bad than getting caught doing that for
-the second time. Students could never argue that they didn't know they
+the second time. Students could never argue that they didn’t know they
 would get in so much trouble for anything because this matrix and every
 other school/district policy was distributed to us at the beginning of
 the year and we were required to have it on us at all times.</p>
 
 <p>The obvious flaw with this policy, besides the fact that it ignores
-additional circumstances, is that in 1999 there wasn't a row describing
-the penalties for any of the things I had done. In fact, I hadn't
+additional circumstances, is that in 1999 there wasn’t a row describing
+the penalties for any of the things I had done. In fact, I hadn’t
 technically violated any of the school or district policies at all!
 (Federal and local crimes may be another issue). I was sent home with
 the dean of discipline still deciding what to do with me, but I figured
@@ -244,12 +249,12 @@ surprisingly, they said I did the right thing (albeit many months late).
 Something else amazing happened though. My parents called the school
 and, after talking to the dean, we learned that my school was actually
 considering <strong>expulsion!</strong> My parents made some phone calls and tried to
-pull some strings that we didn't think we had but ultimately told me that
-we wouldn't know my fate until the next day at school.</p>
+pull some strings that we didn’t think we had but ultimately told me that
+we wouldn’t know my fate until the next day at school.</p>
 
 <p>The next day I went into school and was immediately called into the
-dean's office. He explained that they had decided that what I was guilty
-of stealing and kept using this "stole the key to the bank" metaphor. He
+dean’s office. He explained that they had decided that what I was guilty
+of stealing and kept using this “stole the key to the bank” metaphor. He
 actually told me that had I not brought the password files home on a
 floppy disk, I would probably be in less trouble. What the fuck?</p>
 
@@ -258,12 +263,11 @@ floppy disk, I would probably be in less trouble. What the fuck?</p>
 <p>Ten days! That was <em>huge</em>. For comparison:</p>
 
 <ul>
-<li>Ten days in the maximum amount of time you could be suspended for. Anything longer would be considered an expulsion and would require a hearing of some kind.</li>
-<li>You could punch someone in the face (you know, assault) and the punishment for doing that would be 4-6 days... on the second offense.</li>
+  <li>Ten days in the maximum amount of time you could be suspended for. Anything longer would be considered an expulsion and would require a hearing of some kind.</li>
+  <li>You could punch someone in the face (you know, assault) and the punishment for doing that would be 4-6 days… on the second offense.</li>
 </ul>
 
-
-<p>I don't remember how I got home but it was like my parents weren't even
+<p>I don’t remember how I got home but it was like my parents weren’t even
 mad. In fact, they seemed more proud than anything. I think they even
 thought that this incident would get me hired somewhere someday, too.</p>
 
@@ -273,7 +277,8 @@ computers at school. This lasted over a year and, after signing a paper
 agreeing to let my school sue me if I commit another offence, I was
 given my computer access back.</p>
 
-<p>I'm terrible at concluding stories so... The End.</p>
+<p>I’m terrible at concluding stories so… The End.</p>
+
 ]]></content>
   </entry>
   
@@ -282,23 +287,22 @@ given my computer access back.</p>
     <link href="http://www.charleshooper.net/blog/catching-up/"/>
     <updated>2013-06-22T04:45:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/catching-up</id>
-    <content type="html"><![CDATA[<h1></h1>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
 
-<h2>tl;dr</h2>
+<h2 id="tldr">tl;dr</h2>
 
 <ul>
-<li>Moved to San Francisco</li>
-<li>Took time off to decompress</li>
-<li>Joined team at Heroku</li>
-<li>Loving it</li>
+  <li>Moved to San Francisco</li>
+  <li>Took time off to decompress</li>
+  <li>Joined team at Heroku</li>
+  <li>Loving it</li>
 </ul>
 
+<h2 id="code--verbosecode"><code>--verbose</code></h2>
 
-<h2><code>--verbose</code></h2>
-
-<p>It's been a while since I've posted, but I wanted to let you know that
-I'm still alive! Things were very hectic due to a few life changes but I
-much of the dust has settled now and I'm excited to talk about what
+<p>It’s been a while since I’ve posted, but I wanted to let you know that
+I’m still alive! Things were very hectic due to a few life changes but I
+much of the dust has settled now and I’m excited to talk about what
 those changes are.</p>
 
 <p>But first, some history.</p>
@@ -306,21 +310,20 @@ those changes are.</p>
 <p>In 2011, I was a junior at university studying Business
 Information Systems. I had some prior systems engineering and operations
 experience and was paying my tuition by performing contract work for a
-company that doesn't exist today. While at this company, I worked very
+company that doesn’t exist today. While at this company, I worked very
 closely with a developer and the two of us were responsible for running
-this company's infrastructure. Neither of us had the time or the
+this company’s infrastructure. Neither of us had the time or the
 willpower to be bothered by operational tasks, so we automated
 everything. Even though our environment was much smaller (somewhere
 between 30-50 instances in EC2) than many others, we had alot of things
 that many companies are lacking:</p>
 
 <ul>
-<li>New services were in configuration management</li>
-<li>New deployments were almost entirely automated</li>
-<li>We had good visibility with a variety of metrics being reported to Ganglia and Graphite</li>
-<li>We even had a reasonable nagios configuration</li>
+  <li>New services were in configuration management</li>
+  <li>New deployments were almost entirely automated</li>
+  <li>We had good visibility with a variety of metrics being reported to Ganglia and Graphite</li>
+  <li>We even had a reasonable nagios configuration</li>
 </ul>
-
 
 <p>Around this time, the term <strong>devops</strong> was being tossed around on twitter
 on a more frequent basis. I can remember actually having a Google Alert
@@ -328,19 +331,19 @@ for the term to email me when there were new blog posts about it and it
 <em>not</em> being spammy. I have a love/hate relationship with the term, and
 in December 2011 I wrote my blog post <a href="/blog/concurrent-engineering-the-foundation-of-devops/">Concurrent Engineering: The
 Foundation of DevOps</a> in which I argued that the ideas behind devops
-weren't new, but were maybe old ideas from business that were recently
+weren’t new, but were maybe old ideas from business that were recently
 independtly re-discovered.</p>
 
-<p>The blog post wasn't very popular, but Solomon Hykes (CEO of dotCloud)
+<p>The blog post wasn’t very popular, but Solomon Hykes (CEO of dotCloud)
 managed to see it and, thinking we had very similar ideas about devops,
 invited me to interview for a position on their newly formed Site
 Reliability Engineering team. I got the job at dotCloud, and up until
-April of this year that's where I stayed.</p>
+April of this year that’s where I stayed.</p>
 
 <p>In mid-April, I resigned from my position at dotCloud and moved to San
 Francisco. There were a number of reasons for the resignation but chief
 among them was that I needed some time to decompress and all of my paid
-time-off had been used up following my youngest brother's car accident.
+time-off had been used up following my youngest brother’s car accident.
 This ended up being an awesome decision because it gave me my
 much-needed decompression time and I was able to explore my new city.</p>
 
@@ -349,17 +352,20 @@ search. The move to San Francisco and the job search alone could fill
 two entirely-too-verbose blog posts but the end result was that I moved
 here safely and joined the team at <a href="http://www.heroku.com/">Heroku</a>!</p>
 
-<p>Fast forward to today and I've just finished my third week at Heroku.
-It's an amazing experience, a great team, and an awesome culture that is
+<p>Fast forward to today and I’ve just finished my third week at Heroku.
+It’s an amazing experience, a great team, and an awesome culture that is
 encapsulated in the following quote:</p>
 
-<blockquote><p>I like our culture. We welcome failure into our house and then kick
-its teeth in.</p></blockquote>
+<blockquote>
+  <p>I like our culture. We welcome failure into our house and then kick
+its teeth in.</p>
+</blockquote>
 
-<p>I'll write more about this another time. For now, thank you for
+<p>I’ll write more about this another time. For now, thank you for
 listening to my story.</p>
 
-<p>&mdash; Charles</p>
+<p>— Charles</p>
+
 ]]></content>
   </entry>
   
