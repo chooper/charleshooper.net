@@ -4,7 +4,7 @@ require "stringex"
 
 ## -- Rsync Deploy config -- ##
 # Be sure your public key is listed in your server's ~/.ssh/authorized_keys file
-ssh_user       = ENV["SSH_TARGET"] || raise "No SSH_TARGET defined"
+ssh_user       = ENV["SSH_TARGET"]
 ssh_port       = "22"
 document_root  = "~/www/"
 rsync_delete   = false
@@ -236,6 +236,7 @@ end
 
 desc "Deploy website via rsync"
 task :rsync do
+  raise "No SSH_TARGET defined" if ssh_user.nil?
   exclude = ""
   if File.exists?('./rsync-exclude')
     exclude = "--exclude-from '#{File.expand_path('./rsync-exclude')}'"
