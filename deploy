@@ -1,6 +1,13 @@
 #!/bin/bash
 
-bundle exec rake generate deploy
+# Generate
+bundle exec rake generate
+
+# Deploy to VPSes
+SSH_TARGET="cchdotnet@theobroma.plumata.net" bundle exec rake deploy
+SSH_TARGET="cchdotnet@lagunitas.plumata.net" bundle exec rake deploy
+
+# Deploy to Heroku
 git add .
 git commit -a -m 'auto-commit on deploy'
 git push origin master
