@@ -29,13 +29,26 @@ if __name__ == "__main__":
 	tornado.ioloop.IOLoop.instance().start()
 {% endcodeblock %}
 
-Got that in place? Good. Next, create the file `/etc/init/web.conf`. It’s *very* important that this filename ends in **.conf**. The contents of this file should be as follows:
+Got that in place? Good.  Next, **make a system user** for your project to run
+as. In my example, I’ll be using `projectuser` as the username. Creating this
+user can be done like so:
+
+```
+sudo useradd --system --user-group projectuser
+```
+
+Finally, create the file `/etc/init/web.conf`. It’s
+*very* important that this filename ends in **.conf**. The contents of this
+file should be as follows:
 
 ```
 \# torando project
 start on runlevel 2
 stop on runlevel \[!2\]
 respawn
+
+setuid projectuser
+setgid projectuser
 
 exec /path/to/project/web.py
 ```
@@ -44,9 +57,3 @@ That’s it! You can start your Tornado app by entering the command:
 `sudo start web`. If successful, you should see output similar to:
 ` ** web start/running, process 28058`. You can also stop your projects using
 the command `sudo stop web`.
-
-The obvious caveat here is that your project is now running as root. In a future blog post, I will discuss dropping privileges at project startup. :-)
-
-UPDATE: I’m from the future and wrote that blog post on [how to drop privileges in Python for Tornado apps][3].
-
- [3]: http://www.charleshooper.net/blog/dropping-privileges-in-python-for-tornado-apps/
