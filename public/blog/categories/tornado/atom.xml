@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tornado | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/tornado/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-10-19T14:54:54-07:00</updated>
+  <updated>2013-10-19T15:00:55-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -40,13 +40,26 @@ Tornado app. I usually have one file in all of my projects called
 </span><span class='line'>	<span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>Got that in place? Good. Next, create the file <code>/etc/init/web.conf</code>. It’s <em>very</em> important that this filename ends in <strong>.conf</strong>. The contents of this file should be as follows:</p>
+<p>Got that in place? Good.  Next, <strong>make a system user</strong> for your project to run
+as. In my example, I’ll be using <code>projectuser</code> as the username. Creating this
+user can be done like so:</p>
+
+<p><code>
+sudo useradd --system --user-group projectuser
+</code></p>
+
+<p>Finally, create the file <code>/etc/init/web.conf</code>. It’s
+<em>very</em> important that this filename ends in <strong>.conf</strong>. The contents of this
+file should be as follows:</p>
 
 <p>```
 # torando project
 start on runlevel 2
 stop on runlevel [!2]
 respawn</p>
+
+<p>setuid projectuser
+setgid projectuser</p>
 
 <p>exec /path/to/project/web.py
 ```</p>
@@ -55,11 +68,6 @@ respawn</p>
 <code>sudo start web</code>. If successful, you should see output similar to:
 ` ** web start/running, process 28058<code>. You can also stop your projects using
 the command </code>sudo stop web`.</p>
-
-<p>The obvious caveat here is that your project is now running as root. In a future blog post, I will discuss dropping privileges at project startup. :-)</p>
-
-<p>UPDATE: I’m from the future and wrote that blog post on <a href="http://www.charleshooper.net/blog/dropping-privileges-in-python-for-tornado-apps/">how to drop privileges in Python for Tornado apps</a>.</p>
-
 ]]></content>
   </entry>
   

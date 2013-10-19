@@ -492,7 +492,16 @@ Tornado app. I usually have one file in all of my projects called
 </span><span class="line">	<span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Got that in place? Good. Next, create the file <code>/etc/init/web.conf</code>. It’s <em>very</em> important that this filename ends in <strong>.conf</strong>. The contents of this file should be as follows:</p>
+<p>Got that in place? Good.  Next, <strong>make a system user</strong> for your project to run
+as. In my example, I’ll be using <code>projectuser</code> as the username. Creating this
+user can be done like so:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">sudo useradd --system --user-group projectuser</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Finally, create the file <code>/etc/init/web.conf</code>. It’s
+<em>very</em> important that this filename ends in <strong>.conf</strong>. The contents of this
+file should be as follows:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -500,10 +509,16 @@ Tornado app. I usually have one file in all of my projects called
 <span class="line-number">4</span>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
 </pre></td><td class="code"><pre><code class=""><span class="line">\# torando project
 </span><span class="line">start on runlevel 2
 </span><span class="line">stop on runlevel \[!2\]
 </span><span class="line">respawn
+</span><span class="line">
+</span><span class="line">setuid projectuser
+</span><span class="line">setgid projectuser
 </span><span class="line">
 </span><span class="line">exec /path/to/project/web.py</span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -511,11 +526,6 @@ Tornado app. I usually have one file in all of my projects called
 <code>sudo start web</code>. If successful, you should see output similar to:
 ` ** web start/running, process 28058<code>. You can also stop your projects using
 the command </code>sudo stop web`.</p>
-
-<p>The obvious caveat here is that your project is now running as root. In a future blog post, I will discuss dropping privileges at project startup. :-)</p>
-
-<p>UPDATE: I’m from the future and wrote that blog post on <a href="http://www.charleshooper.net/blog/dropping-privileges-in-python-for-tornado-apps/">how to drop privileges in Python for Tornado apps</a>.</p>
-
 </div>
   
   
