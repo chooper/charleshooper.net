@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tornado | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/tornado/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-10-19T12:53:31-07:00</updated>
+  <updated>2013-10-19T14:54:54-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -58,7 +58,7 @@ the command </code>sudo stop web`.</p>
 
 <p>The obvious caveat here is that your project is now running as root. In a future blog post, I will discuss dropping privileges at project startup. :-)</p>
 
-<p>UPDATE: I’m from the future and wrote that blog post on <a href="http://subversity.net/dropping-privileges-in-python-for-tornado-app">how to drop privileges in Python for Tornado apps</a>.</p>
+<p>UPDATE: I’m from the future and wrote that blog post on <a href="http://www.charleshooper.net/blog/dropping-privileges-in-python-for-tornado-apps/">how to drop privileges in Python for Tornado apps</a>.</p>
 
 ]]></content>
   </entry>
