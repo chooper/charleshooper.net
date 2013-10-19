@@ -36,11 +36,11 @@ First, resolve the ELB name to a list of nodes (as A records):
 
     $ dig @ns-942.amazon.com +tcp elb-123456789.us-east-1.elb.amazonaws.com ANY
 
-The `tcp` flag is suggested as your ELB could have too many records to
-fit inside of a single UDP packet. I'm also told, but haven't personally
-confirmed, that Amazon will only display up to 6 nodes *unless* you
-perform an `ANY` query. Running this command will give you output that
-looks something like this (trimmed for brevity):
+The `tcp` flag is suggested as your ELB could have too many records to fit
+inside of a single UDP packet. You also need to perform an `ANY` query because
+Amazon's nameservers will only return a subset of the nodes otherwise.  Running
+this command will give you output that looks something like this (trimmed for
+brevity):
 
     ;; ANSWER SECTION:
     elb-123456789.us-east-1.elb.amazonaws.com. 60 IN SOA ns-942.amazon.com. root.amazon.com. 1376719867 3600 900 7776000 60
