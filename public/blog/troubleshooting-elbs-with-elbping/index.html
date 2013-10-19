@@ -5,12 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Auto Type Juggling and Unsanitized Input - Charles Hooper</title>
+  <title>Troubleshooting ELBs with elbping - Charles Hooper</title>
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="I would like to think that one day we will all be past the point where
-we are constantly finding silly bugs and vulnerabilities caused by &hellip;">
+  <meta name="description" content="Troubleshooting ELBs can be pretty painful at times because they are
+largely a black box. There aren’t many metrics available, and the ones
+that do &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +20,7 @@ we are constantly finding silly bugs and vulnerabilities caused by &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.charleshooper.net/blog/auto-type-juggling-and-unsanitized-input">
+  <link rel="canonical" href="http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/subversity" rel="alternate" title="Charles Hooper" type="application/atom+xml">
@@ -87,7 +88,7 @@ we are constantly finding silly bugs and vulnerabilities caused by &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Auto Type Juggling and Unsanitized Input</h1>
+      <h1 class="entry-title">Troubleshooting ELBs With Elbping</h1>
     
     
       <p class="meta">
@@ -103,7 +104,7 @@ we are constantly finding silly bugs and vulnerabilities caused by &hellip;">
   
 
 
-<time datetime="2009-12-04T00:00:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
+<time datetime="2013-10-19T10:49:00-07:00" pubdate data-updated="true">Oct 19<span>th</span>, 2013</time>
         
       </p>
     
@@ -112,82 +113,113 @@ we are constantly finding silly bugs and vulnerabilities caused by &hellip;">
 
 <div class="entry-content"><h1 id="section"></h1>
 
-<p>I would like to think that one day we will all be past the point where
-we are constantly finding silly bugs and vulnerabilities caused by
-unvalidated or unsanitized user input. Unfortunately for us all, we’re
-not. In this article, I will attempt to describe a rather overlooked
-result of <a href="http://www.php.net/manual/en/language.types.type-juggling.php">PHP’s type juggling</a>.</p>
+<p>Troubleshooting ELBs can be pretty painful at times because they are
+largely a black box. There aren’t many metrics available, and the ones
+that do exist are aggregated across all of the nodes of an ELB. This can
+be troublesome at times, for example when only a subset of an ELB’s
+nodes are degraded.</p>
 
-<p>If you aren’t already familiar, type juggling is PHP’s way of
-automatically switching or converting variables to different types based
-on the context it’s being used in. For example, if you have the strings
-“2″ and “3″ and you add them, PHP will convert them to integers and
-return the integer 5. This is useful in PHP web-applications since any
-variable that PHP retrieves from either GPC (<em>Get</em>, <em>Post</em>, <em>Cookie</em>)
-variables or the database is considered a string. This is regardless of
-its actual value or column type in the database and the string will need
-to be converted to a numeric type before any type of math operations or
-numeric comparisons can be performed on them.</p>
+<h1 id="elb-properties">ELB Properties</h1>
 
-<p>On the lower-level, PHP is actually using libc’s strtod() function. If
-we look at the man page, we learn If no conversion is performed, zero is
-returned. Without looking at PHP’s source, it would seem to me that PHP
-is blindly handing off string pointers to strtod() and if the type
-conversion fails it will retain the type of whatever the variable was
-last. This isn’t PHP’s fault, it’s the <em>developer’s responsibility</em> to
-make sure the data he is using is properly sanitized!</p>
+<p>ELBs have some interesting properties. For instance:</p>
 
-<p>The best real-world example I can give about this bug was a series of
-exploits in the web-based RPG <a href="http://www.bootleggers.us/">Bootleggers</a> last round. One of the
-most well known exploits in this series was known to players as “The Arm
-Wrestling bug.” This arm wrestling bug was the result of a flaw or
-limitation in PHP’s magic type switching that allowed players to bypass
-certain logic checks to send extremely large strings of numbers to the
-database backend and essentially create money out of thin air, one MySQL
-signed integer (2,147,483,647) at a time.</p>
+<ul>
+  <li>ELBs are made up of 1 or more nodes</li>
+  <li>These nodes are published as A records for the ELB name</li>
+  <li>These nodes can fail, or be shut down, and connections will <em>not</em> be closed gracefully</li>
+  <li>It often requires a good relationship with Amazon support ($$$) to get someone to dig into ELB problems</li>
+</ul>
 
-<p>For an example on how we would go about exploiting this, we look at the
-following code:</p>
+<p><em>NOTE: Another interesting property but slightly less pertinent is that
+ELBs were not designed to handle sudden spikes of traffic. They
+typically require 15 minutes of heavy traffic before they will scale up
+or they can be pre-warmed on request via a support ticket</em></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">$var1 = '1';
-</span><span class="line">$var2 = '21';
-</span><span class="line">var_dump((bool) ($var1 &lt; $var2));
-</span><span class="line"># Output: bool(true)</span></code></pre></td></tr></table></div></figure></notextile></div>
+<h1 id="troubleshooting-elbs-manually">Troubleshooting ELBs (manually)</h1>
 
-<p>All this code is doing is assigning strings to two variables and then
-doing a numeric comparison of them — In our case, this script will
-output “true” since, when evaluated as an integer, 1 is in fact
-less-than 21. However, if there is any non-numeric data being passed to
-the variable then strtod() will return 0 and PHP will evaluate these
-variables as strings and use natural sorting to determine if one
-variable is “less”-than another. Proof?</p>
+<p>Knowing this, you can do a little bit of troubleshooting on your own.
+First, resolve the ELB name to a list of nodes (as A records):</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">$var1 = '111 '; // there is a space before the closing quote
-</span><span class="line">$var2 = '21';
-</span><span class="line">var_dump((bool) ($var1 &lt; $var2));
-</span><span class="line"># Output: bool(true)</span></code></pre></td></tr></table></div></figure></notextile></div>
+<pre><code>$ dig @ns-942.amazon.com +tcp elb-123456789.us-east-1.elb.amazonaws.com ANY
+</code></pre>
 
-<p>This block of code will <em>also</em> output true because the character ’1′ is
-before the character ’2′ when using natural sorting. If a user is able
-to bypass the logic checks with this exploit, then typically the string
-will be sent straight to the database as-is (OK, maybe escaped for
-apostrophes ;)). Depending on the DBMS there may be a variance in
-behavior. Usually, exploiters will use this attack with a very large
-string so that the column being updated with that value will actually
-update to the maximum value for that column’s data type.</p>
+<p>The <code>tcp</code> flag is suggested as your ELB could have too many records to
+fit inside of a single UDP packet. I’m also told, but haven’t personally
+confirmed, that Amazon will only display up to 6 nodes <em>unless</em> you
+perform an <code>ANY</code> query. Running this command will give you output that
+looks something like this (trimmed for brevity):</p>
 
-<p>While exploits on web-based RPGs aren’t the end of the world, imagine if
-your <em>bank</em> used a PHP-based web-application. Wouldn’t you feel better
-if they all knew about his caveat and properly sanitized and validated
-user input? :-)</p>
+<pre><code>;; ANSWER SECTION:
+elb-123456789.us-east-1.elb.amazonaws.com. 60 IN SOA ns-942.amazon.com. root.amazon.com. 1376719867 3600 900 7776000 60
+elb-123456789.us-east-1.elb.amazonaws.com. 600 IN NS ns-942.amazon.com.
+elb-123456789.us-east-1.elb.amazonaws.com. 60 IN A 54.243.63.96
+elb-123456789.us-east-1.elb.amazonaws.com. 60 IN A 23.21.73.53
+</code></pre>
+
+<p>Now, for each of the <code>A</code> records use e.g. <code>curl</code> to test a connection to
+the ELB. Of course, you also want to isolate your test to just the ELB
+without connecting to your backends. One final property and little known
+fact about ELBs:</p>
+
+<ul>
+  <li>The maximum size of the request method (verb) that can be sent through an ELB is <strong>127 characters</strong>. Any larger and the ELB will reply with an <em>HTTP 405 - Method not allowed</em>.</li>
+</ul>
+
+<p>This means that we can take advantage of this behavior to test only that
+the ELB is responding:</p>
+
+<pre><code>$ curl -X $(python -c 'print "A" * 128') -i http://ip.of.individual.node
+HTTP/1.1 405 METHOD_NOT_ALLOWED
+Content-Length: 0
+Connection: Close
+</code></pre>
+
+<p>If you see <code>HTTP/1.1 405 METHOD_NOT_ALLOWED</code> then the ELB is responding
+successfully. You might also want to adjust curl’s timeouts to values
+that are acceptable to you.</p>
+
+<h1 id="troubleshooting-elbs-using-elbping">Troubleshooting ELBs using elbping</h1>
+
+<p>Of course, doing this can get pretty tedious so I’ve built a tool to
+automate this called <a href="https://github.com/chooper/elbping">elbping</a>. It’s
+available as a ruby gem, so if you have rubygems then you can install it
+by simply doing:</p>
+
+<pre><code>$ gem install elbping
+</code></pre>
+
+<p>Now you can run:</p>
+
+<pre><code>$ elbping -c 4 http://elb-123456789.us-east-1.elb.amazonaws.com
+Response from 54.243.63.96: code=405 time=210 ms
+Response from 23.21.73.53: code=405 time=189 ms
+Response from 54.243.63.96: code=405 time=191 ms
+Response from 23.21.73.53: code=405 time=188 ms
+Response from 54.243.63.96: code=405 time=190 ms
+Response from 23.21.73.53: code=405 time=192 ms
+Response from 54.243.63.96: code=405 time=187 ms
+Response from 23.21.73.53: code=405 time=189 ms
+--- 54.243.63.96 statistics ---
+4 requests, 4 responses, 0% loss
+min/avg/max = 187/163/210 ms
+--- 23.21.73.53 statistics ---
+4 requests, 4 responses, 0% loss
+min/avg/max = 188/189/192 ms
+--- total statistics ---
+8 requests, 8 responses, 0% loss
+min/avg/max = 188/189/192 ms
+</code></pre>
+
+<p>Remember, if you see <code>code=405</code> then that means that the ELB is responding.</p>
+
+<h1 id="next-steps">Next Steps</h1>
+
+<p>Whichever method you choose, you will at least know if your ELB’s nodes
+are responding or not. Armed with this knowledge, you can either turn
+your focus to troubleshooting other parts of your stack or be able to
+make a pretty reasonable case to AWS that something is wrong.</p>
+
+<p>Hope this helps!</p>
 
 </div>
 
@@ -211,12 +243,12 @@ user input? :-)</p>
   
 
 
-<time datetime="2009-12-04T00:00:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
+<time datetime="2013-10-19T10:49:00-07:00" pubdate data-updated="true">Oct 19<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/projects/'>Projects</a>, <a class='category' href='/blog/categories/uncategorized/'>Uncategorized</a>
+    <a class='category' href='/blog/categories/devops/'>DevOps</a>, <a class='category' href='/blog/categories/projects/'>Projects</a>
   
 </span>
 
@@ -225,7 +257,7 @@ user input? :-)</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.charleshooper.net/blog/auto-type-juggling-and-unsanitized-input/" data-via="charleshooper" data-counturl="http://www.charleshooper.net/blog/auto-type-juggling-and-unsanitized-input/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping/" data-via="charleshooper" data-counturl="http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping/" >Tweet</a>
   
   
   
@@ -234,8 +266,8 @@ user input? :-)</p>
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/my-def-con-21-experience/" title="Previous Post: My DEF CON 21 Experience">&laquo; My DEF CON 21 Experience</a>
       
-        <a class="basic-alignment right" href="/blog/ccnp-lab-recommendations/" title="Next Post: CCNP Lab Recommendations?">CCNP Lab Recommendations? &raquo;</a>
       
     </p>
   </footer>
@@ -325,8 +357,8 @@ user input? :-)</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.charleshooper.net/blog/auto-type-juggling-and-unsanitized-input/';
-        var disqus_url = 'http://www.charleshooper.net/blog/auto-type-juggling-and-unsanitized-input/';
+        var disqus_identifier = 'http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping/';
+        var disqus_url = 'http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping/';
         var disqus_script = 'embed.js';
       
     (function () {

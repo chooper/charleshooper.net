@@ -9,7 +9,9 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="32-bit limitations 32-bit MongoDB processes are limited to about 2.5 gb of data.  This has come as a surprise to a lot of people who are used to not &hellip;">
+  <meta name="description" content="We often find it beneficial to estimate how long a given task will
+take. This comes in handy when trying to quote billable time, set
+deadlines, or &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +85,62 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/estimating-time-for-tasks-with-pert/">Estimating Time for Tasks With PERT</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-22T00:00:00-07:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>We often find it beneficial to <em>estimate how long a given task will
+take</em>. This comes in handy when trying to quote billable time, set
+deadlines, or map out a project timeline on a Gantt chart. In
+<em>scientific management</em>, we often use the <strong>Program Evaluation and
+Review Technique</strong>, or <strong>PERT</strong>. Under PERT, we let <code>O</code> become the
+best-case, or optimistic, time; <code>P</code> becomes the pessimistic time, and
+<code>M</code> is the mean or average time. We then use the following formula:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">T = (O * 4M * P) / 6 </span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>As you can see, it’s pretty simple as it’s really just a weighted
+average. For example, for a task with an optimistic time of 4 hours, a
+pessimistic time of 7 hours, and an average time of 5 hours, you could
+reasonably plan on this task taking about 5.17 hours.  So the next time
+you need estimate how long a task will take, whether it’s delivering a
+pizza or <a href="http://en.wikipedia.org/wiki/Program_Evaluation_and_Review_Technique#Overview">building parts for a submarine</a>, think about using this
+PERT formula.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -530,50 +588,6 @@ I’ve been working on this project for at the past couple of weeks, so please c
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/drinking-from-the-gardenhose-cont/">Drinking From the Gardenhose, Cont.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-16T00:00:00-08:00" pubdate data-updated="true">Dec 16<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>Previously I blogged about a <a href="http://subversity.net/drinking-from-the-gardenhose">storage/database bottleneck causing dropped connections while utilizing Twitter’s streaming API</a>. 
-I’m happy to report that the switch from <em>sqlite to MySQL</em> resulted in an immediate increase in <strong>throughput</strong>. I went from processing <strong>~5 updates/second</strong> to processing just over <strong>11 updates/second</strong>, almost doubling my capacity.</p>
-
-<p>I also saw great improvement in terms of <strong>CPU usage</strong> as well. Previously, I was pegging my CPU at <strong>100% usage</strong>. Since the switch to MySQL, which runs on another (similarly spec’d) host, I now use less than <strong>5% CPU</strong> on the stream listening/processing host and less than <strong>10% CPU</strong> on the MySQL host with the same dataset as before. I believe that parallelizing my code even further would allow me to take greater advantage of my resources and achieve higher throughput.</p>
-
-<p>Resolving this issue has allowed me to turn my focus back on what I originally started this project for: Building a large enough corpus to do accurate <a href="http://en.wikipedia.org/wiki/Tf–idf">Tf-idf scoring</a>.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -607,6 +621,10 @@ I’m happy to report that the switch from <em>sqlite to MySQL</em> resulted in 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/troubleshooting-elbs-with-elbping/">Troubleshooting ELBs with elbping</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/my-def-con-21-experience/">My DEF CON 21 Experience</a>
       </li>
     
@@ -620,10 +638,6 @@ I’m happy to report that the switch from <em>sqlite to MySQL</em> resulted in 
     
       <li class="post">
         <a href="/blog/personal-kaizen-self-improvement/">My Personal Kaizen</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/about-this-site-technical/">About this site (technical)</a>
       </li>
     
   </ul>

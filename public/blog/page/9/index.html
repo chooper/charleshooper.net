@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="In my other article, LACP on Cisco Catalysts &amp; Foundry switches, I describe how to configure aggregated links using LACP (802.3ad) on a Cisco &hellip;">
+  <meta name="description" content="I have been modifying Sebek to get it to work in more recent 2.6 series (~2.6.18) kernels and ran into some snags. Most notably, I could not &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,68 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/finding-the-linux-system-call-table-in-2-6-series-kernels/">Finding the Linux System Call Table in 2.6 Series Kernels</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-04T00:00:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>I have been modifying <a href="http://www.honeynet.org/tools/sebek/">Sebek</a> to get it to work in more recent 2.6 series (~2.6.18) kernels and ran into some snags. Most notably, I could not intercept/redirect/wrap any system calls. As it turns out, Sebek couldn’t find the system call table. The code Sebek was using to find the system call table is 100% identical to the code found in <a href="http://kerneltrap.org/node/6416">this article on KernelTrap</a>.</p>
+
+<p>Unfortunately, that code is outdated as either <code>loops_per_jiffy</code>, <code>boot_cpu_data</code>, or <code>sys_call_table</code> appear to have been moved. I found that I could find the system call table between <code>unlock_kernel</code> and <code>loops_per_jiffy</code> and have modified the code as follows.</p>
+
+<pre><code>// -----------------------------------------------------------------------------   
+// Sys Call Table Address  
+//-----------------------------------------------------------------------------  
+unsigned long **find_sys_call_table(void)  {  
+unsigned long **sctable;  
+unsigned long ptr;  
+extern int loops_per_jiffy;
+      sctable = NULL;  
+for (ptr = (unsigned long)&amp;unlock_kernel; ptr &lt; (unsigned long)&amp;loops_per_jiffy; ptr  = sizeof(void *))    {  
+unsigned long *p;  
+p = (unsigned long *)ptr;  
+if (p[__NR_close] == (unsigned long) sys_close)       {  
+sctable = (unsigned long **)p;  
+return &amp;sctable[0];  
+}  
+}  
+return NULL;  
+}
+</code></pre>
+
+<p> </p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -344,6 +406,10 @@ user input? :-)</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/troubleshooting-elbs-with-elbping/">Troubleshooting ELBs with elbping</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/my-def-con-21-experience/">My DEF CON 21 Experience</a>
       </li>
     
@@ -357,10 +423,6 @@ user input? :-)</p>
     
       <li class="post">
         <a href="/blog/personal-kaizen-self-improvement/">My Personal Kaizen</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/about-this-site-technical/">About this site (technical)</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Projects | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/projects/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-10-04T13:21:57-07:00</updated>
+  <updated>2013-10-19T11:00:38-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -12,6 +12,124 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Troubleshooting ELBs with elbping]]></title>
+    <link href="http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping/"/>
+    <updated>2013-10-19T10:49:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>Troubleshooting ELBs can be pretty painful at times because they are
+largely a black box. There aren’t many metrics available, and the ones
+that do exist are aggregated across all of the nodes of an ELB. This can
+be troublesome at times, for example when only a subset of an ELB’s
+nodes are degraded.</p>
+
+<h1 id="elb-properties">ELB Properties</h1>
+
+<p>ELBs have some interesting properties. For instance:</p>
+
+<ul>
+  <li>ELBs are made up of 1 or more nodes</li>
+  <li>These nodes are published as A records for the ELB name</li>
+  <li>These nodes can fail, or be shut down, and connections will <em>not</em> be closed gracefully</li>
+  <li>It often requires a good relationship with Amazon support ($$$) to get someone to dig into ELB problems</li>
+</ul>
+
+<p><em>NOTE: Another interesting property but slightly less pertinent is that
+ELBs were not designed to handle sudden spikes of traffic. They
+typically require 15 minutes of heavy traffic before they will scale up
+or they can be pre-warmed on request via a support ticket</em></p>
+
+<h1 id="troubleshooting-elbs-manually">Troubleshooting ELBs (manually)</h1>
+
+<p>Knowing this, you can do a little bit of troubleshooting on your own.
+First, resolve the ELB name to a list of nodes (as A records):</p>
+
+<pre><code>$ dig @ns-942.amazon.com +tcp elb-123456789.us-east-1.elb.amazonaws.com ANY
+</code></pre>
+
+<p>The <code>tcp</code> flag is suggested as your ELB could have too many records to
+fit inside of a single UDP packet. I’m also told, but haven’t personally
+confirmed, that Amazon will only display up to 6 nodes <em>unless</em> you
+perform an <code>ANY</code> query. Running this command will give you output that
+looks something like this (trimmed for brevity):</p>
+
+<pre><code>;; ANSWER SECTION:
+elb-123456789.us-east-1.elb.amazonaws.com. 60 IN SOA ns-942.amazon.com. root.amazon.com. 1376719867 3600 900 7776000 60
+elb-123456789.us-east-1.elb.amazonaws.com. 600 IN NS ns-942.amazon.com.
+elb-123456789.us-east-1.elb.amazonaws.com. 60 IN A 54.243.63.96
+elb-123456789.us-east-1.elb.amazonaws.com. 60 IN A 23.21.73.53
+</code></pre>
+
+<p>Now, for each of the <code>A</code> records use e.g. <code>curl</code> to test a connection to
+the ELB. Of course, you also want to isolate your test to just the ELB
+without connecting to your backends. One final property and little known
+fact about ELBs:</p>
+
+<ul>
+  <li>The maximum size of the request method (verb) that can be sent through an ELB is <strong>127 characters</strong>. Any larger and the ELB will reply with an <em>HTTP 405 - Method not allowed</em>.</li>
+</ul>
+
+<p>This means that we can take advantage of this behavior to test only that
+the ELB is responding:</p>
+
+<pre><code>$ curl -X $(python -c 'print "A" * 128') -i http://ip.of.individual.node
+HTTP/1.1 405 METHOD_NOT_ALLOWED
+Content-Length: 0
+Connection: Close
+</code></pre>
+
+<p>If you see <code>HTTP/1.1 405 METHOD_NOT_ALLOWED</code> then the ELB is responding
+successfully. You might also want to adjust curl’s timeouts to values
+that are acceptable to you.</p>
+
+<h1 id="troubleshooting-elbs-using-elbping">Troubleshooting ELBs using elbping</h1>
+
+<p>Of course, doing this can get pretty tedious so I’ve built a tool to
+automate this called <a href="https://github.com/chooper/elbping">elbping</a>. It’s
+available as a ruby gem, so if you have rubygems then you can install it
+by simply doing:</p>
+
+<pre><code>$ gem install elbping
+</code></pre>
+
+<p>Now you can run:</p>
+
+<pre><code>$ elbping -c 4 http://elb-123456789.us-east-1.elb.amazonaws.com
+Response from 54.243.63.96: code=405 time=210 ms
+Response from 23.21.73.53: code=405 time=189 ms
+Response from 54.243.63.96: code=405 time=191 ms
+Response from 23.21.73.53: code=405 time=188 ms
+Response from 54.243.63.96: code=405 time=190 ms
+Response from 23.21.73.53: code=405 time=192 ms
+Response from 54.243.63.96: code=405 time=187 ms
+Response from 23.21.73.53: code=405 time=189 ms
+--- 54.243.63.96 statistics ---
+4 requests, 4 responses, 0% loss
+min/avg/max = 187/163/210 ms
+--- 23.21.73.53 statistics ---
+4 requests, 4 responses, 0% loss
+min/avg/max = 188/189/192 ms
+--- total statistics ---
+8 requests, 8 responses, 0% loss
+min/avg/max = 188/189/192 ms
+</code></pre>
+
+<p>Remember, if you see <code>code=405</code> then that means that the ELB is responding.</p>
+
+<h1 id="next-steps">Next Steps</h1>
+
+<p>Whichever method you choose, you will at least know if your ELB’s nodes
+are responding or not. Armed with this knowledge, you can either turn
+your focus to troubleshooting other parts of your stack or be able to
+make a pretty reasonable case to AWS that something is wrong.</p>
+
+<p>Hope this helps!</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Painless instrumentation of Celery tasks using statsd and graphite]]></title>
@@ -371,18 +489,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
 <p>The results were pretty positive. I crawled almost the entire set of alive, unbanned accounts in just over 2 hours (while I played video games and drank beer). I missed exactly 356 accounts, or about 1.6% of the population. While some of these may have been accounts that started with the character “0″ (remember, I couldn’t crawl those,) it seems more likely that many of these were aborted HTTP requests that failed and were handled by my ridiculous try/except:pass block.</p>
 
 <p>Now that I have this data, it’s time for me to do something with it. You’ll hear more about that from me soon, I’m sure.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Update to Cost Behavior Analyzer]]></title>
-    <link href="http://www.charleshooper.net/blog/cost-behavior-analyzer-update-edit-functionality/"/>
-    <updated>2011-02-09T00:00:00-08:00</updated>
-    <id>http://www.charleshooper.net/blog/cost-behavior-analyzer-update-edit-functionality</id>
-    <content type="html"><![CDATA[<h1 id="section"></h1>
-
-<p>I just updated my <a href="http://apps.charleshooper.net/cost-behavior-analysis/">Cost Behavior Analyzer</a> webapp to allow for the editing of results. This way, if you want to add new data points at a later point in time, it’s no problem. Try it out!</p>
-
 ]]></content>
   </entry>
   

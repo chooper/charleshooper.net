@@ -9,8 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="One morning I woke up early and checked my email. My plan was to check that my
-inbox was empty for some peace of mind and then go back to bed for a &hellip;">
+  <meta name="description" content="Over on HackerNews, saturn wrote that: Cloud computing scales the efficiencies, yes. It also scales the problems. This is exactly right. Problems in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +83,54 @@ inbox was empty for some peace of mind and then go back to bed for a &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/problems-at-scale/">Problems at Scale</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-13T00:00:00-07:00" pubdate data-updated="true">Aug 13<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>Over on <a href="http://news.ycombinator.com/item?id=2881122">HackerNews</a>, saturn wrote that:</p>
+
+<blockquote>
+  <p>Cloud computing scales the efficiencies, yes. It also scales the problems.</p>
+</blockquote>
+
+<p>This is exactly right. Problems in simple architectures are relatively easy to solve. In fact, I’d go as far as to say that we’ve probably solved them in all of the traditional archetypes, both in theory and in practice.</p>
+
+<p>On the other hand, complex architectures lead to exponentially more difficult problems. There are probably lots of problems in these various complex architectures that we don’t even know exist yet. And then there are those problems that we <em>do</em> know about that we think will only occur in very rare (or even “impossible”) circumstances so they get considerably less attention devoted to them.</p>
+
+<p>Those of us who have careers, jobs, and hobbies in an engineering discipline need to remember this when we make decisions about the design of a new or existing system. Just because we can’t <em>see</em> the underlying platform, because it’s been abstracted away from us, doesn’t mean that it doesn’t exist. For example, much of the recent AWS downtime was contributed to by design flaws in the Elastic Block Store system. If you think you should be hosted on the cloud, use it, but take the time to understand the systems under the hood.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -869,45 +916,6 @@ RDS is not right for you.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/cost-behavior-analyzer-update-edit-functionality/">Update to Cost Behavior Analyzer</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-09T00:00:00-08:00" pubdate data-updated="true">Feb 9<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>I just updated my <a href="http://apps.charleshooper.net/cost-behavior-analysis/">Cost Behavior Analyzer</a> webapp to allow for the editing of results. This way, if you want to add new data points at a later point in time, it’s no problem. Try it out!</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -941,6 +949,10 @@ RDS is not right for you.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/troubleshooting-elbs-with-elbping/">Troubleshooting ELBs with elbping</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/my-def-con-21-experience/">My DEF CON 21 Experience</a>
       </li>
     
@@ -954,10 +966,6 @@ RDS is not right for you.</p>
     
       <li class="post">
         <a href="/blog/personal-kaizen-self-improvement/">My Personal Kaizen</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/about-this-site-technical/">About this site (technical)</a>
       </li>
     
   </ul>

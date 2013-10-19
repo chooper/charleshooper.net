@@ -9,8 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="Title: Multiple Vulnerabilities in Mingle Forum (WordPress Plugin)
-Advisory URL: http://www.charleshooper.net/blog/multiple-vulnerabilities-in- &hellip;">
+  <meta name="description" content="I just updated my Cost Behavior Analyzer webapp to allow for the editing of results. This way, if you want to add new data points at a later point &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +83,45 @@ Advisory URL: http://www.charleshooper.net/blog/multiple-vulnerabilities-in- &he
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/cost-behavior-analyzer-update-edit-functionality/">Update to Cost Behavior Analyzer</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-09T00:00:00-08:00" pubdate data-updated="true">Feb 9<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>I just updated my <a href="http://apps.charleshooper.net/cost-behavior-analysis/">Cost Behavior Analyzer</a> webapp to allow for the editing of results. This way, if you want to add new data points at a later point in time, it’s no problem. Try it out!</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1003,73 +1041,6 @@ look at <code>wp-admin/includes/file.php</code>’s function
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rip-booksuggest/">RIP BookSuggest</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-10-26T00:00:00-07:00" pubdate data-updated="true">Oct 26<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>BookSuggest, the web-based book recommendation engine, is officially dead. I’ve been treating BookSuggest as the lowest of priorities for quite some time now and I’m more than happy to declare this project a failure. Here is a brief recap of BookSuggest’s history.</p>
-
-<p>Before BookSuggest was a web application, I used to <a href="http://www.charleshooper.net/blog/how-i-made-money-spamming-twitter-with-contextual-book-suggestions/">spam unsuspecting Twitter users</a> with book recommendations. Eventually, Twitter stepped up their anti-spam stance and suspended my spam account. I retired the project for a while until one day I decided to build a web application around the recommendation technology I was using.</p>
-
-<p>This technology was simply scoring words in a user’s timeline, taking the four highest-scoring words, and then passing them to an Amazon ItemSearch query. More specifically, the type of search in use was what Amazon calls a TextStream search. This search method is what allowed me to get book recommendations, even if the search terms provided weren’t all that great. Without it, it’s not unlikely that my ItemSearches wouldn’t return any results at all.</p>
-
-<p>So imagine my surprise when I read the following in Amazon’s API documentation:</p>
-
-<blockquote>
-  <p>Due to low usage, the Product Advertising API operations and response groups listed below will not be supported after October 15, 2010:</p>
-
-  <p>…<br />
-Additionally, due to low usage, we will be discontinuing Multiple Operation Requests and the <strong>TextStream</strong> search parameter.</p>
-</blockquote>
-
-<p>Oh, shoot!</p>
-
-<p>Financially, it makes sense for me to cut my losses here. Back when I was still spamming Twitter, I was pulling over $100/mo. Through the web-app, my referral fees are much smaller. As of this moment, I have a balance of just $9 with Amazon and haven’t cashed out since the start of the project.</p>
-
-<p>Some numbers:</p>
-
-<ul>
-  <li>Unique Twitter users: 393</li>
-  <li>Recommendations made: 611</li>
-  <li>Documents in corpus: 17,458,549</li>
-  <li>Unique words in corpus: 1,970,165</li>
-  <li>Top 5 words in corpus: that, just, with, this, have</li>
-</ul>
-
-<p>RIP BookSuggest!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -1103,6 +1074,10 @@ Additionally, due to low usage, we will be discontinuing Multiple Operation Requ
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/troubleshooting-elbs-with-elbping/">Troubleshooting ELBs with elbping</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/my-def-con-21-experience/">My DEF CON 21 Experience</a>
       </li>
     
@@ -1116,10 +1091,6 @@ Additionally, due to low usage, we will be discontinuing Multiple Operation Requ
     
       <li class="post">
         <a href="/blog/personal-kaizen-self-improvement/">My Personal Kaizen</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/about-this-site-technical/">About this site (technical)</a>
       </li>
     
   </ul>
