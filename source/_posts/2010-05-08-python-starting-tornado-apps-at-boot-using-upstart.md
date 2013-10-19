@@ -4,21 +4,9 @@ author: Charles Hooper
 comments: true
 layout: post
 permalink: /blog/python-starting-tornado-apps-at-boot-using-upstart/
-posterous_24275adbefb0d287b103c9e6dc37e3b9_post_id:
-  - 'O:16:"SimpleXMLElement":1:{i:0;s:8:"18276411";}'
-posterous_24275adbefb0d287b103c9e6dc37e3b9_permalink:
-  - http://blog.charleshooper.net/python-starting-tornado-apps-at-boot-using-up
-has_been_twittered:
-  - failed
-twitter_failure_code:
-  - 400
-twitter_failure_reason:
-  - Settings do not permit the auto-tweeting of old posts
 categories:
   - Python
   - Tornado
-tags:
-  - upstart
 ---
 # 
 
@@ -61,4 +49,4 @@ The obvious caveat here is that your project is now running as root. In a future
 
 UPDATE: I’m from the future and wrote that blog post on [how to drop privileges in Python for Tornado apps][3].
 
- [3]: http://subversity.net/dropping-privileges-in-python-for-tornado-app
+ [3]: http://www.charleshooper.net/blog/dropping-privileges-in-python-for-tornado-apps/
