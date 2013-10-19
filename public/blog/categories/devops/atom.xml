@@ -4,7 +4,7 @@
   <title><![CDATA[Category: DevOps | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/devops/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-10-19T11:00:38-07:00</updated>
+  <updated>2013-10-19T12:53:31-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -50,11 +50,11 @@ First, resolve the ELB name to a list of nodes (as A records):</p>
 <pre><code>$ dig @ns-942.amazon.com +tcp elb-123456789.us-east-1.elb.amazonaws.com ANY
 </code></pre>
 
-<p>The <code>tcp</code> flag is suggested as your ELB could have too many records to
-fit inside of a single UDP packet. I’m also told, but haven’t personally
-confirmed, that Amazon will only display up to 6 nodes <em>unless</em> you
-perform an <code>ANY</code> query. Running this command will give you output that
-looks something like this (trimmed for brevity):</p>
+<p>The <code>tcp</code> flag is suggested as your ELB could have too many records to fit
+inside of a single UDP packet. You also need to perform an <code>ANY</code> query because
+Amazon’s nameservers will only return a subset of the nodes otherwise.  Running
+this command will give you output that looks something like this (trimmed for
+brevity):</p>
 
 <pre><code>;; ANSWER SECTION:
 elb-123456789.us-east-1.elb.amazonaws.com. 60 IN SOA ns-942.amazon.com. root.amazon.com. 1376719867 3600 900 7776000 60
