@@ -1,20 +1,9 @@
 ---
-title: 'What Happens When You Don&#8217;t Pay Your Employees: The Employee-Employer 	Relationship'
+title: 'What Happens When You Don&#8217;t Pay Your Employees: The Employee-Employer Relationship'
 author: Charles Hooper
 comments: true
 layout: post
-permalink: >
-  /blog/what-happens-when-you-dont-pay-your-employees-the-employee-employer-relationship/
-posterous_24275adbefb0d287b103c9e6dc37e3b9_post_id:
-  - 'O:16:"SimpleXMLElement":1:{i:0;s:8:"10966276";}'
-posterous_24275adbefb0d287b103c9e6dc37e3b9_permalink:
-  - http://blog.charleshooper.net/what-happens-when-you-dont-pay-your-employees
-has_been_twittered:
-  - failed
-twitter_failure_code:
-  - 400
-twitter_failure_reason:
-  - Settings do not permit the auto-tweeting of old posts
+permalink: /blog/what-happens-when-you-dont-pay-your-employees-the-employee-employer-relationship/
 categories:
   - Management
 ---
