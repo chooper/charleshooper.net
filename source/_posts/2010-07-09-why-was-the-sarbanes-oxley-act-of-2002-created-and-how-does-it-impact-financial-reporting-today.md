@@ -1,26 +1,11 @@
 ---
-title: >
-  Why was the Sarbanes-Oxley Act of 2002 created and how does it impact financial
+title: Why was the Sarbanes-Oxley Act of 2002 created and how does it impact financial reporting today?
 comments: true
-  reporting today?
 author: Charles Hooper
 layout: post
-permalink: >
-  /blog/why-was-the-sarbanes-oxley-act-of-2002-created-and-how-does-it-impact-financial-reporting-today/
-posterous_24275adbefb0d287b103c9e6dc37e3b9_post_id:
-  - 'O:16:"SimpleXMLElement":1:{i:0;s:8:"22473918";}'
-posterous_24275adbefb0d287b103c9e6dc37e3b9_permalink:
-  - http://blog.charleshooper.net/why-was-the-sarbanes-oxley-act-of-2002-create
-has_been_twittered:
-  - failed
-twitter_failure_code:
-  - 400
-twitter_failure_reason:
-  - Settings do not permit the auto-tweeting of old posts
+permalink: /blog/why-was-the-sarbanes-oxley-act-of-2002-created-and-how-does-it-impact-financial-reporting-today/
 categories:
   - Finance
-series:
-  - Intro to Financial Reporting
 ---
 # 
 
