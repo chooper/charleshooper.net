@@ -4,24 +4,12 @@ author: Charles Hooper
 comments: true
 layout: post
 permalink: /blog/what-is-financial-reporting-and-who-uses-financial-reports/
-posterous_24275adbefb0d287b103c9e6dc37e3b9_post_id:
-  - 'O:16:"SimpleXMLElement":1:{i:0;s:8:"21844508";}'
-posterous_24275adbefb0d287b103c9e6dc37e3b9_permalink:
-  - http://blog.charleshooper.net/what-is-financial-reporting-and-who-uses-fina
-has_been_twittered:
-  - failed
-twitter_failure_code:
-  - 400
-twitter_failure_reason:
-  - Settings do not permit the auto-tweeting of old posts
 categories:
   - Finance
-series:
-  - Intro to Financial Reporting
 ---
 # 
 
-This entry is part 1 of 8 in the series [Intro to Financial Reporting][1]
+This entry is part 1 of 7 in the series [Intro to Financial Reporting][1]
 
 If “accounting is the language of finance” (Lasher, 2008, p. 9) then financial reporting is the “communication of financial information useful for making investment, credit, and other business decisions” (Wild, Shaw, & Chiappetta, 2009, p. 681) Such communications include general purpose financial statements such as income statements, balance sheets, equity reports, cash flow reports, and notes to these statements. Additionally, items such as SEC filings, press releases, meeting minutes, and auditor’s reports are also included in financial reporting (Wild, Shaw, & Chiappetta, 2009, p. 681). Many financial reports, or the accounts and data they represent, are subject to various regulations and standards from organizations such as the Securities Exchange Commission (SEC), the Financial Accounting Standards Board (FASB), and the International Accounting Standards Board (IASB) (Wild, Shaw, & Chiappetta, 2009, p. 9). Much like any language, financial statements could have their own “dialect” so to speak. For example, knowing about the use of cash-based accounting versus accrual based accounting could impact some very serious business or investment decisions. The various regulations, standards, and Generally Accepted Accounting Principles (GAAP) helps to make sure we’re all on the same page.
 
