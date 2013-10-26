@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Actual emails from a recruiter"
+title: "An actual email from a recruiter"
+permalink: /blog/actual-email-from-recruiter/
 date: 2013-10-26 09:52
 comments: true
 categories: 
