@@ -4,7 +4,7 @@
   <title><![CDATA[Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-10-20T11:40:13-07:00</updated>
+  <updated>2013-10-26T10:00:05-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Actual emails from a recruiter]]></title>
+    <link href="http://www.charleshooper.net/blog/actual-emails-from-a-recruiter/"/>
+    <updated>2013-10-26T09:52:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/actual-emails-from-a-recruiter</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>OK, I was going to lead up to this carefully so this didn’t seem like yet
+another awful blog post about technical recruiters (can we seriously stop
+posting those?) but I have no words. Here is the fifth email sent from one
+particular recruiter inside of a week:</p>
+
+<blockquote>
+  <p>Hey Charles,</p>
+
+  <p>I hope all is well man!  I hadn’t heard back from you after my previous
+e-mail so I was toying around with putting together a search party to make
+sure you didn’t fall into a well or something.  I’m not sure if that actually
+even happens anymore but this dog came up to me on my way to work and was
+barking at me in a way that seemed he was attempting to tell me something.</p>
+
+  <p>Naturally, I put two and two together and realized that perhaps I
+misunderstood my new furry friend and instead of saying “Chance is in danger”
+he said “Charles is in danger”.  Which still doesn’t shed light on the where
+abouts of my missing cat Chance, but if you are in fact in danger, don’t
+hesitate to let me know.  I can hold my breath for 45 seconds (not that long)
+and I can run fast-ish for short distances.  I also have this thing with
+blood where I “pass out”.</p>
+
+  <p>On second thought, if your in danger you should probably just call 911 or
+yell “fire” (I guess “help” doesn’t work for some reason).  However, if
+you’re even remotely interested in discussing the possibility of chatting
+about new opportunities, I’m your guy!  Hope to hear from you soon Charles!</p>
+</blockquote>
+
+<p>Yuuuuup.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Troubleshooting ELBs with elbping]]></title>
@@ -1429,33 +1469,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
 <p>I want to take the opportunity to say that I think this combination of hypersensitivity and political correctness is an awful thing. It’s OK to be offended, but I feel that very often the thing that offends us is a misunderstanding. In this case, my point was that <em>engineers shouldn’t be jerks and should instead learn some social skills so they can interact more effectively with co-workers and clients</em> but it was misunderstood as <em>if you’re bad at social skills, even if you can’t help it, then you should be treated like garbage</em>. I don’t think that bloggers should have to acknowledge every exception to the points they make or write disclaimers into each of their posts – that kind of defeats the point (which I feel is<em> free speech on a massive scale</em>, by the way).</p>
 
 <p>So please, the next time you feel offended, consider asking the offender for clarification before you react. You might save yourself, and them, from a lot of unnecessary heartache.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Stop Letting Technical People Get Away With Social Ineptitude]]></title>
-    <link href="http://www.charleshooper.net/blog/stop-letting-tech-people-be-socially-inept/"/>
-    <updated>2011-08-17T00:00:00-07:00</updated>
-    <id>http://www.charleshooper.net/blog/stop-letting-tech-people-be-socially-inept</id>
-    <content type="html"><![CDATA[<h1 id="section"></h1>
-
-<p>As a technical person who has worked many customer-facing support roles, I’m offended by the often-cited notion that technical people have poor people skills or are poor at filling customer support roles. Earlier this week, a web host incited a Public Relations nightmare when their “Technical Director” responded childishly to some customers, disabled their accounts, and deleted their backups. The company’s response was to create a new customer support position so they could keep their Technical Director yet isolate him from their customers. In this new customer support personnel’s recap of the situation, he wrote:</p>
-
-<blockquote>
-  <p>Jules is the Technical Director. Jules does a fantastic job looking after things and keeping the infrastructure running well. Unfortunately though, as is often the case with very technically minded people, customer service is not always his strong point.</p>
-</blockquote>
-
-<p>As I stated above, I find this absolutely offensive. Unfortunately, it’s often believed to be true because there <em>are</em> so many engineers and technical personnel with poor people skills. I never have seen statistics to support the notion that the ratio is <em>higher</em> in these professions than in others, yet employers often find that people filling these roles with poor people skills are still employable. This needs to stop.</p>
-
-<p>I’m of the opinion that every position is customer-facing. Sure, some positions might not interface with the <em>company’s</em> customers, but the position is likely to have customers of its own – whether internal or external. All it takes for someone to be good at customer service is:</p>
-
-<ul>
-  <li>The understanding that they represent their employer and that people are relying on them,</li>
-  <li>A compassionate, helpful, and courteous attitude,</li>
-  <li>The knowledge of whatever they’re supporting.</li>
-</ul>
-
-<p>Frankly, if you don’t have those qualities, how can you work with anyone at all?</p>
 ]]></content>
   </entry>
   

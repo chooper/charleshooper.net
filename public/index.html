@@ -9,9 +9,8 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="Troubleshooting ELBs can be pretty painful at times because they are
-largely a black box. There aren’t many metrics available, and the ones
-that do &hellip;">
+  <meta name="description" content="OK, I was going to lead up to this carefully so this didn’t seem like yet
+another awful blog post about technical recruiters (can we seriously stop &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +84,73 @@ that do &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/actual-emails-from-a-recruiter/">Actual Emails From a Recruiter</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-26T09:52:00-07:00" pubdate data-updated="true">Oct 26<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>OK, I was going to lead up to this carefully so this didn’t seem like yet
+another awful blog post about technical recruiters (can we seriously stop
+posting those?) but I have no words. Here is the fifth email sent from one
+particular recruiter inside of a week:</p>
+
+<blockquote>
+  <p>Hey Charles,</p>
+
+  <p>I hope all is well man!  I hadn’t heard back from you after my previous
+e-mail so I was toying around with putting together a search party to make
+sure you didn’t fall into a well or something.  I’m not sure if that actually
+even happens anymore but this dog came up to me on my way to work and was
+barking at me in a way that seemed he was attempting to tell me something.</p>
+
+  <p>Naturally, I put two and two together and realized that perhaps I
+misunderstood my new furry friend and instead of saying “Chance is in danger”
+he said “Charles is in danger”.  Which still doesn’t shed light on the where
+abouts of my missing cat Chance, but if you are in fact in danger, don’t
+hesitate to let me know.  I can hold my breath for 45 seconds (not that long)
+and I can run fast-ish for short distances.  I also have this thing with
+blood where I “pass out”.</p>
+
+  <p>On second thought, if your in danger you should probably just call 911 or
+yell “fire” (I guess “help” doesn’t work for some reason).  However, if
+you’re even remotely interested in discussing the possibility of chatting
+about new opportunities, I’m your guy!  Hope to hear from you soon Charles!</p>
+</blockquote>
+
+<p>Yuuuuup.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1227,96 +1293,6 @@ hope you find this helpful.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/intro-to-ops-config-management/">Intro to Operations: Configuration Management</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-05T20:12:00-07:00" pubdate data-updated="true">May 5<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p><em>I’m writing a series of blog posts for managers and other people
-without an operations background in order to introduce certain best
-practices regarding Operations. For the rest of the blog posts, please
-visit the <a href="/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
-
-<p>One of the areas I’ve witnessed early stage startups lacking in is
-<strong>configuration management</strong>. <em>Configuration management is the process of
-standardizing and enforcing configurations</em>. In other words,
-configuration management is about deciding on a specific configuration
-of services for various roles and then applying these configurations in
-practice. Typically, these manifests are written in (domain-specific)
-language and is specific to the <em>configuration management software</em>
-being used, such as <a href="https://puppetlabs.com/">puppet</a>, <a href="http://www.opscode.com/chef/">chef</a>, <a href="http://cfengine.com/">cfengine</a>, or
-<a href="http://saltstack.com/community.html">salt stack</a>.</p>
-
-<p>There are many benefits to configuration management. For one,
-configuration management allows developers to spend more time working on
-the product and less time deploying new services. This is because
-configuration is now automated and faster as a result. In addition,
-environments are standardized and therefore less time is spent
-troubleshooting or diagnosing edge cases in different environments.
-Finally, when coupled with <em>source control management</em>, the proper use
-of configuration management can be used to track and audit what has
-changed over time and who changed it.</p>
-
-<p>In many of these early stage startups, there is either very little
-configuration management performed at all, or configuration management
-exists as a series of shell scripts cobbled together to do some
-post-hardware setup. If you’re lucky, there exists a document somewhere
-that describes when and how to run these scripts to deploy new services.</p>
-
-<p>The way configuration management works is that engineers create a
-collection of files that define how the system should be configured.
-This collection of files is typically called a <strong>manifest</strong>. Then, once
-physical or virtual hardware has been provisioned, one of these
-manifests is <em>applied</em> to the new host. During application, the
-configuration management software will interpret the new configuration,
-install software packages, manage users and credentials, alter config
-files, manage file permissions, run arbitrary commands, and so on. Once
-the manifest is fully applied, the new host should be fully configured
-and ready to be used!  In some environments; however, they may be a
-post-host-provisioning step where additional work is performed
-afterwards, such as checking out application code from a source control
-repository.</p>
-
-<p>If you’re not using configuration management already then you should
-start now because, frankly, it’s never too early. Starting configuration
-management now will not only help your first hired ops/systems engineer
-from working backwards to write these manifests later, but will also
-incur benefits (such as your developers spending less time away from
-shipping value-added code) that will outweigh the initial learning
-curve.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1348,6 +1324,10 @@ curve.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/actual-emails-from-a-recruiter/">Actual emails from a recruiter</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/troubleshooting-elbs-with-elbping/">Troubleshooting ELBs with elbping</a>
       </li>
     
@@ -1361,10 +1341,6 @@ curve.</p>
     
       <li class="post">
         <a href="/blog/how-i-hacked-my-high-school/">How I Hacked My High School</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/personal-kaizen-self-improvement/">My Personal Kaizen</a>
       </li>
     
   </ul>

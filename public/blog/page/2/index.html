@@ -9,9 +9,9 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="Sorry for the RSS spam, everyone. I switched blogging platforms recently
-from Wordpress to Octopress. When I updated my feed URL in
-Feedburner; &hellip;">
+  <meta name="description" content="I’m writing a series of blog posts for managers and other people
+without an operations background in order to introduce certain best
+practices &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +85,96 @@ Feedburner; &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/intro-to-ops-config-management/">Intro to Operations: Configuration Management</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-05T20:12:00-07:00" pubdate data-updated="true">May 5<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p><em>I’m writing a series of blog posts for managers and other people
+without an operations background in order to introduce certain best
+practices regarding Operations. For the rest of the blog posts, please
+visit the <a href="/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
+
+<p>One of the areas I’ve witnessed early stage startups lacking in is
+<strong>configuration management</strong>. <em>Configuration management is the process of
+standardizing and enforcing configurations</em>. In other words,
+configuration management is about deciding on a specific configuration
+of services for various roles and then applying these configurations in
+practice. Typically, these manifests are written in (domain-specific)
+language and is specific to the <em>configuration management software</em>
+being used, such as <a href="https://puppetlabs.com/">puppet</a>, <a href="http://www.opscode.com/chef/">chef</a>, <a href="http://cfengine.com/">cfengine</a>, or
+<a href="http://saltstack.com/community.html">salt stack</a>.</p>
+
+<p>There are many benefits to configuration management. For one,
+configuration management allows developers to spend more time working on
+the product and less time deploying new services. This is because
+configuration is now automated and faster as a result. In addition,
+environments are standardized and therefore less time is spent
+troubleshooting or diagnosing edge cases in different environments.
+Finally, when coupled with <em>source control management</em>, the proper use
+of configuration management can be used to track and audit what has
+changed over time and who changed it.</p>
+
+<p>In many of these early stage startups, there is either very little
+configuration management performed at all, or configuration management
+exists as a series of shell scripts cobbled together to do some
+post-hardware setup. If you’re lucky, there exists a document somewhere
+that describes when and how to run these scripts to deploy new services.</p>
+
+<p>The way configuration management works is that engineers create a
+collection of files that define how the system should be configured.
+This collection of files is typically called a <strong>manifest</strong>. Then, once
+physical or virtual hardware has been provisioned, one of these
+manifests is <em>applied</em> to the new host. During application, the
+configuration management software will interpret the new configuration,
+install software packages, manage users and credentials, alter config
+files, manage file permissions, run arbitrary commands, and so on. Once
+the manifest is fully applied, the new host should be fully configured
+and ready to be used!  In some environments; however, they may be a
+post-host-provisioning step where additional work is performed
+afterwards, such as checking out application code from a source control
+repository.</p>
+
+<p>If you’re not using configuration management already then you should
+start now because, frankly, it’s never too early. Starting configuration
+management now will not only help your first hired ops/systems engineer
+from working backwards to write these manifests later, but will also
+incur benefits (such as your developers spending less time away from
+shipping value-added code) that will outweigh the initial learning
+curve.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -787,60 +877,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/stop-letting-tech-people-be-socially-inept/">Stop Letting Technical People Get Away With Social Ineptitude</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-17T00:00:00-07:00" pubdate data-updated="true">Aug 17<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>As a technical person who has worked many customer-facing support roles, I’m offended by the often-cited notion that technical people have poor people skills or are poor at filling customer support roles. Earlier this week, a web host incited a Public Relations nightmare when their “Technical Director” responded childishly to some customers, disabled their accounts, and deleted their backups. The company’s response was to create a new customer support position so they could keep their Technical Director yet isolate him from their customers. In this new customer support personnel’s recap of the situation, he wrote:</p>
-
-<blockquote>
-  <p>Jules is the Technical Director. Jules does a fantastic job looking after things and keeping the infrastructure running well. Unfortunately though, as is often the case with very technically minded people, customer service is not always his strong point.</p>
-</blockquote>
-
-<p>As I stated above, I find this absolutely offensive. Unfortunately, it’s often believed to be true because there <em>are</em> so many engineers and technical personnel with poor people skills. I never have seen statistics to support the notion that the ratio is <em>higher</em> in these professions than in others, yet employers often find that people filling these roles with poor people skills are still employable. This needs to stop.</p>
-
-<p>I’m of the opinion that every position is customer-facing. Sure, some positions might not interface with the <em>company’s</em> customers, but the position is likely to have customers of its own – whether internal or external. All it takes for someone to be good at customer service is:</p>
-
-<ul>
-  <li>The understanding that they represent their employer and that people are relying on them,</li>
-  <li>A compassionate, helpful, and courteous attitude,</li>
-  <li>The knowledge of whatever they’re supporting.</li>
-</ul>
-
-<p>Frankly, if you don’t have those qualities, how can you work with anyone at all?</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -874,6 +910,10 @@ For one of my clients and side projects, we’ve been working hard to build in a
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/actual-emails-from-a-recruiter/">Actual emails from a recruiter</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/troubleshooting-elbs-with-elbping/">Troubleshooting ELBs with elbping</a>
       </li>
     
@@ -887,10 +927,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
     
       <li class="post">
         <a href="/blog/how-i-hacked-my-high-school/">How I Hacked My High School</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/personal-kaizen-self-improvement/">My Personal Kaizen</a>
       </li>
     
   </ul>
