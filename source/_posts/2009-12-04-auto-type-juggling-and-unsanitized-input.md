@@ -4,13 +4,8 @@ author: Charles Hooper
 comments: true
 layout: post
 permalink: /blog/auto-type-juggling-and-unsanitized-input/
-posterous_24275adbefb0d287b103c9e6dc37e3b9_post_id:
-  - 'O:16:"SimpleXMLElement":1:{i:0;s:7:"8251132";}'
-posterous_24275adbefb0d287b103c9e6dc37e3b9_permalink:
-  - http://blog.charleshooper.net/auto-type-juggling-and-unsanitized-input
 categories:
   - Projects
-  - Uncategorized
 ---
 # 
 
@@ -39,7 +34,7 @@ returned. Without looking at PHP’s source, it would seem to me that PHP
 is blindly handing off string pointers to strtod() and if the type
 conversion fails it will retain the type of whatever the variable was
 last. This isn’t PHP’s fault, it’s the *developer’s responsibility* to
-make sure the data he is using is properly sanitized!
+make sure that the data they are using is properly sanitized!
 
 The best real-world example I can give about this bug was a series of
 exploits in the web-based RPG [Bootleggers][2] last round. One of the
@@ -66,9 +61,9 @@ All this code is doing is assigning strings to two variables and then
 doing a numeric comparison of them — In our case, this script will
 output “true” since, when evaluated as an integer, 1 is in fact
 less-than 21. However, if there is any non-numeric data being passed to
-the variable then strtod() will return 0 and PHP will evaluate these
+the variable then `strtod()` will return 0 and PHP will evaluate these
 variables as strings and use natural sorting to determine if one
-variable is “less”-than another. Proof?
+variable is "less"-than another. Proof?
 
 ```
 $var1 = '111 '; // there is a space before the closing quote
@@ -77,8 +72,8 @@ var_dump((bool) ($var1 < $var2));
 # Output: bool(true)
 ```
 
-This block of code will *also* output true because the character ’1′ is
-before the character ’2′ when using natural sorting. If a user is able
+This block of code will *also* output true because the character `1`′ is
+before the character `2`′ when using natural sorting. If a user is able
 to bypass the logic checks with this exploit, then typically the string
 will be sent straight to the database as-is (OK, maybe escaped for
 apostrophes ;)). Depending on the DBMS there may be a variance in
