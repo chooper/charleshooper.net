@@ -4,7 +4,7 @@
   <title><![CDATA[Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2013-12-07T09:13:14-08:00</updated>
+  <updated>2013-12-07T10:10:50-08:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -83,6 +83,16 @@ typically require 15 minutes of heavy traffic before they will scale up
 or they can be pre-warmed on request via a support ticket</em></p>
 
 <h1 id="troubleshooting-elbs-manually">Troubleshooting ELBs (manually)</h1>
+
+<p><strong>Update:</strong> <em>Since writing this blog post, AWS has since migrated all
+ELBs to use Route 53 for DNS. In addition, all ELBs now have a
+<code>all.$elb_name</code> record that will return the full list of nodes for the
+ELB. For example, if your ELB name is
+<code>elb-123456789.us-east-1.elb.amazonaws.com</code>, then you would get the full
+list of nodes by doing something like <code>dig
+all.elb-123456789.us-east-1.elb.amazonaws.com</code>. In addition, Route 53 is
+able to return up to 4KB of data still using UDP, so using the <code>+tcp</code>
+flag may not be necessary.</em></p>
 
 <p>Knowing this, you can do a little bit of troubleshooting on your own.
 First, resolve the ELB name to a list of nodes (as A records):</p>
