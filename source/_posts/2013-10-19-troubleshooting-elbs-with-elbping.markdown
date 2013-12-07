@@ -31,6 +31,16 @@ or they can be pre-warmed on request via a support ticket*
 
 # Troubleshooting ELBs (manually)
 
+**Update:** *Since writing this blog post, AWS has since migrated all
+ELBs to use Route 53 for DNS. In addition, all ELBs now have a
+`all.$elb_name` record that will return the full list of nodes for the
+ELB. For example, if your ELB name is
+`elb-123456789.us-east-1.elb.amazonaws.com`, then you would get the full
+list of nodes by doing something like `dig
+all.elb-123456789.us-east-1.elb.amazonaws.com`. In addition, Route 53 is
+able to return up to 4KB of data still using UDP, so using the `+tcp`
+flag may not be necessary.*
+
 Knowing this, you can do a little bit of troubleshooting on your own.
 First, resolve the ELB name to a list of nodes (as A records):
 
