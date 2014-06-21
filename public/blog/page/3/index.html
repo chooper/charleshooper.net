@@ -9,8 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="As a technical person who has worked many customer-facing support roles,
-I’m offended by the often-cited notion that technical people have poor &hellip;">
+  <meta name="description" content="I wrote a blog post this week on how engineers or “technical people” don’t have to, and shouldn’t, be jerks. My argument was that the stereotype &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +83,52 @@ I’m offended by the often-cited notion that technical people have poor &hellip
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/hypersensitivity-and-political-correctness/">Hypersensitivity and Political Correctness</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-19T00:00:00-07:00" pubdate data-updated="true">Aug 19<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>I wrote a blog post this week on how <a href="http://www.charleshooper.net/blog/stop-letting-tech-people-be-socially-inept/" title="Stop Letting Technical People Get Away With Social Ineptitude">engineers or “technical people” don’t have to, and shouldn’t, be jerks</a>. My argument was that the stereotype that <em>technically-minded people are bad at social skills</em> was just that, a stereotype, and that employers should stop allowing us to get away with it. I knew it was going to be controversial when I wrote it, especially because the type of people who find my blog (HackerNewsers) <em>are</em> usually technically-minded people (with a nod to the rest of you entrepreneurs, biz, and VC folk). As expected, a large chunk of commentors (both on HN and on my blog) disagreed with my argument and a large chunk agreed.</p>
+
+<p>What I did not expect, however, was to be misunderstood so severely that I would be accused of wanting to ruin the lives of those who are “psychologically incapable” of learning social skills. One commentor posted a picture of a child with autism and accused me of trying to make him a second-class, unemployable citizen. Another commentor went as far as to paint a grisly picture of these “psychologically incapable” people committing suicide – all because of me.</p>
+
+<p>This blog is set up in such a way that I must manually approve comments from first-time commentors. This means that I have read every comment that was posted to my article (a few people posted more than once, but I read those too) before they appeared on my blog. I approved the comments despite the fact that I found them extremely upsetting because, even though this is my blog, I felt that everyone deserved to be heard.</p>
+
+<p>I want to take the opportunity to say that I think this combination of hypersensitivity and political correctness is an awful thing. It’s OK to be offended, but I feel that very often the thing that offends us is a misunderstanding. In this case, my point was that <em>engineers shouldn’t be jerks and should instead learn some social skills so they can interact more effectively with co-workers and clients</em> but it was misunderstood as <em>if you’re bad at social skills, even if you can’t help it, then you should be treated like garbage</em>. I don’t think that bloggers should have to acknowledge every exception to the points they make or write disclaimers into each of their posts – that kind of defeats the point (which I feel is<em> free speech on a massive scale</em>, by the way).</p>
+
+<p>So please, the next time you feel offended, consider asking the offender for clarification before you react. You might save yourself, and them, from a lot of unnecessary heartache.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -847,84 +892,6 @@ RDS is not right for you.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/correlating-last-login-dates-with-signup-dates-from-a-mmorpg/">Correlating Last Login Dates With Signup Dates From a MMORPG</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-24T00:00:00-07:00" pubdate data-updated="true">Mar 24<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>Yesterday, I wrote a blog post detailing <a href="http://www.charleshooper.net/blog/screen-scraping-search-results-for-information-retrieval/">how I crawled an entire MMORPG’s player database via their search page</a>. Since then, I have been analyzing that data in Minitab and trying to gain some insight into the state of affairs of that game. Today, I’m going to attempt to explain some of that data using statistics and common sense. In particular, we’re going to find out if there’s a relationship between <em>when players join the game *and *when they stop returning</em>.</p>
-
-<h2 id="preparation">Preparation</h2>
-
-<p>I’m new to the statistics software package I’m using, Minitab, and I’m not aware of an easy way to take measurements based on dates. So, my first order of business was to convert dates in the database to an easier metric for analysis, “days since today,” which is simply <em>today’s date</em> minus <em>date x</em>. I did this in my database (MongoDB) prior to export by adding a “last_seen_days” attribute to all documents (records). This attribute is simply the difference between today’s date and the date that the player stopped logging in – measured in days. I then did the same for the signup date. This was quickly done in the MongoDB console in just a few lines:</p>
-
-<pre><code>&gt; var today = new Date();
-&gt; var day = 60*60*24*1000;
-&gt; db.accounts.find().forEach(function (o) { o.last_seen_days = Math.ceil((today.getTime() - o.last_seen.getTime())/day); db.accounts.save(o); })
-&gt; db.accounts.find().forEach(function (o) { o.date_joined_days = Math.ceil((today.getTime() - o.date_joined.getTime())/day); db.accounts.save(o); })
-</code></pre>
-
-<h2 id="the-scatterplot">The Scatterplot</h2>
-
-<p>I then exported my data to CSV, loaded it in Minitab, and created a scatterplot between these two attributes. What I got was this:</p>
-
-<p><img src="http://cdn.subversity.net/cch-i/blogimgs/last_seen_vs_signup.jpg" alt="Last Seen Date vs Signup Date" title="Last Seen Date vs Signup Date" /></p>
-
-<p>For the uninitiated, a <strong>scatterplot **is a quick and easy way to visually see if there’s any type of relationship (correlation) between two variables. In this case, I used the signup date as my **independent variable</strong> (<em>x</em>) and the “last seen” date as my <strong>dependent variable</strong> (<em>y</em>). Overall, there is <em>not *any real relationship between the signup date and the last seen date. However</em>,* there are two significant items in this graph that deserve to have some attention brought to them.</p>
-
-<h2 id="observations">Observations</h2>
-
-<p>The first and most obvious item is that <strong>there are not any points above the identity function</strong>. The identity function, or just <em>f(x) = x</em>, is the diagonal line directly across the center of the graph. This makes perfect sense since it’s impossible for a player to have their “last login” occur before they even sign up. I bring this up because this leads into my next observation:</p>
-
-<p><strong>There is a heavier concentration of data points plotted on or directly below the line of the identity function</strong>. For points exactly <em>on</em> the identity function, these are accounts that registered but were never logged into. For accounts *below *the identity function, these should be considered more significant to those who run the game. Why is that? Because, simply put, I believe that these accounts belong to players who went through the effort of joining; They signed up, validated their email address, logged in, and for whatever reason chose not to stick around. This is akin to the “<strong>bounce rate</strong>” so frequently mentioned in the context of web analytics.</p>
-
-<p>It’s possible that these new players didn’t  understand the interface and left, or maybe they thought the game play was too slow, or maybe… this list could go on. What’s important is that some attention is paid here. Some effort should be made to discover why these players are leaving and the number of these players (or almost-players) should be measured, monitored, and analyzed. Decreasing this metric (“bounce rate”) should be a regular goal as these players represent a potential revenue stream for the game’s owner as well as a potential contribution to the game for the rest of the players.</p>
-
-<h2 id="the-histogram">The Histogram</h2>
-
-<p>While, in this case, the scatterplot helped us see that there are a noticeable amount of players who quickly “bounce” after joining the game, this type of graph doesn’t make it particularly easy to measure the magnitude of this phenomena. From observing this behavior, we next want to know how many players are leaving, or what our “bounce rate” is. Instead of first trying to quantitatively define the bounce rate so that we can measure it, it’s probably best if we first take a look at the total distribution of how long players are active for before leaving. For this, we’ll use the histogram of “Days Active”. <em>Days active</em> is simply <em>days since signup</em> minus <em>days since last login</em>.Here’s what we’ve got:</p>
-
-<p><img src="http://cdn.subversity.net/cch-i/blogimgs/days_active_hist.jpg" alt="" title="Histogram of Days Active (excl. lowest-ranked accounts)" /></p>
-
-<p>In this histogram, I excluded the lowest rank from being included in the histogram. I did this because I was more interested in how many potentially-active players were leaving, as opposed to junk accounts. As such, our definition of the <em>bounce rate</em> is already becoming more different than the bounce rate in web analytics.</p>
-
-<p>Each bin (“bar”) in our histogram is 15 days wide. Knowing this, you can see from the histogram that the largest density of days active seems to be about from 15 days to 2.5 months. This chunk, while significant, doesn’t have much to do with our bounce rate mentioned above. What we’re instead interested in is the near-5% of players who become inactive in less than a week.</p>
-
-<h2 id="whats-next">What’s Next?</h2>
-
-<p>If this were my game (it’s not), I would work on defining what level of bounce rate is acceptable and set some goals based on that. I would then look into the large amount of players leaving within the first 2.5 months and try to increase player retention. Finally, I would automate these measurements and have them displaced in a nice administrative dashboard (I’ve always wanted one of those) so that I have to see them all the time.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -950,6 +917,10 @@ RDS is not right for you.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/what-i-do-sre/">What I Do as an SRE</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/actual-email-from-recruiter/">An actual email from a recruiter</a>
       </li>
     
@@ -963,10 +934,6 @@ RDS is not right for you.</p>
     
       <li class="post">
         <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/how-i-hacked-my-high-school/">How I Hacked My High School</a>
       </li>
     
   </ul>

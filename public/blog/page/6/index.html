@@ -9,8 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="This entry is part 6 of 8 in the series Intro to Financial Reporting Enron was an energy trading company. Rather than generate energy
-themselves, &hellip;">
+  <meta name="description" content="This entry is part 3 of 8 in the seriesIntro to Financial Reporting Previously, we discussed the various regulations and regulatory bodies that &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +83,58 @@ themselves, &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/what-are-the-generally-accepted-accounting-principles-gaap/">What Are the Generally Accepted Accounting Principles (GAAP)?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-24T00:00:00-07:00" pubdate data-updated="true">Jul 24<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>This entry is part 3 of 8 in the series<a href="http://www.charleshooper.net/blog/series/intro-to-financial-reporting/" title="Intro to Financial Reporting">Intro to Financial Reporting</a></p>
+
+<p>Previously, we discussed the various regulations and regulatory bodies that govern financial reporting. We will now turn to the Generally Accepted Accounting Principles (GAAP) to explain the basic principles used in accounting. In particular, we will discuss the cost, revenue recognition, matching, and full disclosure principles.</p>
+
+<p>While it may sound redundant, the cost principle means that “accounting information is based on an actual cost” (Wild, Shaw, &amp; Chiappetta, 2009, p. 9). In other words, everything is treated as having the value of what was paid for it. So what happens when businesses make a trade or don’t purchase with cash (businesses have been known to buy each other with a mix of cash, stocks, and bonds)? “If something besides cash is exchanged … cost is measured as the cash value of what is given up or received” (Wild, Shaw, &amp; Chiappetta, 2009, p. 10). That caveat here is that if you buy something and get a good deal, such as buying a $7000 asset for $5000, the item will be recognized in your accounting system as having a value of $5000. This is to ensure that the accounting information remains objective (Wild, Shaw, &amp; Chiappetta, 2009, p. 10). Next, we will look at the revenue recognition principle.</p>
+
+<p>The revenue recognition principle determines how and when a company will recognize (record) revenue (Wild, Shaw, &amp; Chiappetta, 2009, p. 10). The primary concept of the revenue recognition principle is that “Revenue is recognized when earned” (Wild, Shaw, &amp; Chiappetta, 2009, p. 10). This doesn’t necessarily mean when the customer or client pays for their good or service, but when the good or service is actually sold (such as on credit). For example, if I configured someone’s network (a service) at an hourly rate, I would be required to recognize and record this earned revenue as soon as the work is done; this is usually done crediting accounts receivable (most accounting software does this automatically when generating an invoice.) This principle is intended to keep companies from recognizing revenue too early to look more profitable while also ensuring that they don’t recognize revenue too late to look less profitable than they really are (Wild, Shaw, &amp; Chiappetta, 2009, p. 10). Now let’s look to the matching principle.</p>
+
+<p>The matching principle dictates that a company must report its expenses in the period that they generated the revenue reported (Wild, Shaw, &amp; Chiappetta, 2009, p. 10). Let’s say, for example, that a company buys 10 pounds of raw material, uses it to make 10 widgets, and then sells 5 of those widgets. Under the matching principle, the company would report the expenses (or, in this case, Cost of Goods Sold) incurred to make the 5 widgets it sold. The remaining 5 (that are now sitting in inventory), would not have their expenses/COGS reported until they too were sold. Finally, we turn to the full disclosure principle.</p>
+
+<p>The full disclosure principle is probably the most basic yet most important principle. The full disclosure principle states that a company must “report the details behind financial statements that would impact users’ decisions” (Wild, Shaw, &amp; Chiappetta, 2009, p. 10). Oftentimes, these details are reported in footnotes of a company’s financial statements or annual reports (Wild, Shaw, &amp; Chiappetta, 2009, p. 10). An example of this from current events is Dell’s recent trouble with the SEC. Dell’s recent trouble was partially the result of receiving money from CPU manufacturer Intel and disguising that money as sales (why they hid it is another topic entirely). Users of Dell’s financial reports were led to believe that this extra money was the result of sales. When Intel stopped paying Dell this “incentive money,” Dell then took extra steps to falsify their financial statements to hide the fact that their revenue decreased. Save for the anti-trust violation with Intel, if Dell had just fully disclosed the revenue it was receiving from Intel they may have never felt the pressure to hide the fact that the payments stopped.</p>
+
+<p>In conclusion, the Generally Accepted Accounting Principles (GAAP) are made up of four basic principles. In particular, we discussed the cost, revenue recognition, matching, and full disclosure principles.</p>
+
+<p>Chiappetta, B., Shaw, K., Wild, J. (2009). Principles of Financial Accounting (19th ed.). McGraw-Hill/Irwin.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -554,97 +605,6 @@ financial position.”</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/python-starting-tornado-apps-at-boot-using-upstart/">Python: Starting Tornado Apps at Boot Using Upstart</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-08T00:00:00-07:00" pubdate data-updated="true">May 8<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>Today, I’m going to show you how to start up your <a href="http://www.tornadoweb.org/">Tornado</a> apps at
-boot using <a href="http://upstart.ubuntu.com/">upstart</a>. For path names, I’m assuming some modern
-version of Ubuntu, such as 9.10 or higher. I’m also assuming that you
-have some project with an executable Python script that fires up the
-Tornado app. I usually have one file in all of my projects called
-<code>web.py</code>.</p>
-
-<p>The important part of this file looks like this (mind the application and port variables):</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Snippet in web.py </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="py"><span class="line"><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
-</span><span class="line">	<span class="n">http_server</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">httpserver</span><span class="o">.</span><span class="n">HTTPServer</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
-</span><span class="line">	<span class="n">http_server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
-</span><span class="line">	<span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Got that in place? Good.  Next, <strong>make a system user</strong> for your project to run
-as. In my example, I’ll be using <code>projectuser</code> as the username. Creating this
-user can be done like so:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">sudo useradd --system --user-group projectuser</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Finally, create the file <code>/etc/init/web.conf</code>. It’s
-<em>very</em> important that this filename ends in <strong>.conf</strong>. The contents of this
-file should be as follows:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">\# torando project
-</span><span class="line">start on runlevel 2
-</span><span class="line">stop on runlevel \[!2\]
-</span><span class="line">respawn
-</span><span class="line">
-</span><span class="line">setuid projectuser
-</span><span class="line">setgid projectuser
-</span><span class="line">
-</span><span class="line">exec /path/to/project/web.py</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>That’s it! You can start your Tornado app by entering the command:
-<code>sudo start web</code>. If successful, you should see output similar to:
-` ** web start/running, process 28058<code>. You can also stop your projects using
-the command </code>sudo stop web`.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -670,6 +630,10 @@ the command </code>sudo stop web`.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/what-i-do-sre/">What I Do as an SRE</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/actual-email-from-recruiter/">An actual email from a recruiter</a>
       </li>
     
@@ -683,10 +647,6 @@ the command </code>sudo stop web`.</p>
     
       <li class="post">
         <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/how-i-hacked-my-high-school/">How I Hacked My High School</a>
       </li>
     
   </ul>

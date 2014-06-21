@@ -9,8 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="Introduction This paper is our attempt to deobfuscate the Actiontec GT701 wireless
-gateway. There are a couple of other websites out there with the &hellip;">
+  <meta name="description" content="IEEE 802.3ad, more commonly known as Link Aggregation, allows you to configure multiple Ethernet ports to act as a single device. This is sometimes &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +83,91 @@ gateway. There are a couple of other websites out there with the &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/link-aggregation-on-a-redhat-centos-server-and-a-cisco-catalyst-switch/">Link Aggregation on a RedHat (CentOS) Server and a Cisco Catalyst Switch</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-04T00:00:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>IEEE 802.3ad, more commonly known as <strong>Link Aggregation</strong>, allows you to configure multiple Ethernet ports to act as a single device. This is sometimes referred to as <strong>channel bonding</strong>, <strong>Ethernet bonding</strong>, or <strong>trunking</strong>. Link Aggregation provides several benefits: <em>Increased bandwidth</em>, <em>load balancing</em>, and allows you to create <em>redundant ethernet links</em>. If a link in your ethernet channel goes down, the switches, routers, or servers you have configured to use LACP will automatically fail over to the links that are still up and remain connected. On a RedHat-based Linux distribution, such as CentOS or Fedora, the configuration may look a little complex, but in fact, it is very straight-forward.</p>
+
+<p>To enable EtherChannel bonding on your RedHat-based server, follow these four easy steps:</p>
+
+<p><strong>1.</strong> First, create/replace <code>/etc/sysconfig/network-scripts/ifcfg-bond0</code> with:</p>
+
+<pre><code>DEVICE=bond0
+ONBOOT=yes
+USERCTL=no
+</code></pre>
+
+<p>This file is also where you will configure your interface options, such as your IP address or if you will be using DHCP to obtain that information automatically. You can find more information on this in the RedHat Linux manual section <a href="http://www.redhat.com/docs/manuals/linux/RHL-8.0-Manual/ref-guide/s1-networkscripts-interfaces.html">Interface Configuration Files</a>.</p>
+
+<p><strong>2.</strong> Next, for each interface you want bonded, create the file (and backup any already-existing ones) <code>/etc/sysconfig/network-scripts/ifcfg-ethX</code>, where <em>X</em> is the number of the interface, for example: eth0 and eth1. Check the output of <code>dmesg</code> or <code>ifconfig</code> if you are confused.</p>
+
+<p>In each of these files, put the following lines:</p>
+
+<pre><code>DEVICE=ethX
+ONBOOT=yes
+MASTER=bond0
+SLAVE=yes
+USERCTL=no
+</code></pre>
+
+<p>Once again, instead of an <em>X</em> you will want to replace that with the number of the interface.</p>
+
+<p><strong>3.</strong> Add the following text to <code>/etc/modprobe.conf</code> on a line by itself: <code>alias bond bonding</code>. Now would also probably be a good time to review your firewall rules and configuration files, to change any interface-specific directives to refer to “bond0″ now instead of “eth0″, or whatever it may have been before.</p>
+
+<p><strong>4.</strong> Restart your networking scripts. As root, issue the following command: <code>service network restart</code></p>
+
+<p>At this point you may lose connectivity. Do not panic! This is because we have configured the server to use EtherChannel bonding, but we have not told the switch we were going to do so.</p>
+
+<p>On a Cisco Catalyst switch running IOS, once logged in, you enable EtherChannel bonding by performing the following steps. These steps assume that both interfaces are configured in the same (and correct) VLAN, and have the same speed and duplex settings.</p>
+
+<pre><code>cisco&gt;enable
+Password: *enter password*
+cisco#config term
+cisco(config)#int Fa0/1
+cisco(config-if)#channel-group 1 mode on
+cisco(config-if)#int Fa0/2
+cisco(config-if)#channel-group 1 mode on
+cisco(config-if)#end
+cisco#write mem
+</code></pre>
+
+<p>It also helps to label your ports. It is important to understand that your bonded interfaces do <em>not</em> need to be consecutive ports on the switch, but consolidating them to one location on the switch is good for organizational purposes.</p>
+
+<p>Now you are free to plug in your additional cables and enjoy your new redundant Ethernet links!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -828,6 +912,10 @@ user input? :-)</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/what-i-do-sre/">What I Do as an SRE</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/actual-email-from-recruiter/">An actual email from a recruiter</a>
       </li>
     
@@ -841,10 +929,6 @@ user input? :-)</p>
     
       <li class="post">
         <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/how-i-hacked-my-high-school/">How I Hacked My High School</a>
       </li>
     
   </ul>

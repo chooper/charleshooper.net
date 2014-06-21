@@ -9,8 +9,9 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="OK, I was going to lead up to this carefully so this didn’t seem like yet
-another awful blog post about technical recruiters (can we seriously stop &hellip;">
+  <meta name="description" content="Sometimes people ask me what I do and I’m not really sure how to answer
+them. My answer tends to depend on social setting, what I’ve been
+working on &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +85,104 @@ another awful blog post about technical recruiters (can we seriously stop &helli
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/what-i-do-sre/">What I Do as an SRE</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-21T06:02:00-07:00" pubdate data-updated="true">Jun 21<span>st</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>Sometimes people ask me what I do and I’m not really sure how to answer
+them. My answer tends to depend on social setting, what I’ve been
+working on, and if I was on call that week. No matter the circumstances,
+it usually comes out pretty boring and terribly short.</p>
+
+<p>This really sucks though, because I actually really <em>like</em> my job and
+think that it’s interesting, if only I could articulate it.</p>
+
+<p>So here’s some attempt at explaining what I do:</p>
+
+<ul>
+  <li>
+    <p>I’m an SRE, or <em>Service Reliability Engineer</em>,
+at <a href="https://www.heroku.com/">Heroku</a>. Typically, SRE stands for <em>Site</em>
+Reliability Engineer, however we’ve modernized it at Heroku because what
+is even a site anymore?</p>
+  </li>
+  <li>
+    <p>My week-to-week is wildly unpredictable. This week I’m conducting an
+operational review of one of our key platform components, last week I
+was investigating and addressing database bloat, and the week before I
+was the on-call incident commander and quite busy due to several
+incidents that occurred.</p>
+  </li>
+  <li>
+    <p>Speaking of the incident commander role, part of my job includes
+<em>defining</em> how we respond to incidents. At first glance it seems easy:
+Get paged and show up. And then you respond to your first 24-hour
+slow-burning incident and realize that you’ve got more work to do.</p>
+  </li>
+  <li>
+    <p>Following incidents, I also schedule and faciliate retrospectives. We
+practice <a href="http://codeascraft.com/2012/05/22/blameless-postmortems/">blameless
+postmortems</a>
+and these tend to be incredibly constructive.</p>
+  </li>
+  <li>
+    <p>I also analyze past incident data and look for patterns and trends.
+Wondering if there’s a day of week that has a higher probability of
+experiencing an incident? Yeah, it’s Friday.</p>
+  </li>
+  <li>
+    <p>When all is quiet, I review dashboards and investigate anomolies.
+Wondering what that weird spike or dip is that seems to happen every
+once in a while? Ask me, I’ve probably pulled that thread before (and if
+I haven’t, I’ll be terribly curious).</p>
+  </li>
+  <li>
+    <p>And sometimes I build integration tests and tools. I wrote
+<a href="/blog/troubleshooting-elbs-with-elbping/">elbping</a>, for instance,
+because ELBs were terrible to troubleshoot during an incident.</p>
+  </li>
+  <li>
+    <p>And, most importantly, I mentor other SREs and software engineers.
+This is the single biggest thing I can do in terms of its impact, and
+probably most rewarding, too.</p>
+  </li>
+</ul>
+
+<p>So there you have it, that’s what I do.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1163,146 +1262,6 @@ and the historical data will help you in the long run.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/intro-to-ops-availability-monitoring-alerting/">Intro to Operations: Availability Monitoring and Alerting</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-05T21:57:00-07:00" pubdate data-updated="true">May 5<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p><em>I’m writing a series of blog posts for managers and other people
-without an operations background in order to introduce certain best
-practices regarding Operations. For the rest of the blog posts, please
-visit the <a href="/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
-
-<p>Another area I’ve seen alot of early stage startups lacking in is
-<strong>availability monitoring and alerting</strong>. The essence of availability
-monitoring and alerting is being notified when your service is not
-working as expected, including when it’s simply down, isn’t meeting
-formal or informal SLAs (e.g., it’s too slow), or certain functionality
-is broken.</p>
-
-<p>What I typically see is that some effort was made to set up this type of
-monitoring before and never maintained. Symptoms include <em>poor
-monitoring coverage</em> (<em>servers missing from the config, services
-monitoring nearly non-existent</em>), <em>large amounts of false positives and
-negatives</em>, <em>inactionable alerts</em>, and <em>alerts that go unignored</em>
-because of the previous issues.</p>
-
-<p>Symptoms on the business include not knowing when your service is down
-and finding out that your service is broken <em>from your customers</em>.
-Finding out that your service is down from your customers is not only
-embarrassing but it also shakes their confidence in you, affects your
-reputation, and may even lead to lost revenue.</p>
-
-<p>The good news is that it doesn’t have to be this way. When availability
-monitoring is set up properly, maintained, and you and your employees
-agree to approach alerts a specific way, you will be able to reap a
-variety of benefits. Here’s what I recommend:</p>
-
-<ol>
-  <li>
-    <p>First, collaborate with your employees to define who is in the pager
-  rotation and the escalation policies. Ask yourself: What happens when
-  the on call engineer is overwhelmed and needs backup? What happens when
-  the engineer goes on vacation?</p>
-  </li>
-  <li>
-    <p>Next, take inventory of what services you rely on and define an
-  internal SLA for them. This does not have to be a super formal process,
-  but this inventory and SLA will be helpful for deciding what thresholds
-  to set in your monitoring to avoid false positives. Try to see the big
-  picture and think about everything such as:</p>
-
-    <ul>
-      <li>Servers,</li>
-      <li>Self-managed supporting services like web servers, databases, email services,</li>
-      <li>Application functionality and features - one strategy I like is exposing a “health check” service that can be checked by the monitoring agent,</li>
-      <li>Third party services like remote APIs.</li>
-    </ul>
-  </li>
-</ol>
-
-<p>Your inventory and SLA definition is a living document; remember to
-  keep it up to date!</p>
-
-<ol>
-  <li>Then set up whatever monitoring package you or your engineers decided
-  to use (self-hosted or third party) such as <a href="http://www.nagios.org/">nagios</a>, <a href="http://www.zenoss.com/">Zenoss</a>,
-  <a href="http://www.pingdom.com/">Pingdom</a>, or <a href="http://www.copperegg.com/">CopperEgg</a> and have your monitoring configured for
-  those services. If you’re really good, you’ll <em>check your configuration
-  into its own source control repository</em>. If you go the self-hosted
-  route, it may also be worth having your monitoring server monitored
-  externally.  Who’s watching the watcher indeed. </li>
-</ol>
-
-<ol>
-  <li>Think about integrating your monitoring with a pager service such as
-  <a href="http://www.pagerduty.com/">PagerDuty</a>. Services like PagerDuty allow you to input your pager
-  rotation and then define good rules for how to contact the on call
-  engineer and when to escalate should the engineer be unavailable.</li>
-</ol>
-
-<ol>
-  <li>
-    <p>With improved monitoring and alerting in place, you may want to think
-  about giving certain customers “911” access. At a previous company I
-  worked at, we had a secret email address our big customers could hit
-  which would <em>open a support ticket</em> and then <em>page the on call engineer</em>
-  with the ticket number. If you decide to go this route; however, you’ll
-  want to <em>train your customers</em> when it’s appropriate to use this power
-  and how to use it most effectively.</p>
-  </li>
-  <li>
-    <p>Adjust alerts and fix problems as you get paged for them. Don’t care
-  that a particular API goes down during a known maintenance window?
-  Schedule the notification policy accordingly.</p>
-  </li>
-  <li>
-    <p>Finally, continue maintaining your inventory and monitoring
-  service’s configuration. For extra benefit, consider tracking your
-  organization’s <strong>Mean Time To Respond</strong> (how long it took for engineer to
-  acknowledge that something is wrong) and your <strong>Mean Time To Recover</strong>
-  (how long it took the engineer to resolve the issue <em>including</em> the Mean
-  Time To Respond), your <strong>Mean Time Between Failures</strong> (self-explanatory,
-  I hope), and <strong>Percent Availability</strong> (what percent of time your service
-  is functional in a given period of time). </p>
-  </li>
-</ol>
-
-<p>This concludes the management and non-ops introduction to operations; I
-hope you find this helpful.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1326,6 +1285,10 @@ hope you find this helpful.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/what-i-do-sre/">What I Do as an SRE</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/actual-email-from-recruiter/">An actual email from a recruiter</a>
       </li>
     
@@ -1339,10 +1302,6 @@ hope you find this helpful.</p>
     
       <li class="post">
         <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/how-i-hacked-my-high-school/">How I Hacked My High School</a>
       </li>
     
   </ul>

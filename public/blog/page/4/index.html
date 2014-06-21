@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="Recently I found myself in a situation where I needed to gather a large amount of data from a website but there did not exist any API, index, or &hellip;">
+  <meta name="description" content="Yesterday, I wrote a blog post detailing how I crawled an entire MMORPG’s player database via their search page. Since then, I have been analyzing &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,84 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/correlating-last-login-dates-with-signup-dates-from-a-mmorpg/">Correlating Last Login Dates With Signup Dates From a MMORPG</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-24T00:00:00-07:00" pubdate data-updated="true">Mar 24<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>Yesterday, I wrote a blog post detailing <a href="http://www.charleshooper.net/blog/screen-scraping-search-results-for-information-retrieval/">how I crawled an entire MMORPG’s player database via their search page</a>. Since then, I have been analyzing that data in Minitab and trying to gain some insight into the state of affairs of that game. Today, I’m going to attempt to explain some of that data using statistics and common sense. In particular, we’re going to find out if there’s a relationship between <em>when players join the game *and *when they stop returning</em>.</p>
+
+<h2 id="preparation">Preparation</h2>
+
+<p>I’m new to the statistics software package I’m using, Minitab, and I’m not aware of an easy way to take measurements based on dates. So, my first order of business was to convert dates in the database to an easier metric for analysis, “days since today,” which is simply <em>today’s date</em> minus <em>date x</em>. I did this in my database (MongoDB) prior to export by adding a “last_seen_days” attribute to all documents (records). This attribute is simply the difference between today’s date and the date that the player stopped logging in – measured in days. I then did the same for the signup date. This was quickly done in the MongoDB console in just a few lines:</p>
+
+<pre><code>&gt; var today = new Date();
+&gt; var day = 60*60*24*1000;
+&gt; db.accounts.find().forEach(function (o) { o.last_seen_days = Math.ceil((today.getTime() - o.last_seen.getTime())/day); db.accounts.save(o); })
+&gt; db.accounts.find().forEach(function (o) { o.date_joined_days = Math.ceil((today.getTime() - o.date_joined.getTime())/day); db.accounts.save(o); })
+</code></pre>
+
+<h2 id="the-scatterplot">The Scatterplot</h2>
+
+<p>I then exported my data to CSV, loaded it in Minitab, and created a scatterplot between these two attributes. What I got was this:</p>
+
+<p><img src="http://cdn.subversity.net/cch-i/blogimgs/last_seen_vs_signup.jpg" alt="Last Seen Date vs Signup Date" title="Last Seen Date vs Signup Date" /></p>
+
+<p>For the uninitiated, a <strong>scatterplot **is a quick and easy way to visually see if there’s any type of relationship (correlation) between two variables. In this case, I used the signup date as my **independent variable</strong> (<em>x</em>) and the “last seen” date as my <strong>dependent variable</strong> (<em>y</em>). Overall, there is <em>not *any real relationship between the signup date and the last seen date. However</em>,* there are two significant items in this graph that deserve to have some attention brought to them.</p>
+
+<h2 id="observations">Observations</h2>
+
+<p>The first and most obvious item is that <strong>there are not any points above the identity function</strong>. The identity function, or just <em>f(x) = x</em>, is the diagonal line directly across the center of the graph. This makes perfect sense since it’s impossible for a player to have their “last login” occur before they even sign up. I bring this up because this leads into my next observation:</p>
+
+<p><strong>There is a heavier concentration of data points plotted on or directly below the line of the identity function</strong>. For points exactly <em>on</em> the identity function, these are accounts that registered but were never logged into. For accounts *below *the identity function, these should be considered more significant to those who run the game. Why is that? Because, simply put, I believe that these accounts belong to players who went through the effort of joining; They signed up, validated their email address, logged in, and for whatever reason chose not to stick around. This is akin to the “<strong>bounce rate</strong>” so frequently mentioned in the context of web analytics.</p>
+
+<p>It’s possible that these new players didn’t  understand the interface and left, or maybe they thought the game play was too slow, or maybe… this list could go on. What’s important is that some attention is paid here. Some effort should be made to discover why these players are leaving and the number of these players (or almost-players) should be measured, monitored, and analyzed. Decreasing this metric (“bounce rate”) should be a regular goal as these players represent a potential revenue stream for the game’s owner as well as a potential contribution to the game for the rest of the players.</p>
+
+<h2 id="the-histogram">The Histogram</h2>
+
+<p>While, in this case, the scatterplot helped us see that there are a noticeable amount of players who quickly “bounce” after joining the game, this type of graph doesn’t make it particularly easy to measure the magnitude of this phenomena. From observing this behavior, we next want to know how many players are leaving, or what our “bounce rate” is. Instead of first trying to quantitatively define the bounce rate so that we can measure it, it’s probably best if we first take a look at the total distribution of how long players are active for before leaving. For this, we’ll use the histogram of “Days Active”. <em>Days active</em> is simply <em>days since signup</em> minus <em>days since last login</em>.Here’s what we’ve got:</p>
+
+<p><img src="http://cdn.subversity.net/cch-i/blogimgs/days_active_hist.jpg" alt="" title="Histogram of Days Active (excl. lowest-ranked accounts)" /></p>
+
+<p>In this histogram, I excluded the lowest rank from being included in the histogram. I did this because I was more interested in how many potentially-active players were leaving, as opposed to junk accounts. As such, our definition of the <em>bounce rate</em> is already becoming more different than the bounce rate in web analytics.</p>
+
+<p>Each bin (“bar”) in our histogram is 15 days wide. Knowing this, you can see from the histogram that the largest density of days active seems to be about from 15 days to 2.5 months. This chunk, while significant, doesn’t have much to do with our bounce rate mentioned above. What we’re instead interested in is the near-5% of players who become inactive in less than a week.</p>
+
+<h2 id="whats-next">What’s Next?</h2>
+
+<p>If this were my game (it’s not), I would work on defining what level of bounce rate is acceptable and set some goals based on that. I would then look into the large amount of players leaving within the first 2.5 months and try to increase player retention. Finally, I would automate these measurements and have them displaced in a nice administrative dashboard (I’ve always wanted one of those) so that I have to see them all the time.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -807,192 +885,6 @@ licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br />
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/twitter-vs-erotica-your-corporas-source-matters/">Twitter vs Erotica: Your Corpora&#8217;s Source Matters</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-10-30T00:00:00-07:00" pubdate data-updated="true">Oct 30<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p><img src="http://www.charleshooper.net/wp-content/uploads/3998147057_f5dd7ce442-150x150.jpg" alt="Dictionary" title="Dictionary" />
-© uair01; some rights reserved.</p>
-
-<p>As a result of my now <a href="http://www.charleshooper.net/blog/rip-booksuggest/">defunct project, BookSuggest</a>, I’ve built a fairly large corpus that has been seeded entirely from Twitter. This corpus weighs in at:</p>
-
-<ul>
-  <li>16,680,000 documents (tweets)</li>
-  <li>1,970,165 unique (stemmed) words<br />
-<em>(Red flag: <a href="http://www.oxforddictionaries.com/page/93">Oxford Dictionary</a> suggests there’s an estimated 250,000 words in the English language. This discrepancy is the result of my failure to filter Tweets based on language, the fact that usernames were included in the count, and the fact that people “make words up.” Also, “haha” becomes one word while “hahahaha” becomes another.)</em></li>
-  <li>83,758,872 words total.</li>
-</ul>
-
-<p>When I look at these numbers, I often think about how the source documents a corpus/histogram is derived from affects the distribution of its term frequencies. The most obvious example is language. A French corpus will never come close to an English corpus. A less obvious example is subject matter. For example, a corpus derived from English literature will have a different term distribution than a corpus derived from an English medical journal. Common terms will have similar frequencies, but there will be biases towards terms that are domain-specific.</p>
-
-<p>To demonstrate, I scraped the “Erotica” section of <a href="http://www.textfiles.com/">textfiles.com</a> and built a corpus based on the data there. The resulting corpus is composed of:</p>
-
-<ul>
-  <li>4,337 documents</li>
-  <li>50,709 unique (stemmed) words</li>
-  <li>10,413,715 words total.</li>
-</ul>
-
-<h2 id="notes-on-term-counting">Notes on Term Counting</h2>
-
-<ul>
-  <li>Words that had a length of <em>less than 4 characters</em> were <strong>discarded</strong></li>
-  <li>Words were then <em>stemmed</em> using the <a href="http://tartarus.org/~martin/PorterStemmer/">Porter Stemming algorithm</a></li>
-  <li>There may be some slight differences between how words were counted in both corpora, based on minor programming differences</li>
-</ul>
-
-<h2 id="the-data">The Data</h2>
-
-<p>Finally, here are the term frequencies with the obvious domain-specific terms in bold:</p>
-
-<p><strong>Corpus Seeded from Twitter</strong></p>
-
-<p>![Counts of Top 20 Terms from Twitter Corpus][6]  </p>
-
-<ol>
-  <li>that (0.84%)</li>
-  <li>just (0.70%)</li>
-  <li>with (0.69%)</li>
-  <li>thi (0.68%)</li>
-  <li>have (0.65%)</li>
-  <li>your (0.61%)</li>
-  <li>like (0.56%)</li>
-  <li>love (0.54%)</li>
-  <li><strong>follow (0.45%)</strong></li>
-  <li>what (0.44%)</li>
-  <li>from (0.36%)</li>
-  <li>haha (0.35%)</li>
-  <li>good (0.34%)</li>
-  <li>para (0.34%)</li>
-  <li>will (0.32%)</li>
-  <li>when (0.30%)</li>
-  <li>know (0.30%)</li>
-  <li>want (0.30%)</li>
-  <li>about 0.30%)</li>
-  <li>make (0.30%)</li>
-</ol>
-
-<p><strong>Corpus Seeded from Erotica</strong></p>
-
-<p>![Counts of Top 20 Terms from Erotica Corpus][7]  </p>
-
-<ol>
-  <li>that (1.83%)</li>
-  <li>with (1.42%)</li>
-  <li>into (0.76%)</li>
-  <li>down (0.70%)</li>
-  <li>then (0.66%)</li>
-  <li>back (0.66%)</li>
-  <li>from (0.65%)</li>
-  <li>thi (0.65%)</li>
-  <li>hand (0.64%)</li>
-  <li>were (0.59%)</li>
-  <li>look (0.58%)</li>
-  <li>have (0.58%)</li>
-  <li><strong>cock (0.57%)</strong></li>
-  <li>like (0.57%)</li>
-  <li>over (0.57%)</li>
-  <li>thei (0.56%)</li>
-  <li>your (0.56%)</li>
-  <li>what (0.55%)</li>
-  <li>said (0.55%)</li>
-  <li>could (0.54%)</li>
-</ol>
-
-<p>You’ll note that the Twitter corpus had a heavy bias towards the term “<em>follow</em>” whereas the Erotica corpus shows an overwhelming use of the term “<em>cock</em>” (Writers: Use synonyms.)</p>
-
-<table>
-  <tbody>
-    <tr>
-      <td>[6]: http://chart.apis.google.com/chart?chxl=0:</td>
-      <td>that</td>
-      <td>just</td>
-      <td>with</td>
-      <td>thi</td>
-      <td>have</td>
-      <td>your</td>
-      <td>like</td>
-      <td>love</td>
-      <td>follow</td>
-      <td>what</td>
-      <td>from</td>
-      <td>haha</td>
-      <td>good</td>
-      <td>para</td>
-      <td>will</td>
-      <td>when</td>
-      <td>know</td>
-      <td>want</td>
-      <td>about</td>
-      <td>make&amp;chxr=0,0,703297&amp;chxt=x&amp;chbh=a,4,10&amp;chs=600x200&amp;cht=bvg&amp;chco=4D89F9&amp;chds=0,703297&amp;chd=t:703297,582988,581346,573197,547218,513823,467673,455264,378187,367112,302254,296974,286671,283887,272176,254419,252303,251673,251325,248572&amp;chtt=Counts of Top 20 Terms from Twitter Corpus</td>
-    </tr>
-    <tr>
-      <td>[7]: http://chart.apis.google.com/chart?chxl=0:</td>
-      <td>that</td>
-      <td>with</td>
-      <td>into</td>
-      <td>down</td>
-      <td>then</td>
-      <td>back</td>
-      <td>from</td>
-      <td>thi</td>
-      <td>hand</td>
-      <td>were</td>
-      <td>look</td>
-      <td>have</td>
-      <td>cock</td>
-      <td>like</td>
-      <td>over</td>
-      <td>thei</td>
-      <td>your</td>
-      <td>what</td>
-      <td>said</td>
-      <td>could&amp;chxr=0,0,190543&amp;chxt=x&amp;chbh=a,4,10&amp;chs=600x200&amp;cht=bvg&amp;chco=F889F9&amp;chds=0,190543&amp;chd=t:190543,148204,78688,72452,69045,68642,68164,67998,66826,61787,60236,60179,59622,59357,58856,58760,57851,57670,57348,55739&amp;chtt=Counts of Top 20 Terms from Erotica Corpus</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="practical-reasons-why-this-is-important">Practical Reasons Why This Is Important</h2>
-
-<p>This is important because if I were to build a domain-specific search-engine, I would be better off  seeding my corpus from domain-specific content. If I don’t, my relevance (tf-idf) scores will be inaccurate. For example, an Erotica-specific search engine should decrease the weight for the term “<em>cock</em>” strictly because it has a very high document frequency and is therefore less-significant. Meanwhile, a Twitter-specific search engine should discount the weight of “<em>follow</em>.”</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>To conclude, the subject matter of a document set will create a bias towards domain-specific terms in the document set’s histogram of term frequencies. If you are calculating relevance for any particular document set, you should use a corpus derived from that document set. In other words, if you can, try not to re-use your corpora!</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -1018,6 +910,10 @@ licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br />
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/what-i-do-sre/">What I Do as an SRE</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/actual-email-from-recruiter/">An actual email from a recruiter</a>
       </li>
     
@@ -1031,10 +927,6 @@ licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br />
     
       <li class="post">
         <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/how-i-hacked-my-high-school/">How I Hacked My High School</a>
       </li>
     
   </ul>

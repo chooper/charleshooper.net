@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Projects | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/projects/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2014-06-21T06:01:18-07:00</updated>
+  <updated>2014-06-21T06:45:31-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -12,6 +12,77 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[What I Do as an SRE]]></title>
+    <link href="http://www.charleshooper.net/blog/what-i-do-sre/"/>
+    <updated>2014-06-21T06:02:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/what-i-do-as-an-sre</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>Sometimes people ask me what I do and I’m not really sure how to answer
+them. My answer tends to depend on social setting, what I’ve been
+working on, and if I was on call that week. No matter the circumstances,
+it usually comes out pretty boring and terribly short.</p>
+
+<p>This really sucks though, because I actually really <em>like</em> my job and
+think that it’s interesting, if only I could articulate it.</p>
+
+<p>So here’s some attempt at explaining what I do:</p>
+
+<ul>
+  <li>
+    <p>I’m an SRE, or <em>Service Reliability Engineer</em>,
+at <a href="https://www.heroku.com/">Heroku</a>. Typically, SRE stands for <em>Site</em>
+Reliability Engineer, however we’ve modernized it at Heroku because what
+is even a site anymore?</p>
+  </li>
+  <li>
+    <p>My week-to-week is wildly unpredictable. This week I’m conducting an
+operational review of one of our key platform components, last week I
+was investigating and addressing database bloat, and the week before I
+was the on-call incident commander and quite busy due to several
+incidents that occurred.</p>
+  </li>
+  <li>
+    <p>Speaking of the incident commander role, part of my job includes
+<em>defining</em> how we respond to incidents. At first glance it seems easy:
+Get paged and show up. And then you respond to your first 24-hour
+slow-burning incident and realize that you’ve got more work to do.</p>
+  </li>
+  <li>
+    <p>Following incidents, I also schedule and faciliate retrospectives. We
+practice <a href="http://codeascraft.com/2012/05/22/blameless-postmortems/">blameless
+postmortems</a>
+and these tend to be incredibly constructive.</p>
+  </li>
+  <li>
+    <p>I also analyze past incident data and look for patterns and trends.
+Wondering if there’s a day of week that has a higher probability of
+experiencing an incident? Yeah, it’s Friday.</p>
+  </li>
+  <li>
+    <p>When all is quiet, I review dashboards and investigate anomolies.
+Wondering what that weird spike or dip is that seems to happen every
+once in a while? Ask me, I’ve probably pulled that thread before (and if
+I haven’t, I’ll be terribly curious).</p>
+  </li>
+  <li>
+    <p>And sometimes I build integration tests and tools. I wrote
+<a href="/blog/troubleshooting-elbs-with-elbping/">elbping</a>, for instance,
+because ELBs were terrible to troubleshoot during an incident.</p>
+  </li>
+  <li>
+    <p>And, most importantly, I mentor other SREs and software engineers.
+This is the single biggest thing I can do in terms of its impact, and
+probably most rewarding, too.</p>
+  </li>
+</ul>
+
+<p>So there you have it, that’s what I do.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Troubleshooting ELBs with elbping]]></title>
@@ -459,46 +530,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
 <h2 id="whats-next">What’s Next?</h2>
 
 <p>If this were my game (it’s not), I would work on defining what level of bounce rate is acceptable and set some goals based on that. I would then look into the large amount of players leaving within the first 2.5 months and try to increase player retention. Finally, I would automate these measurements and have them displaced in a nice administrative dashboard (I’ve always wanted one of those) so that I have to see them all the time.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Screen-Scraping Search Results for Information Retrieval]]></title>
-    <link href="http://www.charleshooper.net/blog/screen-scraping-search-results-for-information-retrieval/"/>
-    <updated>2011-03-23T00:00:00-07:00</updated>
-    <id>http://www.charleshooper.net/blog/screen-scraping-search-results-for-information-retrieval</id>
-    <content type="html"><![CDATA[<h1 id="section"></h1>
-
-<p>Recently I found myself in a situation where I needed to gather a large amount of data from a website but there did not exist any API, index, or otherwise publicly-accessible map of the data. In fact, the only mechanism for uncovering data to be collected was a very limited search engine.</p>
-
-<p>In particular, I was trying to collect a list of (living, non-banned) usernames from a web-based RPG I play so I could then download, parse, and store their profiles for further analysis. I needed all of the data simply because there also was not any way in which I could get a truly random statistical sample.</p>
-
-<p>The game’s search engine has these limitations and features:</p>
-
-<ul>
-  <li>Search is performed on username only and implicitly places a wildcard after the search. For example, if you search for “bob” not only will “bob” be returned in the results, but also “bob123″ and “bobafett,”</li>
-  <li>If a given search returns more than 35 results than only the first 35 results are returned,</li>
-  <li>Results are sorted by username (alphabetically),</li>
-  <li>Usernames are case-insensitive and can only contain alphanumeric characters, i.e. {ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890},</li>
-  <li>Search queries cannot start with the character zero (“0″), but I happily overlook this,</li>
-  <li>The search engine does allow you to filter out players who have been killed or banned.</li>
-</ul>
-
-<p>So, there I was, trying to crawl this game’s search feature using urllib and regular expressions. I first tried to search for “A”, then “B”, then ”C”, and so on, but there were some obvious flaws with this method. In particular, because of the limit on the number of results that can be returned, this method would only yield 1,260 usernames. This isn’t good enough because I knew from the game’s statistics page that I should be expecting a little more than 21,000 names!</p>
-
-<p>The logical extension of that search method is to tack on an extra letter. For example, try “AA”, then, “AB”, then “AC”, all the way down to “ZZ” (or, erm, “99″ on this case). This seems alot better because, hypothetically, the keyspace is large enough to return more than twice as many usernames than what I need – I believe the math is (36^2)*35 or 45,360 usernames.</p>
-
-<p>Unfortunately, this  method falls apart very quickly because there isn’t an even distribution of usernames across the keyspace. I could try to go one level deeper on the searches (e.g., “AAA” to “AAB”, and so forth) but now we’re looking at 36^3 or 46,656 search pages I have to crawl, so this method is out of the question.</p>
-
-<p>Making matters worse, I am completely naive as to what the distribution of usernames might actually look like.I know what it looks like <em>now</em>, but moving forward I had absolutely no idea what to expect. (Just in case you’re curious, you can see the actual distribution – sans accounts that start with “0″ – below.)</p>
-
-<p><img src="http://cdn.subversity.net/cch-i/blogimgs/letter_freq_dist.png" alt="Account Distribution by First Character" title="Account Distribution by First Character" /></p>
-
-<p>I decided, then, that I would start with “A” to “Z” to “1″ to “9″ and dynamically and recursively expand one level deeper if only 35 results were returned from the search. <a href="https://bitbucket.org/hoop/bootcrawl/src/9a3714a9e24e/crawl.py">You can see this dynamic, search unfolding code here on Bitbucket (Python, lines 46 through 65)</a>.</p>
-
-<p>The results were pretty positive. I crawled almost the entire set of alive, unbanned accounts in just over 2 hours (while I played video games and drank beer). I missed exactly 356 accounts, or about 1.6% of the population. While some of these may have been accounts that started with the character “0″ (remember, I couldn’t crawl those,) it seems more likely that many of these were aborted HTTP requests that failed and were handled by my ridiculous try/except:pass block.</p>
-
-<p>Now that I have this data, it’s time for me to do something with it. You’ll hear more about that from me soon, I’m sure.</p>
 ]]></content>
   </entry>
   

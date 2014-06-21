@@ -4,7 +4,7 @@
   <title><![CDATA[Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2014-06-21T06:01:18-07:00</updated>
+  <updated>2014-06-21T06:45:31-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -12,6 +12,77 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[What I Do as an SRE]]></title>
+    <link href="http://www.charleshooper.net/blog/what-i-do-sre/"/>
+    <updated>2014-06-21T06:02:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/what-i-do-as-an-sre</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>Sometimes people ask me what I do and I’m not really sure how to answer
+them. My answer tends to depend on social setting, what I’ve been
+working on, and if I was on call that week. No matter the circumstances,
+it usually comes out pretty boring and terribly short.</p>
+
+<p>This really sucks though, because I actually really <em>like</em> my job and
+think that it’s interesting, if only I could articulate it.</p>
+
+<p>So here’s some attempt at explaining what I do:</p>
+
+<ul>
+  <li>
+    <p>I’m an SRE, or <em>Service Reliability Engineer</em>,
+at <a href="https://www.heroku.com/">Heroku</a>. Typically, SRE stands for <em>Site</em>
+Reliability Engineer, however we’ve modernized it at Heroku because what
+is even a site anymore?</p>
+  </li>
+  <li>
+    <p>My week-to-week is wildly unpredictable. This week I’m conducting an
+operational review of one of our key platform components, last week I
+was investigating and addressing database bloat, and the week before I
+was the on-call incident commander and quite busy due to several
+incidents that occurred.</p>
+  </li>
+  <li>
+    <p>Speaking of the incident commander role, part of my job includes
+<em>defining</em> how we respond to incidents. At first glance it seems easy:
+Get paged and show up. And then you respond to your first 24-hour
+slow-burning incident and realize that you’ve got more work to do.</p>
+  </li>
+  <li>
+    <p>Following incidents, I also schedule and faciliate retrospectives. We
+practice <a href="http://codeascraft.com/2012/05/22/blameless-postmortems/">blameless
+postmortems</a>
+and these tend to be incredibly constructive.</p>
+  </li>
+  <li>
+    <p>I also analyze past incident data and look for patterns and trends.
+Wondering if there’s a day of week that has a higher probability of
+experiencing an incident? Yeah, it’s Friday.</p>
+  </li>
+  <li>
+    <p>When all is quiet, I review dashboards and investigate anomolies.
+Wondering what that weird spike or dip is that seems to happen every
+once in a while? Ask me, I’ve probably pulled that thread before (and if
+I haven’t, I’ll be terribly curious).</p>
+  </li>
+  <li>
+    <p>And sometimes I build integration tests and tools. I wrote
+<a href="http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping/">elbping</a>, for instance,
+because ELBs were terrible to troubleshoot during an incident.</p>
+  </li>
+  <li>
+    <p>And, most importantly, I mentor other SREs and software engineers.
+This is the single biggest thing I can do in terms of its impact, and
+probably most rewarding, too.</p>
+  </li>
+</ul>
+
+<p>So there you have it, that’s what I do.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[An actual email from a recruiter]]></title>
@@ -1457,25 +1528,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
 </ul>
 
 <p>By approaching the issues of devops as  concurrent engineering and implementing it as such, you open the movement to a well-researched, well-documented, and well-accepted product design philosophy. By shedding this light on the devops methodologies, this enables those of us pushing the devops movement to finally put the movement into a more business-oriented perspective.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hypersensitivity and Political Correctness]]></title>
-    <link href="http://www.charleshooper.net/blog/hypersensitivity-and-political-correctness/"/>
-    <updated>2011-08-19T00:00:00-07:00</updated>
-    <id>http://www.charleshooper.net/blog/hypersensitivity-and-political-correctness</id>
-    <content type="html"><![CDATA[<h1 id="section"></h1>
-
-<p>I wrote a blog post this week on how <a href="http://www.charleshooper.net/blog/stop-letting-tech-people-be-socially-inept/" title="Stop Letting Technical People Get Away With Social Ineptitude">engineers or “technical people” don’t have to, and shouldn’t, be jerks</a>. My argument was that the stereotype that <em>technically-minded people are bad at social skills</em> was just that, a stereotype, and that employers should stop allowing us to get away with it. I knew it was going to be controversial when I wrote it, especially because the type of people who find my blog (HackerNewsers) <em>are</em> usually technically-minded people (with a nod to the rest of you entrepreneurs, biz, and VC folk). As expected, a large chunk of commentors (both on HN and on my blog) disagreed with my argument and a large chunk agreed.</p>
-
-<p>What I did not expect, however, was to be misunderstood so severely that I would be accused of wanting to ruin the lives of those who are “psychologically incapable” of learning social skills. One commentor posted a picture of a child with autism and accused me of trying to make him a second-class, unemployable citizen. Another commentor went as far as to paint a grisly picture of these “psychologically incapable” people committing suicide – all because of me.</p>
-
-<p>This blog is set up in such a way that I must manually approve comments from first-time commentors. This means that I have read every comment that was posted to my article (a few people posted more than once, but I read those too) before they appeared on my blog. I approved the comments despite the fact that I found them extremely upsetting because, even though this is my blog, I felt that everyone deserved to be heard.</p>
-
-<p>I want to take the opportunity to say that I think this combination of hypersensitivity and political correctness is an awful thing. It’s OK to be offended, but I feel that very often the thing that offends us is a misunderstanding. In this case, my point was that <em>engineers shouldn’t be jerks and should instead learn some social skills so they can interact more effectively with co-workers and clients</em> but it was misunderstood as <em>if you’re bad at social skills, even if you can’t help it, then you should be treated like garbage</em>. I don’t think that bloggers should have to acknowledge every exception to the points they make or write disclaimers into each of their posts – that kind of defeats the point (which I feel is<em> free speech on a massive scale</em>, by the way).</p>
-
-<p>So please, the next time you feel offended, consider asking the offender for clarification before you react. You might save yourself, and them, from a lot of unnecessary heartache.</p>
 ]]></content>
   </entry>
   
