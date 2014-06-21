@@ -61,3 +61,5 @@ probably most rewarding, too.
 
 So there you have it, that's what I do.
 
+P.S. - If this sounds interesting to you, [we're hiring](http://jobs.heroku.com/)!
+
