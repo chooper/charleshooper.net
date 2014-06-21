@@ -4,7 +4,7 @@
   <title><![CDATA[Category: DevOps | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/devops/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2014-06-21T05:46:59-07:00</updated>
+  <updated>2014-06-21T06:01:18-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -430,11 +430,8 @@ articles and publishing them to a variety of places, including this blog.</p>
 <ul>
   <li><a href="/blog/intro-to-ops-config-management/">Configuration management</a></li>
   <li><a href="/blog/intro-to-ops-availability-monitoring-alerting/">Availability monitoring</a></li>
-  <li><a href="/blog/intro-to-ops-metrics-collection/">Metrics collection</a></li>
-  <li>Backups</li>
-  <li>Security</li>
   <li>
-    <p>Disaster Recovery</p>
+    <p><a href="/blog/intro-to-ops-metrics-collection/">Metrics collection</a></p>
 
   </li>
 </ul>
