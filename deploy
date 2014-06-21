@@ -4,8 +4,8 @@
 bundle exec rake generate
 
 # Deploy to VPSes
-SSH_TARGET="cchdotnet@theobroma.plumata.net" bundle exec rake deploy
-SSH_TARGET="cchdotnet@lagunitas.plumata.net" bundle exec rake deploy
+#SSH_TARGET="cchdotnet@theobroma.plumata.net" bundle exec rake deploy
+#SSH_TARGET="cchdotnet@lagunitas.plumata.net" bundle exec rake deploy
 
 # Deploy to Heroku
 git add .
