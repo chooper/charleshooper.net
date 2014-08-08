@@ -12,7 +12,7 @@ categories:
 A term I hear often in the context of engineering and project management
 is "slack." It's often used to refer to a magical pool of time that all
 of a service's upkeep, including maintenance and operations, is going to
-come out of. This is bullshit though. Here's why:
+come out of. This is wrong though. Here's why:
 
 * That's not what slack is for
 
