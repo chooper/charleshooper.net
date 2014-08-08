@@ -21,14 +21,14 @@ come out of. This is wrong though. Here's why:
 
 ## What is it then?
 
-I subscribe to Tom DeMarco's definition in his book Slack:
+I subscribe to the definition in
+[Tom DeMarco's Slack](http://www.amazon.com/Slack-Getting-Burnout-Busywork-Efficiency/dp/0767907698),
+which is "the degree of freedom required to effect change."
 
-> which is ???
-
-Slack is something you maintain so that your team is responsive, it is
-*not* "extra time" or "maintenance time." If you are doing this, you are
-effectively allocating that time and thus *eliminating your slack pool.*
-Signs you or your team may be guilty of this:
+Slack is something you maintain so that your team is responsive and adaptable,
+it is *not* "extra time" or "maintenance time." If you are doing this, you are
+effectively allocating that time and thus *eliminating your slack pool.* Signs
+you or your team may be guilty of this:
 
 * You don't make explicit allocations of time to operations or
   maintenance upkeep
