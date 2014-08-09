@@ -49,7 +49,7 @@ relationship is *exponential:* The higher utilized your team is, the
 *much* higher your service time is! You can see it for yourself
 below:
 
-> graph of utilization/service curve
+![Relationship between utilization and service time](/images/posts/util_service_rel.png)
 
 We can tell by looking at this graph that our responsiveness falls apart
 at about 70% utilization which means you should keep at least 30% of
@@ -68,11 +68,11 @@ will go somewhere else.
 
 Instead of thinking about it like this:
 
-> img
+![Wrong way to manage slack](/images/posts/slack_wrong_way.png)
 
 Think about it like *this*:
 
-> img
+![Right way to manage slack](/images/posts/slack_right_way.png)
 
 In this model, you explicitly allocate time to upkeep *and* maintain a
 slack pool.
@@ -93,4 +93,8 @@ Note that this will change and vary over time. If you're already deep in
 technical debt, your upkeep allocation will need to be much higher to
 pay off some of your principal. Once you've done that, you'll probably
 be able to meet your goals with a much lower allocation later on.
+
+## ????
+
+> summary/conclusion/call to action
 
