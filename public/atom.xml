@@ -4,7 +4,7 @@
   <title><![CDATA[Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2014-06-21T06:47:30-07:00</updated>
+  <updated>2014-08-11T12:07:14-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -12,6 +12,116 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[On Slack and Upkeep]]></title>
+    <link href="http://www.charleshooper.net/blog/on-slack-and-upkeep/"/>
+    <updated>2014-08-08T14:22:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/on-slack-time</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>A term I hear often in the context of engineering and project management
+is “slack.” It’s often used to refer to a magical pool of time that all
+of a service’s upkeep, including maintenance and operations, is going to
+come out of. This is wrong though. Here’s why:</p>
+
+<ul>
+  <li>
+    <p>That’s not what slack is for</p>
+  </li>
+  <li>
+    <p>Mismanaged slack is equivalent to non-existent slack</p>
+  </li>
+</ul>
+
+<h2 id="what-is-it-then">What is it then?</h2>
+
+<p>I subscribe to the definition in
+<a href="http://www.amazon.com/Slack-Getting-Burnout-Busywork-Efficiency/dp/0767907698">Tom DeMarco’s Slack</a>,
+which is “the degree of freedom required to effect change.”</p>
+
+<p>Slack is something you maintain so that your team is responsive and adaptable,
+it is <em>not</em> “extra time” or “maintenance time.” If you are doing this, you are
+effectively allocating that time and thus <em>eliminating your slack pool.</em> Signs
+you or your team may be guilty of this:</p>
+
+<ul>
+  <li>
+    <p>You don’t make explicit allocations of time to operations or
+maintenance upkeep</p>
+  </li>
+  <li>
+    <p>You don’t “have enough time” to properly operate or maintain your
+services</p>
+  </li>
+  <li>
+    <p>You can’t solve problems or complete remediation items identified by your
+organization’s problem management program</p>
+  </li>
+</ul>
+
+<h2 id="so-i-should-do-nothing-then">So I should do nothing then?</h2>
+
+<p>Well, no. At least <em>some</em> of your slack needs to be spent idle though.
+Remember that the concept of slack is rooted in queueing theory. There’s
+a well-known relationship between utilization and service time. This
+relationship is <em>exponential:</em> The higher utilized your team is, the
+<em>much</em> higher your service time is! You can see it for yourself
+below:</p>
+
+<p><img src="http://www.charleshooper.net/images/posts/util_service_rel.png" alt="Relationship between utilization and service time" /></p>
+
+<p>We can tell by looking at this graph that our responsiveness falls apart
+at about 70% utilization which means you should keep at least 30% of
+your time <em>unallocated</em>.</p>
+
+<h2 id="unallocated-why-cant-i-just-devote-30-of-my-time-to-upkeep">Unallocated? Why can’t I just devote 30% of my time to upkeep?</h2>
+
+<p>Because upkeep, the maintenance and operations of your service,
+are <em>required</em> activities. Entropy means that, unkept, your service will
+degrade over time. This entropy is accelerated if your service is
+experiencing growth. Your databases will bloat, your latency will
+increase, your 99.99% success rate will fall to 99.9% (or worse), your
+service will be difficult to add features to, and eventually your users
+will go somewhere else.</p>
+
+<p>Instead of thinking about it like this:</p>
+
+<p><img src="http://www.charleshooper.net/images/posts/slack_wrong_way.png" alt="Wrong way to manage slack" /></p>
+
+<p>Think about it like <em>this</em>:</p>
+
+<p><img src="http://www.charleshooper.net/images/posts/slack_right_way.png" alt="Right way to manage slack" /></p>
+
+<p>In this model, you explicitly allocate time to upkeep <em>and</em> maintain a
+slack pool.</p>
+
+<h2 id="how-much-time-should-i-spend-on-upkeep-versus-product-and-feature-work">How much time should I spend on upkeep versus product and feature work?</h2>
+
+<p>I don’t have a good guideline for you, sorry. You’ll need to determine
+this based on your organization’s or team’s goals and any SLAs you may
+have.</p>
+
+<p>For example, if you’re operating a service with a service-level
+objective of meeting a 99.99% success rate (0.01% error rate) then you
+need to allocate more time to upkeep than a service targetting a 99.9%
+success rate, generally speaking.</p>
+
+<p>Note that this will change and vary over time. If you’re already deep in
+technical debt, your upkeep allocation will need to be much higher to
+pay off some of your principal. Once you’ve done that, you’ll probably
+be able to meet your goals with a much lower allocation later on.</p>
+
+<h2 id="call-to-action">Call to action</h2>
+
+<p>I urge everyone to start thinking about slack and upkeep this way. Take a
+close look at your team’s goals and commitments and explicitly allocate time
+for reaching those goals. Doing so will allow your team to properly maintain
+the services which it operates while
+also being very responsive.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[What I Do as an SRE]]></title>
@@ -1482,54 +1592,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
 <p>The second reason this is exciting because, in the process of starting at a new company, I’ve managed to expand my personal consulting practice. I don’t think I’ve said so before, but I provide <em>systems engineering services</em> to <a href="http://www.loud3r.com/">Loud3r Inc</a>. I’m their only “web ops” guy and we’ve managed to completely turn things around in the past 6 months; we’re providing our services better (more reliable, more frequent updates), faster, and cheaper than before. Rather than cancel the contract entirely, the CEO of Loud3r and I felt it was a good idea for me to subcontract a large portion of my workload to a trusted colleague of mine.</p>
 
 <p>How about you? Is there anything exciting you would like to share about the progress you made during 2011 or large changes you’re making in the start of 2012? Tell me all about it!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Concurrent Engineering: The Foundation of DevOps]]></title>
-    <link href="http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops/"/>
-    <updated>2011-12-07T00:00:00-08:00</updated>
-    <id>http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops</id>
-    <content type="html"><![CDATA[<h1 id="section"></h1>
-
-<blockquote>
-  <p>DevOps is all about trying to avoid that epic failure and working smarter and more efficiently at the same time. It is a framework of ideas and principles designed to foster cooperation, learning and coordination between development and operational groups. In a DevOps environment, developers and sysadmins build relationships, processes, and tools that allow them to better interact and ultimately better service the customer (<a href="http://www.kartar.net/2010/02/what-devops-means-to-me/" title="What DevOps Means to Me">James Turnbull</a>).</p>
-</blockquote>
-
-<p>At the time of writing, if you were to search for “devops” you would find eight results attempting to explain what devops is, one result for a conference, and one rather satirical article (although not necessarily incorrect) where the author answers the question of “how do you implement devops” with “<a href="http://teddziuba.com/2011/03/devops-scam.html" title="DevOps is a Poorly Executed Scam">nobody seems to know</a>” (Ted Dziuba).</p>
-
-<p>The big problem with the DevOps “movement” is that we essentially have a bunch of operations and development people promoting it and trying to implement it within their organizations. Meanwhile, those with management and business responsibilities, even if explained the “what,” don’t understand the “how.” Just because you use puppet does not necessarily mean your organization is practicing DevOps.</p>
-
-<p>This shortcoming is the result of us devops proponents either falsely claiming these techniques and methodologies are new or not knowing any better. If we had something more relatable for the business people (and, by principle, <em>we</em> should be business-oriented, too) then I think DevOps would have more of a chance.</p>
-
-<p>Well, get your product and management together because the truth is that DevOps is actually a form of Concurrent Engineering.</p>
-
-<blockquote>
-  <p>Concurrent Engineering (CE) is a systematic approach to integrated product development that emphasizes the response to customer expectations. It embodies team values of co-operation, trust and sharing in such a manner that decision making is by consensus, involving all perspectives in parallel, from the beginning of the product life-cycle (<a href="http://www.esa.int/esaMI/CDF/SEM1OF1P4HD_0.html" title="What is concurrent engineering?">ESA – Concurrent Engineering Facility</a>).</p>
-</blockquote>
-
-<p>Concurrent Engineering encompasses several major principles which just so happen to fit the definition (however formal or informal) of devops.</p>
-
-<p>I’ll list them from the <a href="http://best.berkeley.edu/~pps/pps/concurrent.html#basic" title="Basic Principles of Concurrent Engineering">Synthesis Coalition</a> here:</p>
-
-<ul>
-  <li>Get a strong commitment from senior management.</li>
-  <li>Establish unified project goals and a clear business mission.</li>
-  <li>Develop a detailed plan early in the process.</li>
-  <li>Continually review your progress and revise your plan.</li>
-  <li>Develop project leaders that have an overall vision of the project and goals.</li>
-  <li>Analyze your market and know your customers.</li>
-  <li>Suppress individualism and foster a team concept.</li>
-  <li>Establish and cultivate cross-functional integration and collaboration.</li>
-  <li>Break project into its natural phases.</li>
-  <li>Develop metrics.</li>
-  <li>Set milestones throughout the development process.</li>
-  <li>Collectively work on all parts of project.</li>
-  <li>Reduce costs and time to market.</li>
-  <li>Complete tasks in parallel.</li>
-</ul>
-
-<p>By approaching the issues of devops as  concurrent engineering and implementing it as such, you open the movement to a well-researched, well-documented, and well-accepted product design philosophy. By shedding this light on the devops methodologies, this enables those of us pushing the devops movement to finally put the movement into a more business-oriented perspective.</p>
 ]]></content>
   </entry>
   

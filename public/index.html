@@ -9,9 +9,9 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="Sometimes people ask me what I do and I’m not really sure how to answer
-them. My answer tends to depend on social setting, what I’ve been
-working on &hellip;">
+  <meta name="description" content="A term I hear often in the context of engineering and project management
+is “slack.” It’s often used to refer to a magical pool of time that all
+of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +85,143 @@ working on &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/on-slack-and-upkeep/">On Slack and Upkeep</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-08T14:22:00-07:00" pubdate data-updated="true">Aug 8<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>A term I hear often in the context of engineering and project management
+is “slack.” It’s often used to refer to a magical pool of time that all
+of a service’s upkeep, including maintenance and operations, is going to
+come out of. This is wrong though. Here’s why:</p>
+
+<ul>
+  <li>
+    <p>That’s not what slack is for</p>
+  </li>
+  <li>
+    <p>Mismanaged slack is equivalent to non-existent slack</p>
+  </li>
+</ul>
+
+<h2 id="what-is-it-then">What is it then?</h2>
+
+<p>I subscribe to the definition in
+<a href="http://www.amazon.com/Slack-Getting-Burnout-Busywork-Efficiency/dp/0767907698">Tom DeMarco’s Slack</a>,
+which is “the degree of freedom required to effect change.”</p>
+
+<p>Slack is something you maintain so that your team is responsive and adaptable,
+it is <em>not</em> “extra time” or “maintenance time.” If you are doing this, you are
+effectively allocating that time and thus <em>eliminating your slack pool.</em> Signs
+you or your team may be guilty of this:</p>
+
+<ul>
+  <li>
+    <p>You don’t make explicit allocations of time to operations or
+maintenance upkeep</p>
+  </li>
+  <li>
+    <p>You don’t “have enough time” to properly operate or maintain your
+services</p>
+  </li>
+  <li>
+    <p>You can’t solve problems or complete remediation items identified by your
+organization’s problem management program</p>
+  </li>
+</ul>
+
+<h2 id="so-i-should-do-nothing-then">So I should do nothing then?</h2>
+
+<p>Well, no. At least <em>some</em> of your slack needs to be spent idle though.
+Remember that the concept of slack is rooted in queueing theory. There’s
+a well-known relationship between utilization and service time. This
+relationship is <em>exponential:</em> The higher utilized your team is, the
+<em>much</em> higher your service time is! You can see it for yourself
+below:</p>
+
+<p><img src="/images/posts/util_service_rel.png" alt="Relationship between utilization and service time" /></p>
+
+<p>We can tell by looking at this graph that our responsiveness falls apart
+at about 70% utilization which means you should keep at least 30% of
+your time <em>unallocated</em>.</p>
+
+<h2 id="unallocated-why-cant-i-just-devote-30-of-my-time-to-upkeep">Unallocated? Why can’t I just devote 30% of my time to upkeep?</h2>
+
+<p>Because upkeep, the maintenance and operations of your service,
+are <em>required</em> activities. Entropy means that, unkept, your service will
+degrade over time. This entropy is accelerated if your service is
+experiencing growth. Your databases will bloat, your latency will
+increase, your 99.99% success rate will fall to 99.9% (or worse), your
+service will be difficult to add features to, and eventually your users
+will go somewhere else.</p>
+
+<p>Instead of thinking about it like this:</p>
+
+<p><img src="/images/posts/slack_wrong_way.png" alt="Wrong way to manage slack" /></p>
+
+<p>Think about it like <em>this</em>:</p>
+
+<p><img src="/images/posts/slack_right_way.png" alt="Right way to manage slack" /></p>
+
+<p>In this model, you explicitly allocate time to upkeep <em>and</em> maintain a
+slack pool.</p>
+
+<h2 id="how-much-time-should-i-spend-on-upkeep-versus-product-and-feature-work">How much time should I spend on upkeep versus product and feature work?</h2>
+
+<p>I don’t have a good guideline for you, sorry. You’ll need to determine
+this based on your organization’s or team’s goals and any SLAs you may
+have.</p>
+
+<p>For example, if you’re operating a service with a service-level
+objective of meeting a 99.99% success rate (0.01% error rate) then you
+need to allocate more time to upkeep than a service targetting a 99.9%
+success rate, generally speaking.</p>
+
+<p>Note that this will change and vary over time. If you’re already deep in
+technical debt, your upkeep allocation will need to be much higher to
+pay off some of your principal. Once you’ve done that, you’ll probably
+be able to meet your goals with a much lower allocation later on.</p>
+
+<h2 id="call-to-action">Call to action</h2>
+
+<p>I urge everyone to start thinking about slack and upkeep this way. Take a
+close look at your team’s goals and commitments and explicitly allocate time
+for reaching those goals. Doing so will allow your team to properly maintain
+the services which it operates while
+also being very responsive.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1163,107 +1300,6 @@ listening to my story.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/intro-to-ops-metrics-collection/">Intro to Operations: Metrics Collection</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-07T14:51:00-07:00" pubdate data-updated="true">May 7<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p><em>I’m writing a series of blog posts for managers and other people
-without an operations background in order to introduce certain best
-practices regarding Operations. For the rest of the blog posts, please
-visit the <a href="/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
-
-<p>Collecting metrics is another area that many early stage startups seem
-to overlook even though it is probably one of the most important things
-they can do. By metrics collection, I am referring to the gathering and
-storing of various metrics at several different levels. As John Allspaw
-identifies them in <a href="http://www.amazon.com/Web-Operations-Keeping-Data-Time/dp/1449377440">Web Operations: Keeping the Data on Time</a>, they
-are:</p>
-
-<ul>
-  <li><strong>High-level business and application metrics</strong> (e.g. user sign-ups)</li>
-  <li><strong>Feature-specific application-level metrics</strong> (e.g. widgets processed)</li>
-  <li>
-    <p><strong>Systems and service-level metrics</strong> (e.g. server load or database queries per second)</p>
-
-  </li>
-</ul>
-
-<p>You’ll note that there are two levels of “application-level” metrics.
-The higher-level application metrics are mostly those that can be tied
-to business objectives, while the other category of application metrics
-are generally more feature specific.</p>
-
-<p>Benefits incurred by collecting these metrics are plentiful. For one,
-having quick access to these metrics is helpful during troubleshooting
-and incident response. For example, I was once hired under contract to
-look into why a certain company’s API was unreliable for the previous
-few months. At least once per day, this company’s API would time out and
-not respond to client requests. After enabling basic metrics collection
-for the servers and services used by the API, it very quickly became
-obvious that the database servers were reaching their connection limits
-which was preventing the API from retrieving records from the database.
-Not only was this problem identified very quickly, but later on we were
-able to look back at our metrics data to assess how close to our limits
-we were getting.</p>
-
-<p>Another benefit is that you can integrate the metrics into your
-<a href="/blog/intro-to-ops-availability-monitoring-alerting/">Availability monitoring</a> system to be alerted when metrics surpass
-some threshold or change significantly. Not only that, but analyzing
-these metrics will allow you to manage your capacity intelligently and
-build a business case to justify infrastructure expenditures. Finally,
-analyzing these metrics will also give you insight into your
-application, how it’s used, and your business.</p>
-
-<p>How you go about collecting and storing these metrics is up to you. Many
-engineers might be tempted to build their own solution; however, there
-are many open source and third party software packages that you may find
-helpful. Key considerations when choosing which package or packages to
-use are:</p>
-
-<ul>
-  <li>The ability to add new, custom metrics</li>
-  <li>Configurable resolution/storage trade-off</li>
-  <li>Integration with availability monitoring and alerting systems</li>
-  <li>Graphing/visualization</li>
-</ul>
-
-<p>If your startup doesn’t have any metrics then you should start
-collecting them now. The visualization will help you in the short run
-and the historical data will help you in the long run.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1287,6 +1323,10 @@ and the historical data will help you in the long run.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/on-slack-and-upkeep/">On Slack and Upkeep</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/what-i-do-sre/">What I Do as an SRE</a>
       </li>
     
@@ -1300,10 +1340,6 @@ and the historical data will help you in the long run.</p>
     
       <li class="post">
         <a href="/blog/my-def-con-21-experience/">My DEF CON 21 Experience</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
       </li>
     
   </ul>
