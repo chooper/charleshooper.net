@@ -94,7 +94,12 @@ technical debt, your upkeep allocation will need to be much higher to
 pay off some of your principal. Once you've done that, you'll probably
 be able to meet your goals with a much lower allocation later on.
 
-## ????
 
-> summary/conclusion/call to action
+## Call to action
+
+I urge everyone to start thinking about slack and upkeep this way. Take a
+close look at your team's goals and commitments and explicitly allocate time
+for reaching those goals. Doing so will allow your team to properly maintain
+the services which it operates while
+also being very responsive.
 
