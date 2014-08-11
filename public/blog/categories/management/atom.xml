@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Management | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/management/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2014-08-11T12:07:14-07:00</updated>
+  <updated>2014-08-11T12:20:22-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -64,12 +64,12 @@ organization’s problem management program</p>
 
 <p>Well, no. At least <em>some</em> of your slack needs to be spent idle though.
 Remember that the concept of slack is rooted in queueing theory. There’s
-a well-known relationship between utilization and service time. This
+a well-known relationship between utilization and response time. This
 relationship is <em>exponential:</em> The higher utilized your team is, the
-<em>much</em> higher your service time is! You can see it for yourself
+<em>much</em> higher your response time is! You can see it for yourself
 below:</p>
 
-<p><img src="/images/posts/util_service_rel.png" alt="Relationship between utilization and service time" /></p>
+<p><img src="/images/posts/util_response_rel.png" alt="Relationship between utilization and response time" /></p>
 
 <p>We can tell by looking at this graph that our responsiveness falls apart
 at about 70% utilization which means you should keep at least 30% of
