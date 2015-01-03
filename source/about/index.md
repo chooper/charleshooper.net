@@ -35,6 +35,7 @@ own beer.
 
 ## Fun Stuff
 
+* 2013-08-13: Published [elbping][6], a tool for diagnosing faulty ELB nodes
 * 2011-08-23: Mentioned in [How to can Twitter spam][5] on The Daily Dot
 * 2011-08-23: Interviewed for [That new Twitter follower might just be a bot][4] on The Daily Dot
 * 2010-11-01: Acknowledged in the [Google Application Security Hall of Fame][3]
@@ -46,4 +47,5 @@ own beer.
   [3]: http://www.google.com/about/appsecurity/hall-of-fame/reward/
   [4]: http://www.dailydot.com/news/tweeting-spam/
   [5]: http://www.dailydot.com/news/can-twitter-spam/
+  [6]: http://github.com/heroku/elbping
 
