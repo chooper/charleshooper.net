@@ -81,7 +81,7 @@ that are acceptable to you.
 # Troubleshooting ELBs using elbping
 
 Of course, doing this can get pretty tedious so I've built a tool to
-automate this called [elbping](https://github.com/chooper/elbping). It's
+automate this called [elbping](https://github.com/heroku/elbping). It's
 available as a ruby gem, so if you have rubygems then you can install it
 by simply doing:
 
