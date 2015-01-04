@@ -4,7 +4,7 @@
   <title><![CDATA[Category: DevOps | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/devops/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2014-08-11T12:50:55-07:00</updated>
+  <updated>2015-01-03T18:58:33-08:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -98,7 +98,7 @@ that are acceptable to you.</p>
 <h1 id="troubleshooting-elbs-using-elbping">Troubleshooting ELBs using elbping</h1>
 
 <p>Of course, doing this can get pretty tedious so I’ve built a tool to
-automate this called <a href="https://github.com/chooper/elbping">elbping</a>. It’s
+automate this called <a href="https://github.com/heroku/elbping">elbping</a>. It’s
 available as a ruby gem, so if you have rubygems then you can install it
 by simply doing:</p>
 
