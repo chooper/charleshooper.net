@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="IEEE 802.3ad, more commonly known as Link Aggregation, allows you to configure multiple Ethernet ports to act as a single device. This is sometimes &hellip;">
+  <meta name="description" content="I wrote a very simple program to read Minesweeper’s memory and display a grid showing where the bombs are. I used OllyDbg for disassembly and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,189 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/minesweeper-hacking-viewing-process-memory-in-windows/">Minesweeper Hacking &#8211; Viewing Process Memory in Windows</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-04T00:00:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>I wrote a very simple program to read Minesweeper’s memory and display a grid showing where the bombs are. I used OllyDbg for disassembly and reversing and CheatEngine for quickly finding known values in memory. During this process, I found that Minesweeper will sometimes <em>assist you</em> and move bombs away from where you are clicking on. Originally, I thought that Minesweeper was only “spawning” about half of the bombs, but as it turns out I misunderstood the way minefield was represented in memory and all bombs <em>are</em> generated at the <em>beginning</em> of the game and not first click or any later clicks.</p>
+
+<p>My error was in thinking that minefield was stored in a 2-dimensional array (ie: <code>minefield[x][y] = FLAGS</code>) where <em>max(x)</em> (and <em>max(y)</em>) are the size of the grid (ie: 9×9 on Beginner) but as <a href="http://www.reddit.com/user/xumiiz/">xumiiz on Reddit</a> pointed out:</p>
+
+<blockquote>
+  <p>His program is buggy. It’s not reading the grid in correctly – it’s a constant width of 32 bytes, but a window from the top left is taken for the actual size of the playing field. So, first bugfix to his source:</p>
+
+  <p><code> for(DWORD grid_loc = 0; grid_loc &lt; grid_height * grid_width; grid_loc  ) {</code></p>
+
+  <p>should be:</p>
+
+  <p><code> for(DWORD grid_loc = 0; grid_loc &lt; grid_height * 32; grid_loc  = ((grid_loc2)==(grid_width-1)) ? (32-grid_width 1):1) {</code></p>
+
+  <p>And:</p>
+
+  <p><code>if((grid_loc % grid_width) == (grid_width - 1))</code></p>
+
+  <p>should be changed to:</p>
+
+  <p><code> if((grid_loc % 32) == (grid_width - 1))</code></p>
+
+  <p>With these fixes, it reads all the bombs properly.</p>
+</blockquote>
+
+<p>And also <a href="http://www.subversity.net/reversing/hacking-minesweeper#comment-33">this comment from Anonymous</a>:</p>
+
+<blockquote>
+  <p>Sorry but your program is reading the grid incorrectly. Minesweeper uses a grid with a fixed width of 32 bytes and the playing field is taken as a window of that grid from the top left. e.g. beginner mode uses bytes 0 to 8 and skips bytes 9 to 31 per every 32 byte row.* Fixing the program to read based on that patten shows that Minesweeper only moves the mine if it happens to be the first square you click on. Apart from that, all mines are randomly placed at the start of the game. (* Actually it would use bytes 0 to 10, where bytes 0 and 10 are 0×10 which is to indicate the border of the mine field, and bytes 1 to 9 are the actual squares. but that’s not really relevant to the analysis if you’re just &amp;ing with 0×80 to find bombs.)</p>
+</blockquote>
+
+<table>
+  <tbody>
+    <tr>
+      <td>The program is available here: <a href="http://cdn.subversity.net/minehack/minehack.cpp">Minehack Source</a></td>
+      <td><a href="http://cdn.subversity.net/minehack/minehack.zip">Minehack Source &amp; Binary (ZIP)</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>I have released a binary, and the software has been placed under the
+<a href="http://cdn.subversity.net/minehack/license.txt">BSD License</a>. Many thanks to the people and sites who linked me,
+people who posted comments, most definitely the contributors, but most
+importantly: the readers.</em></p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/link-aggregation-on-cisco-catalysts-foundry-switches/">Link Aggregation on Cisco Catalysts &#038; Foundry Switches</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-04T00:00:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>LACP, or <strong>Link Aggregation Control Protocol</strong>, allows you to configure multiple ethernet ports to act as a single device. This is sometimes referred to as <strong>channel bonding</strong> or <strong>trunking</strong>. Link Aggregation provides several benefits: <em>Increased bandwidth</em>, <em>load balancing</em>, and allows you to create <em>redundant ethernet links</em>. If a link in your ethernet channel goes down, the switches, routers, or servers you have configured to use LACP will automatically fail over to the links that are still up and remain connected. With the right hardware and the right firmware, setting this up is very simple. 
+On a Cisco Catalyst switch running IOS, once logged in, you will need to perform the following steps:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">cisco&gt;enable  
+</span><span class="line">Password: *enter password*  
+</span><span class="line">cisco#config term  
+</span><span class="line">cisco(config)#int Gi0/1  
+</span><span class="line">cisco(config-if)#channel-group 1 mode active  
+</span><span class="line">cisco(config-if)#channel-protocol lacp  
+</span><span class="line">cisco(config-if)#int Gi0/2  
+</span><span class="line">cisco(config-if)#channel-group 1 mode active  
+</span><span class="line">cisco(config-if)#channel-protocol lacp  
+</span><span class="line">cisco(config-if)#end  
+</span><span class="line">cisco#write mem</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It also helps to label your ports and to be sure that your bonded ports
+are configured in the right VLAN or set up for <em>VLAN trunking</em>.  If your
+other device is another Cisco Catalyst, then just repeat the steps
+above, connect your newly bonded ports, and disconnect any non-bonded
+ports connecting the two devices.  However, if you are configuring a
+Foundry switch, your configuration is just as easy, but slightly
+different.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">BR-telnet@foundry&gt;enable  
+</span><span class="line">Password: *enter password*  
+</span><span class="line">BR-telnet@foundry#config term  
+</span><span class="line">BR-telnet@foundry(config)#interface ethernet 1  
+</span><span class="line">BR-telnet@foundry(config-if-e1000-1)#link-aggregate active  
+</span><span class="line">BR-telnet@foundry(config-if-e1000-1)#interface ethernet 2  
+</span><span class="line">BR-telnet@foundry(config-if-e1000-2)#link-aggregate active  
+</span><span class="line">BR-telnet@foundry(config-if-e1000-2)#end  
+</span><span class="line">BR-telnet@foundry#write mem</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Provided you don’t have a complicated VLAN set up, you’re all set! One
+thing you should note about the Foundry devices, is that you can only
+<em>start</em> your trunked ports on the first port of each group of 4.
+Explanation: On a 12-port switch, you would only be able to start port
+groups on ports 1, 5, and 9. But this does <em>not</em> mean that you can’t
+bond ports 1 &amp; 2 — but it does mean that you can’t bond ports 3 &amp; 4.</p>
+
+<p><strong>Recommended reading:</strong>
+*   <a href="http://www.cisco.com/en/US/docs/switches/lan/catalyst3550/software/release/12.1_13_ea1/configuration/guide/swethchl.html#wp1033981">Configuring EtherChannels on the Cisco Catalyst 3550</a>
+*   <a href="http://www.foundrynetworks.co.jp/services/documentation/sribcg/Trunking.html">Foundry Switch and Router Installation and Basic Configuration — Dynamic Link Aggregation</a>
+*   <a href="http://en.wikipedia.org/wiki/IEEE_802.3ad">Link aggregation article on Wikipedia</a></p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -912,6 +1095,14 @@ user input? :-)</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/what-am-i-supposed-to-do-with-all-of-this-honey/">What am I supposed to do with all of this honey?!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/give-it-a-rest/">Give it a rest</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/on-slack-and-upkeep/">On Slack and Upkeep</a>
       </li>
     
@@ -921,14 +1112,6 @@ user input? :-)</p>
     
       <li class="post">
         <a href="/blog/troubleshooting-elbs-with-elbping/">Troubleshooting ELBs with elbping</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/my-def-con-21-experience/">My DEF CON 21 Experience</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
       </li>
     
   </ul>

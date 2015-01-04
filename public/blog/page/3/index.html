@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="I wrote a blog post this week on how engineers or “technical people” don’t have to, and shouldn’t, be jerks. My argument was that the stereotype &hellip;">
+  <meta name="description" content="Happy New Years, everyone. I thought I’d ring in the new year with some site stats from 2011. Only 10 posts published. 59,238 pageviews. 24,829 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,141 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/year-end-and-new-year-updates/">2011 Annual Review and New-Year Updates</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-01T00:00:00-08:00" pubdate data-updated="true">Jan 1<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>Happy New Years, everyone.</p>
+
+<p>I thought I’d ring in the new year with some site stats from 2011.</p>
+
+<ul>
+  <li>Only 10 posts published.</li>
+  <li>59,238 pageviews.</li>
+  <li>24,829 visitors (22,634 unique)</li>
+  <li>1.32% bounce rate.</li>
+  <li>Multiple job and business opportunities in direct response to articles I wrote including a new job (more details below).</li>
+</ul>
+
+<p>I really want to write more. My resolution then is to “<strong>write more</strong>.” Using a more quantified approach, <strong>I will spend at least 30 minutes a day writing for at least five days a week</strong>. That doesn’t mean I will publish five articles a week. One of my big issues with writing is the amount of time that goes into each post. I approach my writing very academically and try to back up my ideas with citations; this research takes time. I also, very frequently, solicit feedback from other people before publishing. But I really enjoy writing and I really enjoy receiving feedback on my ideas through this blog so I would like to continue doing it.</p>
+
+<p>Other resolutions of mine include physical health and professional development (I’d really like to <em>give a talk at a conference</em> this year).</p>
+
+<p>I also have some really exciting news. Starting on Monday I will officially begin my employment with <a href="https://www.dotcloud.com/">dotCloud</a> on their <em>Site Reliability Engineering</em> team! This is exciting for two reasons.</p>
+
+<p>First, working at dotCloud is going to be an awesome experience. Everyone I’ve talked to is incredibly smart. Our CEO, <a href="https://www.dotcloud.com/">Solomon Hykes</a>, was also just named on Forbes’ <a href="http://www.forbes.com/special-report/2011/30-under30-12/30-under-30-12_land.html">“30 Under 30” list</a>. Third, and probably most importantly, is that I’m going to absolutely love the work. I love solving problems, particularly in devops, and I love writing tools that make people’s lives easier (which is precisely what dotCloud does). If you’re looking for a Platform as a Service provider, try out dotCloud and let us know how you like it.</p>
+
+<p>The second reason this is exciting because, in the process of starting at a new company, I’ve managed to expand my personal consulting practice. I don’t think I’ve said so before, but I provide <em>systems engineering services</em> to <a href="http://www.loud3r.com/">Loud3r Inc</a>. I’m their only “web ops” guy and we’ve managed to completely turn things around in the past 6 months; we’re providing our services better (more reliable, more frequent updates), faster, and cheaper than before. Rather than cancel the contract entirely, the CEO of Loud3r and I felt it was a good idea for me to subcontract a large portion of my workload to a trusted colleague of mine.</p>
+
+<p>How about you? Is there anything exciting you would like to share about the progress you made during 2011 or large changes you’re making in the start of 2012? Tell me all about it!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/concurrent-engineering-the-foundation-of-devops/">Concurrent Engineering: The Foundation of DevOps</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-07T00:00:00-08:00" pubdate data-updated="true">Dec 7<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<blockquote>
+  <p>DevOps is all about trying to avoid that epic failure and working smarter and more efficiently at the same time. It is a framework of ideas and principles designed to foster cooperation, learning and coordination between development and operational groups. In a DevOps environment, developers and sysadmins build relationships, processes, and tools that allow them to better interact and ultimately better service the customer (<a href="http://www.kartar.net/2010/02/what-devops-means-to-me/" title="What DevOps Means to Me">James Turnbull</a>).</p>
+</blockquote>
+
+<p>At the time of writing, if you were to search for “devops” you would find eight results attempting to explain what devops is, one result for a conference, and one rather satirical article (although not necessarily incorrect) where the author answers the question of “how do you implement devops” with “<a href="http://teddziuba.com/2011/03/devops-scam.html" title="DevOps is a Poorly Executed Scam">nobody seems to know</a>” (Ted Dziuba).</p>
+
+<p>The big problem with the DevOps “movement” is that we essentially have a bunch of operations and development people promoting it and trying to implement it within their organizations. Meanwhile, those with management and business responsibilities, even if explained the “what,” don’t understand the “how.” Just because you use puppet does not necessarily mean your organization is practicing DevOps.</p>
+
+<p>This shortcoming is the result of us devops proponents either falsely claiming these techniques and methodologies are new or not knowing any better. If we had something more relatable for the business people (and, by principle, <em>we</em> should be business-oriented, too) then I think DevOps would have more of a chance.</p>
+
+<p>Well, get your product and management together because the truth is that DevOps is actually a form of Concurrent Engineering.</p>
+
+<blockquote>
+  <p>Concurrent Engineering (CE) is a systematic approach to integrated product development that emphasizes the response to customer expectations. It embodies team values of co-operation, trust and sharing in such a manner that decision making is by consensus, involving all perspectives in parallel, from the beginning of the product life-cycle (<a href="http://www.esa.int/esaMI/CDF/SEM1OF1P4HD_0.html" title="What is concurrent engineering?">ESA – Concurrent Engineering Facility</a>).</p>
+</blockquote>
+
+<p>Concurrent Engineering encompasses several major principles which just so happen to fit the definition (however formal or informal) of devops.</p>
+
+<p>I’ll list them from the <a href="http://best.berkeley.edu/~pps/pps/concurrent.html#basic" title="Basic Principles of Concurrent Engineering">Synthesis Coalition</a> here:</p>
+
+<ul>
+  <li>Get a strong commitment from senior management.</li>
+  <li>Establish unified project goals and a clear business mission.</li>
+  <li>Develop a detailed plan early in the process.</li>
+  <li>Continually review your progress and revise your plan.</li>
+  <li>Develop project leaders that have an overall vision of the project and goals.</li>
+  <li>Analyze your market and know your customers.</li>
+  <li>Suppress individualism and foster a team concept.</li>
+  <li>Establish and cultivate cross-functional integration and collaboration.</li>
+  <li>Break project into its natural phases.</li>
+  <li>Develop metrics.</li>
+  <li>Set milestones throughout the development process.</li>
+  <li>Collectively work on all parts of project.</li>
+  <li>Reduce costs and time to market.</li>
+  <li>Complete tasks in parallel.</li>
+</ul>
+
+<p>By approaching the issues of devops as  concurrent engineering and implementing it as such, you open the movement to a well-researched, well-documented, and well-accepted product design philosophy. By shedding this light on the devops methodologies, this enables those of us pushing the devops movement to finally put the movement into a more business-oriented perspective.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -785,113 +920,6 @@ RDS is not right for you.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/nesit-hackerspace-break-in/">NESIT Hackerspace Break-In</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-23T00:00:00-07:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p><a href="http://www.nesit.net/">NESIT, a Connecticut hackerspace</a>, was burglarized Sunday morning between 3:00am and 4:30am and is offering a $500 reward for information leading to the arrest of the burglar. They have released some of their security footage from the burglary. They ask that anyone who recognizes the burglar or has information call them at 1-203-51-HACKS (1-203-514-2257).</p>
-
-<p>Within the first 10 seconds, you see what appears to be a camera in the hallway get covered up by something from behind. Afterwards, you can see someone calmly walking around the inside of the hackerspace for the next hour and a half with a headlamp on. The headlamp turns out to be pretty beneficial for NESIT, because as a Facebook commentator pointed out, you can see that the burglar is roughly as tall as one of the shelves in the space.</p>
-
-<p>What I found most interesting, however, is that around 8 minutes and 30 seconds into the footage you get a pretty nice shot of… cleavage? No, I’m not being a jokester. It *appeared *to me that the burglar was wearing a low-cut shirt with some type of line up the middle. It looked like cleavage to me and the second opinion of my girlfriend, but NESIT believes that this was actually a shirt that was wrapped around the burglar’s head. <strong>UPDATE</strong>: After a second, closer look at the surveillance footage, I agree with NESIT.</p>
-
-<p>Despite the security footage being black and white and fairly low in quality, it tells us quite a bit.</p>
-
-<ul>
-  <li>The burglar was familiar enough with the location to know about the hallway surveillance camera.</li>
-  <li>The burglar was <em>not</em> familiar enough to know about the other cameras inside the hackerspace.</li>
-  <li>The burglar was comfortable enough to spend **an hour and a half **walking around and looking through boxes and drawers.</li>
-  <li>The burglar’s height is roughly as tall as one of the shelves in the hackerspace. <strong>UPDATE</strong>: I’m told that the height is between 6’0″ and 6’2″.</li>
-  <li>The burglar has enough strength to pry off the lock on the door and part of the concrete wall.</li>
-</ul>
-
-<p>I sure hope they catch the bad guy.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/automating-webcam-snapshots-and-uploads-to-flickr/">Automating Webcam Snapshots and Uploads to Flickr</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-26T00:00:00-07:00" pubdate data-updated="true">Mar 26<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>With gardening season right around the corner, one of my desires was to set something up that would allow me to take automated, regular snapshots of some of my plants and upload them to flickr. After a few cumulative hours I finally cobbled together the solution.</p>
-
-<h2 id="taking-the-snapshots">Taking the Snapshots</h2>
-
-<p>The first thing I needed to do was to take snapshots from an installed USB webcam and save them to a directory. This needed to be able to run from a cron script so obviously it needed to work without a GUI and without user-interaction. I read in a <a href="http://www.tldp.org/HOWTO/html_single/Webcam-HOWTO/#COMMAND">Webcam Howto</a> that I could do this using <strong>streamer</strong> so I installed it and wrote a short shell script that would iterate through the video devices installed on my PC and run the snapshot command. You can <a href="https://bitbucket.org/hoop/snapshot/src/98aa5d9a2038/snapshot">view the source of this script here</a>.</p>
-
-<h2 id="uploading-the-photos">Uploading the Photos</h2>
-
-<p>Next I wanted to automatically upload the files to Flickr. At first, I tried using a script I found called uploadr.py which worked OK, but I also wanted to add my photos to a specific set which this script didn’t do. I probably could have extended its functionality, but this script didn’t use or implement the full Flickr API which made this task seem unnecessary.</p>
-
-<p>Instead, I downloaded the <a href="http://stuvel.eu/flickrapi">Python Flickr API from Stuvel</a> and in less than 90 lines I had working code to upload a directory of images to Flickr and add them to a given set. You can view the source to my <a href="https://bitbucket.org/hoop/snapshot/src/98aa5d9a2038/simpleuploadr.py">flickr uploader script</a> here, which I’m calling <a href="https://bitbucket.org/hoop/snapshot">simpleuploadr.py</a> for now.</p>
-
-<h2 id="results">Results</h2>
-
-<p><a href="http://www.flickr.com/photos/hoop2w1/sets/72157626354700156/with/5620672632/">Here are my pretty pictures</a> :) My apologies for the quality, I’m using a really cheap webcam.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -917,6 +945,14 @@ RDS is not right for you.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/what-am-i-supposed-to-do-with-all-of-this-honey/">What am I supposed to do with all of this honey?!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/give-it-a-rest/">Give it a rest</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/on-slack-and-upkeep/">On Slack and Upkeep</a>
       </li>
     
@@ -926,14 +962,6 @@ RDS is not right for you.</p>
     
       <li class="post">
         <a href="/blog/troubleshooting-elbs-with-elbping/">Troubleshooting ELBs with elbping</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/my-def-con-21-experience/">My DEF CON 21 Experience</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
       </li>
     
   </ul>

@@ -9,9 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="I’m writing a series of blog posts for managers and other people
-without an operations background in order to introduce certain best
-practices &hellip;">
+  <meta name="description" content="tl;dr Moved to San Francisco Took time off to decompress Joined team at Heroku Loving it --verbose It’s been a while since I’ve posted, but I wanted &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +83,221 @@ practices &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/catching-up/">Catching Up</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-22T04:45:00-07:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<h2 id="tldr">tl;dr</h2>
+
+<ul>
+  <li>Moved to San Francisco</li>
+  <li>Took time off to decompress</li>
+  <li>Joined team at Heroku</li>
+  <li>Loving it</li>
+</ul>
+
+<h2 id="code--verbosecode"><code>--verbose</code></h2>
+
+<p>It’s been a while since I’ve posted, but I wanted to let you know that
+I’m still alive! Things were very hectic due to a few life changes but I
+much of the dust has settled now and I’m excited to talk about what
+those changes are.</p>
+
+<p>But first, some history.</p>
+
+<p>In 2011, I was a junior at university studying Business
+Information Systems. I had some prior systems engineering and operations
+experience and was paying my tuition by performing contract work for a
+company that doesn’t exist today. While at this company, I worked very
+closely with a developer and the two of us were responsible for running
+this company’s infrastructure. Neither of us had the time or the
+willpower to be bothered by operational tasks, so we automated
+everything. Even though our environment was much smaller (somewhere
+between 30-50 instances in EC2) than many others, we had alot of things
+that many companies are lacking:</p>
+
+<ul>
+  <li>New services were in configuration management</li>
+  <li>New deployments were almost entirely automated</li>
+  <li>We had good visibility with a variety of metrics being reported to Ganglia and Graphite</li>
+  <li>We even had a reasonable nagios configuration</li>
+</ul>
+
+<p>Around this time, the term <strong>devops</strong> was being tossed around on twitter
+on a more frequent basis. I can remember actually having a Google Alert
+for the term to email me when there were new blog posts about it and it
+<em>not</em> being spammy. I have a love/hate relationship with the term, and
+in December 2011 I wrote my blog post <a href="/blog/concurrent-engineering-the-foundation-of-devops/">Concurrent Engineering: The
+Foundation of DevOps</a> in which I argued that the ideas behind devops
+weren’t new, but were maybe old ideas from business that were recently
+independtly re-discovered.</p>
+
+<p>The blog post wasn’t very popular, but Solomon Hykes (CEO of dotCloud)
+managed to see it and, thinking we had very similar ideas about devops,
+invited me to interview for a position on their newly formed Site
+Reliability Engineering team. I got the job at dotCloud, and up until
+April of this year that’s where I stayed.</p>
+
+<p>In mid-April, I resigned from my position at dotCloud and moved to San
+Francisco. There were a number of reasons for the resignation but chief
+among them was that I needed some time to decompress and all of my paid
+time-off had been used up following my youngest brother’s car accident.
+This ended up being an awesome decision because it gave me my
+much-needed decompression time and I was able to explore my new city.</p>
+
+<p>I took about four weeks off before I put any real effort towards a job
+search. The move to San Francisco and the job search alone could fill
+two entirely-too-verbose blog posts but the end result was that I moved
+here safely and joined the team at <a href="http://www.heroku.com/">Heroku</a>!</p>
+
+<p>Fast forward to today and I’ve just finished my third week at Heroku.
+It’s an amazing experience, a great team, and an awesome culture that is
+encapsulated in the following quote:</p>
+
+<blockquote>
+  <p>I like our culture. We welcome failure into our house and then kick
+its teeth in.</p>
+</blockquote>
+
+<p>I’ll write more about this another time. For now, thank you for
+listening to my story.</p>
+
+<p>— Charles</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/intro-to-ops-metrics-collection/">Intro to Operations: Metrics Collection</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-07T14:51:00-07:00" pubdate data-updated="true">May 7<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p><em>I’m writing a series of blog posts for managers and other people
+without an operations background in order to introduce certain best
+practices regarding Operations. For the rest of the blog posts, please
+visit the <a href="/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
+
+<p>Collecting metrics is another area that many early stage startups seem
+to overlook even though it is probably one of the most important things
+they can do. By metrics collection, I am referring to the gathering and
+storing of various metrics at several different levels. As John Allspaw
+identifies them in <a href="http://www.amazon.com/Web-Operations-Keeping-Data-Time/dp/1449377440">Web Operations: Keeping the Data on Time</a>, they
+are:</p>
+
+<ul>
+  <li><strong>High-level business and application metrics</strong> (e.g. user sign-ups)</li>
+  <li><strong>Feature-specific application-level metrics</strong> (e.g. widgets processed)</li>
+  <li>
+    <p><strong>Systems and service-level metrics</strong> (e.g. server load or database queries per second)</p>
+
+  </li>
+</ul>
+
+<p>You’ll note that there are two levels of “application-level” metrics.
+The higher-level application metrics are mostly those that can be tied
+to business objectives, while the other category of application metrics
+are generally more feature specific.</p>
+
+<p>Benefits incurred by collecting these metrics are plentiful. For one,
+having quick access to these metrics is helpful during troubleshooting
+and incident response. For example, I was once hired under contract to
+look into why a certain company’s API was unreliable for the previous
+few months. At least once per day, this company’s API would time out and
+not respond to client requests. After enabling basic metrics collection
+for the servers and services used by the API, it very quickly became
+obvious that the database servers were reaching their connection limits
+which was preventing the API from retrieving records from the database.
+Not only was this problem identified very quickly, but later on we were
+able to look back at our metrics data to assess how close to our limits
+we were getting.</p>
+
+<p>Another benefit is that you can integrate the metrics into your
+<a href="/blog/intro-to-ops-availability-monitoring-alerting/">Availability monitoring</a> system to be alerted when metrics surpass
+some threshold or change significantly. Not only that, but analyzing
+these metrics will allow you to manage your capacity intelligently and
+build a business case to justify infrastructure expenditures. Finally,
+analyzing these metrics will also give you insight into your
+application, how it’s used, and your business.</p>
+
+<p>How you go about collecting and storing these metrics is up to you. Many
+engineers might be tempted to build their own solution; however, there
+are many open source and third party software packages that you may find
+helpful. Key considerations when choosing which package or packages to
+use are:</p>
+
+<ul>
+  <li>The ability to add new, custom metrics</li>
+  <li>Configurable resolution/storage trade-off</li>
+  <li>Integration with availability monitoring and alerting systems</li>
+  <li>Graphing/visualization</li>
+</ul>
+
+<p>If your startup doesn’t have any metrics then you should start
+collecting them now. The visualization will help you in the short run
+and the historical data will help you in the long run.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -833,141 +1046,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/year-end-and-new-year-updates/">2011 Annual Review and New-Year Updates</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-01T00:00:00-08:00" pubdate data-updated="true">Jan 1<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>Happy New Years, everyone.</p>
-
-<p>I thought I’d ring in the new year with some site stats from 2011.</p>
-
-<ul>
-  <li>Only 10 posts published.</li>
-  <li>59,238 pageviews.</li>
-  <li>24,829 visitors (22,634 unique)</li>
-  <li>1.32% bounce rate.</li>
-  <li>Multiple job and business opportunities in direct response to articles I wrote including a new job (more details below).</li>
-</ul>
-
-<p>I really want to write more. My resolution then is to “<strong>write more</strong>.” Using a more quantified approach, <strong>I will spend at least 30 minutes a day writing for at least five days a week</strong>. That doesn’t mean I will publish five articles a week. One of my big issues with writing is the amount of time that goes into each post. I approach my writing very academically and try to back up my ideas with citations; this research takes time. I also, very frequently, solicit feedback from other people before publishing. But I really enjoy writing and I really enjoy receiving feedback on my ideas through this blog so I would like to continue doing it.</p>
-
-<p>Other resolutions of mine include physical health and professional development (I’d really like to <em>give a talk at a conference</em> this year).</p>
-
-<p>I also have some really exciting news. Starting on Monday I will officially begin my employment with <a href="https://www.dotcloud.com/">dotCloud</a> on their <em>Site Reliability Engineering</em> team! This is exciting for two reasons.</p>
-
-<p>First, working at dotCloud is going to be an awesome experience. Everyone I’ve talked to is incredibly smart. Our CEO, <a href="https://www.dotcloud.com/">Solomon Hykes</a>, was also just named on Forbes’ <a href="http://www.forbes.com/special-report/2011/30-under30-12/30-under-30-12_land.html">“30 Under 30” list</a>. Third, and probably most importantly, is that I’m going to absolutely love the work. I love solving problems, particularly in devops, and I love writing tools that make people’s lives easier (which is precisely what dotCloud does). If you’re looking for a Platform as a Service provider, try out dotCloud and let us know how you like it.</p>
-
-<p>The second reason this is exciting because, in the process of starting at a new company, I’ve managed to expand my personal consulting practice. I don’t think I’ve said so before, but I provide <em>systems engineering services</em> to <a href="http://www.loud3r.com/">Loud3r Inc</a>. I’m their only “web ops” guy and we’ve managed to completely turn things around in the past 6 months; we’re providing our services better (more reliable, more frequent updates), faster, and cheaper than before. Rather than cancel the contract entirely, the CEO of Loud3r and I felt it was a good idea for me to subcontract a large portion of my workload to a trusted colleague of mine.</p>
-
-<p>How about you? Is there anything exciting you would like to share about the progress you made during 2011 or large changes you’re making in the start of 2012? Tell me all about it!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/concurrent-engineering-the-foundation-of-devops/">Concurrent Engineering: The Foundation of DevOps</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-07T00:00:00-08:00" pubdate data-updated="true">Dec 7<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<blockquote>
-  <p>DevOps is all about trying to avoid that epic failure and working smarter and more efficiently at the same time. It is a framework of ideas and principles designed to foster cooperation, learning and coordination between development and operational groups. In a DevOps environment, developers and sysadmins build relationships, processes, and tools that allow them to better interact and ultimately better service the customer (<a href="http://www.kartar.net/2010/02/what-devops-means-to-me/" title="What DevOps Means to Me">James Turnbull</a>).</p>
-</blockquote>
-
-<p>At the time of writing, if you were to search for “devops” you would find eight results attempting to explain what devops is, one result for a conference, and one rather satirical article (although not necessarily incorrect) where the author answers the question of “how do you implement devops” with “<a href="http://teddziuba.com/2011/03/devops-scam.html" title="DevOps is a Poorly Executed Scam">nobody seems to know</a>” (Ted Dziuba).</p>
-
-<p>The big problem with the DevOps “movement” is that we essentially have a bunch of operations and development people promoting it and trying to implement it within their organizations. Meanwhile, those with management and business responsibilities, even if explained the “what,” don’t understand the “how.” Just because you use puppet does not necessarily mean your organization is practicing DevOps.</p>
-
-<p>This shortcoming is the result of us devops proponents either falsely claiming these techniques and methodologies are new or not knowing any better. If we had something more relatable for the business people (and, by principle, <em>we</em> should be business-oriented, too) then I think DevOps would have more of a chance.</p>
-
-<p>Well, get your product and management together because the truth is that DevOps is actually a form of Concurrent Engineering.</p>
-
-<blockquote>
-  <p>Concurrent Engineering (CE) is a systematic approach to integrated product development that emphasizes the response to customer expectations. It embodies team values of co-operation, trust and sharing in such a manner that decision making is by consensus, involving all perspectives in parallel, from the beginning of the product life-cycle (<a href="http://www.esa.int/esaMI/CDF/SEM1OF1P4HD_0.html" title="What is concurrent engineering?">ESA – Concurrent Engineering Facility</a>).</p>
-</blockquote>
-
-<p>Concurrent Engineering encompasses several major principles which just so happen to fit the definition (however formal or informal) of devops.</p>
-
-<p>I’ll list them from the <a href="http://best.berkeley.edu/~pps/pps/concurrent.html#basic" title="Basic Principles of Concurrent Engineering">Synthesis Coalition</a> here:</p>
-
-<ul>
-  <li>Get a strong commitment from senior management.</li>
-  <li>Establish unified project goals and a clear business mission.</li>
-  <li>Develop a detailed plan early in the process.</li>
-  <li>Continually review your progress and revise your plan.</li>
-  <li>Develop project leaders that have an overall vision of the project and goals.</li>
-  <li>Analyze your market and know your customers.</li>
-  <li>Suppress individualism and foster a team concept.</li>
-  <li>Establish and cultivate cross-functional integration and collaboration.</li>
-  <li>Break project into its natural phases.</li>
-  <li>Develop metrics.</li>
-  <li>Set milestones throughout the development process.</li>
-  <li>Collectively work on all parts of project.</li>
-  <li>Reduce costs and time to market.</li>
-  <li>Complete tasks in parallel.</li>
-</ul>
-
-<p>By approaching the issues of devops as  concurrent engineering and implementing it as such, you open the movement to a well-researched, well-documented, and well-accepted product design philosophy. By shedding this light on the devops methodologies, this enables those of us pushing the devops movement to finally put the movement into a more business-oriented perspective.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -993,6 +1071,14 @@ For one of my clients and side projects, we’ve been working hard to build in a
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/what-am-i-supposed-to-do-with-all-of-this-honey/">What am I supposed to do with all of this honey?!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/give-it-a-rest/">Give it a rest</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/on-slack-and-upkeep/">On Slack and Upkeep</a>
       </li>
     
@@ -1002,14 +1088,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
     
       <li class="post">
         <a href="/blog/troubleshooting-elbs-with-elbping/">Troubleshooting ELBs with elbping</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/my-def-con-21-experience/">My DEF CON 21 Experience</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
       </li>
     
   </ul>

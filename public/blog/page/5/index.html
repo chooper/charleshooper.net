@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="© uair01; some rights reserved. As a result of my now defunct project, BookSuggest, I’ve built a fairly large corpus that has been seeded entirely &hellip;">
+  <meta name="description" content="When doing homework for my business-related classes, I often find that knowing a programming language is very advantageous. Certainly there are &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,160 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/going-into-business-learn-a-programming-language/">Going Into Business? Learn a Programming Language</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-15T00:00:00-08:00" pubdate data-updated="true">Nov 15<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>When doing homework for my business-related classes, I often find that knowing a programming language is very advantageous. Certainly there are times when it makes sense to use a calculator, but repeatedly entering the same equation over and over is tedious and inefficient. There are also times when it’s a good idea to make a spreadsheet, but even this can be overkill.</p>
+
+<p>In cases where I’m repeating the same tasks or expressions frequently and a spreadsheet seems like overkill, I’ll open a Python shell and define the expression I need as a function. More often than not, these functions are one liners that I probably won’t use again. At least, not until I get a “Real Job (TM)” where I’ll need to use said expressions more frequently.</p>
+
+<p>As an example, I recently found myself calculating the gains and/or losses between two given foreign exchange rates. The example below calculates the gain or loss between two period’s exchange rates for a given currency.</p>
+
+<pre><code>def xchg_diff(qty,old_rate,new_rate):
+    """
+    qty = Amount of 'domestic currency'
+    old_rate = Exchange rate of foreign currency in previous period
+    new_rate = Exchange rate of foreign currency in current period
+    """
+    return round(qty * (new_rate - old_rate))
+</code></pre>
+
+<p>In this example, the hypothetical company had 850,000 pesos that it held over multiple accounting periods. I was given a table of dates that corresponded with these accounting periods and the exchange rate of pesos to U.S. Dollars (USD $) that looked similar to the one below.</p>
+
+<p>Date</p>
+
+<p>Exchange Rate</p>
+
+<p>Mar 31, 2009</p>
+
+<p>0.0698</p>
+
+<p>Jun 30, 2009</p>
+
+<p>0.0756</p>
+
+<p>Sep 30, 2009</p>
+
+<p>0.0737</p>
+
+<p>Dec 31, 2009</p>
+
+<p>0.0777</p>
+
+<p>The equation is simple enough to type into a calculator, but I find most calculators to have a clumsy interface when it comes to editing the numbers in previous expressions. In this case, I simply opened up a Python shell and, after defining the above function, I typed:</p>
+
+<pre><code>&gt;&gt;&gt; xchg_diff(850000,0.0698,0.0756)
+4930.0
+&gt;&gt;&gt; xchg_diff(850000,0.0756,0.0737)
+-1615.0
+&gt;&gt;&gt; xchg_diff(850000,0.0737,0.0777)
+3400.0
+</code></pre>
+
+<p>As we can see from the transcript, I was quickly able to find the following results:</p>
+
+<p>Date</p>
+
+<p>Gain / (loss)</p>
+
+<p>Jun 30, 2009</p>
+
+<p>$4930</p>
+
+<p>Sep 30, 2009</p>
+
+<p>$(1615)</p>
+
+<p>Dec 31, 2009</p>
+
+<p>$3400</p>
+
+<p>Many people have asked me if I thought that my experience in computers and programming would go to waste once I entered the world of business and, in particular, finance. My response has been, and will continue to be, “No.” Knowing how to automate routine tasks, being able to write data models, and having a firm grasp on algorithms will only help me to be more effective in my future career.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/cost-behavior-analysis-calculator/">Cost Behavior Analysis Calculator</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-08T00:00:00-08:00" pubdate data-updated="true">Nov 8<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>One of the projects I’ve been working on lately is my <a href="http://apps.charleshooper.net/cost-behavior-analysis/">Cost Behavior Analysis Calculator</a>.</p>
+
+<p><strong>Cost behavior analysis</strong> is the process of dividing a mixed cost into its <em>variable and fixed components</em>. Doing this can be a long and tedious process. This process, when done manually, involves:</p>
+
+<ol>
+  <li><strong>Determining which metric or activity <em>drives costs</em>.</strong> A common example in manufacturing is “machine hours.” Using this technique, you could determine how much each “machine hour” affects your power bill.</li>
+  <li><strong>Making a scatter graph of your data.</strong> When you’re plotting your data, what you’re looking for is that a <em>linear relationship</em> exists between your <em>cost driver</em> and your <em>costs</em>. If a linear relationship doesn’t exist, then it isn’t a cost driver – pick a new metric and try again.</li>
+  <li><strong>Fitting a line to the scatter graph.</strong> When working on paper, it’s easier to use the <a href="http://www.suite101.com/content/job-costing-using-the-high-low-method-a207711">high-low method</a>. However, this method is considered inaccurate as it only uses two points from your entire data set. Not to mention, the highest and lowest points of these data sets are usually considered “atypical.” The <a href="http://apps.charleshooper.net/cost-behavior-analysis/">Cost Behavior Analyzer</a> uses <a href="http://www.finance-lib.com/financial-term-least-squares-regression-analysis.html">least-squares regression</a> to fit a more accurate line.</li>
+  <li><strong>Measure your slope and y-intercept.</strong> The <strong>slope</strong> of the line is your <em>variable cost</em> and the <strong>y-intercept</strong> is your <em>fixed cost</em>.</li>
+</ol>
+
+<p>I developed the <a href="http://apps.charleshooper.net/cost-behavior-analysis/">Cost Behavior Analyzer</a> because I found that doing this work manually was tedious and repetitive. I’m making it available here so others can benefit from its use. Managerial accountants, financiers, business owners, and entrepreneurs alike should all know what’s driving their costs and how to accurately predict them.</p>
+
+<p><a href="http://apps.charleshooper.net/cost-behavior-analysis/">Try the Cost Behavior Analyzer out now!</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -728,119 +882,6 @@ To conclude, don’t under-value the social sites. If you want some organic link
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/new-urldomain-for-my-blog-formerly-subversity-net/">New URL/Domain for My Blog (Formerly subversity.net)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-13T00:00:00-07:00" pubdate data-updated="true">Aug 13<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>As I stand before you sipping my celebratory <a href="http://beeradvocate.com/beer/profile/220/56613">Wilco Tango Foxtrot</a>, I would like to present to you <a href="http://blog.charleshooper.net/">the new home for my blog</a>. The reason for this migration is that I am downsizing the amount of under-utilized domains I renew each year. Please update your bookmarks accordingly :-)</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/how-i-made-money-spamming-twitter-with-contextual-book-suggestions/">How I Made Money Spamming Twitter With Contextual Book Suggestions</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-13T00:00:00-07:00" pubdate data-updated="true">Aug 13<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>Two winters ago I left a position as a system administrator that was paying pretty well and moved cross-country to a region with less jobs than where I moved from. Three months later, I was still unemployed, broke, and bored. I was talking to my good friend <a href="http://japherwocky.posterous.com/">Japhy</a> on IRC one day and he was explaining to me how the <a href="http://en.wikipedia.org/wiki/Tf–idf">tf-idf algorithm</a> works. For reasons involving boredom more than any other reason, I dreamed up an idea: <strong>I would write software that would take a given document and generate book suggestions based on its content.</strong> </p>
-
-<p>I think that most programmers would agree with me that we put in longer hours on code when we’re not working for anybody. We don’t stop learning, either. To us, <em>unemployment is a brief sprint of academia</em> spent in our home office, the local coffee shop, or our parent’s house. 
-My imagination dreamed up this fairly straightforward process:</p>
-
-<ol>
-  <li>Take a given document and calculate tf-idf scores on all terms</li>
-  <li>Select X number of the highest scoring terms</li>
-  <li>Pass these high-scoring terms to an Amazon ItemSearch query</li>
-  <li>Receive a list of recommended books (with URLs) from Amazon</li>
-</ol>
-
-<p>I had already written multiple Twitter bots by this time so I decided to just use some of my existing code to poll Twitter’s search API. Essentially, the “documents” I mentioned above were actually tweets containing the terms “book” or “books.” Two and a half days later I had a working prototype that could generate a book recommendation from a given tweet. It was at this time that I added steps 5 and 6:</p>
-
-<p>Tag URLs returned from Amazon’s ItemSearch with an affiliate ID; and<br />
-Reply to the tweeting user with their new book suggestion</p>
-
-<p>Four months later and <strong>I had generated over $7,000 in sales for Amazon with over $400 commission for myself</strong>. Obviously, the commission I was making wasn’t livable but it was a nice addition to my then-depleting savings. Had I decided to scale out my operation, I could have made much more. My benchmark is at four months because that’s how long I went before being <em>suspended</em>. My conversion rate? <strong>0.13%</strong>! While seemingly low, this number is very high when compared to email spam. However, it’s important to note that email spam is subject to various filtering technologies. 
-<img src="http://cdn.subversity.net/blog_imgs/twitter-spam-earnings.png" alt="twitter-spam-earnings.png" title="twitter-spam-earnings.png" /> 
-A fair amount of the time I share this story, people are more impressed with the fact that I went 4 months before getting suspended. The truth is, I had a lot of throttling built into my spam bot. The factors I think are important to point out are:</p>
-
-<ol>
-  <li>Twitter’s Terms of Service at that time basically only outlawed “unsolicited replies,” nothing that really attacked targeted spam.</li>
-  <li>Twitter’s anti-spam stance did exist in writing (only in the help site,) but I do not think they were actively enforcing their policies.</li>
-  <li>My recommendations were contextual and, unless you looked at my bot’s timeline and tweet count, looked legitimate (most of the time.) In other words, I was tweeting <em>book suggestions</em> to people who were already talking about <em>books</em>.</li>
-  <li>I recorded the usernames of everyone I sent recommendations to and would only @mention them once.</li>
-  <li>I built in a “chattiness” rate limiting function. This was to distribute my spam throughout a whole hour (due to Twitter’s rate limiting) more than anything.</li>
-</ol>
-
-<p><img src="http://cdn.subversity.net/blog_imgs/twitter-suspended.png" alt="twitter-suspended.png" title="twitter-suspended.png" /> </p>
-
-<p>While it only lasted a short while, I had alot of fun and made a little bit of money spamming Twitter. </p>
-
-<p>The second re-incarnation of this project turned into <a href="http://www.charleshooper.net/twitter/">BookSuggest, a website for recommending books based on a person’s Twitter feed</a>. I haven’t put alot of effort into promoting it, but my conversion rate is much lower now that I’m not pushing the links in anyone’s face. </p>
-
-<p>Try it out and comment here – what did BookSuggest tell YOU to read?</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/6/">&larr; Older</a>
@@ -866,6 +907,14 @@ A fair amount of the time I share this story, people are more impressed with the
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/what-am-i-supposed-to-do-with-all-of-this-honey/">What am I supposed to do with all of this honey?!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/give-it-a-rest/">Give it a rest</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/on-slack-and-upkeep/">On Slack and Upkeep</a>
       </li>
     
@@ -875,14 +924,6 @@ A fair amount of the time I share this story, people are more impressed with the
     
       <li class="post">
         <a href="/blog/troubleshooting-elbs-with-elbping/">Troubleshooting ELBs with elbping</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/my-def-con-21-experience/">My DEF CON 21 Experience</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="Yesterday, I wrote a blog post detailing how I crawled an entire MMORPG’s player database via their search page. Since then, I have been analyzing &hellip;">
+  <meta name="description" content="NESIT, a Connecticut hackerspace, was burglarized Sunday morning between 3:00am and 4:30am and is offering a $500 reward for information leading to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,113 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/nesit-hackerspace-break-in/">NESIT Hackerspace Break-In</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-23T00:00:00-07:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p><a href="http://www.nesit.net/">NESIT, a Connecticut hackerspace</a>, was burglarized Sunday morning between 3:00am and 4:30am and is offering a $500 reward for information leading to the arrest of the burglar. They have released some of their security footage from the burglary. They ask that anyone who recognizes the burglar or has information call them at 1-203-51-HACKS (1-203-514-2257).</p>
+
+<p>Within the first 10 seconds, you see what appears to be a camera in the hallway get covered up by something from behind. Afterwards, you can see someone calmly walking around the inside of the hackerspace for the next hour and a half with a headlamp on. The headlamp turns out to be pretty beneficial for NESIT, because as a Facebook commentator pointed out, you can see that the burglar is roughly as tall as one of the shelves in the space.</p>
+
+<p>What I found most interesting, however, is that around 8 minutes and 30 seconds into the footage you get a pretty nice shot of… cleavage? No, I’m not being a jokester. It *appeared *to me that the burglar was wearing a low-cut shirt with some type of line up the middle. It looked like cleavage to me and the second opinion of my girlfriend, but NESIT believes that this was actually a shirt that was wrapped around the burglar’s head. <strong>UPDATE</strong>: After a second, closer look at the surveillance footage, I agree with NESIT.</p>
+
+<p>Despite the security footage being black and white and fairly low in quality, it tells us quite a bit.</p>
+
+<ul>
+  <li>The burglar was familiar enough with the location to know about the hallway surveillance camera.</li>
+  <li>The burglar was <em>not</em> familiar enough to know about the other cameras inside the hackerspace.</li>
+  <li>The burglar was comfortable enough to spend **an hour and a half **walking around and looking through boxes and drawers.</li>
+  <li>The burglar’s height is roughly as tall as one of the shelves in the hackerspace. <strong>UPDATE</strong>: I’m told that the height is between 6’0″ and 6’2″.</li>
+  <li>The burglar has enough strength to pry off the lock on the door and part of the concrete wall.</li>
+</ul>
+
+<p>I sure hope they catch the bad guy.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/automating-webcam-snapshots-and-uploads-to-flickr/">Automating Webcam Snapshots and Uploads to Flickr</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-26T00:00:00-07:00" pubdate data-updated="true">Mar 26<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>With gardening season right around the corner, one of my desires was to set something up that would allow me to take automated, regular snapshots of some of my plants and upload them to flickr. After a few cumulative hours I finally cobbled together the solution.</p>
+
+<h2 id="taking-the-snapshots">Taking the Snapshots</h2>
+
+<p>The first thing I needed to do was to take snapshots from an installed USB webcam and save them to a directory. This needed to be able to run from a cron script so obviously it needed to work without a GUI and without user-interaction. I read in a <a href="http://www.tldp.org/HOWTO/html_single/Webcam-HOWTO/#COMMAND">Webcam Howto</a> that I could do this using <strong>streamer</strong> so I installed it and wrote a short shell script that would iterate through the video devices installed on my PC and run the snapshot command. You can <a href="https://bitbucket.org/hoop/snapshot/src/98aa5d9a2038/snapshot">view the source of this script here</a>.</p>
+
+<h2 id="uploading-the-photos">Uploading the Photos</h2>
+
+<p>Next I wanted to automatically upload the files to Flickr. At first, I tried using a script I found called uploadr.py which worked OK, but I also wanted to add my photos to a specific set which this script didn’t do. I probably could have extended its functionality, but this script didn’t use or implement the full Flickr API which made this task seem unnecessary.</p>
+
+<p>Instead, I downloaded the <a href="http://stuvel.eu/flickrapi">Python Flickr API from Stuvel</a> and in less than 90 lines I had working code to upload a directory of images to Flickr and add them to a given set. You can view the source to my <a href="https://bitbucket.org/hoop/snapshot/src/98aa5d9a2038/simpleuploadr.py">flickr uploader script</a> here, which I’m calling <a href="https://bitbucket.org/hoop/snapshot">simpleuploadr.py</a> for now.</p>
+
+<h2 id="results">Results</h2>
+
+<p><a href="http://www.flickr.com/photos/hoop2w1/sets/72157626354700156/with/5620672632/">Here are my pretty pictures</a> :) My apologies for the quality, I’m using a really cheap webcam.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -731,160 +838,6 @@ licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br />
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/going-into-business-learn-a-programming-language/">Going Into Business? Learn a Programming Language</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-15T00:00:00-08:00" pubdate data-updated="true">Nov 15<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>When doing homework for my business-related classes, I often find that knowing a programming language is very advantageous. Certainly there are times when it makes sense to use a calculator, but repeatedly entering the same equation over and over is tedious and inefficient. There are also times when it’s a good idea to make a spreadsheet, but even this can be overkill.</p>
-
-<p>In cases where I’m repeating the same tasks or expressions frequently and a spreadsheet seems like overkill, I’ll open a Python shell and define the expression I need as a function. More often than not, these functions are one liners that I probably won’t use again. At least, not until I get a “Real Job (TM)” where I’ll need to use said expressions more frequently.</p>
-
-<p>As an example, I recently found myself calculating the gains and/or losses between two given foreign exchange rates. The example below calculates the gain or loss between two period’s exchange rates for a given currency.</p>
-
-<pre><code>def xchg_diff(qty,old_rate,new_rate):
-    """
-    qty = Amount of 'domestic currency'
-    old_rate = Exchange rate of foreign currency in previous period
-    new_rate = Exchange rate of foreign currency in current period
-    """
-    return round(qty * (new_rate - old_rate))
-</code></pre>
-
-<p>In this example, the hypothetical company had 850,000 pesos that it held over multiple accounting periods. I was given a table of dates that corresponded with these accounting periods and the exchange rate of pesos to U.S. Dollars (USD $) that looked similar to the one below.</p>
-
-<p>Date</p>
-
-<p>Exchange Rate</p>
-
-<p>Mar 31, 2009</p>
-
-<p>0.0698</p>
-
-<p>Jun 30, 2009</p>
-
-<p>0.0756</p>
-
-<p>Sep 30, 2009</p>
-
-<p>0.0737</p>
-
-<p>Dec 31, 2009</p>
-
-<p>0.0777</p>
-
-<p>The equation is simple enough to type into a calculator, but I find most calculators to have a clumsy interface when it comes to editing the numbers in previous expressions. In this case, I simply opened up a Python shell and, after defining the above function, I typed:</p>
-
-<pre><code>&gt;&gt;&gt; xchg_diff(850000,0.0698,0.0756)
-4930.0
-&gt;&gt;&gt; xchg_diff(850000,0.0756,0.0737)
--1615.0
-&gt;&gt;&gt; xchg_diff(850000,0.0737,0.0777)
-3400.0
-</code></pre>
-
-<p>As we can see from the transcript, I was quickly able to find the following results:</p>
-
-<p>Date</p>
-
-<p>Gain / (loss)</p>
-
-<p>Jun 30, 2009</p>
-
-<p>$4930</p>
-
-<p>Sep 30, 2009</p>
-
-<p>$(1615)</p>
-
-<p>Dec 31, 2009</p>
-
-<p>$3400</p>
-
-<p>Many people have asked me if I thought that my experience in computers and programming would go to waste once I entered the world of business and, in particular, finance. My response has been, and will continue to be, “No.” Knowing how to automate routine tasks, being able to write data models, and having a firm grasp on algorithms will only help me to be more effective in my future career.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/cost-behavior-analysis-calculator/">Cost Behavior Analysis Calculator</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-08T00:00:00-08:00" pubdate data-updated="true">Nov 8<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>One of the projects I’ve been working on lately is my <a href="http://apps.charleshooper.net/cost-behavior-analysis/">Cost Behavior Analysis Calculator</a>.</p>
-
-<p><strong>Cost behavior analysis</strong> is the process of dividing a mixed cost into its <em>variable and fixed components</em>. Doing this can be a long and tedious process. This process, when done manually, involves:</p>
-
-<ol>
-  <li><strong>Determining which metric or activity <em>drives costs</em>.</strong> A common example in manufacturing is “machine hours.” Using this technique, you could determine how much each “machine hour” affects your power bill.</li>
-  <li><strong>Making a scatter graph of your data.</strong> When you’re plotting your data, what you’re looking for is that a <em>linear relationship</em> exists between your <em>cost driver</em> and your <em>costs</em>. If a linear relationship doesn’t exist, then it isn’t a cost driver – pick a new metric and try again.</li>
-  <li><strong>Fitting a line to the scatter graph.</strong> When working on paper, it’s easier to use the <a href="http://www.suite101.com/content/job-costing-using-the-high-low-method-a207711">high-low method</a>. However, this method is considered inaccurate as it only uses two points from your entire data set. Not to mention, the highest and lowest points of these data sets are usually considered “atypical.” The <a href="http://apps.charleshooper.net/cost-behavior-analysis/">Cost Behavior Analyzer</a> uses <a href="http://www.finance-lib.com/financial-term-least-squares-regression-analysis.html">least-squares regression</a> to fit a more accurate line.</li>
-  <li><strong>Measure your slope and y-intercept.</strong> The <strong>slope</strong> of the line is your <em>variable cost</em> and the <strong>y-intercept</strong> is your <em>fixed cost</em>.</li>
-</ol>
-
-<p>I developed the <a href="http://apps.charleshooper.net/cost-behavior-analysis/">Cost Behavior Analyzer</a> because I found that doing this work manually was tedious and repetitive. I’m making it available here so others can benefit from its use. Managerial accountants, financiers, business owners, and entrepreneurs alike should all know what’s driving their costs and how to accurately predict them.</p>
-
-<p><a href="http://apps.charleshooper.net/cost-behavior-analysis/">Try the Cost Behavior Analyzer out now!</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -910,6 +863,14 @@ licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br />
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/what-am-i-supposed-to-do-with-all-of-this-honey/">What am I supposed to do with all of this honey?!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/give-it-a-rest/">Give it a rest</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/on-slack-and-upkeep/">On Slack and Upkeep</a>
       </li>
     
@@ -919,14 +880,6 @@ licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br />
     
       <li class="post">
         <a href="/blog/troubleshooting-elbs-with-elbping/">Troubleshooting ELBs with elbping</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/my-def-con-21-experience/">My DEF CON 21 Experience</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2015-01-03T19:00:18-08:00</updated>
+  <updated>2015-01-04T14:33:23-08:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[What am I supposed to do with all of this honey?!]]></title>
+    <link href="http://www.charleshooper.net/blog/what-am-i-supposed-to-do-with-all-of-this-honey/"/>
+    <updated>2015-01-04T13:56:00-08:00</updated>
+    <id>http://www.charleshooper.net/blog/what-am-i-supposed-to-do-with-all-of-this-honey</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p><img src="https://farm8.staticflickr.com/7581/16173441916_fab90e3b9a_z_d.jpg" alt="Two gallons of honey" /></p>
+
+<p>For Christmas this year, one of the wonderful gifts I received was this
+two gallon bucket full of fresh, local honey. My friend, the gift giver,
+offered the suggestion of brewing some mead which is too sweet for my
+tastes. So what should I do with it then?</p>
+
+<p>I thought I’d <a href="https://byo.com/light-ale/item/322-brewing-with-honey">brew some beer with it</a> but two gallons of pure honey (or
+whatever that translates to in weight) is alot of honey and, since I’m
+currently only doing one gallon batches of home brewed beer, it’ll take take
+quite a bit of homebrew to get through it all.</p>
+
+<p>A quick <a href="http://www.saveur.com/find/honey">search for honey recipes</a> yields some interesting ideas as
+well, with the top contender being these <a href="http://www.saveur.com/article/Recipes/Sweet-and-Sour-Glazed-Pork-Chops-Maiale-in-Agrodolce">sweet and sour glazed pork
+chops</a>.</p>
+
+<p>So what do you think? What should I do with all this honey?</p>
+
+<p><img src="https://farm9.staticflickr.com/8649/16011801388_d11c149b1c_z_d.jpg" alt="Two gallons of honey" /></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Give it a rest]]></title>
+    <link href="http://www.charleshooper.net/blog/give-it-a-rest/"/>
+    <updated>2015-01-03T18:00:00-08:00</updated>
+    <id>http://www.charleshooper.net/blog/give-it-a-rest</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p><img src="https://farm9.staticflickr.com/8649/16189710525_1191b9eb7f_z_d.jpg" alt="Dying zucchini (courgette)" /></p>
+
+<p>Yesterday I walked out to my yard to find that all of my zucchini
+(courgette) plants are dying. It was cold enough the night before to
+kill them all at once and there really isn’t any saving them.</p>
+
+<p>We got greedy at first and wanted to reclaim the wasted space, until we
+realized that our garden has been running strong for about 9 months now,
+since Erica and I planted our first seeds of the season in March of last
+year. Now we’ve decided to give it a rest so we can add some new compost to
+fortify the soil.</p>
+
+<p>For me, the dying zucchini plants serve as a reminder that nature
+intends for us to rest and will find a way to see that we do (sometimes
+permanently). Plants drop seed, decompose, and ultimately end up feeding
+their offspring. Animals need to eat and sleep.</p>
+
+<p><img src="https://farm8.staticflickr.com/7541/15568029134_2263d267b9_z_d.jpg" alt="Caesar not sleeping" /></p>
+
+<p>It’s a new year and you likely just had some time off that wasn’t very
+restful. If you’re like me, you were probably busy traveling, shopping,
+worrying about money, or the holidays may even open up some new wounds
+for you. Don’t accept this as your vacation for the year.</p>
+
+<p>Your real vacation should be about rest and relaxation. You can travel
+or you can stay home, but the bottom line is that you should be
+relaxing. Sleep in some days if you’d like. When you’re awake, maybe
+read a book, go for a walk, or take up that hobby you’ve been thinking
+about. On my last stay-cation, I tried our archery for the first time
+and have been hooked ever since.</p>
+
+<p>So start planning your time off now. Trust me, it’s worth it.</p>
+
+<p><img src="https://farm8.staticflickr.com/7542/15570698153_05774d7eb9_z_d.jpg" alt="First archery target" /></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[On Slack and Upkeep]]></title>
@@ -1519,87 +1594,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
 
 <p>Put simply, <strong>DevOps is a methodology</strong> and, as such, it’s natural that we’re seeing a huge response in tools. What I feel we’re missing, however, is more information about the different techniques used throughout organizations in <em>their</em> software and operations engineering processes. An excellent example of this is <a href="http://scottchacon.com/2011/08/31/github-flow.html">Scott Chacon’s explanation of how Github uses Git (and Github!) to deliver continuous improvement</a> to their service. With that said, I would like to see more organizations refine their techniques and talk about <em>these</em> as much as they talk about their tools.</p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[2011 Annual Review and New-Year Updates]]></title>
-    <link href="http://www.charleshooper.net/blog/year-end-and-new-year-updates/"/>
-    <updated>2012-01-01T00:00:00-08:00</updated>
-    <id>http://www.charleshooper.net/blog/year-end-and-new-year-updates</id>
-    <content type="html"><![CDATA[<h1 id="section"></h1>
-
-<p>Happy New Years, everyone.</p>
-
-<p>I thought I’d ring in the new year with some site stats from 2011.</p>
-
-<ul>
-  <li>Only 10 posts published.</li>
-  <li>59,238 pageviews.</li>
-  <li>24,829 visitors (22,634 unique)</li>
-  <li>1.32% bounce rate.</li>
-  <li>Multiple job and business opportunities in direct response to articles I wrote including a new job (more details below).</li>
-</ul>
-
-<p>I really want to write more. My resolution then is to “<strong>write more</strong>.” Using a more quantified approach, <strong>I will spend at least 30 minutes a day writing for at least five days a week</strong>. That doesn’t mean I will publish five articles a week. One of my big issues with writing is the amount of time that goes into each post. I approach my writing very academically and try to back up my ideas with citations; this research takes time. I also, very frequently, solicit feedback from other people before publishing. But I really enjoy writing and I really enjoy receiving feedback on my ideas through this blog so I would like to continue doing it.</p>
-
-<p>Other resolutions of mine include physical health and professional development (I’d really like to <em>give a talk at a conference</em> this year).</p>
-
-<p>I also have some really exciting news. Starting on Monday I will officially begin my employment with <a href="https://www.dotcloud.com/">dotCloud</a> on their <em>Site Reliability Engineering</em> team! This is exciting for two reasons.</p>
-
-<p>First, working at dotCloud is going to be an awesome experience. Everyone I’ve talked to is incredibly smart. Our CEO, <a href="https://www.dotcloud.com/">Solomon Hykes</a>, was also just named on Forbes’ <a href="http://www.forbes.com/special-report/2011/30-under30-12/30-under-30-12_land.html">“30 Under 30” list</a>. Third, and probably most importantly, is that I’m going to absolutely love the work. I love solving problems, particularly in devops, and I love writing tools that make people’s lives easier (which is precisely what dotCloud does). If you’re looking for a Platform as a Service provider, try out dotCloud and let us know how you like it.</p>
-
-<p>The second reason this is exciting because, in the process of starting at a new company, I’ve managed to expand my personal consulting practice. I don’t think I’ve said so before, but I provide <em>systems engineering services</em> to <a href="http://www.loud3r.com/">Loud3r Inc</a>. I’m their only “web ops” guy and we’ve managed to completely turn things around in the past 6 months; we’re providing our services better (more reliable, more frequent updates), faster, and cheaper than before. Rather than cancel the contract entirely, the CEO of Loud3r and I felt it was a good idea for me to subcontract a large portion of my workload to a trusted colleague of mine.</p>
-
-<p>How about you? Is there anything exciting you would like to share about the progress you made during 2011 or large changes you’re making in the start of 2012? Tell me all about it!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Concurrent Engineering: The Foundation of DevOps]]></title>
-    <link href="http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops/"/>
-    <updated>2011-12-07T00:00:00-08:00</updated>
-    <id>http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops</id>
-    <content type="html"><![CDATA[<h1 id="section"></h1>
-
-<blockquote>
-  <p>DevOps is all about trying to avoid that epic failure and working smarter and more efficiently at the same time. It is a framework of ideas and principles designed to foster cooperation, learning and coordination between development and operational groups. In a DevOps environment, developers and sysadmins build relationships, processes, and tools that allow them to better interact and ultimately better service the customer (<a href="http://www.kartar.net/2010/02/what-devops-means-to-me/" title="What DevOps Means to Me">James Turnbull</a>).</p>
-</blockquote>
-
-<p>At the time of writing, if you were to search for “devops” you would find eight results attempting to explain what devops is, one result for a conference, and one rather satirical article (although not necessarily incorrect) where the author answers the question of “how do you implement devops” with “<a href="http://teddziuba.com/2011/03/devops-scam.html" title="DevOps is a Poorly Executed Scam">nobody seems to know</a>” (Ted Dziuba).</p>
-
-<p>The big problem with the DevOps “movement” is that we essentially have a bunch of operations and development people promoting it and trying to implement it within their organizations. Meanwhile, those with management and business responsibilities, even if explained the “what,” don’t understand the “how.” Just because you use puppet does not necessarily mean your organization is practicing DevOps.</p>
-
-<p>This shortcoming is the result of us devops proponents either falsely claiming these techniques and methodologies are new or not knowing any better. If we had something more relatable for the business people (and, by principle, <em>we</em> should be business-oriented, too) then I think DevOps would have more of a chance.</p>
-
-<p>Well, get your product and management together because the truth is that DevOps is actually a form of Concurrent Engineering.</p>
-
-<blockquote>
-  <p>Concurrent Engineering (CE) is a systematic approach to integrated product development that emphasizes the response to customer expectations. It embodies team values of co-operation, trust and sharing in such a manner that decision making is by consensus, involving all perspectives in parallel, from the beginning of the product life-cycle (<a href="http://www.esa.int/esaMI/CDF/SEM1OF1P4HD_0.html" title="What is concurrent engineering?">ESA – Concurrent Engineering Facility</a>).</p>
-</blockquote>
-
-<p>Concurrent Engineering encompasses several major principles which just so happen to fit the definition (however formal or informal) of devops.</p>
-
-<p>I’ll list them from the <a href="http://best.berkeley.edu/~pps/pps/concurrent.html#basic" title="Basic Principles of Concurrent Engineering">Synthesis Coalition</a> here:</p>
-
-<ul>
-  <li>Get a strong commitment from senior management.</li>
-  <li>Establish unified project goals and a clear business mission.</li>
-  <li>Develop a detailed plan early in the process.</li>
-  <li>Continually review your progress and revise your plan.</li>
-  <li>Develop project leaders that have an overall vision of the project and goals.</li>
-  <li>Analyze your market and know your customers.</li>
-  <li>Suppress individualism and foster a team concept.</li>
-  <li>Establish and cultivate cross-functional integration and collaboration.</li>
-  <li>Break project into its natural phases.</li>
-  <li>Develop metrics.</li>
-  <li>Set milestones throughout the development process.</li>
-  <li>Collectively work on all parts of project.</li>
-  <li>Reduce costs and time to market.</li>
-  <li>Complete tasks in parallel.</li>
-</ul>
-
-<p>By approaching the issues of devops as  concurrent engineering and implementing it as such, you open the movement to a well-researched, well-documented, and well-accepted product design philosophy. By shedding this light on the devops methodologies, this enables those of us pushing the devops movement to finally put the movement into a more business-oriented perspective.</p>
 ]]></content>
   </entry>
   

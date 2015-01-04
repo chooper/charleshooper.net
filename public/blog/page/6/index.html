@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="This entry is part 3 of 8 in the seriesIntro to Financial Reporting Previously, we discussed the various regulations and regulatory bodies that &hellip;">
+  <meta name="description" content="As I stand before you sipping my celebratory Wilco Tango Foxtrot, I would like to present to you the new home for my blog. The reason for this &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,119 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/new-urldomain-for-my-blog-formerly-subversity-net/">New URL/Domain for My Blog (Formerly subversity.net)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-13T00:00:00-07:00" pubdate data-updated="true">Aug 13<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>As I stand before you sipping my celebratory <a href="http://beeradvocate.com/beer/profile/220/56613">Wilco Tango Foxtrot</a>, I would like to present to you <a href="http://blog.charleshooper.net/">the new home for my blog</a>. The reason for this migration is that I am downsizing the amount of under-utilized domains I renew each year. Please update your bookmarks accordingly :-)</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/how-i-made-money-spamming-twitter-with-contextual-book-suggestions/">How I Made Money Spamming Twitter With Contextual Book Suggestions</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-13T00:00:00-07:00" pubdate data-updated="true">Aug 13<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>Two winters ago I left a position as a system administrator that was paying pretty well and moved cross-country to a region with less jobs than where I moved from. Three months later, I was still unemployed, broke, and bored. I was talking to my good friend <a href="http://japherwocky.posterous.com/">Japhy</a> on IRC one day and he was explaining to me how the <a href="http://en.wikipedia.org/wiki/Tf–idf">tf-idf algorithm</a> works. For reasons involving boredom more than any other reason, I dreamed up an idea: <strong>I would write software that would take a given document and generate book suggestions based on its content.</strong> </p>
+
+<p>I think that most programmers would agree with me that we put in longer hours on code when we’re not working for anybody. We don’t stop learning, either. To us, <em>unemployment is a brief sprint of academia</em> spent in our home office, the local coffee shop, or our parent’s house. 
+My imagination dreamed up this fairly straightforward process:</p>
+
+<ol>
+  <li>Take a given document and calculate tf-idf scores on all terms</li>
+  <li>Select X number of the highest scoring terms</li>
+  <li>Pass these high-scoring terms to an Amazon ItemSearch query</li>
+  <li>Receive a list of recommended books (with URLs) from Amazon</li>
+</ol>
+
+<p>I had already written multiple Twitter bots by this time so I decided to just use some of my existing code to poll Twitter’s search API. Essentially, the “documents” I mentioned above were actually tweets containing the terms “book” or “books.” Two and a half days later I had a working prototype that could generate a book recommendation from a given tweet. It was at this time that I added steps 5 and 6:</p>
+
+<p>Tag URLs returned from Amazon’s ItemSearch with an affiliate ID; and<br />
+Reply to the tweeting user with their new book suggestion</p>
+
+<p>Four months later and <strong>I had generated over $7,000 in sales for Amazon with over $400 commission for myself</strong>. Obviously, the commission I was making wasn’t livable but it was a nice addition to my then-depleting savings. Had I decided to scale out my operation, I could have made much more. My benchmark is at four months because that’s how long I went before being <em>suspended</em>. My conversion rate? <strong>0.13%</strong>! While seemingly low, this number is very high when compared to email spam. However, it’s important to note that email spam is subject to various filtering technologies. 
+<img src="http://cdn.subversity.net/blog_imgs/twitter-spam-earnings.png" alt="twitter-spam-earnings.png" title="twitter-spam-earnings.png" /> 
+A fair amount of the time I share this story, people are more impressed with the fact that I went 4 months before getting suspended. The truth is, I had a lot of throttling built into my spam bot. The factors I think are important to point out are:</p>
+
+<ol>
+  <li>Twitter’s Terms of Service at that time basically only outlawed “unsolicited replies,” nothing that really attacked targeted spam.</li>
+  <li>Twitter’s anti-spam stance did exist in writing (only in the help site,) but I do not think they were actively enforcing their policies.</li>
+  <li>My recommendations were contextual and, unless you looked at my bot’s timeline and tweet count, looked legitimate (most of the time.) In other words, I was tweeting <em>book suggestions</em> to people who were already talking about <em>books</em>.</li>
+  <li>I recorded the usernames of everyone I sent recommendations to and would only @mention them once.</li>
+  <li>I built in a “chattiness” rate limiting function. This was to distribute my spam throughout a whole hour (due to Twitter’s rate limiting) more than anything.</li>
+</ol>
+
+<p><img src="http://cdn.subversity.net/blog_imgs/twitter-suspended.png" alt="twitter-suspended.png" title="twitter-suspended.png" /> </p>
+
+<p>While it only lasted a short while, I had alot of fun and made a little bit of money spamming Twitter. </p>
+
+<p>The second re-incarnation of this project turned into <a href="http://www.charleshooper.net/twitter/">BookSuggest, a website for recommending books based on a person’s Twitter feed</a>. I haven’t put alot of effort into promoting it, but my conversion rate is much lower now that I’m not pushing the links in anyone’s face. </p>
+
+<p>Try it out and comment here – what did BookSuggest tell YOU to read?</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -513,98 +626,6 @@ financial position.”</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/series/intro-to-financial-reporting/">Financial Reporting</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-02T00:00:00-07:00" pubdate data-updated="true">Jul 2<span>nd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>This is the series <a href="http://www.charleshooper.net/blog/series/intro-to-financial-reporting/" title="Intro to Financial Reporting">Intro to Financial Reporting</a></p>
-
-<p>At the date of publication, I was taking summer classes for Sociology and Principles of Finance. As part of the class, I was required to write a one page paper each week on a topic I chose. I chose Financial Reporting. At the end of the semester, these papers were concatenated and turned into one monstrous paper. <a href="http://japherwocky.posterous.com/">japherwocky</a> suggested post the papers to a blog, so here they are.</p>
-
-<ol>
-  <li><a href="http://www.charleshooper.net/blog/what-are-some-of-the-main-financial-documents-used-in-financial-reporting/">What Are Some of the Main Financial Documents Used in Financial Reporting?</a></li>
-  <li><a href="http://www.charleshooper.net/blog/what-is-financial-reporting-and-who-uses-financial-reports/">What Is Financial Reporting and Who Uses Financial Reports?</a></li>
-  <li><a href="http://www.charleshooper.net/blog/what-are-the-generally-accepted-accounting-principles-gaap/">What Are the Generally Accepted Accounting Principles (GAAP)?</a></li>
-  <li><a href="http://www.charleshooper.net/blog/who-regulates-financial-reporting/">Who Regulates Financial Reporting?</a></li>
-  <li><a href="http://www.charleshooper.net/blog/why-was-the-sarbanes-oxley-act-of-2002-created-and-how-does-it-impact-financial-reporting-today/">Why Was the Sarbanes Oxley Act of 2002 Created and How Does it Impact Financial Reporting Today?</a></li>
-  <li><a href="http://www.charleshooper.net/blog/who-was-enron-and-why-is-this-important-to-financial-reporting-today/">Who Was Enron and Why Is This Important to Financial Reporting Today?</a></li>
-  <li><a href="http://www.charleshooper.net/blog/financial-crises-and-the-cycle-continues/">Financial Crises: And the Cycle Continues</a></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/financial-reporting/">Financial Reporting</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-02T00:00:00-07:00" pubdate data-updated="true">Jul 2<span>nd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>This entry is part 1 of 8 in the series <a href="http://www.charleshooper.net/blog/series/intro-to-financial-reporting/" title="Intro to Financial Reporting">Intro to Financial Reporting</a></p>
-
-<p>At the date of publication, I was taking summer classes for Sociology and Principles of Finance. As part of the class, I was required to write a one page paper each week on a topic I chose. I chose Financial Reporting. At the end of the semester, these papers were concatenated and turned into one monstrous paper. <a href="http://japherwocky.posterous.com/">japherwocky</a> suggested post the papers to a blog, so here they are.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -630,6 +651,14 @@ financial position.”</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/what-am-i-supposed-to-do-with-all-of-this-honey/">What am I supposed to do with all of this honey?!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/give-it-a-rest/">Give it a rest</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/on-slack-and-upkeep/">On Slack and Upkeep</a>
       </li>
     
@@ -639,14 +668,6 @@ financial position.”</p>
     
       <li class="post">
         <a href="/blog/troubleshooting-elbs-with-elbping/">Troubleshooting ELBs with elbping</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/my-def-con-21-experience/">My DEF CON 21 Experience</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
       </li>
     
   </ul>
