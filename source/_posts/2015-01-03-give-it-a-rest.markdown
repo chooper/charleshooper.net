@@ -1,12 +1,10 @@
 ---
-published: false
 layout: post
 title: "Give it a rest"
 date: 2015-01-03 18:00
 comments: true
 categories: 
     - Life
-    - Management
 ---
 # 
 
