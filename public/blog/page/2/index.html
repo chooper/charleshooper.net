@@ -91,107 +91,6 @@ practices &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/intro-to-ops-metrics-collection/">Intro to Operations: Metrics Collection</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-07T14:51:00-07:00" pubdate data-updated="true">May 7<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p><em>I’m writing a series of blog posts for managers and other people
-without an operations background in order to introduce certain best
-practices regarding Operations. For the rest of the blog posts, please
-visit the <a href="/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
-
-<p>Collecting metrics is another area that many early stage startups seem
-to overlook even though it is probably one of the most important things
-they can do. By metrics collection, I am referring to the gathering and
-storing of various metrics at several different levels. As John Allspaw
-identifies them in <a href="http://www.amazon.com/Web-Operations-Keeping-Data-Time/dp/1449377440">Web Operations: Keeping the Data on Time</a>, they
-are:</p>
-
-<ul>
-  <li><strong>High-level business and application metrics</strong> (e.g. user sign-ups)</li>
-  <li><strong>Feature-specific application-level metrics</strong> (e.g. widgets processed)</li>
-  <li>
-    <p><strong>Systems and service-level metrics</strong> (e.g. server load or database queries per second)</p>
-
-  </li>
-</ul>
-
-<p>You’ll note that there are two levels of “application-level” metrics.
-The higher-level application metrics are mostly those that can be tied
-to business objectives, while the other category of application metrics
-are generally more feature specific.</p>
-
-<p>Benefits incurred by collecting these metrics are plentiful. For one,
-having quick access to these metrics is helpful during troubleshooting
-and incident response. For example, I was once hired under contract to
-look into why a certain company’s API was unreliable for the previous
-few months. At least once per day, this company’s API would time out and
-not respond to client requests. After enabling basic metrics collection
-for the servers and services used by the API, it very quickly became
-obvious that the database servers were reaching their connection limits
-which was preventing the API from retrieving records from the database.
-Not only was this problem identified very quickly, but later on we were
-able to look back at our metrics data to assess how close to our limits
-we were getting.</p>
-
-<p>Another benefit is that you can integrate the metrics into your
-<a href="/blog/intro-to-ops-availability-monitoring-alerting/">Availability monitoring</a> system to be alerted when metrics surpass
-some threshold or change significantly. Not only that, but analyzing
-these metrics will allow you to manage your capacity intelligently and
-build a business case to justify infrastructure expenditures. Finally,
-analyzing these metrics will also give you insight into your
-application, how it’s used, and your business.</p>
-
-<p>How you go about collecting and storing these metrics is up to you. Many
-engineers might be tempted to build their own solution; however, there
-are many open source and third party software packages that you may find
-helpful. Key considerations when choosing which package or packages to
-use are:</p>
-
-<ul>
-  <li>The ability to add new, custom metrics</li>
-  <li>Configurable resolution/storage trade-off</li>
-  <li>Integration with availability monitoring and alerting systems</li>
-  <li>Graphing/visualization</li>
-</ul>
-
-<p>If your startup doesn’t have any metrics then you should start
-collecting them now. The visualization will help you in the short run
-and the historical data will help you in the long run.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/blog/intro-to-ops-availability-monitoring-alerting/">Intro to Operations: Availability Monitoring and Alerting</a></h1>
     
     
@@ -994,6 +893,81 @@ For one of my clients and side projects, we’ve been working hard to build in a
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/concurrent-engineering-the-foundation-of-devops/">Concurrent Engineering: The Foundation of DevOps</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-07T00:00:00-08:00" pubdate data-updated="true">Dec 7<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<blockquote>
+  <p>DevOps is all about trying to avoid that epic failure and working smarter and more efficiently at the same time. It is a framework of ideas and principles designed to foster cooperation, learning and coordination between development and operational groups. In a DevOps environment, developers and sysadmins build relationships, processes, and tools that allow them to better interact and ultimately better service the customer (<a href="http://www.kartar.net/2010/02/what-devops-means-to-me/" title="What DevOps Means to Me">James Turnbull</a>).</p>
+</blockquote>
+
+<p>At the time of writing, if you were to search for “devops” you would find eight results attempting to explain what devops is, one result for a conference, and one rather satirical article (although not necessarily incorrect) where the author answers the question of “how do you implement devops” with “<a href="http://teddziuba.com/2011/03/devops-scam.html" title="DevOps is a Poorly Executed Scam">nobody seems to know</a>” (Ted Dziuba).</p>
+
+<p>The big problem with the DevOps “movement” is that we essentially have a bunch of operations and development people promoting it and trying to implement it within their organizations. Meanwhile, those with management and business responsibilities, even if explained the “what,” don’t understand the “how.” Just because you use puppet does not necessarily mean your organization is practicing DevOps.</p>
+
+<p>This shortcoming is the result of us devops proponents either falsely claiming these techniques and methodologies are new or not knowing any better. If we had something more relatable for the business people (and, by principle, <em>we</em> should be business-oriented, too) then I think DevOps would have more of a chance.</p>
+
+<p>Well, get your product and management together because the truth is that DevOps is actually a form of Concurrent Engineering.</p>
+
+<blockquote>
+  <p>Concurrent Engineering (CE) is a systematic approach to integrated product development that emphasizes the response to customer expectations. It embodies team values of co-operation, trust and sharing in such a manner that decision making is by consensus, involving all perspectives in parallel, from the beginning of the product life-cycle (<a href="http://www.esa.int/esaMI/CDF/SEM1OF1P4HD_0.html" title="What is concurrent engineering?">ESA – Concurrent Engineering Facility</a>).</p>
+</blockquote>
+
+<p>Concurrent Engineering encompasses several major principles which just so happen to fit the definition (however formal or informal) of devops.</p>
+
+<p>I’ll list them from the <a href="http://best.berkeley.edu/~pps/pps/concurrent.html#basic" title="Basic Principles of Concurrent Engineering">Synthesis Coalition</a> here:</p>
+
+<ul>
+  <li>Get a strong commitment from senior management.</li>
+  <li>Establish unified project goals and a clear business mission.</li>
+  <li>Develop a detailed plan early in the process.</li>
+  <li>Continually review your progress and revise your plan.</li>
+  <li>Develop project leaders that have an overall vision of the project and goals.</li>
+  <li>Analyze your market and know your customers.</li>
+  <li>Suppress individualism and foster a team concept.</li>
+  <li>Establish and cultivate cross-functional integration and collaboration.</li>
+  <li>Break project into its natural phases.</li>
+  <li>Develop metrics.</li>
+  <li>Set milestones throughout the development process.</li>
+  <li>Collectively work on all parts of project.</li>
+  <li>Reduce costs and time to market.</li>
+  <li>Complete tasks in parallel.</li>
+</ul>
+
+<p>By approaching the issues of devops as  concurrent engineering and implementing it as such, you open the movement to a well-researched, well-documented, and well-accepted product design philosophy. By shedding this light on the devops methodologies, this enables those of us pushing the devops movement to finally put the movement into a more business-oriented perspective.</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -1027,15 +1001,15 @@ For one of my clients and side projects, we’ve been working hard to build in a
       </li>
     
       <li class="post">
-        <a href="/blog/actual-email-from-recruiter/">An actual email from a recruiter</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/troubleshooting-elbs-with-elbping/">Troubleshooting ELBs with elbping</a>
       </li>
     
       <li class="post">
         <a href="/blog/my-def-con-21-experience/">My DEF CON 21 Experience</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
       </li>
     
   </ul>

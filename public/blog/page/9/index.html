@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="LACP, or Link Aggregation Control Protocol, allows you to configure multiple ethernet ports to act as a single device. This is sometimes referred to &hellip;">
+  <meta name="description" content="IEEE 802.3ad, more commonly known as Link Aggregation, allows you to configure multiple Ethernet ports to act as a single device. This is sometimes &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,108 +83,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/link-aggregation-on-cisco-catalysts-foundry-switches/">Link Aggregation on Cisco Catalysts &#038; Foundry Switches</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-04T00:00:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>LACP, or <strong>Link Aggregation Control Protocol</strong>, allows you to configure multiple ethernet ports to act as a single device. This is sometimes referred to as <strong>channel bonding</strong> or <strong>trunking</strong>. Link Aggregation provides several benefits: <em>Increased bandwidth</em>, <em>load balancing</em>, and allows you to create <em>redundant ethernet links</em>. If a link in your ethernet channel goes down, the switches, routers, or servers you have configured to use LACP will automatically fail over to the links that are still up and remain connected. With the right hardware and the right firmware, setting this up is very simple. 
-On a Cisco Catalyst switch running IOS, once logged in, you will need to perform the following steps:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">cisco&gt;enable  
-</span><span class="line">Password: *enter password*  
-</span><span class="line">cisco#config term  
-</span><span class="line">cisco(config)#int Gi0/1  
-</span><span class="line">cisco(config-if)#channel-group 1 mode active  
-</span><span class="line">cisco(config-if)#channel-protocol lacp  
-</span><span class="line">cisco(config-if)#int Gi0/2  
-</span><span class="line">cisco(config-if)#channel-group 1 mode active  
-</span><span class="line">cisco(config-if)#channel-protocol lacp  
-</span><span class="line">cisco(config-if)#end  
-</span><span class="line">cisco#write mem</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>It also helps to label your ports and to be sure that your bonded ports
-are configured in the right VLAN or set up for <em>VLAN trunking</em>.  If your
-other device is another Cisco Catalyst, then just repeat the steps
-above, connect your newly bonded ports, and disconnect any non-bonded
-ports connecting the two devices.  However, if you are configuring a
-Foundry switch, your configuration is just as easy, but slightly
-different.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">BR-telnet@foundry&gt;enable  
-</span><span class="line">Password: *enter password*  
-</span><span class="line">BR-telnet@foundry#config term  
-</span><span class="line">BR-telnet@foundry(config)#interface ethernet 1  
-</span><span class="line">BR-telnet@foundry(config-if-e1000-1)#link-aggregate active  
-</span><span class="line">BR-telnet@foundry(config-if-e1000-1)#interface ethernet 2  
-</span><span class="line">BR-telnet@foundry(config-if-e1000-2)#link-aggregate active  
-</span><span class="line">BR-telnet@foundry(config-if-e1000-2)#end  
-</span><span class="line">BR-telnet@foundry#write mem</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Provided you don’t have a complicated VLAN set up, you’re all set! One
-thing you should note about the Foundry devices, is that you can only
-<em>start</em> your trunked ports on the first port of each group of 4.
-Explanation: On a 12-port switch, you would only be able to start port
-groups on ports 1, 5, and 9. But this does <em>not</em> mean that you can’t
-bond ports 1 &amp; 2 — but it does mean that you can’t bond ports 3 &amp; 4.</p>
-
-<p><strong>Recommended reading:</strong>
-*   <a href="http://www.cisco.com/en/US/docs/switches/lan/catalyst3550/software/release/12.1_13_ea1/configuration/guide/swethchl.html#wp1033981">Configuring EtherChannels on the Cisco Catalyst 3550</a>
-*   <a href="http://www.foundrynetworks.co.jp/services/documentation/sribcg/Trunking.html">Foundry Switch and Router Installation and Basic Configuration — Dynamic Link Aggregation</a>
-*   <a href="http://en.wikipedia.org/wiki/IEEE_802.3ad">Link aggregation article on Wikipedia</a></p>
-
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -1022,15 +920,15 @@ user input? :-)</p>
       </li>
     
       <li class="post">
-        <a href="/blog/actual-email-from-recruiter/">An actual email from a recruiter</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/troubleshooting-elbs-with-elbping/">Troubleshooting ELBs with elbping</a>
       </li>
     
       <li class="post">
         <a href="/blog/my-def-con-21-experience/">My DEF CON 21 Experience</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/why-i-moved-to-san-francisco/">Why I moved to San Francisco</a>
       </li>
     
   </ul>
