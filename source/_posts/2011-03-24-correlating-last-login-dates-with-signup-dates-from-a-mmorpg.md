@@ -31,7 +31,7 @@ I then exported my data to CSV, loaded it in Minitab, and created a scatterplot 
 
 ![Last Seen Date vs Signup Date][2]
 
- [2]: http://cdn.subversity.net/cch-i/blogimgs/last_seen_vs_signup.jpg "Last Seen Date vs Signup Date"
+ [2]: http://sub-public.s3.amazonaws.com/cch-i/blogimgs/last_seen_vs_signup.jpg "Last Seen Date vs Signup Date"
 
 For the uninitiated, a **scatterplot **is a quick and easy way to visually see if there’s any type of relationship (correlation) between two variables. In this case, I used the signup date as my **independent variable** (*x*) and the “last seen” date as my **dependent variable** (*y*). Overall, there is *not *any real relationship between the signup date and the last seen date. However*,* there are two significant items in this graph that deserve to have some attention brought to them.
 
@@ -49,7 +49,7 @@ While, in this case, the scatterplot helped us see that there are a noticeable�
 
 ![][3]
 
- [3]: http://cdn.subversity.net/cch-i/blogimgs/days_active_hist.jpg "Histogram of Days Active (excl. lowest-ranked accounts)"
+ [3]: http://sub-public.s3.amazonaws.com/cch-i/blogimgs/days_active_hist.jpg "Histogram of Days Active (excl. lowest-ranked accounts)"
 
 In this histogram, I excluded the lowest rank from being included in the histogram. I did this because I was more interested in how many potentially-active players were leaving, as opposed to junk accounts. As such, our definition of the *bounce rate* is already becoming more different than the bounce rate in web analytics.
 

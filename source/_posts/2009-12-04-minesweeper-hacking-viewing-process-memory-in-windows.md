@@ -46,12 +46,12 @@ And also [this comment from Anonymous][2]:
 
 The program is available here: [Minehack Source][3] | [Minehack Source & Binary (ZIP)][4]
 
- [3]: http://cdn.subversity.net/minehack/minehack.cpp
- [4]: http://cdn.subversity.net/minehack/minehack.zip
+ [3]: http://sub-public.s3.amazonaws.com/minehack/minehack.cpp
+ [4]: http://sub-public.s3.amazonaws.com/minehack/minehack.zip
 
 *I have released a binary, and the software has been placed under the
 [BSD License][5]. Many thanks to the people and sites who linked me,
 people who posted comments, most definitely the contributors, but most
 importantly: the readers.*
 
- [5]: http://cdn.subversity.net/minehack/license.txt
+ [5]: http://sub-public.s3.amazonaws.com/minehack/license.txt

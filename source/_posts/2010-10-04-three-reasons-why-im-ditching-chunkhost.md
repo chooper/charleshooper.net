@@ -35,4 +35,4 @@ I’ve been using [ChunkHost][1] for the past **eight months** to host my websit
     *   **Not enough notice given for “scheduled” maintenance.** Four days before the two outages I had experienced, ChunkHost performed some scheduled maintenance. I am thankful that the maintenance occurred in off-peak hours, but **I received the notice at the end of the previous day**. This is not adequate notice. Had there been anything critical running on my VM, I would expect adequate notice so I could make proper arrangements ahead of time. 
     It saddens me to think that my last eight months at ChunkHost were a waste. Fortunately, [I’ve been using Linode for my “real services” for just as long][3] and I know that I won’t be disappointed there. If you’re looking for a VM for testing and development purposes only, ChunkHost might be an option – just don’t let your development server evolve into a production server.
 
- [4]: http://cdn.subversity.net/blog_imgs/chunkhost-inactive.png "chunkhost-inactive.png"
+ [4]: http://sub-public.s3.amazonaws.com/blog_imgs/chunkhost-inactive.png "chunkhost-inactive.png"

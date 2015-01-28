@@ -40,7 +40,7 @@ Four months later and **I had generated over $7,000 in sales for Amazon with ove
 ![twitter-spam-earnings.png][3] 
 A fair amount of the time I share this story, people are more impressed with the fact that I went 4 months before getting suspended. The truth is, I had a lot of throttling built into my spam bot. The factors I think are important to point out are:
 
- [3]: http://cdn.subversity.net/blog_imgs/twitter-spam-earnings.png "twitter-spam-earnings.png"
+ [3]: http://sub-public.s3.amazonaws.com/blog_imgs/twitter-spam-earnings.png "twitter-spam-earnings.png"
 
 1.  Twitter’s Terms of Service at that time basically only outlawed “unsolicited replies,” nothing that really attacked targeted spam.
 2.  Twitter’s anti-spam stance did exist in writing (only in the help site,) but I do not think they were actively enforcing their policies.
@@ -56,6 +56,6 @@ The second re-incarnation of this project turned into [BookSuggest, a website fo
 
 Try it out and comment here – what did BookSuggest tell YOU to read?
 
- [4]: http://cdn.subversity.net/blog_imgs/twitter-suspended.png "twitter-suspended.png"
+ [4]: http://sub-public.s3.amazonaws.com/blog_imgs/twitter-suspended.png "twitter-suspended.png"
  [5]: http://www.charleshooper.net/twitter/
 

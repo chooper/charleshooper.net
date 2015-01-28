@@ -35,7 +35,7 @@ Making matters worse, I am completely naive as to what the distribution of usern
 
 ![Account Distribution by First Character][1]
 
- [1]: http://cdn.subversity.net/cch-i/blogimgs/letter_freq_dist.png "Account Distribution by First Character"
+ [1]: http://sub-public.s3.amazonaws.com/cch-i/blogimgs/letter_freq_dist.png "Account Distribution by First Character"
 
 I decided, then, that I would start with “A” to “Z” to “1″ to “9″ and dynamically and recursively expand one level deeper if only 35 results were returned from the search. [You can see this dynamic, search unfolding code here on Bitbucket (Python, lines 46 through 65)][2].
 
