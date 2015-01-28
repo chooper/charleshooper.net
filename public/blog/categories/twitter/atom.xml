@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Twitter | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/twitter/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2015-01-04T14:33:23-08:00</updated>
+  <updated>2015-01-28T13:52:08-08:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -197,7 +197,7 @@ My imagination dreamed up this fairly straightforward process:</p>
 Reply to the tweeting user with their new book suggestion</p>
 
 <p>Four months later and <strong>I had generated over $7,000 in sales for Amazon with over $400 commission for myself</strong>. Obviously, the commission I was making wasn’t livable but it was a nice addition to my then-depleting savings. Had I decided to scale out my operation, I could have made much more. My benchmark is at four months because that’s how long I went before being <em>suspended</em>. My conversion rate? <strong>0.13%</strong>! While seemingly low, this number is very high when compared to email spam. However, it’s important to note that email spam is subject to various filtering technologies. 
-<img src="http://cdn.subversity.net/blog_imgs/twitter-spam-earnings.png" alt="twitter-spam-earnings.png" title="twitter-spam-earnings.png" /> 
+<img src="http://sub-public.s3.amazonaws.com/blog_imgs/twitter-spam-earnings.png" alt="twitter-spam-earnings.png" title="twitter-spam-earnings.png" /> 
 A fair amount of the time I share this story, people are more impressed with the fact that I went 4 months before getting suspended. The truth is, I had a lot of throttling built into my spam bot. The factors I think are important to point out are:</p>
 
 <ol>
@@ -208,7 +208,7 @@ A fair amount of the time I share this story, people are more impressed with the
   <li>I built in a “chattiness” rate limiting function. This was to distribute my spam throughout a whole hour (due to Twitter’s rate limiting) more than anything.</li>
 </ol>
 
-<p><img src="http://cdn.subversity.net/blog_imgs/twitter-suspended.png" alt="twitter-suspended.png" title="twitter-suspended.png" /> </p>
+<p><img src="http://sub-public.s3.amazonaws.com/blog_imgs/twitter-suspended.png" alt="twitter-suspended.png" title="twitter-suspended.png" /> </p>
 
 <p>While it only lasted a short while, I had alot of fun and made a little bit of money spamming Twitter. </p>
 
