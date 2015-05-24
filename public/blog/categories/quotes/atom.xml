@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Quotes | Charles Hooper]]></title>
+  <link href="http://www.charleshooper.net/blog/categories/quotes/atom.xml" rel="self"/>
+  <link href="http://www.charleshooper.net/"/>
+  <updated>2015-05-24T08:21:20-07:00</updated>
+  <id>http://www.charleshooper.net/</id>
+  <author>
+    <name><![CDATA[Charles Hooper]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[I think and think for months and years. 99 times, the conclusion is false. The hundredth time I am right - Einstein]]></title>
+    <link href="http://www.charleshooper.net/blog/i-think-and-think-for-months-and-years-99-times-the-conclusion-is-false-the-hundredth-time-i-am-right-einstein/"/>
+    <updated>2010-09-05T00:00:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/i-think-and-think-for-months-and-years-99-times-the-conclusion-is-false-the-hundredth-time-i-am-right-einstein</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>“I think and think for months and years. Ninety-nine times, the conclusion is false. The hundredth time I am right.” — <a href="http://nobelprize.org/nobel_prizes/physics/laureates/1921/einstein-bio.html">Albert Einstein</a></p>
+
+<p>I think Einstein was onto the <a href="http://www.sebastianmarshall.com/?p=195">equal-odds rule</a>.  </p>
+
+]]></content>
+  </entry>
+  
+</feed>

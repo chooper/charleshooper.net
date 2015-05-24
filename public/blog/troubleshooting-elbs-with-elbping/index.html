@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Troubleshooting ELBs with elbping - Charles Hooper</title>
+  <meta name="author" content="Charles Hooper">
+
+  
+  <meta name="description" content="Troubleshooting ELBs can be pretty painful at times because they are
+largely a black box. There aren’t many metrics available, and the ones
+that do &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/subversity" rel="alternate" title="Charles Hooper" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-12888528-1']);
+    _gaq.push(['_trackPageview']);
+
+    setTimeout("_gaq.push(['_trackEvent', '60_seconds', 'read'])", 60000);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Charles Hooper</a></h1>
+  
+    <h2>Thoughts and projects from a Hacker and Engineering Manager</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/subversity" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.charleshooper.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+	<li><a href="/about/">About Charles</a></li>
+	<li><a href="/projects/">Projects</a></li>
+	<li><a href="/contact/">Contact</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Troubleshooting ELBs With Elbping</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-19T10:49:00-07:00" pubdate data-updated="true">Oct 19<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h1 id="section"></h1>
+
+<p>Troubleshooting ELBs can be pretty painful at times because they are
+largely a black box. There aren’t many metrics available, and the ones
+that do exist are aggregated across all of the nodes of an ELB. This can
+be troublesome at times, for example when only a subset of an ELB’s
+nodes are degraded.</p>
+
+<h1 id="elb-properties">ELB Properties</h1>
+
+<p>ELBs have some interesting properties. For instance:</p>
+
+<ul>
+  <li>ELBs are made up of 1 or more nodes</li>
+  <li>These nodes are published as A records for the ELB name</li>
+  <li>These nodes can fail, or be shut down, and connections will <em>not</em> be closed gracefully</li>
+  <li>It often requires a good relationship with Amazon support ($$$) to get someone to dig into ELB problems</li>
+</ul>
+
+<p><em>NOTE: Another interesting property but slightly less pertinent is that
+ELBs were not designed to handle sudden spikes of traffic. They
+typically require 15 minutes of heavy traffic before they will scale up
+or they can be pre-warmed on request via a support ticket</em></p>
+
+<h1 id="troubleshooting-elbs-manually">Troubleshooting ELBs (manually)</h1>
+
+<p><strong>Update:</strong> <em>Since writing this blog post, AWS has since migrated all
+ELBs to use Route 53 for DNS. In addition, all ELBs now have a
+<code>all.$elb_name</code> record that will return the full list of nodes for the
+ELB. For example, if your ELB name is
+<code>elb-123456789.us-east-1.elb.amazonaws.com</code>, then you would get the full
+list of nodes by doing something like <code>dig
+all.elb-123456789.us-east-1.elb.amazonaws.com</code>. In addition, Route 53 is
+able to return up to 4KB of data still using UDP, so using the <code>+tcp</code>
+flag may not be necessary.</em></p>
+
+<p>Knowing this, you can do a little bit of troubleshooting on your own.
+First, resolve the ELB name to a list of nodes (as A records):</p>
+
+<pre><code>$ dig @ns-942.amazon.com +tcp elb-123456789.us-east-1.elb.amazonaws.com ANY
+</code></pre>
+
+<p>The <code>tcp</code> flag is suggested as your ELB could have too many records to fit
+inside of a single UDP packet. You also need to perform an <code>ANY</code> query because
+Amazon’s nameservers will only return a subset of the nodes otherwise.  Running
+this command will give you output that looks something like this (trimmed for
+brevity):</p>
+
+<pre><code>;; ANSWER SECTION:
+elb-123456789.us-east-1.elb.amazonaws.com. 60 IN SOA ns-942.amazon.com. root.amazon.com. 1376719867 3600 900 7776000 60
+elb-123456789.us-east-1.elb.amazonaws.com. 600 IN NS ns-942.amazon.com.
+elb-123456789.us-east-1.elb.amazonaws.com. 60 IN A 54.243.63.96
+elb-123456789.us-east-1.elb.amazonaws.com. 60 IN A 23.21.73.53
+</code></pre>
+
+<p>Now, for each of the <code>A</code> records use e.g. <code>curl</code> to test a connection to
+the ELB. Of course, you also want to isolate your test to just the ELB
+without connecting to your backends. One final property and little known
+fact about ELBs:</p>
+
+<ul>
+  <li>The maximum size of the request method (verb) that can be sent through an ELB is <strong>127 characters</strong>. Any larger and the ELB will reply with an <em>HTTP 405 - Method not allowed</em>.</li>
+</ul>
+
+<p>This means that we can take advantage of this behavior to test only that
+the ELB is responding:</p>
+
+<pre><code>$ curl -X $(python -c 'print "A" * 128') -i http://ip.of.individual.node
+HTTP/1.1 405 METHOD_NOT_ALLOWED
+Content-Length: 0
+Connection: Close
+</code></pre>
+
+<p>If you see <code>HTTP/1.1 405 METHOD_NOT_ALLOWED</code> then the ELB is responding
+successfully. You might also want to adjust curl’s timeouts to values
+that are acceptable to you.</p>
+
+<h1 id="troubleshooting-elbs-using-elbping">Troubleshooting ELBs using elbping</h1>
+
+<p>Of course, doing this can get pretty tedious so I’ve built a tool to
+automate this called <a href="https://github.com/heroku/elbping">elbping</a>. It’s
+available as a ruby gem, so if you have rubygems then you can install it
+by simply doing:</p>
+
+<pre><code>$ gem install elbping
+</code></pre>
+
+<p>Now you can run:</p>
+
+<pre><code>$ elbping -c 4 http://elb-123456789.us-east-1.elb.amazonaws.com
+Response from 54.243.63.96: code=405 time=210 ms
+Response from 23.21.73.53: code=405 time=189 ms
+Response from 54.243.63.96: code=405 time=191 ms
+Response from 23.21.73.53: code=405 time=188 ms
+Response from 54.243.63.96: code=405 time=190 ms
+Response from 23.21.73.53: code=405 time=192 ms
+Response from 54.243.63.96: code=405 time=187 ms
+Response from 23.21.73.53: code=405 time=189 ms
+--- 54.243.63.96 statistics ---
+4 requests, 4 responses, 0% loss
+min/avg/max = 187/163/210 ms
+--- 23.21.73.53 statistics ---
+4 requests, 4 responses, 0% loss
+min/avg/max = 188/189/192 ms
+--- total statistics ---
+8 requests, 8 responses, 0% loss
+min/avg/max = 188/189/192 ms
+</code></pre>
+
+<p>Remember, if you see <code>code=405</code> then that means that the ELB is responding.</p>
+
+<h1 id="next-steps">Next Steps</h1>
+
+<p>Whichever method you choose, you will at least know if your ELB’s nodes
+are responding or not. Armed with this knowledge, you can either turn
+your focus to troubleshooting other parts of your stack or be able to
+make a pretty reasonable case to AWS that something is wrong.</p>
+
+<p>Hope this helps!</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Charles Hooper</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-19T10:49:00-07:00" pubdate data-updated="true">Oct 19<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/devops/'>DevOps</a>, <a class='category' href='/blog/categories/projects/'>Projects</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping/" data-via="charleshooper" data-counturl="http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/my-def-con-21-experience/" title="Previous Post: My DEF CON 21 Experience">&laquo; My DEF CON 21 Experience</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/actual-email-from-recruiter/" title="Next Post: An actual email from a recruiter">An actual email from a recruiter &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <!-- Ads removed -->
+</section>
+<section>
+  <h1>About Charles</h1>
+	<img src="http://www.gravatar.com/avatar/9f645d339b731bc99a95704ad4289aac.png?size=160" alt="Charles Hooper"/>
+	<p>Charles is an engineer at Heroku. He enjoys archery, smoking meat, gardening, home brewing, and hacking.</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/personal-archery-faq/">Personal Archery FAQ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/what-am-i-supposed-to-do-with-all-of-this-honey/">What am I supposed to do with all of this honey?!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/give-it-a-rest/">Give it a rest</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/on-slack-and-upkeep/">On Slack and Upkeep</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/what-i-do-sre/">What I Do as an SRE</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <!-- Ads removed -->
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Charles Hooper -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'charleshooper';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping/';
+        var disqus_url = 'http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

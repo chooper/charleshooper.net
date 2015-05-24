@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Management | Charles Hooper]]></title>
+  <link href="http://www.charleshooper.net/blog/categories/management/atom.xml" rel="self"/>
+  <link href="http://www.charleshooper.net/"/>
+  <updated>2015-05-24T08:21:20-07:00</updated>
+  <id>http://www.charleshooper.net/</id>
+  <author>
+    <name><![CDATA[Charles Hooper]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[On Slack and Upkeep]]></title>
+    <link href="http://www.charleshooper.net/blog/on-slack-and-upkeep/"/>
+    <updated>2014-08-08T14:22:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/on-slack-time</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>A term I hear often in the context of engineering and project management
+is “slack.” It’s often used to refer to a magical pool of time that all
+of a service’s upkeep, including maintenance and operations, is going to
+come out of. This is wrong though. Here’s why:</p>
+
+<ul>
+  <li>
+    <p>That’s not what slack is for</p>
+  </li>
+  <li>
+    <p>Mismanaged slack is equivalent to non-existent slack</p>
+  </li>
+</ul>
+
+<h2 id="what-is-it-then">What is it then?</h2>
+
+<p>I subscribe to the definition in
+<a href="http://www.amazon.com/Slack-Getting-Burnout-Busywork-Efficiency/dp/0767907698">Tom DeMarco’s Slack</a>,
+which is “the degree of freedom required to effect change.”</p>
+
+<p>Slack is something you maintain so that your team is responsive and adaptable,
+it is <em>not</em> “extra time” or “maintenance time.” If you are doing this, you are
+effectively allocating that time and thus <em>eliminating your slack pool.</em> Signs
+you or your team may be guilty of this:</p>
+
+<ul>
+  <li>
+    <p>You don’t make explicit allocations of time to operations or
+maintenance upkeep</p>
+  </li>
+  <li>
+    <p>You don’t “have enough time” to properly operate or maintain your
+services</p>
+  </li>
+  <li>
+    <p>You can’t solve problems or complete remediation items identified by your
+organization’s problem management program</p>
+  </li>
+</ul>
+
+<h2 id="so-i-should-do-nothing-then">So I should do nothing then?</h2>
+
+<p>Well, no. At least <em>some</em> of your slack needs to be spent idle though.
+Remember that the concept of slack is rooted in queueing theory. There’s
+a well-known relationship between utilization and response time. This
+relationship is <em>exponential:</em> The higher utilized your team is, the
+<em>much</em> higher your response time is! You can see it for yourself
+below:</p>
+
+<p><img src="/images/posts/util_response_rel.png" alt="Relationship between utilization and response time" /></p>
+
+<p>We can tell by looking at this graph that our responsiveness falls apart
+at about 70% utilization which means you should keep at least 30% of
+your time <em>unallocated</em>.</p>
+
+<h2 id="unallocated-why-cant-i-just-devote-30-of-my-time-to-upkeep">Unallocated? Why can’t I just devote 30% of my time to upkeep?</h2>
+
+<p>Because upkeep, the maintenance and operations of your service,
+are <em>required</em> activities. Entropy means that, unkept, your service will
+degrade over time. This entropy is accelerated if your service is
+experiencing growth. Your databases will bloat, your latency will
+increase, your 99.99% success rate will fall to 99.9% (or worse), your
+service will be difficult to add features to, and eventually your users
+will go somewhere else.</p>
+
+<p>Instead of thinking about it like this:</p>
+
+<p><img src="/images/posts/slack_wrong_way.png" alt="Wrong way to manage slack" /></p>
+
+<p>Think about it like <em>this</em>:</p>
+
+<p><img src="/images/posts/slack_right_way.png" alt="Right way to manage slack" /></p>
+
+<p>In this model, you explicitly allocate time to upkeep <em>and</em> maintain a
+slack pool.</p>
+
+<h2 id="how-much-time-should-i-spend-on-upkeep-versus-product-and-feature-work">How much time should I spend on upkeep versus product and feature work?</h2>
+
+<p>I don’t have a good guideline for you, sorry. You’ll need to determine
+this based on your organization’s or team’s goals and any SLAs you may
+have.</p>
+
+<p>For example, if you’re operating a service with a service-level
+objective of meeting a 99.99% success rate (0.01% error rate) then you
+need to allocate more time to upkeep than a service targetting a 99.9%
+success rate, generally speaking.</p>
+
+<p>Note that this will change and vary over time. If you’re already deep in
+technical debt, your upkeep allocation will need to be much higher to
+pay off some of your principal. Once you’ve done that, you’ll probably
+be able to meet your goals with a much lower allocation later on.</p>
+
+<h2 id="call-to-action">Call to action</h2>
+
+<p>I urge everyone to start thinking about slack and upkeep this way. Take a
+close look at your team’s goals and commitments and explicitly allocate time
+for reaching those goals. Doing so will allow your team to properly maintain
+the services which it operates while
+also being very responsive.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Intro to Operations: Metrics Collection]]></title>
+    <link href="http://www.charleshooper.net/blog/intro-to-ops-metrics-collection/"/>
+    <updated>2013-05-07T14:51:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/intro-to-operations-metrics-collection</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p><em>I’m writing a series of blog posts for managers and other people
+without an operations background in order to introduce certain best
+practices regarding Operations. For the rest of the blog posts, please
+visit the <a href="/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
+
+<p>Collecting metrics is another area that many early stage startups seem
+to overlook even though it is probably one of the most important things
+they can do. By metrics collection, I am referring to the gathering and
+storing of various metrics at several different levels. As John Allspaw
+identifies them in <a href="http://www.amazon.com/Web-Operations-Keeping-Data-Time/dp/1449377440">Web Operations: Keeping the Data on Time</a>, they
+are:</p>
+
+<ul>
+  <li><strong>High-level business and application metrics</strong> (e.g. user sign-ups)</li>
+  <li><strong>Feature-specific application-level metrics</strong> (e.g. widgets processed)</li>
+  <li>
+    <p><strong>Systems and service-level metrics</strong> (e.g. server load or database queries per second)</p>
+
+  </li>
+</ul>
+
+<p>You’ll note that there are two levels of “application-level” metrics.
+The higher-level application metrics are mostly those that can be tied
+to business objectives, while the other category of application metrics
+are generally more feature specific.</p>
+
+<p>Benefits incurred by collecting these metrics are plentiful. For one,
+having quick access to these metrics is helpful during troubleshooting
+and incident response. For example, I was once hired under contract to
+look into why a certain company’s API was unreliable for the previous
+few months. At least once per day, this company’s API would time out and
+not respond to client requests. After enabling basic metrics collection
+for the servers and services used by the API, it very quickly became
+obvious that the database servers were reaching their connection limits
+which was preventing the API from retrieving records from the database.
+Not only was this problem identified very quickly, but later on we were
+able to look back at our metrics data to assess how close to our limits
+we were getting.</p>
+
+<p>Another benefit is that you can integrate the metrics into your
+<a href="/blog/intro-to-ops-availability-monitoring-alerting/">Availability monitoring</a> system to be alerted when metrics surpass
+some threshold or change significantly. Not only that, but analyzing
+these metrics will allow you to manage your capacity intelligently and
+build a business case to justify infrastructure expenditures. Finally,
+analyzing these metrics will also give you insight into your
+application, how it’s used, and your business.</p>
+
+<p>How you go about collecting and storing these metrics is up to you. Many
+engineers might be tempted to build their own solution; however, there
+are many open source and third party software packages that you may find
+helpful. Key considerations when choosing which package or packages to
+use are:</p>
+
+<ul>
+  <li>The ability to add new, custom metrics</li>
+  <li>Configurable resolution/storage trade-off</li>
+  <li>Integration with availability monitoring and alerting systems</li>
+  <li>Graphing/visualization</li>
+</ul>
+
+<p>If your startup doesn’t have any metrics then you should start
+collecting them now. The visualization will help you in the short run
+and the historical data will help you in the long run.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Intro to Operations: Availability Monitoring and Alerting]]></title>
+    <link href="http://www.charleshooper.net/blog/intro-to-ops-availability-monitoring-alerting/"/>
+    <updated>2013-05-05T21:57:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/intro-to-operations-availability-monitoring-and-alerting</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p><em>I’m writing a series of blog posts for managers and other people
+without an operations background in order to introduce certain best
+practices regarding Operations. For the rest of the blog posts, please
+visit the <a href="/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
+
+<p>Another area I’ve seen alot of early stage startups lacking in is
+<strong>availability monitoring and alerting</strong>. The essence of availability
+monitoring and alerting is being notified when your service is not
+working as expected, including when it’s simply down, isn’t meeting
+formal or informal SLAs (e.g., it’s too slow), or certain functionality
+is broken.</p>
+
+<p>What I typically see is that some effort was made to set up this type of
+monitoring before and never maintained. Symptoms include <em>poor
+monitoring coverage</em> (<em>servers missing from the config, services
+monitoring nearly non-existent</em>), <em>large amounts of false positives and
+negatives</em>, <em>inactionable alerts</em>, and <em>alerts that go unignored</em>
+because of the previous issues.</p>
+
+<p>Symptoms on the business include not knowing when your service is down
+and finding out that your service is broken <em>from your customers</em>.
+Finding out that your service is down from your customers is not only
+embarrassing but it also shakes their confidence in you, affects your
+reputation, and may even lead to lost revenue.</p>
+
+<p>The good news is that it doesn’t have to be this way. When availability
+monitoring is set up properly, maintained, and you and your employees
+agree to approach alerts a specific way, you will be able to reap a
+variety of benefits. Here’s what I recommend:</p>
+
+<ol>
+  <li>
+    <p>First, collaborate with your employees to define who is in the pager
+  rotation and the escalation policies. Ask yourself: What happens when
+  the on call engineer is overwhelmed and needs backup? What happens when
+  the engineer goes on vacation?</p>
+  </li>
+  <li>
+    <p>Next, take inventory of what services you rely on and define an
+  internal SLA for them. This does not have to be a super formal process,
+  but this inventory and SLA will be helpful for deciding what thresholds
+  to set in your monitoring to avoid false positives. Try to see the big
+  picture and think about everything such as:</p>
+
+    <ul>
+      <li>Servers,</li>
+      <li>Self-managed supporting services like web servers, databases, email services,</li>
+      <li>Application functionality and features - one strategy I like is exposing a “health check” service that can be checked by the monitoring agent,</li>
+      <li>Third party services like remote APIs.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Your inventory and SLA definition is a living document; remember to
+  keep it up to date!</p>
+
+<ol>
+  <li>Then set up whatever monitoring package you or your engineers decided
+  to use (self-hosted or third party) such as <a href="http://www.nagios.org/">nagios</a>, <a href="http://www.zenoss.com/">Zenoss</a>,
+  <a href="http://www.pingdom.com/">Pingdom</a>, or <a href="http://www.copperegg.com/">CopperEgg</a> and have your monitoring configured for
+  those services. If you’re really good, you’ll <em>check your configuration
+  into its own source control repository</em>. If you go the self-hosted
+  route, it may also be worth having your monitoring server monitored
+  externally.  Who’s watching the watcher indeed. </li>
+</ol>
+
+<ol>
+  <li>Think about integrating your monitoring with a pager service such as
+  <a href="http://www.pagerduty.com/">PagerDuty</a>. Services like PagerDuty allow you to input your pager
+  rotation and then define good rules for how to contact the on call
+  engineer and when to escalate should the engineer be unavailable.</li>
+</ol>
+
+<ol>
+  <li>
+    <p>With improved monitoring and alerting in place, you may want to think
+  about giving certain customers “911” access. At a previous company I
+  worked at, we had a secret email address our big customers could hit
+  which would <em>open a support ticket</em> and then <em>page the on call engineer</em>
+  with the ticket number. If you decide to go this route; however, you’ll
+  want to <em>train your customers</em> when it’s appropriate to use this power
+  and how to use it most effectively.</p>
+  </li>
+  <li>
+    <p>Adjust alerts and fix problems as you get paged for them. Don’t care
+  that a particular API goes down during a known maintenance window?
+  Schedule the notification policy accordingly.</p>
+  </li>
+  <li>
+    <p>Finally, continue maintaining your inventory and monitoring
+  service’s configuration. For extra benefit, consider tracking your
+  organization’s <strong>Mean Time To Respond</strong> (how long it took for engineer to
+  acknowledge that something is wrong) and your <strong>Mean Time To Recover</strong>
+  (how long it took the engineer to resolve the issue <em>including</em> the Mean
+  Time To Respond), your <strong>Mean Time Between Failures</strong> (self-explanatory,
+  I hope), and <strong>Percent Availability</strong> (what percent of time your service
+  is functional in a given period of time). </p>
+  </li>
+</ol>
+
+<p>This concludes the management and non-ops introduction to operations; I
+hope you find this helpful.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Intro to Operations: Configuration Management]]></title>
+    <link href="http://www.charleshooper.net/blog/intro-to-ops-config-management/"/>
+    <updated>2013-05-05T20:12:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/intro-to-operations-configuration-management</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p><em>I’m writing a series of blog posts for managers and other people
+without an operations background in order to introduce certain best
+practices regarding Operations. For the rest of the blog posts, please
+visit the <a href="/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
+
+<p>One of the areas I’ve witnessed early stage startups lacking in is
+<strong>configuration management</strong>. <em>Configuration management is the process of
+standardizing and enforcing configurations</em>. In other words,
+configuration management is about deciding on a specific configuration
+of services for various roles and then applying these configurations in
+practice. Typically, these manifests are written in (domain-specific)
+language and is specific to the <em>configuration management software</em>
+being used, such as <a href="https://puppetlabs.com/">puppet</a>, <a href="http://www.opscode.com/chef/">chef</a>, <a href="http://cfengine.com/">cfengine</a>, or
+<a href="http://saltstack.com/community.html">salt stack</a>.</p>
+
+<p>There are many benefits to configuration management. For one,
+configuration management allows developers to spend more time working on
+the product and less time deploying new services. This is because
+configuration is now automated and faster as a result. In addition,
+environments are standardized and therefore less time is spent
+troubleshooting or diagnosing edge cases in different environments.
+Finally, when coupled with <em>source control management</em>, the proper use
+of configuration management can be used to track and audit what has
+changed over time and who changed it.</p>
+
+<p>In many of these early stage startups, there is either very little
+configuration management performed at all, or configuration management
+exists as a series of shell scripts cobbled together to do some
+post-hardware setup. If you’re lucky, there exists a document somewhere
+that describes when and how to run these scripts to deploy new services.</p>
+
+<p>The way configuration management works is that engineers create a
+collection of files that define how the system should be configured.
+This collection of files is typically called a <strong>manifest</strong>. Then, once
+physical or virtual hardware has been provisioned, one of these
+manifests is <em>applied</em> to the new host. During application, the
+configuration management software will interpret the new configuration,
+install software packages, manage users and credentials, alter config
+files, manage file permissions, run arbitrary commands, and so on. Once
+the manifest is fully applied, the new host should be fully configured
+and ready to be used!  In some environments; however, they may be a
+post-host-provisioning step where additional work is performed
+afterwards, such as checking out application code from a source control
+repository.</p>
+
+<p>If you’re not using configuration management already then you should
+start now because, frankly, it’s never too early. Starting configuration
+management now will not only help your first hired ops/systems engineer
+from working backwards to write these manifests later, but will also
+incur benefits (such as your developers spending less time away from
+shipping value-added code) that will outweigh the initial learning
+curve.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Intro to Operations for Early Stage Startups]]></title>
+    <link href="http://www.charleshooper.net/blog/intro-to-ops-for-startups/"/>
+    <updated>2013-05-04T21:37:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/intro-to-operations-for-early-stage-startups</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>I’ve spent the last few years in a variety of roles for early stage tech
+startups. While in these roles, I’ve noticed a pattern: <em>Early stage
+startups don’t give much thought to their operations. In particular,
+they typically don’t hire anyone specifically for that role because they
+are focused on building their product.</em> In other words, all of their
+technical hires are for developers.</p>
+
+<p>What tends to happen in my experience is that <em>their developers soon
+become overwhelmed</em> (especially after a growth spurt) and are unable to
+spend their time shipping code that’s going to improve their product or
+make their company money. Eventually, if they’re lucky, management catches
+onto this and hires their first <strong>systems or operations engineer</strong>.</p>
+
+<p>Because I’ve had the opportunity to be first-hired systems engineer,
+what I’ve experienced is the effect of “working backwards” to undo a
+bunch of things that weren’t done following best practices while
+simultaneously moving things forward to improve them.</p>
+
+<p>I decided to try to educate whoever would be willing to read this
+(hopefully early stage startups!) about some <em>best practices</em> that will
+not only save their future operations engineers some headache, but will
+also improve their business. Part of this education will happen in the
+form of one-on-one time with these startups. For example, I spent the
+last couple of days sitting in on office hours at a startup accelerator.
+The other part; however, will take place by writing “Intro to…”
+articles and publishing them to a variety of places, including this blog.</p>
+
+<p>Specifically, the topics I’ve chosen to write about are:</p>
+
+<ul>
+  <li><a href="/blog/intro-to-ops-config-management/">Configuration management</a></li>
+  <li><a href="/blog/intro-to-ops-availability-monitoring-alerting/">Availability monitoring</a></li>
+  <li>
+    <p><a href="/blog/intro-to-ops-metrics-collection/">Metrics collection</a></p>
+
+  </li>
+</ul>
+
+<p>Over the next week or so, I’ll write about each one of these topics and
+post them to this blog. I hope people find them helpful!</p>
+
+]]></content>
+  </entry>
+  
+</feed>

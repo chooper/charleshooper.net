@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Finance | Charles Hooper]]></title>
+  <link href="http://www.charleshooper.net/blog/categories/finance/atom.xml" rel="self"/>
+  <link href="http://www.charleshooper.net/"/>
+  <updated>2015-05-24T08:21:20-07:00</updated>
+  <id>http://www.charleshooper.net/</id>
+  <author>
+    <name><![CDATA[Charles Hooper]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Going into Business? Learn a Programming Language]]></title>
+    <link href="http://www.charleshooper.net/blog/going-into-business-learn-a-programming-language/"/>
+    <updated>2010-11-15T00:00:00-08:00</updated>
+    <id>http://www.charleshooper.net/blog/going-into-business-learn-a-programming-language</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>When doing homework for my business-related classes, I often find that knowing a programming language is very advantageous. Certainly there are times when it makes sense to use a calculator, but repeatedly entering the same equation over and over is tedious and inefficient. There are also times when it’s a good idea to make a spreadsheet, but even this can be overkill.</p>
+
+<p>In cases where I’m repeating the same tasks or expressions frequently and a spreadsheet seems like overkill, I’ll open a Python shell and define the expression I need as a function. More often than not, these functions are one liners that I probably won’t use again. At least, not until I get a “Real Job (TM)” where I’ll need to use said expressions more frequently.</p>
+
+<p>As an example, I recently found myself calculating the gains and/or losses between two given foreign exchange rates. The example below calculates the gain or loss between two period’s exchange rates for a given currency.</p>
+
+<pre><code>def xchg_diff(qty,old_rate,new_rate):
+    """
+    qty = Amount of 'domestic currency'
+    old_rate = Exchange rate of foreign currency in previous period
+    new_rate = Exchange rate of foreign currency in current period
+    """
+    return round(qty * (new_rate - old_rate))
+</code></pre>
+
+<p>In this example, the hypothetical company had 850,000 pesos that it held over multiple accounting periods. I was given a table of dates that corresponded with these accounting periods and the exchange rate of pesos to U.S. Dollars (USD $) that looked similar to the one below.</p>
+
+<p>Date</p>
+
+<p>Exchange Rate</p>
+
+<p>Mar 31, 2009</p>
+
+<p>0.0698</p>
+
+<p>Jun 30, 2009</p>
+
+<p>0.0756</p>
+
+<p>Sep 30, 2009</p>
+
+<p>0.0737</p>
+
+<p>Dec 31, 2009</p>
+
+<p>0.0777</p>
+
+<p>The equation is simple enough to type into a calculator, but I find most calculators to have a clumsy interface when it comes to editing the numbers in previous expressions. In this case, I simply opened up a Python shell and, after defining the above function, I typed:</p>
+
+<pre><code>&gt;&gt;&gt; xchg_diff(850000,0.0698,0.0756)
+4930.0
+&gt;&gt;&gt; xchg_diff(850000,0.0756,0.0737)
+-1615.0
+&gt;&gt;&gt; xchg_diff(850000,0.0737,0.0777)
+3400.0
+</code></pre>
+
+<p>As we can see from the transcript, I was quickly able to find the following results:</p>
+
+<p>Date</p>
+
+<p>Gain / (loss)</p>
+
+<p>Jun 30, 2009</p>
+
+<p>$4930</p>
+
+<p>Sep 30, 2009</p>
+
+<p>$(1615)</p>
+
+<p>Dec 31, 2009</p>
+
+<p>$3400</p>
+
+<p>Many people have asked me if I thought that my experience in computers and programming would go to waste once I entered the world of business and, in particular, finance. My response has been, and will continue to be, “No.” Knowing how to automate routine tasks, being able to write data models, and having a firm grasp on algorithms will only help me to be more effective in my future career.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What are the Generally Accepted Accounting Principles (GAAP)?]]></title>
+    <link href="http://www.charleshooper.net/blog/what-are-the-generally-accepted-accounting-principles-gaap/"/>
+    <updated>2010-07-24T00:00:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/what-are-the-generally-accepted-accounting-principles-gaap</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>This entry is part 3 of 8 in the series<a href="http://www.charleshooper.net/blog/series/intro-to-financial-reporting/" title="Intro to Financial Reporting">Intro to Financial Reporting</a></p>
+
+<p>Previously, we discussed the various regulations and regulatory bodies that govern financial reporting. We will now turn to the Generally Accepted Accounting Principles (GAAP) to explain the basic principles used in accounting. In particular, we will discuss the cost, revenue recognition, matching, and full disclosure principles.</p>
+
+<p>While it may sound redundant, the cost principle means that “accounting information is based on an actual cost” (Wild, Shaw, &amp; Chiappetta, 2009, p. 9). In other words, everything is treated as having the value of what was paid for it. So what happens when businesses make a trade or don’t purchase with cash (businesses have been known to buy each other with a mix of cash, stocks, and bonds)? “If something besides cash is exchanged … cost is measured as the cash value of what is given up or received” (Wild, Shaw, &amp; Chiappetta, 2009, p. 10). That caveat here is that if you buy something and get a good deal, such as buying a $7000 asset for $5000, the item will be recognized in your accounting system as having a value of $5000. This is to ensure that the accounting information remains objective (Wild, Shaw, &amp; Chiappetta, 2009, p. 10). Next, we will look at the revenue recognition principle.</p>
+
+<p>The revenue recognition principle determines how and when a company will recognize (record) revenue (Wild, Shaw, &amp; Chiappetta, 2009, p. 10). The primary concept of the revenue recognition principle is that “Revenue is recognized when earned” (Wild, Shaw, &amp; Chiappetta, 2009, p. 10). This doesn’t necessarily mean when the customer or client pays for their good or service, but when the good or service is actually sold (such as on credit). For example, if I configured someone’s network (a service) at an hourly rate, I would be required to recognize and record this earned revenue as soon as the work is done; this is usually done crediting accounts receivable (most accounting software does this automatically when generating an invoice.) This principle is intended to keep companies from recognizing revenue too early to look more profitable while also ensuring that they don’t recognize revenue too late to look less profitable than they really are (Wild, Shaw, &amp; Chiappetta, 2009, p. 10). Now let’s look to the matching principle.</p>
+
+<p>The matching principle dictates that a company must report its expenses in the period that they generated the revenue reported (Wild, Shaw, &amp; Chiappetta, 2009, p. 10). Let’s say, for example, that a company buys 10 pounds of raw material, uses it to make 10 widgets, and then sells 5 of those widgets. Under the matching principle, the company would report the expenses (or, in this case, Cost of Goods Sold) incurred to make the 5 widgets it sold. The remaining 5 (that are now sitting in inventory), would not have their expenses/COGS reported until they too were sold. Finally, we turn to the full disclosure principle.</p>
+
+<p>The full disclosure principle is probably the most basic yet most important principle. The full disclosure principle states that a company must “report the details behind financial statements that would impact users’ decisions” (Wild, Shaw, &amp; Chiappetta, 2009, p. 10). Oftentimes, these details are reported in footnotes of a company’s financial statements or annual reports (Wild, Shaw, &amp; Chiappetta, 2009, p. 10). An example of this from current events is Dell’s recent trouble with the SEC. Dell’s recent trouble was partially the result of receiving money from CPU manufacturer Intel and disguising that money as sales (why they hid it is another topic entirely). Users of Dell’s financial reports were led to believe that this extra money was the result of sales. When Intel stopped paying Dell this “incentive money,” Dell then took extra steps to falsify their financial statements to hide the fact that their revenue decreased. Save for the anti-trust violation with Intel, if Dell had just fully disclosed the revenue it was receiving from Intel they may have never felt the pressure to hide the fact that the payments stopped.</p>
+
+<p>In conclusion, the Generally Accepted Accounting Principles (GAAP) are made up of four basic principles. In particular, we discussed the cost, revenue recognition, matching, and full disclosure principles.</p>
+
+<p>Chiappetta, B., Shaw, K., Wild, J. (2009). Principles of Financial Accounting (19th ed.). McGraw-Hill/Irwin.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Who was Enron and why is this important to financial reporting today?]]></title>
+    <link href="http://www.charleshooper.net/blog/who-was-enron-and-why-is-this-important-to-financial-reporting-today/"/>
+    <updated>2010-07-19T00:00:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/who-was-enron-and-why-is-this-important-to-financial-reporting-today</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>This entry is part 6 of 8 in the series <a href="http://www.charleshooper.net/blog/series/intro-to-financial-reporting/" title="Intro to Financial Reporting">Intro to Financial Reporting</a></p>
+
+<p>Enron was an energy trading company. Rather than generate energy
+themselves, Enron made its money by buying and selling energy contracts.
+At one point, Enron was considered one of the most innovative companies
+on the market and reported sales of over $100 billion one year. Soon
+after, the company then reported losses of $618 million loss in the
+third quarter of 2001 (Nielsen, 2002, para. 1). A little later, the firm
+filed for Chapter 11 bankruptcy. “The company’s Chapter 11 filing
+[left] banks, pension plans and other lenders with at least $5 billion
+at risk. More than 4,000 Enron employees lost their jobs and 401(k)
+savings. The collapse reverberated the stock market, which dropped some
+$200 billion in value since Enron’s Dec. 2 filing, amid fears that other
+Enrons are lurking out there” (Jaffe, 2002, para. 3).</p>
+
+<p>So how does a company go from reporting over $100 billion dollars in sales when they are really on the verge of bankruptcy? The answer lies in the deceptive accounting practices and outright fraud that Enron’s executives and auditors took part in. One factor is the massive amount of debt that Enron was hiding from its balance sheet. How does one go about hiding debt? “At the heart of Enron’s demise was the creation of partnerships with shell companies, many with names like Chewco and JEDI, inspired by Star Wars characters. These shell companies, run by Enron executives who profited richly from them, allowed Enron to keep hundreds of millions of dollars in debt off its books” (Nielsen, 2002, para. 4). At the same time, Enron’s board members, regulators, analysts, auditors, and even politicians looked the other way while Enron committed its fraud (Kadlec, 2001, para. 4). Enron’s auditing firm even went as far as to order their employees to shred all of the documents they used to do Enron’s audits! In the wake of Enron’s collapse, the general public demanded that the politicians step up, create, and enforce corporate law. This allowed for the creation of the Sarbanes-Oxley Act of 2002 which is still in effect today!</p>
+
+<p> </p>
+
+<p>Jaffe, Stephen. TIME. (2002). How Fastow Helped Enron fall. Retrieved from </p>
+
+<p>Kadlec, Daniel. TIME. (2001). Power Failure. Retrieved from </p>
+
+<p>Nielsen, James. TIME. (2002). Enron: Who’s Accountable? Retrieved from </p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Financial Crises: And the Cycle Continues]]></title>
+    <link href="http://www.charleshooper.net/blog/financial-crises-and-the-cycle-continues/"/>
+    <updated>2010-07-19T00:00:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/financial-crises-and-the-cycle-continues</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>This entry is part 7 of 8 in the series <a href="http://www.charleshooper.net/blog/series/intro-to-financial-reporting/" title="Intro to Financial Reporting">Intro to Financial Reporting</a></p>
+
+<p>After Enron, Global Crossing, and Xerox, we witnessed the creation of new regulation (the Sarbanes-Oxley Act of 2002), the establishment of a new oversight/regulatory organization, and increased pressure from the government on big players in the market. As we find ourselves in the midst of the Financial Crisis of 2007 (and onward,) we are seeing this same pattern – new legislation, a new regulatory organization, and increased pressure from the government on big players in the market.</p>
+
+<p>In news today, we see the Restoring American Financial Stability Act of 2010 and the Wall Street Reform and Consumer Protection Act of 2009 on the desk of the President. This 2,300-page bill will “ban high-risk trading inside the banks and put in end to conflicts of interest” and “ban steering payments, liar loans, and prepayment penalties and give Americans … transparency” (Nichols, 2010, para. 4-5). But that isn’t all. These new acts would also create yet another oversight/regulatory organization called the Consumer Financial Protection Bureau to regulate mortgages, credit cards, and other financial consumer products (Hall, 2010, fig. 1). Not only does this act establish a new bureau, it also creates a “council of regulators” led by the Treasury to monitor “threats to the financial situation” (Hall, 2010, fig. 1).</p>
+
+<p>And as if you couldn’t already guess, today in the news we see increased pressure from the government on big players in the market including Goldman Sachs, Dell, and AIG. Goldman Sachs agreed to settle by paying a $550 million dollar fine – the largest fine ever charged by the SEC after being accused of securities fraud (Craig, Scannel, 2010, para. 3). Dell admitted to accounting fraud back in 2007 and agreed on a settlement with the SEC today – The company must pay a $100 fine and restate its earnings for the 2003 to 2006 accounting periods (Ogg, 2010, para. 2-3). What Dell was caught doing was violating GAAP, the Global Accepted Accounting Principles, by “fudging” the timing of recognized expenses and income to meet analyst’s quarterly earnings forecasts (Ogg, 2010, para. 1,4). And if that isn’t enough, the AIG settled with the Ohio State Attorney General with a $725 million fine (AFP, 2010, para. 1). The AIG was also accused of accounting fraud to achieve stock price manipulation (AFP, 2010, para. 2).</p>
+
+<p>As we can clearly see, after each financial crisis the response is likely to be the same.</p>
+
+<p>AFP. (2010). AIG to Pay 725 Million Dollars to Settle US Fraud Lawsuit. Retried from http://www.google.com/hostednews/afp/article/ALeqM5h0MtX-uuAB1z2f3dcmONOLRCIWaw</p>
+
+<p>Craig, Susanne, Kara Scannel. The Wall Street Journal. (2010). SEC Split Over Goldman Deal. Retrieved from http://online.wsj.com/article/SB10001424052748704229004575371601322076426.html?mod=WSJ_hpp_LEFTTopStories</p>
+
+<p>Hall, Kevin. McClatchy Newpapers. (2010). What’s this big finance-regulation overhaul really do? Retrived from http://www.mcclatchydc.com/2010/07/15/97609/whats-this-big-finance-regulation.html</p>
+
+<p>Ogg, Erica. CNET. (2010). Dell to Restate Earnings Due to Accounting Fraud. Retrieved from http://news.cnet.com/8301-31021_3-20007390-260.html</p>
+
+<p>Ogg, Erica. CNET. (2010). Goals Led Dell to Cook the Books. Retrieved from http://news.cnet.com/Goals-led-Dell-to-cook-the-books/2100-1014_3-6203071.html?tag=mncol;txt</p>
+
+<p>Nichols, John. The Nation. (2010). Financial Reform Passes, But What Does That Mean? Retrieved from http://www.thenation.com/blog/37541/financial-reform-passes-what-does-mean</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Why was the Sarbanes-Oxley Act of 2002 created and how does it impact financial reporting today?]]></title>
+    <link href="http://www.charleshooper.net/blog/why-was-the-sarbanes-oxley-act-of-2002-created-and-how-does-it-impact-financial-reporting-today/"/>
+    <updated>2010-07-09T00:00:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/why-was-the-sarbanes-oxley-act-of-2002-created-and-how-does-it-impact-financial-reporting-today</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>This entry is part 5 of 8 in the series<a href="http://www.charleshooper.net/blog/series/intro-to-financial-reporting/" title="Intro to Financial Reporting">Intro to Financial Reporting</a></p>
+
+<p>The Sarbanes-Oxley Act of 2002, also known as the SOX Act, was created in response to the series of misleading and outright fraudulent activity of big business in the 1990s (Lasher, 2008, p. 187). Essentially, multiple publicly-traded businesses jacked up their stock prices by “publishing false or deceptive financial statements” (Lasher, 2008, p. 187). The most notable company to crash was Enron, followed by Global Crossing (parent of MCI,) and Xerox; later, almost one thousand publicly traded companies restated their financial statements (Lasher, 2008, p. 187). This resulted in almost $6 trillion of stock market value disappearing (Lasher, 2008, p. 187)! In response to these events, Congress drafted and passed the Sarbanes-Oxley Act (SOX) of 2002.</p>
+
+<p>Next, we look to the provisions of the Sarbanes-Oxley Act of 2002 to see how they impact the way firms prepare their financial statements. The first and most major way the SOX Act impacted financial reporting was that it ended self-regulation of the public accounting industry (Lasher, 2008, p. 190). The SOX Act achieved this by establishing the Public Company Accounting Oversight Board (PCAOB,) an independent, non-profit organization (Lasher, 2008, p. 190). The PCAOB is given authority and empowered by the Securities Exchange Commission (SEC) to regulate and enforce these regulations of the accounting industry (Lasher, 2008, p. 190). Under the regulations of the SOX Act and the PCAOB, it is now required for all accounting firms to be registered and illegal for an unregistered firm to issue audit reports for publicly-traded companies (Lasher, 2008, p. 190). The PCAOB is empowered and directed to perform investigations of questionable accounting practices, hold disciplinary hearings, and impose sanctions upon firms and individuals who auditors who are caught letting wrongdoings “slide” (Lasher, 2008, p. 190). Another way the SOX Act effectively restores the integrity of financial statements is by removing a very large conflict of interest that existed in the 1990s. This conflict of interest existed for accounting firms that also provided consulting services to their clients; under the SOX Act, these types of relationships became illegal and firms that had audit clients could no longer offer these same clients additional consulting services (Lasher, 2008, p. 190). Another major conflict of interest that was removed was the relationships between auditors and the audited firm’s CEO and CFO. Instead of reporting to the firm’s executives, auditors now reported to an “audit committee” of the firm’s Board of Directors; At least one member of which is legally required to be a financial expert (Lasher, 2008, p. 190). Finally, partners of an auditing firm can only supervise the same client for five years at a time (Lasher, 2008, p. 191). The final main problem that the SOX Act addresses is the potential conflict of interest between a firm and its executives, also known as the agency problem (Lasher, 2008, p. 192). The SOX Act achieved this by requiring CEOs and CFOs to certify that they reviewed their firm’s financial statements, that they are true to the best of their knowledge, to also certify that they are personally responsible for their firm’s internal financial controls, and by requiring that company executives repay bonuses and capital gains from stock sales if they follow within 12 months of the issue of financial statements and the gains are made as a “result of misconduct” (Lasher, 2008, p. 191).</p>
+
+<p>Lasher, William R. (2008). Practical Financial Management (5th ed.). Thomson South-Western.</p>
+]]></content>
+  </entry>
+  
+</feed>
