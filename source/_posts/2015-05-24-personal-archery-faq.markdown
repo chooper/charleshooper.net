@@ -70,3 +70,21 @@ time to practice all of the things I've just learned on my own.
 
 So I rented the equipment a few times and eventually just bought my own.
 
+## What did you buy?
+
+I bought a pretty basic recurve bow and everything else I needed:
+
+* Six arrows
+
+* A quiver
+
+* An arm guard and glove
+
+* A bow stringer
+
+* Target pins
+
+* And carrying bag
+
+All in all, it cost me about $350.
+
