@@ -24,7 +24,7 @@ I'm not at all because I'm currently focused on *precision*. This is
 mostly a matter of form and consistency, which is why I don't have to
 "shoot" ("loose"? "let"?) from very far. I can spend an entire session
 at 10 meters and get very rapid feedback on this, so I do. (Note: I'm
-being pedantic about prevision vs accuracy, explanation in the image
+being pedantic about precision vs accuracy, explanation in the image
 below).
 
 {% img center http://cdn.antarcticglaciers.org/wp-content/uploads/2013/11/precision_accuracy.png 417 278 "Precision vs Accuracy" %}
