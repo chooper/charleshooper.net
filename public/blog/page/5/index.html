@@ -9,7 +9,8 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="At the NESIT Hackathon on Saturday, I was talking to a group of people about discovering web vulnerabilities and I was asked “Which scanner or tools &hellip;">
+  <meta name="description" content="Multiple Vulnerabilities in WP Forum (WordPress Plugin) 1. Advisory Information Title: Multiple Vulnerabilities in WP-Forum
+Advisory URL: http://www &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,56 +84,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/finding-web-vulnerabilities/">Finding Web Vulnerabilities</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-21T00:00:00-08:00" pubdate data-updated="true">Dec 21<span>st</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>At the <a href="http://www.nesit.net/">NESIT Hackathon</a> on Saturday, I was talking to a group of people about discovering web vulnerabilities and I was asked “Which scanner or tools do you use?” The absolute shortest answer I can provide is “I don’t use a scanner.” Despite the lack of a vuln scanner in my toolset, I am still able to consistently find vulnerabilities in web applications. Here’s how:</p>
-
-<ol>
-  <li>I first begin by <strong>finding or setting up an adequate test environment</strong>. If the project is freely available (aka open source/free software,) I set up a test environment. If the project is not freely available, then I look for a site that uses the platform or application I’m trying to audit. I don’t normally recommend the latter case, but if I’m testing a 3rd party web service then I don’t have any other choice.</li>
-  <li>I then <strong>get familiar with the application</strong>. What does it do? What problem does it try to solve? What does a normal use case look like?</li>
-  <li>Then I <strong>get really, <em>really</em> familiar with the application</strong>. In this stage, I’m really interested in the lesser-used functionality (such as error handling) and making things break. How does the application handle errors? How verbose are the error messages? Are any pages particularly slower than the others? Where does the application get most of its data? Request variables? Cookies? A database? A third party API?I usually do this step with the <a href="http://getfirebug.com/">Firebug plugin for Firefox</a>. I want to know exactly what parameters are being passed to the application, how those variables are being handled, and if (and how) those variables are being spit back out to the user.</li>
-  <li>My secret weapon is not being afraid to <strong>look through the code</strong>, if it’s available. If the code is lengthy and I just want to take a cursory glance at it, I grep for “red flags.” Because most vulnerabilities are the result of unescaped, unsanitized user-input, these red flags are usually connected to user-provided variables. For example, If I’m auditing PHP scripts for vulnerabilities, I look for code referencing the $_GET, $_POST, $_REQUEST, and $_COOKIE variables. This step does wonders for finding Cross-Site Scripting and SQL injection vulnerabilities.</li>
-  <li>In very small projects, like WordPress plugins, I’ll <strong>read through each</strong> <strong>file</strong> and try to figure out what story the code is telling. This is very much like reading a short story. I want to know what the application is <em>trying</em> to do.</li>
-  <li>I’ll then <strong>read the code more in-depth</strong>. This is akin to analyzing poetry in a Literature class. Things like the actual names of variables and the syntax become much more important here. Now I want to know what the application is <em>actually</em> doing. 
-I recently discovered Cross-Site Scripting SQL injection vulnerabilities in an URL field of an application that was <em>trying</em> to escape it’s input. The problem, however, was that the application was validating and sanitizing <em>$url_var</em> when the value of their user-input was <em>$var_url</em>. The combination of the lack of testing and the lack of error reporting allowed this bug to be introduced into production which created XSS and SQL injection vulnerabilities. Being able to read the code helps find other issues such as direct-request (authentication/authorization bypass) vulnerabilities.<br />
-I can’t stress bug/vulnerability hunting outside the normal execution paths of any given application. If a blog platform seems pretty solid, try exploiting its dynamically-generated RSS feed. If a 3rd party web-service looks perfect, try exploiting its support forums or its help site in a different language or character set. <strong>Think outside of the box.</strong> That phrase is cliche, but it’s cliche for a reason.</li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -956,6 +907,47 @@ It saddens me to think that my last eight months at ChunkHost were a waste. Fort
     </ul>
   </li>
 </ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/i-think-and-think-for-months-and-years-99-times-the-conclusion-is-false-the-hundredth-time-i-am-right-einstein/">I Think and Think for Months and Years. 99 Times, the Conclusion Is False. The Hundredth Time I Am Right - Einstein</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-05T00:00:00-07:00" pubdate data-updated="true">Sep 5<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>“I think and think for months and years. Ninety-nine times, the conclusion is false. The hundredth time I am right.” — <a href="http://nobelprize.org/nobel_prizes/physics/laureates/1921/einstein-bio.html">Albert Einstein</a></p>
+
+<p>I think Einstein was onto the <a href="http://www.sebastianmarshall.com/?p=195">equal-odds rule</a>.  </p>
 
 </div>
   

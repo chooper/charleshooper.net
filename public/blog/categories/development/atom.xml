@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Development | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/development/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2015-05-24T07:49:52-07:00</updated>
+  <updated>2015-05-24T07:50:02-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -34,115 +34,225 @@ For one of my clients and side projects, we’ve been working hard to build in a
 
 <p>Since the code to enable these metrics just <em>wraps</em> the code being instrumented it seemed only natural to use a decorator. Below is the code I wrote to do just that.</p>
 
-<p>{% codeblock statsd_instrument.py https://gist.github.com/chooper/2018362 %}</p>
-
-<p>”"”Decorator to quickly add statsd (graphite) instrumentation to Celery
-task functions.</p>
-
-<p>With some slight modification, this could be used to instrument just
-about any (non-celery) function and be made abstract enough to customize
-metric names, etc.</p>
-
-<p>Stats reported include number of times the task was accepted by a worker
-(<code>started</code>), the number of successes, and the number of times the task
-raised an exception. In addition, it also reports how long the task took
-to complete. Usage:</p>
-
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <p>@task
-@instrument_task
-def mytask():
-    # do stuff
-    pass</p>
-    </blockquote>
-  </blockquote>
-</blockquote>
-
-<p>Please note that the order of decorators is important to Celery. See
-http://ask.github.com/celery/userguide/tasks.html#decorating-tasks
-for more information.</p>
-
-<p>Uses <code>simple_decorator</code> from
-http://wiki.python.org/moin/PythonDecoratorLibrary#Property_Definition</p>
-
-<p>Limitation: Does not readily work on subclasses of celery.tasks.Task
-because it always reports <code>task_name</code> as ‘run’
-“””</p>
-
-<h1 id="statsd-instrumentation">statsd instrumentation</h1>
-<p>from celery import current_app
-import statsd</p>
-
-<p>@simple_decorator
-def instrument_task(func):
-    “"”Wraps a celery task with statsd instrumentation code”””</p>
-
-<pre><code>def instrument_wrapper(*args, **kwargs):
-    stats_conn = statsd.connection.Connection(
-        host = current_app.conf['STATSD_HOST'],
-        port = current_app.conf['STATSD_PORT'],
-        sample_rate = 1)
-
-    task_name = func.__name__
-
-    counter = statsd.counter.Counter('celery.tasks.status',stats_conn)
-    counter.increment('{task_name}.started'.format(**locals()))
-
-    timer = statsd.timer.Timer('celery.tasks.duration', stats_conn)
-    timer.start()
-
-    try:
-        ret = func(*args, **kwargs)
-    except:
-        counter.increment('{task_name}.exceptions'.format(**locals()))
-        raise
-    else:
-        counter.increment('{task_name}.success'.format(**locals()))
-        timer.stop('{task_name}.success'.format(**locals()))
-        return ret
-    finally:
-        try:
-            del timer
-            del counter
-            del stats_conn
-        except:
-            pass
-
-return instrument_wrapper
-</code></pre>
-
-<p>def simple_decorator(decorator):
-    “"”Borrowed from:
-    http://wiki.python.org/moin/PythonDecoratorLibrary#Property_Definition</p>
-
-<pre><code>Original docstring:
-This decorator can be used to turn simple functions
-into well-behaved decorators, so long as the decorators
-are fairly simple. If a decorator expects a function and
-returns a function (no descriptors), and if it doesn't
-modify function attributes or docstring, then it is
-eligible to use this. Simply apply @simple_decorator to
-your decorator and it will automatically preserve the
-docstring and function attributes of functions to which
-it is applied."""
-def new_decorator(f):
-    g = decorator(f)
-    g.__name__ = f.__name__
-    g.__module__ = f.__module__ # or celery throws a fit
-    g.__doc__ = f.__doc__
-    g.__dict__.update(f.__dict__)
-    return g
-# Now a few lines needed to make simple_decorator itself
-# be a well-behaved decorator.
-new_decorator.__name__ = decorator.__name__
-new_decorator.__doc__ = decorator.__doc__
-new_decorator.__dict__.update(decorator.__dict__)
-return new_decorator
-</code></pre>
-
-<p>{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>statsd_instrument.py</span><a href='https://gist.github.com/chooper/2018362'>link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="err">”</span><span class="s">&quot;”Decorator to quickly add statsd (graphite) instrumentation to Celery</span>
+</span><span class='line'><span class="n">task</span> <span class="n">functions</span><span class="o">.&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">With</span> <span class="n">some</span> <span class="n">slight</span> <span class="n">modification</span><span class="p">,</span> <span class="n">this</span> <span class="n">could</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">instrument</span> <span class="n">just</span>
+</span><span class='line'><span class="n">about</span> <span class="nb">any</span> <span class="p">(</span><span class="n">non</span><span class="o">-</span><span class="n">celery</span><span class="p">)</span> <span class="n">function</span> <span class="ow">and</span> <span class="n">be</span> <span class="n">made</span> <span class="n">abstract</span> <span class="n">enough</span> <span class="n">to</span> <span class="n">customize</span>
+</span><span class='line'><span class="n">metric</span> <span class="n">names</span><span class="p">,</span> <span class="n">etc</span><span class="o">.&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Stats</span> <span class="n">reported</span> <span class="n">include</span> <span class="n">number</span> <span class="n">of</span> <span class="n">times</span> <span class="n">the</span> <span class="n">task</span> <span class="n">was</span> <span class="n">accepted</span> <span class="n">by</span> <span class="n">a</span> <span class="n">worker</span>
+</span><span class='line'><span class="p">(</span><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">started</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span><span class="p">),</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">successes</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">times</span> <span class="n">the</span> <span class="n">task</span>
+</span><span class='line'><span class="n">raised</span> <span class="n">an</span> <span class="n">exception</span><span class="o">.</span> <span class="n">In</span> <span class="n">addition</span><span class="p">,</span> <span class="n">it</span> <span class="n">also</span> <span class="n">reports</span> <span class="n">how</span> <span class="nb">long</span> <span class="n">the</span> <span class="n">task</span> <span class="n">took</span>
+</span><span class='line'><span class="n">to</span> <span class="n">complete</span><span class="o">.</span> <span class="n">Usage</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">blockquote</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="n">blockquote</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="n">blockquote</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@task</span>
+</span><span class='line'><span class="nd">@instrument_task</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">mytask</span><span class="p">():</span>
+</span><span class='line'>    <span class="c"># do stuff</span>
+</span><span class='line'>    <span class="k">pass</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;/</span><span class="n">blockquote</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;/</span><span class="n">blockquote</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">blockquote</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Please</span> <span class="n">note</span> <span class="n">that</span> <span class="n">the</span> <span class="n">order</span> <span class="n">of</span> <span class="n">decorators</span> <span class="ow">is</span> <span class="n">important</span> <span class="n">to</span> <span class="n">Celery</span><span class="o">.</span> <span class="n">See</span>
+</span><span class='line'><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ask</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">celery</span><span class="o">/</span><span class="n">userguide</span><span class="o">/</span><span class="n">tasks</span><span class="o">.</span><span class="n">html</span><span class="c">#decorating-tasks</span>
+</span><span class='line'><span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Uses</span> <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">simple_decorator</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span> <span class="kn">from</span>
+</span><span class='line'><span class="nn">http</span><span class="p">:</span><span class="o">//</span><span class="n">wiki</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">moin</span><span class="o">/</span><span class="n">PythonDecoratorLibrary</span><span class="c">#Property_Definition&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Limitation</span><span class="p">:</span> <span class="n">Does</span> <span class="ow">not</span> <span class="n">readily</span> <span class="n">work</span> <span class="n">on</span> <span class="n">subclasses</span> <span class="n">of</span> <span class="n">celery</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">Task</span>
+</span><span class='line'><span class="n">because</span> <span class="n">it</span> <span class="n">always</span> <span class="n">reports</span> <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">task_name</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span> <span class="k">as</span> <span class="err">‘</span><span class="n">run</span><span class="err">’</span>
+</span><span class='line'><span class="err">“””</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span> <span class="nb">id</span><span class="o">=</span><span class="s">&quot;statsd-instrumentation&quot;</span><span class="o">&gt;</span><span class="n">statsd</span> <span class="n">instrumentation</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">current_app</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">statsd</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nd">@simple_decorator</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">instrument_task</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+</span><span class='line'>    <span class="err">“</span><span class="s">&quot;”Wraps a celery task with statsd instrumentation code”””&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">instrument_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">stats_conn</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span>
+</span><span class='line'>        <span class="n">host</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="s">&#39;STATSD_HOST&#39;</span><span class="p">],</span>
+</span><span class='line'>        <span class="n">port</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="s">&#39;STATSD_PORT&#39;</span><span class="p">],</span>
+</span><span class='line'>        <span class="n">sample_rate</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">task_name</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">__name__</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">counter</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">counter</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="s">&#39;celery.tasks.status&#39;</span><span class="p">,</span><span class="n">stats_conn</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">counter</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="s">&#39;{task_name}.started&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">timer</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;celery.tasks.duration&#39;</span><span class="p">,</span> <span class="n">stats_conn</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">ret</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">except</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">counter</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="s">&#39;{task_name}.exceptions&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
+</span><span class='line'>        <span class="k">raise</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">counter</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="s">&#39;{task_name}.success&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
+</span><span class='line'>        <span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="s">&#39;{task_name}.success&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">ret</span>
+</span><span class='line'>    <span class="k">finally</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">del</span> <span class="n">timer</span>
+</span><span class='line'>            <span class="k">del</span> <span class="n">counter</span>
+</span><span class='line'>            <span class="k">del</span> <span class="n">stats_conn</span>
+</span><span class='line'>        <span class="k">except</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">pass</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">return</span> <span class="n">instrument_wrapper</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">simple_decorator</span><span class="p">(</span><span class="n">decorator</span><span class="p">):</span>
+</span><span class='line'>    <span class="err">“</span><span class="s">&quot;”Borrowed from:</span>
+</span><span class='line'>    <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">wiki</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">moin</span><span class="o">/</span><span class="n">PythonDecoratorLibrary</span><span class="c">#Property_Definition&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">Original</span> <span class="n">docstring</span><span class="p">:</span>
+</span><span class='line'><span class="n">This</span> <span class="n">decorator</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">turn</span> <span class="n">simple</span> <span class="n">functions</span>
+</span><span class='line'><span class="n">into</span> <span class="n">well</span><span class="o">-</span><span class="n">behaved</span> <span class="n">decorators</span><span class="p">,</span> <span class="n">so</span> <span class="nb">long</span> <span class="k">as</span> <span class="n">the</span> <span class="n">decorators</span>
+</span><span class='line'><span class="n">are</span> <span class="n">fairly</span> <span class="n">simple</span><span class="o">.</span> <span class="n">If</span> <span class="n">a</span> <span class="n">decorator</span> <span class="n">expects</span> <span class="n">a</span> <span class="n">function</span> <span class="ow">and</span>
+</span><span class='line'><span class="n">returns</span> <span class="n">a</span> <span class="n">function</span> <span class="p">(</span><span class="n">no</span> <span class="n">descriptors</span><span class="p">),</span> <span class="ow">and</span> <span class="k">if</span> <span class="n">it</span> <span class="n">doesn</span><span class="s">&#39;t</span>
+</span><span class='line'><span class="n">modify</span> <span class="n">function</span> <span class="n">attributes</span> <span class="ow">or</span> <span class="n">docstring</span><span class="p">,</span> <span class="n">then</span> <span class="n">it</span> <span class="ow">is</span>
+</span><span class='line'><span class="n">eligible</span> <span class="n">to</span> <span class="n">use</span> <span class="n">this</span><span class="o">.</span> <span class="n">Simply</span> <span class="nb">apply</span> <span class="nd">@simple_decorator</span> <span class="n">to</span>
+</span><span class='line'><span class="n">your</span> <span class="n">decorator</span> <span class="ow">and</span> <span class="n">it</span> <span class="n">will</span> <span class="n">automatically</span> <span class="n">preserve</span> <span class="n">the</span>
+</span><span class='line'><span class="n">docstring</span> <span class="ow">and</span> <span class="n">function</span> <span class="n">attributes</span> <span class="n">of</span> <span class="n">functions</span> <span class="n">to</span> <span class="n">which</span>
+</span><span class='line'><span class="n">it</span> <span class="ow">is</span> <span class="n">applied</span><span class="o">.</span><span class="s">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="s">def new_decorator(f):</span>
+</span><span class='line'><span class="s">    g = decorator(f)</span>
+</span><span class='line'><span class="s">    g.__name__ = f.__name__</span>
+</span><span class='line'><span class="s">    g.__module__ = f.__module__ # or celery throws a fit</span>
+</span><span class='line'><span class="s">    g.__doc__ = f.__doc__</span>
+</span><span class='line'><span class="s">    g.__dict__.update(f.__dict__)</span>
+</span><span class='line'><span class="s">    return g</span>
+</span><span class='line'><span class="s"># Now a few lines needed to make simple_decorator itself</span>
+</span><span class='line'><span class="s"># be a well-behaved decorator.</span>
+</span><span class='line'><span class="s">new_decorator.__name__ = decorator.__name__</span>
+</span><span class='line'><span class="s">new_decorator.__doc__ = decorator.__doc__</span>
+</span><span class='line'><span class="s">new_decorator.__dict__.update(decorator.__dict__)</span>
+</span><span class='line'><span class="s">return new_decorator</span>
+</span><span class='line'><span class="s">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 ]]></content>
   </entry>

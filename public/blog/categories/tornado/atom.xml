@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tornado | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/tornado/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2015-05-24T07:49:52-07:00</updated>
+  <updated>2015-05-24T07:50:02-07:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -29,12 +29,16 @@ Tornado app. I usually have one file in all of my projects called
 
 <p>The important part of this file looks like this (mind the application and port variables):</p>
 
-<p>{% codeblock Snippet in web.py %}
-if <strong>name</strong> == “<strong>main</strong>”:
-	http_server = tornado.httpserver.HTTPServer(application)
-	http_server.listen(port)
-	tornado.ioloop.IOLoop.instance().start()
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Snippet in web.py </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="k">if</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">==</span> <span class="err">“</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">main</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="err">”</span><span class="p">:</span>
+</span><span class='line'>	<span class="n">http_server</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">httpserver</span><span class="o">.</span><span class="n">HTTPServer</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
+</span><span class='line'>	<span class="n">http_server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+</span><span class='line'>	<span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Got that in place? Good.  Next, <strong>make a system user</strong> for your project to run
 as. In my example, I’ll be using <code>projectuser</code> as the username. Creating this
@@ -85,30 +89,46 @@ sudo useradd --system --user-group projectuser
 
 <p>Now, in your script that is responsible for starting your Tornado app, you likely have something that probably looks like the following: </p>
 
-<p>{% codeblock Snippet in web.py %}
-if <strong>name</strong> == “<strong>main</strong>”: 
-    http_server = tornado.httpserver.HTTPServer(application) 
-    http_server.listen(port) 
-    tornado.ioloop.IOLoop.instance().start()
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Snippet in web.py </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="k">if</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">==</span> <span class="err">“</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">main</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="err">”</span><span class="p">:</span><span class="err"> </span>
+</span><span class='line'><span class="err">   </span> <span class="n">http_server</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">httpserver</span><span class="o">.</span><span class="n">HTTPServer</span><span class="p">(</span><span class="n">application</span><span class="p">)</span><span class="err"> </span>
+</span><span class='line'><span class="err">   </span> <span class="n">http_server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">port</span><span class="p">)</span><span class="err"> </span>
+</span><span class='line'><span class="err">   </span> <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>What we need to do now is define a user to run as and then drop
 privileges using a call to <code>setuid</code>. We can do this by replacing the above with: </p>
 
-<p>{% codeblock Modification to web.py %}
-if <strong>name</strong> == “<strong>main</strong>”:
-    import os
-    import pwd
-    # define user to run as
-    run_as_user = “projectuser”
-    # drop privileges
-    uid = pwd.getpwnam(run_as_user)<a href="http://subversity.net/python-starting-tornado-apps-at-boot-using-up">2</a>
-    os.setuid(uid)
-    # start tornado app
-    http_server = tornado.httpserver.HTTPServer(application)
-    http_server.listen(port)
-    tornado.ioloop.IOLoop.instance().start()
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Modification to web.py </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='py'><span class='line'><span class="k">if</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">==</span> <span class="err">“</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">main</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span><span class="err">”</span><span class="p">:</span>
+</span><span class='line'><span class="err">   </span> <span class="kn">import</span> <span class="nn">os</span>
+</span><span class='line'><span class="err">   </span> <span class="kn">import</span> <span class="nn">pwd</span>
+</span><span class='line'><span class="err">   </span> <span class="c"># define user to run as</span>
+</span><span class='line'><span class="err">   </span> <span class="n">run_as_user</span> <span class="o">=</span> <span class="err">“</span><span class="n">projectuser</span><span class="err">”</span>
+</span><span class='line'><span class="err">   </span> <span class="c"># drop privileges</span>
+</span><span class='line'><span class="err">   </span> <span class="n">uid</span> <span class="o">=</span> <span class="n">pwd</span><span class="o">.</span><span class="n">getpwnam</span><span class="p">(</span><span class="n">run_as_user</span><span class="p">)</span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;http://subversity.net/python-starting-tornado-apps-at-boot-using-up&quot;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+</span><span class='line'><span class="err">   </span> <span class="n">os</span><span class="o">.</span><span class="n">setuid</span><span class="p">(</span><span class="n">uid</span><span class="p">)</span>
+</span><span class='line'><span class="err">   </span> <span class="c"># start tornado app</span>
+</span><span class='line'><span class="err">   </span> <span class="n">http_server</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">httpserver</span><span class="o">.</span><span class="n">HTTPServer</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
+</span><span class='line'><span class="err">   </span> <span class="n">http_server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+</span><span class='line'><span class="err">   </span> <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>And voila, your app should now run as the user you defined! Do note that
 only the root user can call <code>setuid</code>. As a result, your script now needs
