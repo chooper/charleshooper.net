@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Projects | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/projects/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2015-05-24T15:01:52-07:00</updated>
+  <updated>2015-09-05T13:43:18+00:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[What I Do as an SRE]]></title>
     <link href="http://www.charleshooper.net/blog/what-i-do-sre/"/>
-    <updated>2014-06-21T06:02:00-07:00</updated>
+    <updated>2014-06-21T06:02:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/what-i-do-as-an-sre</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -89,7 +89,7 @@ probably most rewarding, too.</p>
   <entry>
     <title type="html"><![CDATA[Troubleshooting ELBs with elbping]]></title>
     <link href="http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping/"/>
-    <updated>2013-10-19T10:49:00-07:00</updated>
+    <updated>2013-10-19T10:49:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -217,7 +217,7 @@ make a pretty reasonable case to AWS that something is wrong.</p>
   <entry>
     <title type="html"><![CDATA[Painless instrumentation of Celery tasks using statsd and graphite]]></title>
     <link href="http://www.charleshooper.net/blog/painless-instrumentation-of-celery-tasks-using-statsd-and-graphite/"/>
-    <updated>2012-03-12T00:00:00-07:00</updated>
+    <updated>2012-03-12T00:00:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/painless-instrumentation-of-celery-tasks-using-statsd-and-graphite</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -461,7 +461,7 @@ For one of my clients and side projects, we’ve been working hard to build in a
   <entry>
     <title type="html"><![CDATA[Automating Webcam Snapshots and Uploads to Flickr]]></title>
     <link href="http://www.charleshooper.net/blog/automating-webcam-snapshots-and-uploads-to-flickr/"/>
-    <updated>2011-03-26T00:00:00-07:00</updated>
+    <updated>2011-03-26T00:00:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/automating-webcam-snapshots-and-uploads-to-flickr</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -487,7 +487,7 @@ For one of my clients and side projects, we’ve been working hard to build in a
   <entry>
     <title type="html"><![CDATA[Correlating Last Login Dates with Signup Dates from a MMORPG]]></title>
     <link href="http://www.charleshooper.net/blog/correlating-last-login-dates-with-signup-dates-from-a-mmorpg/"/>
-    <updated>2011-03-24T00:00:00-07:00</updated>
+    <updated>2011-03-24T00:00:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/correlating-last-login-dates-with-signup-dates-from-a-mmorpg</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 

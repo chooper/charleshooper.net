@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2015-05-24T15:01:52-07:00</updated>
+  <updated>2015-09-05T13:43:18+00:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Painless instrumentation of Celery tasks using statsd and graphite]]></title>
     <link href="http://www.charleshooper.net/blog/painless-instrumentation-of-celery-tasks-using-statsd-and-graphite/"/>
-    <updated>2012-03-12T00:00:00-07:00</updated>
+    <updated>2012-03-12T00:00:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/painless-instrumentation-of-celery-tasks-using-statsd-and-graphite</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -260,7 +260,7 @@ For one of my clients and side projects, we’ve been working hard to build in a
   <entry>
     <title type="html"><![CDATA[A Couple of Python Snippets]]></title>
     <link href="http://www.charleshooper.net/blog/a-couple-of-python-snippets/"/>
-    <updated>2011-06-30T00:00:00-07:00</updated>
+    <updated>2011-06-30T00:00:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/a-couple-of-python-snippets</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -348,7 +348,7 @@ For one of my clients and side projects, we’ve been working hard to build in a
   <entry>
     <title type="html"><![CDATA[Automating Webcam Snapshots and Uploads to Flickr]]></title>
     <link href="http://www.charleshooper.net/blog/automating-webcam-snapshots-and-uploads-to-flickr/"/>
-    <updated>2011-03-26T00:00:00-07:00</updated>
+    <updated>2011-03-26T00:00:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/automating-webcam-snapshots-and-uploads-to-flickr</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -374,7 +374,7 @@ For one of my clients and side projects, we’ve been working hard to build in a
   <entry>
     <title type="html"><![CDATA[Going into Business? Learn a Programming Language]]></title>
     <link href="http://www.charleshooper.net/blog/going-into-business-learn-a-programming-language/"/>
-    <updated>2010-11-15T00:00:00-08:00</updated>
+    <updated>2010-11-15T00:00:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/going-into-business-learn-a-programming-language</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -450,7 +450,7 @@ For one of my clients and side projects, we’ve been working hard to build in a
   <entry>
     <title type="html"><![CDATA[Validating Data with New-Style Classes in Python]]></title>
     <link href="http://www.charleshooper.net/blog/validating-data-with-new-style-classes-in-python/"/>
-    <updated>2010-10-11T00:00:00-07:00</updated>
+    <updated>2010-10-11T00:00:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/validating-data-with-new-style-classes-in-python</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 

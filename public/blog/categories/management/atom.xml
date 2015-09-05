@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Management | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/management/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2015-05-24T15:01:52-07:00</updated>
+  <updated>2015-09-05T13:43:18+00:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[On Slack and Upkeep]]></title>
     <link href="http://www.charleshooper.net/blog/on-slack-and-upkeep/"/>
-    <updated>2014-08-08T14:22:00-07:00</updated>
+    <updated>2014-08-08T14:22:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/on-slack-time</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -126,7 +126,7 @@ also being very responsive.</p>
   <entry>
     <title type="html"><![CDATA[Intro to Operations: Metrics Collection]]></title>
     <link href="http://www.charleshooper.net/blog/intro-to-ops-metrics-collection/"/>
-    <updated>2013-05-07T14:51:00-07:00</updated>
+    <updated>2013-05-07T14:51:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/intro-to-operations-metrics-collection</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -200,7 +200,7 @@ and the historical data will help you in the long run.</p>
   <entry>
     <title type="html"><![CDATA[Intro to Operations: Availability Monitoring and Alerting]]></title>
     <link href="http://www.charleshooper.net/blog/intro-to-ops-availability-monitoring-alerting/"/>
-    <updated>2013-05-05T21:57:00-07:00</updated>
+    <updated>2013-05-05T21:57:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/intro-to-operations-availability-monitoring-and-alerting</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -313,7 +313,7 @@ hope you find this helpful.</p>
   <entry>
     <title type="html"><![CDATA[Intro to Operations: Configuration Management]]></title>
     <link href="http://www.charleshooper.net/blog/intro-to-ops-config-management/"/>
-    <updated>2013-05-05T20:12:00-07:00</updated>
+    <updated>2013-05-05T20:12:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/intro-to-operations-configuration-management</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -376,7 +376,7 @@ curve.</p>
   <entry>
     <title type="html"><![CDATA[Intro to Operations for Early Stage Startups]]></title>
     <link href="http://www.charleshooper.net/blog/intro-to-ops-for-startups/"/>
-    <updated>2013-05-04T21:37:00-07:00</updated>
+    <updated>2013-05-04T21:37:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/intro-to-operations-for-early-stage-startups</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 

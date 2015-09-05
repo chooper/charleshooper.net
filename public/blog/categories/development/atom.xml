@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Development | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/development/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2015-05-24T15:01:52-07:00</updated>
+  <updated>2015-09-05T13:43:18+00:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Painless instrumentation of Celery tasks using statsd and graphite]]></title>
     <link href="http://www.charleshooper.net/blog/painless-instrumentation-of-celery-tasks-using-statsd-and-graphite/"/>
-    <updated>2012-03-12T00:00:00-07:00</updated>
+    <updated>2012-03-12T00:00:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/painless-instrumentation-of-celery-tasks-using-statsd-and-graphite</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -260,7 +260,7 @@ For one of my clients and side projects, we’ve been working hard to build in a
   <entry>
     <title type="html"><![CDATA[We Have the Tools but What About the Techniques?]]></title>
     <link href="http://www.charleshooper.net/blog/we-have-the-tools-but-what-about-the-techniques/"/>
-    <updated>2012-01-02T00:00:00-08:00</updated>
+    <updated>2012-01-02T00:00:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/we-have-the-tools-but-what-about-the-techniques</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -276,7 +276,7 @@ For one of my clients and side projects, we’ve been working hard to build in a
   <entry>
     <title type="html"><![CDATA[Concurrent Engineering: The Foundation of DevOps]]></title>
     <link href="http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops/"/>
-    <updated>2011-12-07T00:00:00-08:00</updated>
+    <updated>2011-12-07T00:00:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/concurrent-engineering-the-foundation-of-devops</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -324,7 +324,7 @@ For one of my clients and side projects, we’ve been working hard to build in a
   <entry>
     <title type="html"><![CDATA[Problems at Scale]]></title>
     <link href="http://www.charleshooper.net/blog/problems-at-scale/"/>
-    <updated>2011-08-13T00:00:00-07:00</updated>
+    <updated>2011-08-13T00:00:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/problems-at-scale</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -345,7 +345,7 @@ For one of my clients and side projects, we’ve been working hard to build in a
   <entry>
     <title type="html"><![CDATA[Common Single Point of Failure: People]]></title>
     <link href="http://www.charleshooper.net/blog/common-single-point-of-failure-people/"/>
-    <updated>2011-06-07T00:00:00-07:00</updated>
+    <updated>2011-06-07T00:00:00+00:00</updated>
     <id>http://www.charleshooper.net/blog/common-single-point-of-failure-people</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
