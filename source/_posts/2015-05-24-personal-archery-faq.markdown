@@ -8,7 +8,7 @@ categories:
 ---
 # 
 
-{% img left https://scontent.fsjc1-1.fna.fbcdn.net/hphotos-xpf1/v/t1.0-9/11021236_10153134291301703_2769454311846845625_n.jpg?oh=8c673907f07dfb96ce3ad11e5a43ab1b&oe=560176B4 270 480 Archery %}
+{% img left http://i.imgur.com/JgVVfCk.png 270 480 Archery %}
 
 When people learn that I'm a traditional archer, they tend to ask me a number of
 questions. I thought this might be a fun blog post, so here we go!
@@ -33,7 +33,7 @@ A variation of this question is sometimes if I've ever "robin hooded" an
 arrow. *Robin hooding* is when you shoot one arrow back into another
 one.
 
-![Not yet - arrow damage](https://scontent.fsjc1-1.fna.fbcdn.net/hphotos-xaf1/v/t1.0-9/11081355_10153196646961703_930555660984900106_n.jpg?oh=44502f240ac9e784ea060ce2d0e06adc&oe=55FFC92E)
+![Not yet - arrow damage](http://i.imgur.com/vR2mAMo.png)
 
 My answer today is "not yet!"
 
