@@ -1,0 +1,7 @@
+web:
+  build: .
+  command: bundle exec rake preview
+  volumes:
+    - .:/home/octopress/projects
+  ports:
+    - "4000:4000"
