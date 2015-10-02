@@ -23,7 +23,7 @@ RUN chown octopress:octopress /home/octopress/projects
 RUN gem install bundler
 USER octopress
 WORKDIR /tmp
-# Change your project here (istall your project gems version)
+# Change your project here (install your project gems version)
 RUN git clone -b master https://github.com/chooper/charleshooper.net.git octopress
 WORKDIR /tmp/octopress
 RUN bundle install
