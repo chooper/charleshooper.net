@@ -9,9 +9,9 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="I was playing around with my site today and realized that I hadn’t
-disclosed much about how it works. Here’s that nerd “look at my site
-architecture &hellip;">
+  <meta name="description" content="Kaizen is Japenese for “good change” or “improvement” and is frequently
+used within the context of lean manufacturing. Today though, I’m going
+to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +85,90 @@ architecture &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/personal-kaizen-self-improvement/">My Personal Kaizen</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-04T11:27:00+00:00" pubdate data-updated="true">Jul 4<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>Kaizen is Japenese for “good change” or “improvement” and is frequently
+used within the context of lean manufacturing. Today though, I’m going
+to talk about a few things I want to improve for myself, both personally
+and professionally.</p>
+
+<h2 id="hard-skills">Hard Skills</h2>
+
+<p>I’m fascinated by new technology and new ways of doing work, so
+polishing up on some of my so-called “hard skills” comes relatively
+natural to me. Things like learning a new programming language or a new
+tool require only time which I’m more than willing and able to invest.
+Without further ado, here are the hard skills I’d like to improve:</p>
+
+<ul>
+  <li>Become proficient in <strong>Go</strong>. I find Go very appealing as a
+language, specifically for systems-level uses.</li>
+  <li>Become proficient in <strong>Ruby</strong>. Alot of the software I’m
+responsible for maintaining at Heroku is written in Ruby.</li>
+  <li>
+    <p>Become proficient in a <strong>functional programming language</strong>,
+such as <strong>Erlang</strong>. I’ve been interested in learning a functional
+programming language for a while. I decided on Erlang after hearing a
+talk from <a href="http://christophermeiklejohn.com/">Chris Meiklejohn</a> (of Basho) about Riak and watching
+several talks about Erlang and Erlang/OTP.</p>
+
+  </li>
+</ul>
+
+<h2 id="soft-skills">Soft Skills</h2>
+
+<p>Addressing soft skills is something that’s a little more difficult for
+me, but something that I think is important. These are the soft skills I’d
+like to improve:</p>
+
+<ul>
+  <li>Become better at <strong>empathy</strong>. Sometimes when listening to someone,
+it’s easy to jump to conclusions about what they are trying to say or
+how they came to that point. What I have been working on, however, is
+understanding <em>why</em> they feel a certain way in particular.</li>
+  <li>Become a <strong>better listener</strong>. I have been working on this for a while,
+but one area I would still like to improve is learning to ask the the right
+questions. I’m always impressed when someone follows up something I
+said with an engaging question, and I would love to gain that ability.</li>
+  <li>Become more <strong>well-spoken</strong>. I’d like to be a better public speaker,
+both publicly and privately.</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -838,253 +922,6 @@ post them to this blog. I hope people find them helpful!</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/painless-instrumentation-of-celery-tasks-using-statsd-and-graphite/">Painless Instrumentation of Celery Tasks Using Statsd and Graphite</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-12T00:00:00+00:00" pubdate data-updated="true">Mar 12<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p><img src="http://www.charleshooper.net/wp-content/uploads/400px-Steuerstand01-150x150.jpg" alt="" title="A Control Station" />
-For one of my clients and side projects, we’ve been working hard to build in application-level metrics to our wide portfolio of services. Among these services is one built on top of the <a href="http://celeryproject.org/">Celery distributed task queue</a>. We wanted a system that required as little configuration as possible to publish new metrics. For this reason, we decided on using <a href="http://codeascraft.etsy.com/2011/02/15/measure-anything-measure-everything/">statsd</a> and <a href="http://graphite.wikidot.com/">graphite</a>. Getting statsd and graphite running was the easy part, but we needed a quick, painless way of adding the instrumentation code for the most basic metrics to our Celery-backed service.</p>
-
-<p>For us, those basic metrics consisted of:</p>
-
-<ul>
-  <li>Number of times a worker starts on a specific task</li>
-  <li>Number of times a task raises an exception</li>
-  <li>Number of times a task completes successfully (no exceptions)</li>
-  <li>How long each task takes to complete</li>
-</ul>
-
-<p>Since the code to enable these metrics just <em>wraps</em> the code being instrumented it seemed only natural to use a decorator. Below is the code I wrote to do just that.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>statsd_instrument.py</span><a href="https://gist.github.com/chooper/2018362">link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-<span class="line-number">50</span>
-<span class="line-number">51</span>
-<span class="line-number">52</span>
-<span class="line-number">53</span>
-<span class="line-number">54</span>
-<span class="line-number">55</span>
-<span class="line-number">56</span>
-<span class="line-number">57</span>
-<span class="line-number">58</span>
-<span class="line-number">59</span>
-<span class="line-number">60</span>
-<span class="line-number">61</span>
-<span class="line-number">62</span>
-<span class="line-number">63</span>
-<span class="line-number">64</span>
-<span class="line-number">65</span>
-<span class="line-number">66</span>
-<span class="line-number">67</span>
-<span class="line-number">68</span>
-<span class="line-number">69</span>
-<span class="line-number">70</span>
-<span class="line-number">71</span>
-<span class="line-number">72</span>
-<span class="line-number">73</span>
-<span class="line-number">74</span>
-<span class="line-number">75</span>
-<span class="line-number">76</span>
-<span class="line-number">77</span>
-<span class="line-number">78</span>
-<span class="line-number">79</span>
-<span class="line-number">80</span>
-<span class="line-number">81</span>
-<span class="line-number">82</span>
-<span class="line-number">83</span>
-<span class="line-number">84</span>
-<span class="line-number">85</span>
-<span class="line-number">86</span>
-<span class="line-number">87</span>
-<span class="line-number">88</span>
-<span class="line-number">89</span>
-<span class="line-number">90</span>
-<span class="line-number">91</span>
-<span class="line-number">92</span>
-<span class="line-number">93</span>
-<span class="line-number">94</span>
-<span class="line-number">95</span>
-<span class="line-number">96</span>
-<span class="line-number">97</span>
-</pre></td><td class="code"><pre><code class="py"><span class="line"><span class="sd">&quot;&quot;&quot;Decorator to quickly add statsd (graphite) instrumentation to Celery</span>
-</span><span class="line"><span class="sd">task functions.</span>
-</span><span class="line">
-</span><span class="line"><span class="sd">With some slight modification, this could be used to instrument just</span>
-</span><span class="line"><span class="sd">about any (non-celery) function and be made abstract enough to customize</span>
-</span><span class="line"><span class="sd">metric names, etc.</span>
-</span><span class="line">
-</span><span class="line"><span class="sd">Stats reported include number of times the task was accepted by a worker</span>
-</span><span class="line"><span class="sd">(`started`), the number of successes, and the number of times the task</span>
-</span><span class="line"><span class="sd">raised an exception. In addition, it also reports how long the task took</span>
-</span><span class="line"><span class="sd">to complete. Usage:</span>
-</span><span class="line">
-</span><span class="line"><span class="sd">&gt;&gt;&gt; @task</span>
-</span><span class="line"><span class="sd">&gt;&gt;&gt; @instrument_task</span>
-</span><span class="line"><span class="sd">&gt;&gt;&gt; def mytask():</span>
-</span><span class="line"><span class="sd">&gt;&gt;&gt;     # do stuff</span>
-</span><span class="line"><span class="sd">&gt;&gt;&gt;     pass</span>
-</span><span class="line">
-</span><span class="line"><span class="sd">Please note that the order of decorators is important to Celery. See</span>
-</span><span class="line"><span class="sd">http://ask.github.com/celery/userguide/tasks.html#decorating-tasks</span>
-</span><span class="line"><span class="sd">for more information.</span>
-</span><span class="line">
-</span><span class="line"><span class="sd">Uses `simple_decorator` from</span>
-</span><span class="line"><span class="sd">http://wiki.python.org/moin/PythonDecoratorLibrary#Property_Definition</span>
-</span><span class="line">
-</span><span class="line"><span class="sd">Limitation: Does not readily work on subclasses of celery.tasks.Task</span>
-</span><span class="line"><span class="sd">because it always reports `task_name` as &#39;run&#39;</span>
-</span><span class="line"><span class="sd">&quot;&quot;&quot;</span>
-</span><span class="line">
-</span><span class="line"><span class="c"># statsd instrumentation</span>
-</span><span class="line"><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">current_app</span>
-</span><span class="line"><span class="kn">import</span> <span class="nn">statsd</span>
-</span><span class="line">
-</span><span class="line"><span class="nd">@simple_decorator</span>
-</span><span class="line"><span class="k">def</span> <span class="nf">instrument_task</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-</span><span class="line">    <span class="sd">&quot;&quot;&quot;Wraps a celery task with statsd instrumentation code&quot;&quot;&quot;</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">def</span> <span class="nf">instrument_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span class="line">        <span class="n">stats_conn</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span>
-</span><span class="line">            <span class="n">host</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="s">&#39;STATSD_HOST&#39;</span><span class="p">],</span>
-</span><span class="line">            <span class="n">port</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">conf</span><span class="p">[</span><span class="s">&#39;STATSD_PORT&#39;</span><span class="p">],</span>
-</span><span class="line">            <span class="n">sample_rate</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line">        <span class="n">task_name</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">__name__</span>
-</span><span class="line">
-</span><span class="line">        <span class="n">counter</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">counter</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="s">&#39;celery.tasks.status&#39;</span><span class="p">,</span><span class="n">stats_conn</span><span class="p">)</span>
-</span><span class="line">        <span class="n">counter</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="s">&#39;{task_name}.started&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
-</span><span class="line">
-</span><span class="line">        <span class="n">timer</span> <span class="o">=</span> <span class="n">statsd</span><span class="o">.</span><span class="n">timer</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="s">&#39;celery.tasks.duration&#39;</span><span class="p">,</span> <span class="n">stats_conn</span><span class="p">)</span>
-</span><span class="line">        <span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-</span><span class="line">
-</span><span class="line">        <span class="k">try</span><span class="p">:</span>
-</span><span class="line">            <span class="n">ret</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span class="line">        <span class="k">except</span><span class="p">:</span>
-</span><span class="line">            <span class="n">counter</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="s">&#39;{task_name}.exceptions&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
-</span><span class="line">            <span class="k">raise</span>
-</span><span class="line">        <span class="k">else</span><span class="p">:</span>
-</span><span class="line">            <span class="n">counter</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="s">&#39;{task_name}.success&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
-</span><span class="line">            <span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="s">&#39;{task_name}.success&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">()))</span>
-</span><span class="line">            <span class="k">return</span> <span class="n">ret</span>
-</span><span class="line">        <span class="k">finally</span><span class="p">:</span>
-</span><span class="line">            <span class="k">try</span><span class="p">:</span>
-</span><span class="line">                <span class="k">del</span> <span class="n">timer</span>
-</span><span class="line">                <span class="k">del</span> <span class="n">counter</span>
-</span><span class="line">                <span class="k">del</span> <span class="n">stats_conn</span>
-</span><span class="line">            <span class="k">except</span><span class="p">:</span>
-</span><span class="line">                <span class="k">pass</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">return</span> <span class="n">instrument_wrapper</span>
-</span><span class="line">
-</span><span class="line"><span class="k">def</span> <span class="nf">simple_decorator</span><span class="p">(</span><span class="n">decorator</span><span class="p">):</span>
-</span><span class="line">    <span class="sd">&quot;&quot;&quot;Borrowed from:</span>
-</span><span class="line"><span class="sd">    http://wiki.python.org/moin/PythonDecoratorLibrary#Property_Definition</span>
-</span><span class="line">
-</span><span class="line"><span class="sd">    Original docstring:</span>
-</span><span class="line"><span class="sd">    This decorator can be used to turn simple functions</span>
-</span><span class="line"><span class="sd">    into well-behaved decorators, so long as the decorators</span>
-</span><span class="line"><span class="sd">    are fairly simple. If a decorator expects a function and</span>
-</span><span class="line"><span class="sd">    returns a function (no descriptors), and if it doesn&#39;t</span>
-</span><span class="line"><span class="sd">    modify function attributes or docstring, then it is</span>
-</span><span class="line"><span class="sd">    eligible to use this. Simply apply @simple_decorator to</span>
-</span><span class="line"><span class="sd">    your decorator and it will automatically preserve the</span>
-</span><span class="line"><span class="sd">    docstring and function attributes of functions to which</span>
-</span><span class="line"><span class="sd">    it is applied.&quot;&quot;&quot;</span>
-</span><span class="line">    <span class="k">def</span> <span class="nf">new_decorator</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
-</span><span class="line">        <span class="n">g</span> <span class="o">=</span> <span class="n">decorator</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-</span><span class="line">        <span class="n">g</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__name__</span>
-</span><span class="line">        <span class="n">g</span><span class="o">.</span><span class="n">__module__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__module__</span> <span class="c"># or celery throws a fit</span>
-</span><span class="line">        <span class="n">g</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">__doc__</span>
-</span><span class="line">        <span class="n">g</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
-</span><span class="line">        <span class="k">return</span> <span class="n">g</span>
-</span><span class="line">    <span class="c"># Now a few lines needed to make simple_decorator itself</span>
-</span><span class="line">    <span class="c"># be a well-behaved decorator.</span>
-</span><span class="line">    <span class="n">new_decorator</span><span class="o">.</span><span class="n">__name__</span> <span class="o">=</span> <span class="n">decorator</span><span class="o">.</span><span class="n">__name__</span>
-</span><span class="line">    <span class="n">new_decorator</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">decorator</span><span class="o">.</span><span class="n">__doc__</span>
-</span><span class="line">    <span class="n">new_decorator</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">decorator</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
-</span><span class="line">    <span class="k">return</span> <span class="n">new_decorator</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -1110,6 +947,10 @@ For one of my clients and side projects, we’ve been working hard to build in a
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/i-have-a-new-job-at-truss/">I have a new job at Truss!</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/personal-archery-faq/">Personal Archery FAQ</a>
       </li>
     
@@ -1123,10 +964,6 @@ For one of my clients and side projects, we’ve been working hard to build in a
     
       <li class="post">
         <a href="/blog/on-slack-and-upkeep/">On Slack and Upkeep</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/what-i-do-sre/">What I Do as an SRE</a>
       </li>
     
   </ul>
