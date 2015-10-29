@@ -20,6 +20,11 @@ of Splunk's recommendations anyway.
    Splunking easy, but I don't have a strong enough opinion to evangelize that.
    Some folks advocate for logging in JSON but I don't actually find JSON to be
    very readable.
+   
+   Edit: Someone pointed out to me that this isn't ideal when you have a large
+   amount of logs. They prefered sending JSON logs to a service like ElasticSearch
+   but I think also sending key-value pairs to Splunk is also reasonable at some
+   scale.
 
 1. Every log line should include a timestamp. The timestamp should be human
    readable and in a standard format such as [RFC 3339][2]/[ISO 8601][3].
