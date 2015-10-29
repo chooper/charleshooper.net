@@ -5,30 +5,28 @@ layout: page
 ---
 # 
 
-I'm a results-driven hacker working for [Truss][100], an exciting company
-that's solving interesting problems.
+Charles is a seasoned engineer with more than 8 years experience in software
+development, information systems and site reliability engineering.  At
+[Truss][100] he helps customers build and grow internal SRE and devops teams
+with special attention to process, measurement and performance.  Charles also
+helps clients build, scale and maintain services and solutions in order to meet
+the demands of a growing customer base.  Prior to Truss, Charles held several
+positions at the leading PaaS platform Heroku including: SRE Technical Lead,
+Platform (Cedar) Technical Lead and Orchestration Team Manager.  Before joining
+Heroku, Charles was a site reliability engineer at DotCloud (now Docker).
+Charles has a forte for pushing platforms to their greatest capacity by scaling
+both systems and teams.  Charles has also received mention on Microsoft’s
+Security Researcher Acknowledgements and Google’s Application Security Hall of
+Fame.
+
+Charles Hooper holds a Business Information Systems, B.S. from Eastern
+Connecticut State University with an emphasis in Operations Management, Systems
+Analysis & Design, and Health Care Informatics. He is former Air Force having
+earned an achievement medal as an aircraft weapons specialist.  When not
+working, he can be found on the archery range, in his garden, or sharpening his
+lock picking skills.
 
   [100]: http://truss.works/
-
-I'm in a role where I believe can collaborate with the team in order to
-make a large impact on the operations of the business. I believe that a
-business' "operations team" doesn't exist only to manage infrastructure
-and deploy software but also to contribute to the execution of the
-organization's strategy. This can be accomplished by collaborating with
-all members of the team. For example, by collaborating with Marketing in
-order to develop demand forecasts, proper capacity management can be
-performed in coordination with feature launches and media releases.
-
-I come from an engineering and infrastructure-focused background, both
-"bare metal" and cloud-based, and have spent most of my time straddling
-the wall between operations and development. Some people call this
-"devops." Most recently, I was an engineering manager and tech lead
-for Heroku. In general, I am well-versed in the building, running, and
-maintaining of distributed systems and worked closely with my team and the
-rest of the engineering team to increase uptime and ship new features.
-
-When I'm not working or hacking, I can be found practicing archery or growing
-my own food.
 
 ## Fun Stuff
 
