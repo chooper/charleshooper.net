@@ -32,7 +32,7 @@ of Splunk's recommendations anyway.
    should be stated in UTC time whenever possible.
 
 1. Every log line should include a unique identifier for the work being
-   performed. In. In web applications and APIs, for example, this would be a
+   performed. In web applications and APIs, for example, this would be a
    request ID. The combination of a unique ID and timestamp allows for developers
    and operators to trace the execution of a single work unit.
 
