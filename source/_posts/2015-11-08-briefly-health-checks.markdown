@@ -9,20 +9,17 @@ categories:
 ---
 # 
 
-Health checks are special endpoints (or "routes") in your web application or
-API that return successful HTTP status codes when the application instance is
-healthy and failure codes when it is not.
+Health checks are specially defined endpoints or routes in your application
+that allow external monitors to determine the health of your web application.
+They are so important to production health that I consider them the "13th
+factor" in [12factor][1].
 
-Health checks are a great addition to any web application or API. In fact, I
-consider them the "13th factor" in [12factor][1].
+If an application is healthy it will return a HTTP 2xx or 3xx status code and
+when it is not it will return an HTTP 5xx status code.
 
-Good health checks enable better monitoring (I’ll take a HTTP health check over
-a server ping or TCP connection check any day) and can even enable some form of
-application healing.
-
-Application healing usually takes the form of a load balancer preventing any
-traffic from being routed to unhealthy instances but can also take the form of
-automatically terminating and replacing unhealthy instances.
+This type of output allows load balancers to remove unhealthy instances from
+its rotation but can also be used to alert an operator or even automatically
+replace the instance.
 
 In order to implement proper health checks, your application’s health checks
 should:
@@ -39,11 +36,10 @@ should:
 
 1. Be lightweight and fast
 
-If you do those six things and implement health checks in your application,
-you’ll have a better monitoring endpoint than many and won’t be far off from
-application auto healing.
+If you implement health checks in your application following this advice,
+you'll have a more resilient, monitorable, and manageable application.
 
-Is there anything else you would add?
+How about you all? Is there anything you would add?
 
 [1]: http://12factor.net/
 [2]: http://www.charleshooper.net/blog/briefly-logs/
