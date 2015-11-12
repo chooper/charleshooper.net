@@ -54,6 +54,11 @@ that does not.
   parameters that allow the operators or the system itself to turn off bits of
   functionality when the system is degraded.
 
+1. Your application should put external resources behind [circuit breakers][4].
+  Circuit breakers allow your app to continue operating (albeit in a degraded
+  state) when an external resource is unavailable instead of taking your
+  application offline.
+
 1. Your application should be restartable (on the same instance or a new
   instance) after a crash and should crash in an automatically recoverable
   state. If your crash is not automatically recoverable, it should scream!
@@ -68,3 +73,4 @@ Do you feel like I missed anything? What else would you recommend?
   [1]: http://12factor.net/
   [2]: http://www.charleshooper.net/blog/briefly-logs/
   [3]: http://www.charleshooper.net/blog/briefly-health-checks/
+  [4]: https://engineering.heroku.com/blogs/2015-06-30-improved-production-stability-with-circuit-breakers/
