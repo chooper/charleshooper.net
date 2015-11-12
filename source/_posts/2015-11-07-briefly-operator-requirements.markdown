@@ -42,7 +42,7 @@ that does not.
   will allow the operator to determine why the health check failed to aid in
   incident recovery.
 
-1. Your application should use unique request/response IDs and add them to their
+1. Your application should use [unique request IDs][4] and add them to their
   logging contexts (see logging).
 
 1. Your application should support credential rotation. Any given secret,
@@ -54,7 +54,7 @@ that does not.
   parameters that allow the operators or the system itself to turn off bits of
   functionality when the system is degraded.
 
-1. Your application should put external resources behind [circuit breakers][4].
+1. Your application should put external resources behind [circuit breakers][5].
   Circuit breakers allow your app to continue operating (albeit in a degraded
   state) when an external resource is unavailable instead of taking your
   application offline.
@@ -73,4 +73,5 @@ Do you feel like I missed anything? What else would you recommend?
   [1]: http://12factor.net/
   [2]: http://www.charleshooper.net/blog/briefly-logs/
   [3]: http://www.charleshooper.net/blog/briefly-health-checks/
-  [4]: https://engineering.heroku.com/blogs/2015-06-30-improved-production-stability-with-circuit-breakers/
+  [4]: https://brandur.org/request-ids
+  [5]: https://engineering.heroku.com/blogs/2015-06-30-improved-production-stability-with-circuit-breakers/
