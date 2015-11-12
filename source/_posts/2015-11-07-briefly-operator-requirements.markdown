@@ -36,7 +36,7 @@ that does not.
 1. Your application should also emit metrics that create some sense of
   understanding of what the system is doing.
 
-1. Your application’s services should have health checks. The health checks
+1. Your application’s services should have [health checks][3]. The health checks
   should return HTTP 2xx or 3xx when the service is healthy and HTTP 5xx when
   it is not. The response body should contain an explanation or identifier that
   will allow the operator to determine why the health check failed to aid in
@@ -67,3 +67,4 @@ Do you feel like I missed anything? What else would you recommend?
 
   [1]: http://12factor.net/
   [2]: http://www.charleshooper.net/blog/briefly-logs/
+  [3]: http://www.charleshooper.net/blog/briefly-health-checks/
