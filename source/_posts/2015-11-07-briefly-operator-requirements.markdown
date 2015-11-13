@@ -59,9 +59,10 @@ that does not.
   state) when an external resource is unavailable instead of taking your
   application offline.
 
-1. Your application should be restartable (on the same instance or a new
-  instance) after a crash and should crash in an automatically recoverable
-  state. If your crash is not automatically recoverable, it should scream!
+1. Your application should be [disposable and restartable][6]; this means that it's restartable
+  on the same instance or a new instance) after a crash and should crash
+  in an automatically recoverable state. If your crash is not automatically
+  recoverable, it should scream!
 
 These are just a start but these requirements should be imported into your user
 requirements. By doing so, your application will be more scalable, easier to
@@ -75,3 +76,4 @@ Do you feel like I missed anything? What else would you recommend?
   [3]: http://www.charleshooper.net/blog/briefly-health-checks/
   [4]: https://brandur.org/request-ids
   [5]: https://engineering.heroku.com/blogs/2015-06-30-improved-production-stability-with-circuit-breakers/
+  [6]: http://12factor.net/disposability
