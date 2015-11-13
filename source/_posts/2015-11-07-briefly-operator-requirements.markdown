@@ -50,16 +50,16 @@ that does not.
   changeable with minimal disruption to the service. This should be exercised
   often to ensure it works as designed.
 
-1. Your application should provide operators with toggles or control rods —
+1. Your application should provide operators with [toggles or feature flags][5] —
   parameters that allow the operators or the system itself to turn off bits of
   functionality when the system is degraded.
 
-1. Your application should put external resources behind [circuit breakers][5].
+1. Your application should put external resources behind [circuit breakers][6].
   Circuit breakers allow your app to continue operating (albeit in a degraded
   state) when an external resource is unavailable instead of taking your
   application offline.
 
-1. Your application should be [disposable and restartable][6]; this means that it's restartable
+1. Your application should be [disposable and restartable][7]; this means that it's restartable
   on the same instance or a new instance) after a crash and should crash
   in an automatically recoverable state. If your crash is not automatically
   recoverable, it should scream!
@@ -75,5 +75,6 @@ Do you feel like I missed anything? What else would you recommend?
   [2]: http://www.charleshooper.net/blog/briefly-logs/
   [3]: http://www.charleshooper.net/blog/briefly-health-checks/
   [4]: https://brandur.org/request-ids
-  [5]: https://engineering.heroku.com/blogs/2015-06-30-improved-production-stability-with-circuit-breakers/
-  [6]: http://12factor.net/disposability
+  [5]: http://martinfowler.com/bliki/FeatureToggle.html
+  [6]: https://engineering.heroku.com/blogs/2015-06-30-improved-production-stability-with-circuit-breakers/
+  [7]: http://12factor.net/disposability
