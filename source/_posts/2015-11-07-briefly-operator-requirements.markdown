@@ -75,6 +75,6 @@ Do you feel like I missed anything? What else would you recommend?
   [2]: http://www.charleshooper.net/blog/briefly-logs/
   [3]: http://www.charleshooper.net/blog/briefly-health-checks/
   [4]: https://brandur.org/request-ids
-  [5]: http://martinfowler.com/bliki/FeatureToggle.html
+  [5]: http://blog.travis-ci.com/2014-03-04-use-feature-flags-to-ship-changes-with-confidence/
   [6]: https://engineering.heroku.com/blogs/2015-06-30-improved-production-stability-with-circuit-breakers/
   [7]: http://12factor.net/disposability
