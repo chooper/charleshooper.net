@@ -7,11 +7,11 @@ layout: page
 
 Charles is a seasoned engineer with more than 8 years experience in software
 development, information systems and site reliability engineering.  At
-[Truss][100] he helps customers build and grow internal SRE and devops teams
+[Truss][100] he helped customers build and grow internal SRE and devops teams
 with special attention to process, measurement and performance.  Charles also
 helps clients build, scale and maintain services and solutions in order to meet
 the demands of a growing customer base.  Prior to Truss, Charles held several
-positions at the leading PaaS platform Heroku including: SRE Technical Lead,
+positions at the leading PaaS platform [Heroku][101] including: SRE Technical Lead,
 Platform (Cedar) Technical Lead and Orchestration Team Manager.  Before joining
 Heroku, Charles was a site reliability engineer at DotCloud (now Docker).
 Charles has a forte for pushing platforms to their greatest capacity by scaling
@@ -27,6 +27,7 @@ working, he can be found on the archery range, in his garden, or sharpening his
 lock picking skills.
 
   [100]: http://truss.works/
+  [101]: http://www.heroku.com/
 
 ## Fun Stuff
 
