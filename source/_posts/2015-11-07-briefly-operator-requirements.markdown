@@ -10,12 +10,14 @@ published: false
 ---
 # 
 
-On any given day, there are a bajillion people discussing user requirements and
+On any given day, there are a number of people discussing user requirements and
 prioritizing the work ahead of them based on them. There’s an
 oft-underrepresented group of users however and those are your operators.
+Typically, the set of things needed by your operators are buried in your
+project's list of "non-functional requirements", if at all.
 
 In this brief, I would like to provide you with a de facto set of "operator
-requirements" for your project. This list is likely incomplete and I’m
+requirements" for your project. This list is likely incomplete and I'm
 discovering more every day. I may update this post from time to time to add
 things or clarify them as I journey towards understanding.
 
@@ -64,10 +66,10 @@ that does not.
   in an automatically recoverable state. If your crash is not automatically
   recoverable, it should scream!
 
-These are just a start but these requirements should be imported into your user
-requirements. By doing so, your application will be more scalable, easier to
-operator, and have a lower Mean Time To Recovery than application that don't
-satisfy these requirements.
+These are just a start but these requirements should be imported into your project's
+requirements and prioritized with maintainability in mind. By doing so, your
+application will be more scalable, easier to operator, and have a lower Mean
+Time To Recovery than application that don't satisfy these requirements.
 
 Do you feel like I missed anything? What else would you recommend?
 
