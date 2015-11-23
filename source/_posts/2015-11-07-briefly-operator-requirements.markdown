@@ -61,10 +61,10 @@ that does not.
   state) when an external resource is unavailable instead of taking your
   application offline.
 
-1. Your application should be [disposable and restartable][7]; this means that it's restartable
-  on the same instance or a new instance) after a crash and should crash
-  in an automatically recoverable state. If your crash is not automatically
-  recoverable, it should scream!
+1. Your application should be [disposable and restartable][7]; this means that
+  it's restartable on the same instance or a new instance) after a crash and
+  should crash in an automatically recoverable state. If your crash is not
+  automatically recoverable, it should scream!
 
 These are just a start but these requirements should be imported into your project's
 requirements and prioritized with maintainability in mind. By doing so, your
