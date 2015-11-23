@@ -1,12 +1,11 @@
 ---
 layout: post
 title: "Briefly: Operator Requirements"
-date: 2015-11-07 10:49
+date: 2015-11-23 10:49
 comments: true
 categories: 
 - DevOps
 - Development
-published: false
 ---
 # 
 
