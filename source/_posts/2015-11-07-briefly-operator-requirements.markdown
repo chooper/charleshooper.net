@@ -64,7 +64,11 @@ that does not.
 1. Your application should be [disposable and restartable][7]; this means that
   it's restartable on the same instance or a new instance) after a crash and
   should crash in an automatically recoverable state. If your crash is not
-  automatically recoverable, it should scream!
+  automatically recoverable, it should scream! In addition, your application
+  should gracefully complete existing work such as HTTP requests or jobs it
+  picked up from a task queue. In the case of long running jobs, your application
+  should be able to abandon the work to have it picked up by another worker or
+  node.
 
 These are just a start but these requirements should be imported into your project's
 requirements and prioritized with maintainability in mind. By doing so, your
