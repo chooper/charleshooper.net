@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Advisories | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/advisories/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2015-10-02T03:37:17+00:00</updated>
+  <updated>2015-11-24T15:27:46-08:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Multiple Vulnerabilities in Mingle Forum (WordPress Plugin)]]></title>
     <link href="http://www.charleshooper.net/blog/multiple-vulnerabilities-in-mingle-forum-wordpress-plugin/"/>
-    <updated>2011-01-08T00:00:00+00:00</updated>
+    <updated>2011-01-08T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/multiple-vulnerabilities-in-mingle-forum-wordpress-plugin</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -108,7 +108,7 @@ licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br />
   <entry>
     <title type="html"><![CDATA[Multiple Vulnerabilities in WP Forum (WordPress Plugin)]]></title>
     <link href="http://www.charleshooper.net/blog/multiple-vulnerabilities-in-wp-forum-wordpress-plugin/"/>
-    <updated>2010-12-17T00:00:00+00:00</updated>
+    <updated>2010-12-17T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/multiple-vulnerabilities-in-wp-forum-wordpress-plugin</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 

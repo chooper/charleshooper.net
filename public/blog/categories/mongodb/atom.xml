@@ -4,7 +4,7 @@
   <title><![CDATA[Category: MongoDB | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/mongodb/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2015-10-02T03:37:17+00:00</updated>
+  <updated>2015-11-24T15:27:46-08:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Correlating Last Login Dates with Signup Dates from a MMORPG]]></title>
     <link href="http://www.charleshooper.net/blog/correlating-last-login-dates-with-signup-dates-from-a-mmorpg/"/>
-    <updated>2011-03-24T00:00:00+00:00</updated>
+    <updated>2011-03-24T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/correlating-last-login-dates-with-signup-dates-from-a-mmorpg</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -67,7 +67,7 @@
   <entry>
     <title type="html"><![CDATA[MongoDB &#8211; 32-bit limitations]]></title>
     <link href="http://www.charleshooper.net/blog/mongodb-32-bit-limitations/"/>
-    <updated>2010-02-26T00:00:00+00:00</updated>
+    <updated>2010-02-26T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/mongodb-32-bit-limitations</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -89,7 +89,7 @@
   <entry>
     <title type="html"><![CDATA[MongoDB &#8211; What about Durability?]]></title>
     <link href="http://www.charleshooper.net/blog/mongodb-what-about-durability/"/>
-    <updated>2010-02-12T00:00:00+00:00</updated>
+    <updated>2010-02-12T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/mongodb-what-about-durability</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 

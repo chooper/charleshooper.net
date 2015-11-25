@@ -9,7 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="“I think and think for months and years. Ninety-nine times, the conclusion is false. The hundredth time I am right.” — Albert Einstein I think &hellip;">
+  <meta name="description" content="We programmers have a natural affinity for writing and using our own code. You can’t really blame us; this is akin to gardeners who prefer to eat &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +89,175 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/code-responsibly/">Code Responsibly: What&#8217;s Best for Your Clients?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-23T00:00:00-07:00" pubdate data-updated="true">Oct 23<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>We programmers have a natural affinity for writing and using our own code. You can’t really blame us; this is akin to gardeners who prefer to eat vegetables they grow, or brewers who prefer to drink their own beer. However, this oftentimes leads to a frequent re-invention of the wheel. While this isn’t always a bad thing, it doesn’t usually benefit our clients and here’s why:</p>
+
+<ol>
+  <li>**Increased development time. **If a client is paying you hourly, why should they pay for you to re-invent a solution that already exists? Why write a new CMS if WordPress will do? When you write a new CMS from scratch for a client, you are increasing their development costs.</li>
+  <li>**Freedom in hosting. **It’s no coincidence that many web developers also host their projects as well. This is fine for larger applications, but for the majority of the client work out there your clients should have the freedom to a broad range of hosting options. Vendor lock-in is a terrible thing.</li>
+  <li>**Post-development support. **If a client needs customizations done to the code base, they should be able to solicit the work from almost any developer. Certainly you would want preference in these solicitations, but there shouldn’t be any clients who are stuck with you. When you use your own custom solution, you are increasing your clients’ maintenance costs.</li>
+</ol>
+
+<p>I’m <em>not</em> saying that you shouldn’t ever write new code. What I <em>am</em> saying is that your responsibility to the client is to use the best tools for the job and to put together the best solution for them that you can. Sometimes this means flexing your coding muscles and sometimes this means humbly setting up existing software such as WordPress. So please, write new code conservatively and responsibly.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/validating-data-with-new-style-classes-in-python/">Validating Data With New-Style Classes in Python</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-11T00:00:00-07:00" pubdate data-updated="true">Oct 11<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>Every once in awhile in my reading I come across a minor reference to what pythonistas refer to as <strong>new-style classes</strong>. One of the nice things about new-style classes is the `property` decorators. These property decorators allow you to build getter and setter methods to access object attributes. This is pretty awesome because now you can perform validation at the model/class level whenever you assign a value to a property of an object.</p>
+
+<p>e.g., In one of my projects, I have an attribute named <em>timestamp</em> that takes a `datetime` object. I was concerned about receiving incorrect types from my input because there are alot of ways a programmer can represent the concept of time. Some realistic possibilities of invalid types in my case are:</p>
+
+<ul>
+  <li>`time` objects from the time module</li>
+  <li>`string` objects that contain the date and time (and various possible formats)</li>
+  <li>`float` or `int` objects that contain a unix timestamp</li>
+</ul>
+
+<p>With a setter method, you can test that the new value being assigned to an attribute is the correct type before assigning it. You can also throw an <strong>exception</strong> if it’s not. In other words, you can do something like this:</p>
+
+<pre><code>from datetime import datetime
+
+class SomeObject(object):    # new-style classes must be subclassed from object
+    _timestamp = None
+
+    @property
+    def timestamp(self):
+        return self._timestamp
+
+    @timestamp.setter    # the prefix must match the read-only getter func name
+    def timestamp(self,value):    # the func name must match the read-only getter func name
+        if not isinstance(value, datetime):
+            raise ValueError(“Timestamp can only be an instance of Datetime”)
+        self._timestamp = value
+</code></pre>
+
+<p>Go ahead and try it!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/three-reasons-why-im-ditching-chunkhost/">Three Reasons Why I&#8217;m Ditching ChunkHost</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-04T00:00:00-07:00" pubdate data-updated="true">Oct 4<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>I’ve been using <a href="http://chunkhost.com/r/chdotnet">ChunkHost</a> for the past <strong>eight months</strong> to host my website and some minor web applications. After my short, free “beta” period I was given a 30% discount (forever) and billed like a normal customer. I’ve only had to pay <strong>$13.30</strong> a month for a Xen VPS with <strong>512MB RAM</strong>. This used to be pretty competitive <a href="http://blog.linode.com/2010/06/16/linode-turns-7-big-ram-increase/">until Linode increased the RAM for all of their VPS packages</a>. Unfortunately for ChunkHost, this Linode RAM increase and some recent events have persuaded me to <a href="http://www.linode.com/?r=2fce38a23c4154c3a1abb4f99aafd6371ee78ecc"><strong>pay the extra 7 bucks to Linode</strong></a>. Here are the three main reasons why I’m ditching ChunkHost:</p>
+
+<ol>
+  <li><strong>No way to give feedback on the service.</strong> First, let me qualify this and say that there <em>is</em> a “Feedback” button on the site. However, more than a quick cursory glance reveals that their feedback system is <strong>inactive **and **neglected</strong>. For example, I have an eight month old feature request that has gone ignored; not rejected, not WONTFIX’d, but ignored. Other customers have older feature requests that have been promised “shortly” and never delivered.<img src="http://sub-public.s3.amazonaws.com/blog_imgs/chunkhost-inactive.png" alt="An example of ChunkHost's inactive GetSatisfaction feedback page" title="chunkhost-inactive.png" /> 
+  
+    <ul>
+      <li>
+        <p><strong>There is no SLA (service-level agreement) or uptime guarantee.</strong> Recently, I noticed that my VM was down and the main page for ChunkHost was down as well. I emailed support about the outage and was happy to receive a quick reply.<br />
+&gt; Yeah, we’re looking at it now; it looks like networking oddness on one of the host machines. We’ll update Twitter with info as we have it!</p>
+
+        <p>The “fix” consisted of ChunkHost <strong>rebooting the physical host</strong> my VM was on. This same problem occurred *again <strong>*5 hours later</strong>. I don’t sense any empathy from ChunkHost for bearing with them through their downtime and I certainly haven’t received any type of apology. Am I entitled to one? With the lack of an SLA, maybe not, but I’d be alot less bitter and I might have remained a customer had I received one.</p>
+      </li>
+      <li>
+        <p><strong>Not enough notice given for “scheduled” maintenance.</strong> Four days before the two outages I had experienced, ChunkHost performed some scheduled maintenance. I am thankful that the maintenance occurred in off-peak hours, but <strong>I received the notice at the end of the previous day</strong>. This is not adequate notice. Had there been anything critical running on my VM, I would expect adequate notice so I could make proper arrangements ahead of time. 
+It saddens me to think that my last eight months at ChunkHost were a waste. Fortunately, <a href="http://www.linode.com/?r=2fce38a23c4154c3a1abb4f99aafd6371ee78ecc">I’ve been using Linode for my “real services” for just as long</a> and I know that I won’t be disappointed there. If you’re looking for a VM for testing and development purposes only, ChunkHost might be an option – just don’t let your development server evolve into a production server.</p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/i-think-and-think-for-months-and-years-99-times-the-conclusion-is-false-the-hundredth-time-i-am-right-einstein/">I Think and Think for Months and Years. 99 Times, the Conclusion Is False. The Hundredth Time I Am Right - Einstein</a></h1>
     
     
@@ -105,7 +274,7 @@
   
 
 
-<time datetime="2010-09-05T00:00:00+00:00" pubdate data-updated="true">Sep 5<span>th</span>, 2010</time>
+<time datetime="2010-09-05T00:00:00-07:00" pubdate data-updated="true">Sep 5<span>th</span>, 2010</time>
         
       </p>
     
@@ -146,7 +315,7 @@
   
 
 
-<time datetime="2010-08-24T00:00:00+00:00" pubdate data-updated="true">Aug 24<span>th</span>, 2010</time>
+<time datetime="2010-08-24T00:00:00-07:00" pubdate data-updated="true">Aug 24<span>th</span>, 2010</time>
         
       </p>
     
@@ -212,7 +381,7 @@ To conclude, don’t under-value the social sites. If you want some organic link
   
 
 
-<time datetime="2010-08-13T00:00:00+00:00" pubdate data-updated="true">Aug 13<span>th</span>, 2010</time>
+<time datetime="2010-08-13T00:00:00-07:00" pubdate data-updated="true">Aug 13<span>th</span>, 2010</time>
         
       </p>
     
@@ -251,7 +420,7 @@ To conclude, don’t under-value the social sites. If you want some organic link
   
 
 
-<time datetime="2010-08-13T00:00:00+00:00" pubdate data-updated="true">Aug 13<span>th</span>, 2010</time>
+<time datetime="2010-08-13T00:00:00-07:00" pubdate data-updated="true">Aug 13<span>th</span>, 2010</time>
         
       </p>
     
@@ -325,7 +494,7 @@ A fair amount of the time I share this story, people are more impressed with the
   
 
 
-<time datetime="2010-07-24T00:00:00+00:00" pubdate data-updated="true">Jul 24<span>th</span>, 2010</time>
+<time datetime="2010-07-24T00:00:00-07:00" pubdate data-updated="true">Jul 24<span>th</span>, 2010</time>
         
       </p>
     
@@ -377,7 +546,7 @@ A fair amount of the time I share this story, people are more impressed with the
   
 
 
-<time datetime="2010-07-19T00:00:00+00:00" pubdate data-updated="true">Jul 19<span>th</span>, 2010</time>
+<time datetime="2010-07-19T00:00:00-07:00" pubdate data-updated="true">Jul 19<span>th</span>, 2010</time>
         
       </p>
     
@@ -438,7 +607,7 @@ Enrons are lurking out there” (Jaffe, 2002, para. 3).</p>
   
 
 
-<time datetime="2010-07-19T00:00:00+00:00" pubdate data-updated="true">Jul 19<span>th</span>, 2010</time>
+<time datetime="2010-07-19T00:00:00-07:00" pubdate data-updated="true">Jul 19<span>th</span>, 2010</time>
         
       </p>
     
@@ -475,142 +644,6 @@ Enrons are lurking out there” (Jaffe, 2002, para. 3).</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/why-was-the-sarbanes-oxley-act-of-2002-created-and-how-does-it-impact-financial-reporting-today/">Why Was the Sarbanes-Oxley Act of 2002 Created and How Does It Impact Financial Reporting Today?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-09T00:00:00+00:00" pubdate data-updated="true">Jul 9<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>This entry is part 5 of 8 in the series<a href="http://www.charleshooper.net/blog/series/intro-to-financial-reporting/" title="Intro to Financial Reporting">Intro to Financial Reporting</a></p>
-
-<p>The Sarbanes-Oxley Act of 2002, also known as the SOX Act, was created in response to the series of misleading and outright fraudulent activity of big business in the 1990s (Lasher, 2008, p. 187). Essentially, multiple publicly-traded businesses jacked up their stock prices by “publishing false or deceptive financial statements” (Lasher, 2008, p. 187). The most notable company to crash was Enron, followed by Global Crossing (parent of MCI,) and Xerox; later, almost one thousand publicly traded companies restated their financial statements (Lasher, 2008, p. 187). This resulted in almost $6 trillion of stock market value disappearing (Lasher, 2008, p. 187)! In response to these events, Congress drafted and passed the Sarbanes-Oxley Act (SOX) of 2002.</p>
-
-<p>Next, we look to the provisions of the Sarbanes-Oxley Act of 2002 to see how they impact the way firms prepare their financial statements. The first and most major way the SOX Act impacted financial reporting was that it ended self-regulation of the public accounting industry (Lasher, 2008, p. 190). The SOX Act achieved this by establishing the Public Company Accounting Oversight Board (PCAOB,) an independent, non-profit organization (Lasher, 2008, p. 190). The PCAOB is given authority and empowered by the Securities Exchange Commission (SEC) to regulate and enforce these regulations of the accounting industry (Lasher, 2008, p. 190). Under the regulations of the SOX Act and the PCAOB, it is now required for all accounting firms to be registered and illegal for an unregistered firm to issue audit reports for publicly-traded companies (Lasher, 2008, p. 190). The PCAOB is empowered and directed to perform investigations of questionable accounting practices, hold disciplinary hearings, and impose sanctions upon firms and individuals who auditors who are caught letting wrongdoings “slide” (Lasher, 2008, p. 190). Another way the SOX Act effectively restores the integrity of financial statements is by removing a very large conflict of interest that existed in the 1990s. This conflict of interest existed for accounting firms that also provided consulting services to their clients; under the SOX Act, these types of relationships became illegal and firms that had audit clients could no longer offer these same clients additional consulting services (Lasher, 2008, p. 190). Another major conflict of interest that was removed was the relationships between auditors and the audited firm’s CEO and CFO. Instead of reporting to the firm’s executives, auditors now reported to an “audit committee” of the firm’s Board of Directors; At least one member of which is legally required to be a financial expert (Lasher, 2008, p. 190). Finally, partners of an auditing firm can only supervise the same client for five years at a time (Lasher, 2008, p. 191). The final main problem that the SOX Act addresses is the potential conflict of interest between a firm and its executives, also known as the agency problem (Lasher, 2008, p. 192). The SOX Act achieved this by requiring CEOs and CFOs to certify that they reviewed their firm’s financial statements, that they are true to the best of their knowledge, to also certify that they are personally responsible for their firm’s internal financial controls, and by requiring that company executives repay bonuses and capital gains from stock sales if they follow within 12 months of the issue of financial statements and the gains are made as a “result of misconduct” (Lasher, 2008, p. 191).</p>
-
-<p>Lasher, William R. (2008). Practical Financial Management (5th ed.). Thomson South-Western.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/python-subprocess-module-on-backtrack-4/">Python: Subprocess Module on BackTrack 4</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-08T00:00:00+00:00" pubdate data-updated="true">Jul 8<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>I had trouble getting the <a href="http://docs.python.org/library/subprocess.html">subprocess</a> module onto <a href="http://www.backtrack-linux.org/">BackTrack 4</a>. <em>apt-get install python-subprocess</em> wouldn’t do it, nor would <em>easy_install subprocess</em>. As it turns out, the name of the backported subprocess module is <em>subprocess32</em>, so <strong>easy_install subprocess32</strong> fixed me up real good.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/who-regulates-financial-reporting/">Who Regulates Financial Reporting?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-02T00:00:00+00:00" pubdate data-updated="true">Jul 2<span>nd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>This entry is part 4 of 8 in the series <a href="http://www.charleshooper.net/blog/series/intro-to-financial-reporting/" title="Intro to Financial Reporting">Intro to Financial Reporting</a></p>
-
-<p>As previously discussed, financial statements can sometimes have their own “dialect,” in a manner of speaking. Additionally, financial statements can be subject to accounting fraud because management is usually rewarded based on their firm’s performance which is measured based on the financial statements that they prepare. It is for these reasons that oversight and regulation of financial reporting is necessary. In addition to the Generally Accepted Accounting Principles (GAAP,) financial reporting is regulated by organizations such as the Securities Exchange Commission (SEC), the Financial Accounting Standards Board (FASB), and the International Accounting Standards Board (IASB) (Wild, Shaw, &amp; Chiappetta, 2009, p. 9).</p>
-
-<p>The mission of the Securities Exchange Commission, or SEC (2010), is to “protect investors, maintain fair, orderly, and efficient markets, and facilitate capital formation” (para. 1). The SEC maintains that all investors, whether larger or small, should have all of the basic information of a security required to make investment decisions (para 6). As a result, the SEC requires all publicly traded companies to disclose “meaningful financial and other information to the public” (para 6). The SEC was formed under the Securities Act of 1933 and the Securities Exchange Act of 1934 in the wake of the great depression to restore confidence in the stock markets (para 16).</p>
-
-<p>Next, we have the Financial Accounting Standards Board, or FASB. Similar to the SEC, the FASB aims ensure that investors have useful information for making investment decisions. More specifically, the FASB’s mission is to “establish and improve standards of financial accounting and reporting that foster financial reporting by nongovernmental entities that provides decision-useful information to investors and other users of financial reports” (para 3). The FASB notes on their website that while the SEC has the legal authority to establish the financial accounting and reporting standards, the SEC’s position is to rely on private organizations, like the FASB, for this function (para 2).</p>
-
-<p>Finally, we have the International Accounting Standards Board, or IASB. The IASB (2010) is responsible for developing and publishing International Financial Reporting Standards (or IFRSes,) ensuring that these standards are enforceable, and promoting their use (para 1).</p>
-
-<p>To conclude, because financial statements can sometimes have their own “dialect” and are subject to accounting fraud there are various organizations that are required to regulate the preparing and publishing of them. The major organizations responsible for this are the Securities Exchange Commission (SEC), the Financial Accounting Standards Board (FASB), and the International Accounting Standards Board (IASB).</p>
-
-<p>Chiappetta, B., Shaw, K., Wild, J. (2009). Principles of Financial Accounting (19th ed.). McGraw-Hill/Irwin.<br />
-Financial Accounting Standards Board [FASB]. Facts about FASB. Retrieved from http://www.fasb.org/jsp/FASB/Page/SectionPage&amp;cid=1176154526495<br />
-International Accounting Standards Board [IASB]. (2010). About the IASCF Foundation and the IASB. Retrieved from http://www.iasb.org/The organisation/IASCF and IASB.htm<br />
-Securities Exchange Commission [SEC]. (2010). How the SEC Protects Investors, Maintains Market Integrity, and Facilitates Capital Formation. Retrieved from http://www.sec.gov/about/whatwedo.shtml</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -629,11 +662,23 @@ Securities Exchange Commission [SEC]. (2010). How the SEC Protects Investors, Ma
 <section>
   <h1>About Charles</h1>
 	<img src="http://www.gravatar.com/avatar/9f645d339b731bc99a95704ad4289aac.png?size=160" alt="Charles Hooper"/>
-	<p>Charles is an engineer at <a href="http://truss.works/">Truss</a>. He enjoys archery, smoking meat, gardening, home brewing, and hacking.</p>
+	<p>Charles is a systems and reliability engineer. He enjoys archery, smoking meat, gardening, home brewing, and hacking.</p>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/briefly-operator-requirements/">Briefly: Operator Requirements</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/briefly-health-checks/">Briefly: Health Checks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/briefly-logs/">Briefly: Logs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/i-have-a-new-job-at-truss/">I have a new job at Truss!</a>
@@ -641,18 +686,6 @@ Securities Exchange Commission [SEC]. (2010). How the SEC Protects Investors, Ma
     
       <li class="post">
         <a href="/blog/personal-archery-faq/">Personal Archery FAQ</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/what-am-i-supposed-to-do-with-all-of-this-honey/">What am I supposed to do with all of this honey?!</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/give-it-a-rest/">Give it a rest</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/on-slack-and-upkeep/">On Slack and Upkeep</a>
       </li>
     
   </ul>

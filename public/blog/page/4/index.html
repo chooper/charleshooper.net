@@ -9,7 +9,8 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="If you’re reading this, you probably already know that an init script is a specific style of script that allows you to control daemon processes. In &hellip;">
+  <meta name="description" content="One morning I woke up early and checked my email. My plan was to check that my
+inbox was empty for some peace of mind and then go back to bed for a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +90,303 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/amazons-relational-database-service-rds-the-black-box-from-hell/">Amazon&#8217;s Relational Database Service (RDS) &#8211; the Black Box From Hell</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-10T00:00:00-07:00" pubdate data-updated="true">Aug 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>One morning I woke up early and checked my email. My plan was to check that my
+inbox was empty for some peace of mind and then go back to bed for a few more
+hours (I love Sundays). But that isn’t what happened. Instead, upon opening my
+inbox I was alerted that one of a client’s database servers was offline. I
+snapped out of my haze and immediately got to work.</p>
+
+<p>This particular database server was a RDS instance. RDS, or <a href="http://aws.amazon.com/rds/">Relational
+Database Service</a>, is an Amazon-provided MySQL (or Oracle) server that runs
+on top of the EC2 platform. The advantages to this service are that backups are
+performed automatically (complete with point-in-time recovery,) snapshots are
+supported, the instances can be resized with more or less RAM/CPU/storage
+through the AWS console, and a whole bunch of other stuff (“maintenance”) is
+supposed to be performed for you automatically.</p>
+
+<p>The disadvantages don’t make themselves apparent until you need to debug or
+troubleshoot a performance or availability issue. While CloudWatch metrics are
+included as part of the RDS package, knowing how much CPU, RAM, or storage
+space you’re using is only a very small part of knowing what your database
+instance is actually doing.</p>
+
+<p>Prior to attempting recovery, the first thing I did was to check the
+<a href="http://aws.amazon.com/cloudwatch/">CloudWatch</a> metrics. CloudWatch seems to have trouble reporting its data
+when the system is under durress because there were periods where there was
+data and there were periods where there wasn’t. The next thing I did was check
+the RDS event logs. Don’t get excited, the RDS event log is not a UI wrapped
+around system logs, it’s just a couple of entries here and there on what Amazon
+RDS decides to publish. The last entry in the event log was a backup job that
+started several hours before and never finished. These typically only take one
+to two minutes to finish on this instance so I knew something was wrong.</p>
+
+<p>I didn’t want to waste time trying to troubleshoot while the database was down
+so I instead moved immediately to recovery and rebooted the instance through
+the AWS console. It’s like <a href="http://onlinelibrary.wiley.com/doi/10.1002/bltj.20187/abstract">Charles McPhail</a> says, “<a href="http://onlinelibrary.wiley.com/doi/10.1002/bltj.20187/abstract">Respond, Restore,
+Resolve</a>.” After about a whole 20 to 30 minutes the database server began
+accepting connections again but the instance was never taken out of the
+“REBOOTING” state when it should have transitioned to “STARTED”. With the
+instance in the “REBOOTING” state, my only option now was to recover from a
+previous backup as the rest of the functionality is disabled unless the
+instance is in a “STARTED” state.</p>
+
+<p>To make matters worse, the various components in our infrastructure were
+connecting to this database server and were making it impossible to find out
+what’s going on. The max connection limit was reached and I was no longer able
+to login and view the process list or analyze the status variables.</p>
+
+<p>At this point, I decided my only course of action was to spin up a new instance
+from a previous backup. I made this request through the AWS console and, two to
+three hours later, my new instance was finally up and running. About a half an
+hour prior to this, the old instance was transitioned into a “FAILED” state and
+shut down. When your instance is in the “FAILED” state, you cannot restart it.
+Your only option is to restore from backup. In my case, it took several hours
+for AWS to declare the instance as failed and it took several hours to restore
+the backup. I did not know that the “FAILED” state was even a possible state
+and had no idea that AWS could just kill an instance like that. To top it all
+off, Amazon sent a very nice email to the owner of the account (my client the
+CEO) explaining that we’ve been using an unsupported storage engine all this
+time.</p>
+
+<p>As it turns out, I missed the note in the <a href="http://docs.amazonwebservices.com/AmazonRDS/latest/UserGuide/">RDS User Guide</a> that says that
+MyISAM is not supported, particularly when it comes to data recovery. While I
+understand why RDS made this decision (MyISAM gets corrupted easily and is not
+easy to repair sometimes,) I felt misled and uninformed about the support of
+the storage engines. Yes, the note is in the RDS User Guide, however, it is not
+mentioned anywhere in the main page about RDS nor is it in the <a href="http://aws.amazon.com/rds/faqs/">RDS FAQs</a>
+(where the string “MyISAM” only appears once).</p>
+
+<p>A few weeks have gone by and we have taken steps to avoid and reduce the damage
+from these types of outages in the future. However, we still occasionally
+receive an alert where an RDS instance stops accepting connections for one to
+two minutes at a time and all the event log has to say is that the instance has
+been “recovered.” Recovered from what exactly? What did you do to it? Why does
+this keep happening? How do we make it stop?</p>
+
+<p>In summary, I’ll probably never know because on RDS you do not have access to
+the underlying OS. This means:</p>
+
+<ul>
+  <li>You do not have access to the OS process list</li>
+  <li>You do not have access to things like top, htop, iostat, or dstat</li>
+  <li>You do not have access to the process list if the MySQL process isn’t accepting connections</li>
+  <li>You do not have access to any system logs</li>
+</ul>
+
+<p>If you just need a quick and dirty MySQL server and you almost never want to
+worry about the status of your backups, go ahead and use RDS. However, if
+you’re concerned about reliability (that you control,) being able to
+effectively troubleshoot problems, and knowing the state of your underlying OS,
+RDS is not right for you.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/a-couple-of-python-snippets/">A Couple of Python Snippets</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-30T00:00:00-07:00" pubdate data-updated="true">Jun 30<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>I haven’t updated in awhile but I decided to drop a couple of gists in here and call it a post. These snippets are incredibly simple and I don’t expect to “wow” anybody here, but I was asked for them recently and am posting them here.</p>
+
+<h1 id="group-words-by-their-first-letter-in-python">Group words by their first letter in Python</h1>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>group_by_letter.py</span><a href="https://gist.github.com/chooper/1050517#file-group_by_letter-py">link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+</pre></td><td class="code"><pre><code class="py"><span class="line"><span class="c">#!/usr/bin/env python</span>
+</span><span class="line">
+</span><span class="line"><span class="sd">&quot;&quot;&quot;Group words by their first letter&quot;&quot;&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">group_by_letter</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+</span><span class="line">    <span class="n">buckets</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:[])</span>
+</span><span class="line">    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+</span><span class="line">        <span class="n">buckets</span><span class="p">[</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">buckets</span>
+</span><span class="line">
+</span><span class="line"><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class="line">    <span class="k">print</span> <span class="n">group_by_letter</span><span class="p">([</span><span class="s">&#39;narragansett&#39;</span><span class="p">,</span><span class="s">&#39;brooklyn lager&#39;</span><span class="p">,</span><span class="s">&#39;magic</span>
+</span><span class="line"><span class="n">hat</span><span class="s">&#39;,&#39;</span><span class="n">dog</span> <span class="n">fish</span> <span class="n">head</span><span class="s">&#39;,&#39;</span><span class="n">shock</span> <span class="n">top</span><span class="s">&#39;,&#39;</span><span class="n">ten</span> <span class="n">penny</span><span class="s">&#39;,&#39;</span><span class="n">bass</span><span class="s">&#39;])</span>
+</span><span class="line">    <span class="c"># Output: defaultdict(&lt;function &lt;lambda&gt; at 0x7fc83416b2a8&gt;, {&#39;b&#39;:</span>
+</span><span class="line">    <span class="c"># [&#39;bass&#39;, &#39;brooklyn lager&#39;], &#39;d&#39;: [&#39;dog fish head&#39;], &#39;m&#39;: [&#39;magic</span>
+</span><span class="line">    <span class="c"># hat&#39;], &#39;n&#39;:[&#39;narragansett&#39;], &#39;s&#39;: [&#39;shock top&#39;], &#39;t&#39;: [&#39;ten</span>
+</span><span class="line">    <span class="c"># penny&#39;]})</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h1 id="merging-list-of-lists-in-python-using-reduce">Merging list of lists in Python using reduce</h1>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>merge_lists.py</span><a href="https://gist.github.com/chooper/1054819#file-merge_lists-py">link</a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="py"><span class="line"><span class="c">#!/usr/bin/env python</span>
+</span><span class="line">
+</span><span class="line"><span class="sd">&quot;&quot;&quot;Merging list of lists in Python using reduce()&quot;&quot;&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">merge_lists</span><span class="p">(</span><span class="n">list_of_lists</span><span class="p">):</span>
+</span><span class="line">    <span class="k">return</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span> <span class="n">list_of_lists</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class="line">    <span class="n">my_big_list</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">]</span>
+</span><span class="line">    <span class="k">print</span> <span class="n">merge_lists</span><span class="p">(</span><span class="n">my_big_list</span><span class="p">)</span>
+</span><span class="line">    <span class="c"># output: [1, 2, 3, 3, 4, 5, 6, 7, 8]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/common-single-point-of-failure-people/">Common Single Point of Failure: People</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-07T00:00:00-07:00" pubdate data-updated="true">Jun 7<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>Yesterday, when I arrived at my other job on my school’s help desk, I found out that my supervisor was not coming into work at all. This is OK; I enjoy the autonomy of working unsupervised. However, at this particular university’s help desk, my supervisor is the <em>only</em> person who can reset security profile information on student accounts. She is also the only person who assigns work orders to the technicians that work here. I’ll spare you the details, but probably 80-90% of our workload on any given day gets passed through this one person.</p>
+
+<p>This is a serious problem. By passing tasks through a single person with no backup we are guaranteeing the collapse of our support system. I’ve seen this at other gigs and I bet you have, too.</p>
+
+<p>Maybe it’s the “one guy” who has access to the firewall or router. Or maybe there’s that only person who knows how to configure a particular piece of software or solve a specific problem. Truthfully, you’re probably that guy and don’t even realize it. Ever get work-related phone calls (or worse: called in) during your “time off?” Red flag.</p>
+
+<p>All of these conditions are single points of failures (SPoF). Too often, we sysadmins, developers, and engineers only think of SPoFs in terms of hardware and software. But if we look at what actually makes up the entire information system (hardware, software, data, procedures, and <em>people)</em>, we see that we’re part of it too. This hoarding of knowledge often results in a failure of the system itself and very frequently makes existing failures worse.</p>
+
+<h1 id="example">Example</h1>
+
+<p>A customer-facing database server stops responding. You’re not really familiar with what database(s) it serves but customers are complaining that it’s down or very slow. There’s another guy that normally handles this system but he’s out of town and completely unreachable. You want to diagnose but you don’t even know how to access the system. Do you blindly reboot (risking data loss and corruption)? Sit and wait it out? Learn how to summon your co-worker’s spirit?</p>
+
+<p>One very real situation occurred when I worked at a small Internet Service Provider. A very big client of ours called and said that a very large portion of their network was down (we managed it, too). Did I have the credentials to the router in question? No. Did the client? No. Who did? *That guy *did, the one who is usually too busy running around to return calls (incidentally, the owner). He did finally return our cries for help… 3 hours later. Was the problem difficult to solve? No. In fact, it was fixed within minutes of receiving the proper credentials. (Funny story, one of their on-staff techs plugged a network camera into the network and accidentally assigned their router’s address as the camera’s IP :)) Sure, this mistake was dumb, but did this client need to suffer degraded availability for these 3 hours? Absolutely not.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>The obvious, and perhaps only, solution to this problem is to make as much of your knowledge available as possible. The more knowledge you offload from your brain, the better and more efficient the system becomes. I know to some this might seem a little counter-productive. After all, having this knowledge is job security…right?</p>
+
+<p>No, absolutely not. Holding company knowledge hostage should never be how you ensure your job security (<em>that’s a myth anyways</em>).</p>
+
+<p>With that being said, please don’t spend all your energy and effort on documentation only to abandon the effort a month later. I was speaking to a friend of mine earlier when he mentioned that very often he comes across company Wikis all the time that usually contain outdated information and haven’t even been logged into in 6 months.</p>
+
+<p>Allow me to re-iterate, do* not* go on documentation sprees. Document everything <em>when</em> you do it and share that information *when *you do it. Regularly. Constantly. If you wait until you have alot of information to document, then you will probably become overwhelmed and just not do it. When I was in the Air Force, we had a saying:</p>
+
+<h2 id="the-job-aint-over-till-the-paperwork-is-done">The job ain’t over till the paperwork is done.</h2>
+
+<p>Simply put, add documentation into your regular workflow. The investment is small and the returns are great.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/controlling-django-apps-with-an-init-script/">Controlling Django Apps With an Init Script</a></h1>
     
     
@@ -105,7 +403,7 @@
   
 
 
-<time datetime="2011-05-29T00:00:00+00:00" pubdate data-updated="true">May 29<span>th</span>, 2011</time>
+<time datetime="2011-05-29T00:00:00-07:00" pubdate data-updated="true">May 29<span>th</span>, 2011</time>
         
       </p>
     
@@ -278,7 +576,7 @@
   
 
 
-<time datetime="2011-04-26T00:00:00+00:00" pubdate data-updated="true">Apr 26<span>th</span>, 2011</time>
+<time datetime="2011-04-26T00:00:00-07:00" pubdate data-updated="true">Apr 26<span>th</span>, 2011</time>
         
       </p>
     
@@ -340,7 +638,7 @@
   
 
 
-<time datetime="2011-04-23T00:00:00+00:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2011</time>
+<time datetime="2011-04-23T00:00:00-07:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2011</time>
         
       </p>
     
@@ -394,7 +692,7 @@
   
 
 
-<time datetime="2011-03-26T00:00:00+00:00" pubdate data-updated="true">Mar 26<span>th</span>, 2011</time>
+<time datetime="2011-03-26T00:00:00-07:00" pubdate data-updated="true">Mar 26<span>th</span>, 2011</time>
         
       </p>
     
@@ -447,7 +745,7 @@
   
 
 
-<time datetime="2011-03-24T00:00:00+00:00" pubdate data-updated="true">Mar 24<span>th</span>, 2011</time>
+<time datetime="2011-03-24T00:00:00-07:00" pubdate data-updated="true">Mar 24<span>th</span>, 2011</time>
         
       </p>
     
@@ -525,7 +823,7 @@
   
 
 
-<time datetime="2011-03-23T00:00:00+00:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2011</time>
+<time datetime="2011-03-23T00:00:00-07:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2011</time>
         
       </p>
     
@@ -592,7 +890,7 @@
   
 
 
-<time datetime="2011-02-09T00:00:00+00:00" pubdate data-updated="true">Feb 9<span>th</span>, 2011</time>
+<time datetime="2011-02-09T00:00:00-08:00" pubdate data-updated="true">Feb 9<span>th</span>, 2011</time>
         
       </p>
     
@@ -603,280 +901,6 @@
 
 <p>I just updated my <a href="http://apps.charleshooper.net/cost-behavior-analysis/">Cost Behavior Analyzer</a> webapp to allow for the editing of results. This way, if you want to add new data points at a later point in time, it’s no problem. Try it out!</p>
 
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/multiple-vulnerabilities-in-mingle-forum-wordpress-plugin/">Multiple Vulnerabilities in Mingle Forum (WordPress Plugin)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-01-08T00:00:00+00:00" pubdate data-updated="true">Jan 8<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>Title: Multiple Vulnerabilities in Mingle Forum (WordPress Plugin)<br />
-Advisory URL: http://www.charleshooper.net/blog/multiple-vulnerabilities-in-mingle-forum-wordpress-plugin/<br />
-Date Published: January 8th, 2011<br />
-Vendors Contacted: Paul Carter – Maintainer of plugin.</p>
-
-<ol>
-  <li>Summary</li>
-</ol>
-
-<p>Mingle Forum is a plugin for the popular blog tool and publishing<br />
-platform, WordPress. According to the author of Mingle Forum, “Mingle<br />
-Forum has been modified to be lightweight, solid, secure, quick to<br />
-setup, and easy to use.”</p>
-
-<p>There exist multiple vulnerabilities in Mingle Forum, SQL injection<br />
-being among them.</p>
-
-<ol>
-  <li>Vulnerability Information</li>
-</ol>
-
-<p>Packages/Versions Affected: Confirmed on 1.0.24 and 1.0.26</p>
-
-<p>3a. Type: SQL Injection [CWE-89]<br />
-3a. Impact: Read application data.<br />
-3a. Discussion: There is a SQL injection vulnerability present in the<br />
-RSS feed generator. By crafting specific URLs an attacker can retrieve<br />
-information from the MySQL database.</p>
-
-<p>3b. Type: SQL Injection [CWE-89]<br />
-3b. Impact: Read application data.<br />
-3b. Discussion: There is a SQL injection vulnerability present in the<br />
-`edit post` functionality. By crafting specific URLs an attacker can<br />
-retrieve information from the MySQL database.</p>
-
-<p>3c. Type: Auth Bypass via Direct Request [CWE-425]<br />
-3c. Impact: AuthZ is not performed for `edit post` functionality.<br />
-3c. Discussion: By browsing directly to the `edit post` page a user can<br />
-view and edit any page.</p>
-
-<ol>
-  <li>PoC &amp; Technical Description</li>
-</ol>
-
-<p>4a.<br />
-<a href="http://path.to/wordpress/wp-content/plugins/mingle-forum/feed.php?topic=0 UNION SELECT 1,user_email,3,4,5,user_login,7 FROM wp_users #">http://path.to/wordpress/wp-content/plugins/mingle-forum/feed.php?topic=0 UNION SELECT 1,user_email,3,4,5,user_login,7 FROM wp_users #</a></p>
-
-<p>4b.  </p>
-
-<p>4c. </p>
-
-<ol>
-  <li>Report Timeline</li>
-</ol>
-
-<p>12/17/2010 Initial email sent to plugin maintainer.<br />
-12/22/2010 Confirmation of first email requested.<br />
-12/31/2010 Correct email address obtained. Maintainer contacted again on<br />
-this date.<br />
-01/01/2011 Received response from plugin maintainer.<br />
-01/07/2011 Plugin maintainer releases update that addresses these<br />
-vulnerabilities.</p>
-
-<ol>
-  <li>References</li>
-</ol>
-
-<p>6a. The WordPress Plugin page for Mingle Forum:  </p>
-
-<ol>
-  <li>Legalese</li>
-</ol>
-
-<p>This vulnerability report by Charles Hooper &lt;  &gt; is<br />
-licensed under a Creative Commons Attribution-NonCommercial-ShareAlike<br />
-3.0 Unported License.</p>
-
-<ol>
-  <li>Signature</li>
-</ol>
-
-<p>Public Key: Obtainable via pool.sks-keyservers.net</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/picking-applications-to-audit/">Picking Applications to Audit</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-23T00:00:00+00:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>I’m sure almost any programmer will tell you that at some point they felt the need to work on a project but had no idea what to work on. This happens to me, too, even when it comes down to choosing what applications or services I want to audit. With practice, I’ve come up with a pretty good list of categories to choose software from and I would like to share them with you.</p>
-
-<h2 id="applications-or-service-youuse">1. Applications or Service You Use</h2>
-
-<p>This is probably to most obvious way to choose what application or service to audit. However, to me, it’s also one of the hardest. The reason why it is so difficult is because it involves breaking out of your mental “user” mode where you’re just <em>using</em> the application or service. I know that when *I’m *in “user” mode, I probably am not even fully conscious of the amount of software or services I use every day and how much I rely on them.</p>
-
-<p>The solution, then, is to break out of “user” mode. Once out of “user” mode (and in “audit” or “attack” mode) everything becomes clearer. For example, I recently submitted a vulnerability to a pretty large service provider (I can’t say who yet); was the vulnerability in some back page or a piece of functionality that nobody uses? No, surprisingly, this vulnerability was part of a key piece of functionality that I actually <em>use</em> frequently.</p>
-
-<h2 id="applications-or-services-thatyou-like-or-believe-in">2. Applications or Services That You “Like” or “Believe In”</h2>
-
-<p>This is more of an extension than the item above, but it’s worth stressing. If there’s an application or service that you think has potential, go ahead and audit it. New applications and services are often full of low-hanging fruit. By auditing these and reporting the vulnerabilities, you are helping to make these applications and services better.</p>
-
-<h2 id="applications-and-services-that-make-it-economically-beneficial-to-audit-them">3. Applications and Services That Make It “Economically Beneficial” to Audit Them</h2>
-
-<p>This is a no-brainer. If you’re being offered money to audit an application or service (and the person offering the money has the authority to give you permission to do so,) then this is a pretty good place to start. Google, for example, has a <a href="http://googleonlinesecurity.blogspot.com/2010/11/rewarding-web-application-security.html">Vulnerability Rewards Program</a>.</p>
-
-<h2 id="closing">Closing</h2>
-
-<p>These are just three of the categories to look for applications or services to audit. It’s certainly not complete as there is a plethora of software out there waiting to be audited, but I hope that this gives you a good head start.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/so-you-just-received-a-vulnerability-report-now-what/">So You Just Received a Vulnerability Report. Now What?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-22T00:00:00+00:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>It has come to my attention that there is still at least one group of people that doesn’t know <strong>how to responsibly deal with vulnerability reports</strong>. No, I’m not talking about the security researchers, the blackhats, or the script kiddies. It’s true that there is already alot of  controversy surrounding proper (or responsible) disclosure etiquette, but that doesn’t concern the group I’m referring to right now. I’m talking about the maintainer of the resource that the vulnerability report is for. That means you, project maintainers!</p>
-
-<h2 id="before-receiving-a-report">Before Receiving a Report</h2>
-
-<p>One of the biggest difficulties I’ve been having lately is finding contact information for a project maintainer or their security contact. On multi-developer projects, there should be at least one person who is responsible for fielding security-related reports that come in. They should have the ability to put fixes for security vulnerabilities on high priority for the developers.</p>
-
-<p>Your “security guy’s” email should be easy to find or guess. For example, Google’s is security@google.com and this address is <a href="http://www.google.com/corporate/security.html">easy to find</a>. You could also achieve this effect by using support/bug report forums, but be sure that any bug or report marked as security-related should be automatically hidden from public view. Regardless of if you decide to use a dedicated email box/alias or support forums for your security reports,  it is most important to make <em>someone</em> responsible for making sure that security reports are reacted to quickly and professionally.</p>
-
-<h2 id="after-receiving-a-report">After Receiving a Report</h2>
-
-<p>As soon as the first human has eyes on the report, it should be assigned to an individual and a confirmation should be sent to the person who provided it. Here’s is one such confirmation:</p>
-
-<blockquote>
-  <p>Thank you for reporting this to us! We have opened a security
-investigation to track this issue. The case number for your tracking
-is MSRC [XXXX]. XXXX is the Security Program Manger assigned to the case and he will be working with you and the Microsoft.com team to investigate the issue. She will be following up with you shortly.</p>
-</blockquote>
-
-<p>This step is super important because many of the people who take the time to report vulnerabilities to the vendor are only just waiting to release the report to the public. You don’t want to still be working on the fix when the news of your project’s security flaw is released.</p>
-
-<p>Once you have a someone assigned to the bug, have them send a brief introduction. I never received my introduction from “XXXX” above, so I sent another email inquiring on the status of the bug. Here is the response:</p>
-
-<blockquote>
-  <p>Thank you very much for your message! My name is YYYY and I have taken over this case from XXXX. Earlier this week, the online services team has started testing a fix for the original issue you have reported, and we are currently verifying this, which includes variation testing and a review of the whole page. The added details you have provided to us in the below message will certainly help us in this process, so thanks a lot!</p>
-
-  <p>I will contact you as soon as the fix is deployed, and of course, if you have any further information or questions, please don’t hesitate to let us know.</p>
-</blockquote>
-
-<p>This email is short, brief, yet contains all the information I would ever want to know. In particular it includes:</p>
-
-<ul>
-  <li>An actual person I can continue to provide information to</li>
-  <li>The status of the vulnerability/bug</li>
-  <li>The next step(s) in their review process</li>
-  <li>When I can expect to hear from them next</li>
-</ul>
-
-<p>Just like the MSRC said I would, I heard from them when the fix made it to production. (In case you were wondering, it was 5 calendar days later.) At this point, they made arrangements to acknowledge me on the “Security Researchers Acknowledgment” page. While this is certainly a nice perk, you don’t have to do this.</p>
-
-<h3 id="a-valid-question-at-this-point-is-how-long-do-i-have-to-fix-this-vulnerability">A valid question at this point is “How long do I have to fix this vulnerability?”</h3>
-
-<p>It depends, but as the vendor that’s up for you to figure out. If you’re receiving a vulnerability report from a non-public source, then consider yourself lucky. The person reporting the vulnerability likely believes in responsible disclosure (inherent of the fact that you got the report first) and will be willing to negotiate on the timeline. Be honest with this person. I once waited two months to report a minor SQL injection vulnerability in a trivial web application because the (sole) project maintainer was on vacation when I emailed him initially.</p>
-
-<h2 id="summary-tldr">Summary (tl;dr)</h2>
-
-<p>Many of the security researchers who will reach out to you believe in responsible (but full) disclosure. That means that your project’s security flaws <em>will</em> make it to the public sooner or later. To ensure the best experience for your users and the preservation of your project’s reputation, you need to handle your vulnerability reports quickly and properly. That means:</p>
-
-<ul>
-  <li>Making it easy to find out where to send vulnerability reports to</li>
-  <li>Communicating with the source of the report to confirm receipt of their report</li>
-  <li>Communicating with the source of the report your intentions for their report 
-    <ul>
-      <li>Who did the vulnerability get assigned to?</li>
-      <li>What is the status of this vulnerability?</li>
-      <li>What are the next steps in the review process for this vulnerability?</li>
-      <li>When they can expect to hear from you next</li>
-    </ul>
-  </li>
-  <li>Communicating with the source when you believe the vulnerability is fixed</li>
-</ul>
-
-<p>What is all boils down to is this: React quickly and keep open lines of communication between your project and the security researcher who took the time to report a vulnerability to you. If you do this, you’ll minimize the damage to your user base and your reputation.</p>
 </div>
   
   
@@ -902,11 +926,23 @@ is MSRC [XXXX]. XXXX is the Security Program Manger assigned to the case and he 
 <section>
   <h1>About Charles</h1>
 	<img src="http://www.gravatar.com/avatar/9f645d339b731bc99a95704ad4289aac.png?size=160" alt="Charles Hooper"/>
-	<p>Charles is an engineer at <a href="http://truss.works/">Truss</a>. He enjoys archery, smoking meat, gardening, home brewing, and hacking.</p>
+	<p>Charles is a systems and reliability engineer. He enjoys archery, smoking meat, gardening, home brewing, and hacking.</p>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/briefly-operator-requirements/">Briefly: Operator Requirements</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/briefly-health-checks/">Briefly: Health Checks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/briefly-logs/">Briefly: Logs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/i-have-a-new-job-at-truss/">I have a new job at Truss!</a>
@@ -914,18 +950,6 @@ is MSRC [XXXX]. XXXX is the Security Program Manger assigned to the case and he 
     
       <li class="post">
         <a href="/blog/personal-archery-faq/">Personal Archery FAQ</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/what-am-i-supposed-to-do-with-all-of-this-honey/">What am I supposed to do with all of this honey?!</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/give-it-a-rest/">Give it a rest</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/on-slack-and-upkeep/">On Slack and Upkeep</a>
       </li>
     
   </ul>

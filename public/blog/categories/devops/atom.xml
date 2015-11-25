@@ -4,7 +4,7 @@
   <title><![CDATA[Category: DevOps | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/devops/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2015-10-02T03:37:17+00:00</updated>
+  <updated>2015-11-24T15:27:46-08:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -14,9 +14,222 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Briefly: Operator Requirements]]></title>
+    <link href="http://www.charleshooper.net/blog/briefly-operator-requirements/"/>
+    <updated>2015-11-23T10:49:00-08:00</updated>
+    <id>http://www.charleshooper.net/blog/briefly-operator-requirements</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>On any given day, there are a number of people discussing user requirements and
+prioritizing the work ahead of them based on them. There’s an
+oft-underrepresented group of users however and those are your operators.
+Typically, the set of things needed by your operators are buried in your
+project’s list of “non-functional requirements”, if at all.</p>
+
+<p>In this brief, I would like to provide you with a de facto set of “operator
+requirements” for your project. This list is likely incomplete and I’m
+discovering more every day. I may update this post from time to time to add
+things or clarify them as I journey towards understanding.</p>
+
+<p>An application that satisfies these requirements will be more scalable, easier
+to operate, and likely have a lower Mean Time To Recovery than an application
+that does not.</p>
+
+<ol>
+  <li>
+    <p>In general you should strive to adhere to <a href="http://12factor.net/">12factor</a> if you’re building a web
+  application. 12factor creates a clean contract between your application and
+  the operating system, enables simpler deployments, and results in applications
+  that are mostly horizontally scalable by default. If you cannot adhere to
+  12factor, then I would challenge you to borrow as much of it as you can before
+  discounting the whole 12factor methodology.</p>
+  </li>
+  <li>
+    <p>Your application should have plenty of <a href="http://www.charleshooper.net/blog/briefly-logs/">logging and follow best
+  practices</a>.</p>
+  </li>
+  <li>
+    <p>Your application should also emit metrics that create some sense of
+  understanding of what the system is doing.</p>
+  </li>
+  <li>
+    <p>Your application’s services should have <a href="http://www.charleshooper.net/blog/briefly-health-checks/">health checks</a>. The health checks
+  should return HTTP 2xx or 3xx when the service is healthy and HTTP 5xx when
+  it is not. The response body should contain an explanation or identifier that
+  will allow the operator to determine why the health check failed to aid in
+  incident recovery.</p>
+  </li>
+  <li>
+    <p>Your application should use <a href="https://brandur.org/request-ids">unique request IDs</a> and add them to their
+  logging contexts (see logging).</p>
+  </li>
+  <li>
+    <p>Your application should support credential rotation. Any given secret,
+  whether it’s a password, API key, SSL private key, or otherwise, should be
+  changeable with minimal disruption to the service. This should be exercised
+  often to ensure it works as designed.</p>
+  </li>
+  <li>
+    <p>Your application should provide operators with <a href="http://blog.travis-ci.com/2014-03-04-use-feature-flags-to-ship-changes-with-confidence/">toggles or feature flags</a> —
+  parameters that allow the operators or the system itself to turn off bits of
+  functionality when the system is degraded.</p>
+  </li>
+  <li>
+    <p>Your application should put external resources behind <a href="https://engineering.heroku.com/blogs/2015-06-30-improved-production-stability-with-circuit-breakers/">circuit breakers</a>.
+  Circuit breakers allow your app to continue operating (albeit in a degraded
+  state) when an external resource is unavailable instead of taking your
+  application offline.</p>
+  </li>
+  <li>
+    <p>Your application should be <a href="http://12factor.net/disposability">disposable and restartable</a>; this means that
+  it’s restartable on the same instance or a new instance) after a crash and
+  should crash in an automatically recoverable state. If your crash is not
+  automatically recoverable, it should scream! In addition, your application
+  should gracefully complete existing work such as HTTP requests or jobs it
+  picked up from a task queue. In the case of long running jobs, your application
+  should be able to abandon the work to have it picked up by another worker or
+  node.</p>
+  </li>
+</ol>
+
+<p>These are just a start but these requirements should be imported into your project’s
+requirements and prioritized with maintainability in mind. By doing so, your
+application will be more scalable, easier to operator, and have a lower Mean
+Time To Recovery than application that don’t satisfy these requirements.</p>
+
+<p>Do you feel like I missed anything? What else would you recommend?</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Briefly: Health Checks]]></title>
+    <link href="http://www.charleshooper.net/blog/briefly-health-checks/"/>
+    <updated>2015-11-08T01:23:00-08:00</updated>
+    <id>http://www.charleshooper.net/blog/briefly-health-checks</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>Health checks are specially defined endpoints or routes in your application
+that allow external monitors to determine the health of your web application.
+They are so important to production health that I consider them the “13th
+factor” in <a href="http://12factor.net/">12factor</a>.</p>
+
+<p>If an application is healthy it will return a HTTP 2xx or 3xx status code and
+when it is not it will return an HTTP 5xx status code.</p>
+
+<p>This type of output allows load balancers to remove unhealthy instances from
+its rotation but can also be used to alert an operator or even automatically
+replace the instance.</p>
+
+<p>In order to implement proper health checks, your application’s health checks
+should:</p>
+
+<ol>
+  <li>
+    <p>Return a HTTP 2xx or 3xx status code when healthy</p>
+  </li>
+  <li>
+    <p>Return a HTTP 5xx status code when not healthy</p>
+  </li>
+  <li>
+    <p>Include the reason why the check failed in the response body</p>
+  </li>
+  <li>
+    <p><a href="http://www.charleshooper.net/blog/briefly-logs/">Log the requests and their results</a> along with Request IDs</p>
+  </li>
+  <li>
+    <p>Not have any side effects</p>
+  </li>
+  <li>
+    <p>Be lightweight and fast</p>
+  </li>
+</ol>
+
+<p>If you implement health checks in your application following this advice,
+you’ll have a more resilient, monitorable, and manageable application.</p>
+
+<p>How about you all? Is there anything you would add?</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Briefly: Logs]]></title>
+    <link href="http://www.charleshooper.net/blog/briefly-logs/"/>
+    <updated>2015-10-29T05:47:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/briefly-logs</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>Recently I was asked by another engineer what information I expect to be able
+to find in logs. For this, I mostly agree with <a href="http://dev.splunk.com/view/logging-best-practices/SP-CAAADP6">Splunk’s best practices</a> but
+I have some additional advice I want to provide. I’ll end up regurgitating some
+of Splunk’s recommendations anyway.</p>
+
+<ol>
+  <li>
+    <p>Your logs should be human readable. This means logging in text (no binary
+logging) and in a format that can be read by angry humans. Splunk recommends
+key-value pairs (e.g. <code>at=response code=200 bytes=1024</code>) since it makes
+Splunking easy, but I don’t have a strong enough opinion to evangelize that.
+Some folks advocate for logging in JSON but I don’t actually find JSON to be
+very readable.</p>
+
+    <p>Edit: Someone pointed out to me that this isn’t ideal when you have a large
+amount of logs. They prefered sending JSON logs to a service like ElasticSearch
+but I think also sending key-value pairs to Splunk is also reasonable at some
+scale.</p>
+  </li>
+  <li>
+    <p>Every log line should include a timestamp. The timestamp should be human
+readable and in a standard format such as <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a>/<a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>.
+Finally, even though the above specs include a timezone offset, timestamps
+should be stated in UTC time whenever possible.</p>
+  </li>
+  <li>
+    <p>Every log line should include a unique identifier for the work being
+performed. In web applications and APIs, for example, this would be a
+request ID. The combination of a unique ID and timestamp allows for developers
+and operators to trace the execution of a single work unit.</p>
+  </li>
+  <li>
+    <p>More is more. While I don’t particularly enjoy reading logs, I have always
+been more happy when an application logs more information than I need versus
+when an application doesn’t log enough information. Be verbose and log
+everything.</p>
+  </li>
+  <li>
+    <p>Make understanding the code path of a work unit easy. This means logging
+file names, class names, function or method names, and so on. When sensible,
+include the arguments to these things as well.</p>
+  </li>
+  <li>
+    <p>Use one line per event. Multi-line events are bad because they are difficult
+to grep or Splunk. Keep everything on one log line but feel free to log
+additional events. An exception to this rule might be tracebacks (see what I
+did there?)</p>
+  </li>
+  <li>
+    <p>Log to stdout if you’re following <a href="http://12factor.net/">12factor</a> otherwise log to syslog. Do not
+write your own log files! By writing your own log files, you are either
+taking log rotation off the table or signing yourself up to support exciting
+requirements like re-opening logs on SIGHUP (let’s not go there).</p>
+  </li>
+  <li>
+    <p>Last but not least: <strong>Don’t write your own logging library!</strong> Chances are
+there already exists a well thought-out and standard library available in
+your application’s language or framework. Please use it!</p>
+  </li>
+</ol>
+
+<p>So those are my recommendations about logs. What else would you recommend?</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Troubleshooting ELBs with elbping]]></title>
     <link href="http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping/"/>
-    <updated>2013-10-19T10:49:00+00:00</updated>
+    <updated>2013-10-19T10:49:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -144,7 +357,7 @@ make a pretty reasonable case to AWS that something is wrong.</p>
   <entry>
     <title type="html"><![CDATA[Intro to Operations: Metrics Collection]]></title>
     <link href="http://www.charleshooper.net/blog/intro-to-ops-metrics-collection/"/>
-    <updated>2013-05-07T14:51:00+00:00</updated>
+    <updated>2013-05-07T14:51:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/intro-to-operations-metrics-collection</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -211,233 +424,6 @@ use are:</p>
 <p>If your startup doesn’t have any metrics then you should start
 collecting them now. The visualization will help you in the short run
 and the historical data will help you in the long run.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Intro to Operations: Availability Monitoring and Alerting]]></title>
-    <link href="http://www.charleshooper.net/blog/intro-to-ops-availability-monitoring-alerting/"/>
-    <updated>2013-05-05T21:57:00+00:00</updated>
-    <id>http://www.charleshooper.net/blog/intro-to-operations-availability-monitoring-and-alerting</id>
-    <content type="html"><![CDATA[<h1 id="section"></h1>
-
-<p><em>I’m writing a series of blog posts for managers and other people
-without an operations background in order to introduce certain best
-practices regarding Operations. For the rest of the blog posts, please
-visit the <a href="/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
-
-<p>Another area I’ve seen alot of early stage startups lacking in is
-<strong>availability monitoring and alerting</strong>. The essence of availability
-monitoring and alerting is being notified when your service is not
-working as expected, including when it’s simply down, isn’t meeting
-formal or informal SLAs (e.g., it’s too slow), or certain functionality
-is broken.</p>
-
-<p>What I typically see is that some effort was made to set up this type of
-monitoring before and never maintained. Symptoms include <em>poor
-monitoring coverage</em> (<em>servers missing from the config, services
-monitoring nearly non-existent</em>), <em>large amounts of false positives and
-negatives</em>, <em>inactionable alerts</em>, and <em>alerts that go unignored</em>
-because of the previous issues.</p>
-
-<p>Symptoms on the business include not knowing when your service is down
-and finding out that your service is broken <em>from your customers</em>.
-Finding out that your service is down from your customers is not only
-embarrassing but it also shakes their confidence in you, affects your
-reputation, and may even lead to lost revenue.</p>
-
-<p>The good news is that it doesn’t have to be this way. When availability
-monitoring is set up properly, maintained, and you and your employees
-agree to approach alerts a specific way, you will be able to reap a
-variety of benefits. Here’s what I recommend:</p>
-
-<ol>
-  <li>
-    <p>First, collaborate with your employees to define who is in the pager
-  rotation and the escalation policies. Ask yourself: What happens when
-  the on call engineer is overwhelmed and needs backup? What happens when
-  the engineer goes on vacation?</p>
-  </li>
-  <li>
-    <p>Next, take inventory of what services you rely on and define an
-  internal SLA for them. This does not have to be a super formal process,
-  but this inventory and SLA will be helpful for deciding what thresholds
-  to set in your monitoring to avoid false positives. Try to see the big
-  picture and think about everything such as:</p>
-
-    <ul>
-      <li>Servers,</li>
-      <li>Self-managed supporting services like web servers, databases, email services,</li>
-      <li>Application functionality and features - one strategy I like is exposing a “health check” service that can be checked by the monitoring agent,</li>
-      <li>Third party services like remote APIs.</li>
-    </ul>
-  </li>
-</ol>
-
-<p>Your inventory and SLA definition is a living document; remember to
-  keep it up to date!</p>
-
-<ol>
-  <li>Then set up whatever monitoring package you or your engineers decided
-  to use (self-hosted or third party) such as <a href="http://www.nagios.org/">nagios</a>, <a href="http://www.zenoss.com/">Zenoss</a>,
-  <a href="http://www.pingdom.com/">Pingdom</a>, or <a href="http://www.copperegg.com/">CopperEgg</a> and have your monitoring configured for
-  those services. If you’re really good, you’ll <em>check your configuration
-  into its own source control repository</em>. If you go the self-hosted
-  route, it may also be worth having your monitoring server monitored
-  externally.  Who’s watching the watcher indeed. </li>
-</ol>
-
-<ol>
-  <li>Think about integrating your monitoring with a pager service such as
-  <a href="http://www.pagerduty.com/">PagerDuty</a>. Services like PagerDuty allow you to input your pager
-  rotation and then define good rules for how to contact the on call
-  engineer and when to escalate should the engineer be unavailable.</li>
-</ol>
-
-<ol>
-  <li>
-    <p>With improved monitoring and alerting in place, you may want to think
-  about giving certain customers “911” access. At a previous company I
-  worked at, we had a secret email address our big customers could hit
-  which would <em>open a support ticket</em> and then <em>page the on call engineer</em>
-  with the ticket number. If you decide to go this route; however, you’ll
-  want to <em>train your customers</em> when it’s appropriate to use this power
-  and how to use it most effectively.</p>
-  </li>
-  <li>
-    <p>Adjust alerts and fix problems as you get paged for them. Don’t care
-  that a particular API goes down during a known maintenance window?
-  Schedule the notification policy accordingly.</p>
-  </li>
-  <li>
-    <p>Finally, continue maintaining your inventory and monitoring
-  service’s configuration. For extra benefit, consider tracking your
-  organization’s <strong>Mean Time To Respond</strong> (how long it took for engineer to
-  acknowledge that something is wrong) and your <strong>Mean Time To Recover</strong>
-  (how long it took the engineer to resolve the issue <em>including</em> the Mean
-  Time To Respond), your <strong>Mean Time Between Failures</strong> (self-explanatory,
-  I hope), and <strong>Percent Availability</strong> (what percent of time your service
-  is functional in a given period of time). </p>
-  </li>
-</ol>
-
-<p>This concludes the management and non-ops introduction to operations; I
-hope you find this helpful.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Intro to Operations: Configuration Management]]></title>
-    <link href="http://www.charleshooper.net/blog/intro-to-ops-config-management/"/>
-    <updated>2013-05-05T20:12:00+00:00</updated>
-    <id>http://www.charleshooper.net/blog/intro-to-operations-configuration-management</id>
-    <content type="html"><![CDATA[<h1 id="section"></h1>
-
-<p><em>I’m writing a series of blog posts for managers and other people
-without an operations background in order to introduce certain best
-practices regarding Operations. For the rest of the blog posts, please
-visit the <a href="/blog/intro-to-ops-for-startups/">introductory Intro to Operations</a> blog post!</em></p>
-
-<p>One of the areas I’ve witnessed early stage startups lacking in is
-<strong>configuration management</strong>. <em>Configuration management is the process of
-standardizing and enforcing configurations</em>. In other words,
-configuration management is about deciding on a specific configuration
-of services for various roles and then applying these configurations in
-practice. Typically, these manifests are written in (domain-specific)
-language and is specific to the <em>configuration management software</em>
-being used, such as <a href="https://puppetlabs.com/">puppet</a>, <a href="http://www.opscode.com/chef/">chef</a>, <a href="http://cfengine.com/">cfengine</a>, or
-<a href="http://saltstack.com/community.html">salt stack</a>.</p>
-
-<p>There are many benefits to configuration management. For one,
-configuration management allows developers to spend more time working on
-the product and less time deploying new services. This is because
-configuration is now automated and faster as a result. In addition,
-environments are standardized and therefore less time is spent
-troubleshooting or diagnosing edge cases in different environments.
-Finally, when coupled with <em>source control management</em>, the proper use
-of configuration management can be used to track and audit what has
-changed over time and who changed it.</p>
-
-<p>In many of these early stage startups, there is either very little
-configuration management performed at all, or configuration management
-exists as a series of shell scripts cobbled together to do some
-post-hardware setup. If you’re lucky, there exists a document somewhere
-that describes when and how to run these scripts to deploy new services.</p>
-
-<p>The way configuration management works is that engineers create a
-collection of files that define how the system should be configured.
-This collection of files is typically called a <strong>manifest</strong>. Then, once
-physical or virtual hardware has been provisioned, one of these
-manifests is <em>applied</em> to the new host. During application, the
-configuration management software will interpret the new configuration,
-install software packages, manage users and credentials, alter config
-files, manage file permissions, run arbitrary commands, and so on. Once
-the manifest is fully applied, the new host should be fully configured
-and ready to be used!  In some environments; however, they may be a
-post-host-provisioning step where additional work is performed
-afterwards, such as checking out application code from a source control
-repository.</p>
-
-<p>If you’re not using configuration management already then you should
-start now because, frankly, it’s never too early. Starting configuration
-management now will not only help your first hired ops/systems engineer
-from working backwards to write these manifests later, but will also
-incur benefits (such as your developers spending less time away from
-shipping value-added code) that will outweigh the initial learning
-curve.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Intro to Operations for Early Stage Startups]]></title>
-    <link href="http://www.charleshooper.net/blog/intro-to-ops-for-startups/"/>
-    <updated>2013-05-04T21:37:00+00:00</updated>
-    <id>http://www.charleshooper.net/blog/intro-to-operations-for-early-stage-startups</id>
-    <content type="html"><![CDATA[<h1 id="section"></h1>
-
-<p>I’ve spent the last few years in a variety of roles for early stage tech
-startups. While in these roles, I’ve noticed a pattern: <em>Early stage
-startups don’t give much thought to their operations. In particular,
-they typically don’t hire anyone specifically for that role because they
-are focused on building their product.</em> In other words, all of their
-technical hires are for developers.</p>
-
-<p>What tends to happen in my experience is that <em>their developers soon
-become overwhelmed</em> (especially after a growth spurt) and are unable to
-spend their time shipping code that’s going to improve their product or
-make their company money. Eventually, if they’re lucky, management catches
-onto this and hires their first <strong>systems or operations engineer</strong>.</p>
-
-<p>Because I’ve had the opportunity to be first-hired systems engineer,
-what I’ve experienced is the effect of “working backwards” to undo a
-bunch of things that weren’t done following best practices while
-simultaneously moving things forward to improve them.</p>
-
-<p>I decided to try to educate whoever would be willing to read this
-(hopefully early stage startups!) about some <em>best practices</em> that will
-not only save their future operations engineers some headache, but will
-also improve their business. Part of this education will happen in the
-form of one-on-one time with these startups. For example, I spent the
-last couple of days sitting in on office hours at a startup accelerator.
-The other part; however, will take place by writing “Intro to…”
-articles and publishing them to a variety of places, including this blog.</p>
-
-<p>Specifically, the topics I’ve chosen to write about are:</p>
-
-<ul>
-  <li><a href="/blog/intro-to-ops-config-management/">Configuration management</a></li>
-  <li><a href="/blog/intro-to-ops-availability-monitoring-alerting/">Availability monitoring</a></li>
-  <li>
-    <p><a href="/blog/intro-to-ops-metrics-collection/">Metrics collection</a></p>
-
-  </li>
-</ul>
-
-<p>Over the next week or so, I’ll write about each one of these topics and
-post them to this blog. I hope people find them helpful!</p>
 
 ]]></content>
   </entry>

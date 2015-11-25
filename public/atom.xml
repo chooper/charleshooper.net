@@ -4,7 +4,7 @@
   <title><![CDATA[Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2015-10-02T03:37:17+00:00</updated>
+  <updated>2015-11-24T15:27:46-08:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -14,9 +14,222 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Briefly: Operator Requirements]]></title>
+    <link href="http://www.charleshooper.net/blog/briefly-operator-requirements/"/>
+    <updated>2015-11-23T10:49:00-08:00</updated>
+    <id>http://www.charleshooper.net/blog/briefly-operator-requirements</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>On any given day, there are a number of people discussing user requirements and
+prioritizing the work ahead of them based on them. There’s an
+oft-underrepresented group of users however and those are your operators.
+Typically, the set of things needed by your operators are buried in your
+project’s list of “non-functional requirements”, if at all.</p>
+
+<p>In this brief, I would like to provide you with a de facto set of “operator
+requirements” for your project. This list is likely incomplete and I’m
+discovering more every day. I may update this post from time to time to add
+things or clarify them as I journey towards understanding.</p>
+
+<p>An application that satisfies these requirements will be more scalable, easier
+to operate, and likely have a lower Mean Time To Recovery than an application
+that does not.</p>
+
+<ol>
+  <li>
+    <p>In general you should strive to adhere to <a href="http://12factor.net/">12factor</a> if you’re building a web
+  application. 12factor creates a clean contract between your application and
+  the operating system, enables simpler deployments, and results in applications
+  that are mostly horizontally scalable by default. If you cannot adhere to
+  12factor, then I would challenge you to borrow as much of it as you can before
+  discounting the whole 12factor methodology.</p>
+  </li>
+  <li>
+    <p>Your application should have plenty of <a href="http://www.charleshooper.net/blog/briefly-logs/">logging and follow best
+  practices</a>.</p>
+  </li>
+  <li>
+    <p>Your application should also emit metrics that create some sense of
+  understanding of what the system is doing.</p>
+  </li>
+  <li>
+    <p>Your application’s services should have <a href="http://www.charleshooper.net/blog/briefly-health-checks/">health checks</a>. The health checks
+  should return HTTP 2xx or 3xx when the service is healthy and HTTP 5xx when
+  it is not. The response body should contain an explanation or identifier that
+  will allow the operator to determine why the health check failed to aid in
+  incident recovery.</p>
+  </li>
+  <li>
+    <p>Your application should use <a href="https://brandur.org/request-ids">unique request IDs</a> and add them to their
+  logging contexts (see logging).</p>
+  </li>
+  <li>
+    <p>Your application should support credential rotation. Any given secret,
+  whether it’s a password, API key, SSL private key, or otherwise, should be
+  changeable with minimal disruption to the service. This should be exercised
+  often to ensure it works as designed.</p>
+  </li>
+  <li>
+    <p>Your application should provide operators with <a href="http://blog.travis-ci.com/2014-03-04-use-feature-flags-to-ship-changes-with-confidence/">toggles or feature flags</a> —
+  parameters that allow the operators or the system itself to turn off bits of
+  functionality when the system is degraded.</p>
+  </li>
+  <li>
+    <p>Your application should put external resources behind <a href="https://engineering.heroku.com/blogs/2015-06-30-improved-production-stability-with-circuit-breakers/">circuit breakers</a>.
+  Circuit breakers allow your app to continue operating (albeit in a degraded
+  state) when an external resource is unavailable instead of taking your
+  application offline.</p>
+  </li>
+  <li>
+    <p>Your application should be <a href="http://12factor.net/disposability">disposable and restartable</a>; this means that
+  it’s restartable on the same instance or a new instance) after a crash and
+  should crash in an automatically recoverable state. If your crash is not
+  automatically recoverable, it should scream! In addition, your application
+  should gracefully complete existing work such as HTTP requests or jobs it
+  picked up from a task queue. In the case of long running jobs, your application
+  should be able to abandon the work to have it picked up by another worker or
+  node.</p>
+  </li>
+</ol>
+
+<p>These are just a start but these requirements should be imported into your project’s
+requirements and prioritized with maintainability in mind. By doing so, your
+application will be more scalable, easier to operator, and have a lower Mean
+Time To Recovery than application that don’t satisfy these requirements.</p>
+
+<p>Do you feel like I missed anything? What else would you recommend?</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Briefly: Health Checks]]></title>
+    <link href="http://www.charleshooper.net/blog/briefly-health-checks/"/>
+    <updated>2015-11-08T01:23:00-08:00</updated>
+    <id>http://www.charleshooper.net/blog/briefly-health-checks</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>Health checks are specially defined endpoints or routes in your application
+that allow external monitors to determine the health of your web application.
+They are so important to production health that I consider them the “13th
+factor” in <a href="http://12factor.net/">12factor</a>.</p>
+
+<p>If an application is healthy it will return a HTTP 2xx or 3xx status code and
+when it is not it will return an HTTP 5xx status code.</p>
+
+<p>This type of output allows load balancers to remove unhealthy instances from
+its rotation but can also be used to alert an operator or even automatically
+replace the instance.</p>
+
+<p>In order to implement proper health checks, your application’s health checks
+should:</p>
+
+<ol>
+  <li>
+    <p>Return a HTTP 2xx or 3xx status code when healthy</p>
+  </li>
+  <li>
+    <p>Return a HTTP 5xx status code when not healthy</p>
+  </li>
+  <li>
+    <p>Include the reason why the check failed in the response body</p>
+  </li>
+  <li>
+    <p><a href="http://www.charleshooper.net/blog/briefly-logs/">Log the requests and their results</a> along with Request IDs</p>
+  </li>
+  <li>
+    <p>Not have any side effects</p>
+  </li>
+  <li>
+    <p>Be lightweight and fast</p>
+  </li>
+</ol>
+
+<p>If you implement health checks in your application following this advice,
+you’ll have a more resilient, monitorable, and manageable application.</p>
+
+<p>How about you all? Is there anything you would add?</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Briefly: Logs]]></title>
+    <link href="http://www.charleshooper.net/blog/briefly-logs/"/>
+    <updated>2015-10-29T05:47:00-07:00</updated>
+    <id>http://www.charleshooper.net/blog/briefly-logs</id>
+    <content type="html"><![CDATA[<h1 id="section"></h1>
+
+<p>Recently I was asked by another engineer what information I expect to be able
+to find in logs. For this, I mostly agree with <a href="http://dev.splunk.com/view/logging-best-practices/SP-CAAADP6">Splunk’s best practices</a> but
+I have some additional advice I want to provide. I’ll end up regurgitating some
+of Splunk’s recommendations anyway.</p>
+
+<ol>
+  <li>
+    <p>Your logs should be human readable. This means logging in text (no binary
+logging) and in a format that can be read by angry humans. Splunk recommends
+key-value pairs (e.g. <code>at=response code=200 bytes=1024</code>) since it makes
+Splunking easy, but I don’t have a strong enough opinion to evangelize that.
+Some folks advocate for logging in JSON but I don’t actually find JSON to be
+very readable.</p>
+
+    <p>Edit: Someone pointed out to me that this isn’t ideal when you have a large
+amount of logs. They prefered sending JSON logs to a service like ElasticSearch
+but I think also sending key-value pairs to Splunk is also reasonable at some
+scale.</p>
+  </li>
+  <li>
+    <p>Every log line should include a timestamp. The timestamp should be human
+readable and in a standard format such as <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a>/<a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a>.
+Finally, even though the above specs include a timezone offset, timestamps
+should be stated in UTC time whenever possible.</p>
+  </li>
+  <li>
+    <p>Every log line should include a unique identifier for the work being
+performed. In web applications and APIs, for example, this would be a
+request ID. The combination of a unique ID and timestamp allows for developers
+and operators to trace the execution of a single work unit.</p>
+  </li>
+  <li>
+    <p>More is more. While I don’t particularly enjoy reading logs, I have always
+been more happy when an application logs more information than I need versus
+when an application doesn’t log enough information. Be verbose and log
+everything.</p>
+  </li>
+  <li>
+    <p>Make understanding the code path of a work unit easy. This means logging
+file names, class names, function or method names, and so on. When sensible,
+include the arguments to these things as well.</p>
+  </li>
+  <li>
+    <p>Use one line per event. Multi-line events are bad because they are difficult
+to grep or Splunk. Keep everything on one log line but feel free to log
+additional events. An exception to this rule might be tracebacks (see what I
+did there?)</p>
+  </li>
+  <li>
+    <p>Log to stdout if you’re following <a href="http://12factor.net/">12factor</a> otherwise log to syslog. Do not
+write your own log files! By writing your own log files, you are either
+taking log rotation off the table or signing yourself up to support exciting
+requirements like re-opening logs on SIGHUP (let’s not go there).</p>
+  </li>
+  <li>
+    <p>Last but not least: <strong>Don’t write your own logging library!</strong> Chances are
+there already exists a well thought-out and standard library available in
+your application’s language or framework. Please use it!</p>
+  </li>
+</ol>
+
+<p>So those are my recommendations about logs. What else would you recommend?</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[I have a new job at Truss!]]></title>
     <link href="http://www.charleshooper.net/blog/i-have-a-new-job-at-truss/"/>
-    <updated>2015-10-01T20:31:00+00:00</updated>
+    <updated>2015-10-01T20:31:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/i-have-a-new-job-at-truss</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -55,7 +268,7 @@ have been most welcoming at Truss. I’m already enjoying working together!</p>
   <entry>
     <title type="html"><![CDATA[Personal Archery FAQ]]></title>
     <link href="http://www.charleshooper.net/blog/personal-archery-faq/"/>
-    <updated>2015-05-24T06:33:00+00:00</updated>
+    <updated>2015-05-24T06:33:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/personal-archery-faq</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -154,7 +367,7 @@ time to practice all of the things I’ve just learned on my own.</p>
   <entry>
     <title type="html"><![CDATA[What am I supposed to do with all of this honey?!]]></title>
     <link href="http://www.charleshooper.net/blog/what-am-i-supposed-to-do-with-all-of-this-honey/"/>
-    <updated>2015-01-04T13:56:00+00:00</updated>
+    <updated>2015-01-04T13:56:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/what-am-i-supposed-to-do-with-all-of-this-honey</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -184,7 +397,7 @@ chops</a>.</p>
   <entry>
     <title type="html"><![CDATA[Give it a rest]]></title>
     <link href="http://www.charleshooper.net/blog/give-it-a-rest/"/>
-    <updated>2015-01-03T18:00:00+00:00</updated>
+    <updated>2015-01-03T18:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/give-it-a-rest</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -229,7 +442,7 @@ and have been hooked ever since.</p>
   <entry>
     <title type="html"><![CDATA[On Slack and Upkeep]]></title>
     <link href="http://www.charleshooper.net/blog/on-slack-and-upkeep/"/>
-    <updated>2014-08-08T14:22:00+00:00</updated>
+    <updated>2014-08-08T14:22:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/on-slack-time</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -339,7 +552,7 @@ also being very responsive.</p>
   <entry>
     <title type="html"><![CDATA[What I Do as an SRE]]></title>
     <link href="http://www.charleshooper.net/blog/what-i-do-sre/"/>
-    <updated>2014-06-21T06:02:00+00:00</updated>
+    <updated>2014-06-21T06:02:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/what-i-do-as-an-sre</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -412,7 +625,7 @@ probably most rewarding, too.</p>
   <entry>
     <title type="html"><![CDATA[Troubleshooting ELBs with elbping]]></title>
     <link href="http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping/"/>
-    <updated>2013-10-19T10:49:00+00:00</updated>
+    <updated>2013-10-19T10:49:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/troubleshooting-elbs-with-elbping</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -540,7 +753,7 @@ make a pretty reasonable case to AWS that something is wrong.</p>
   <entry>
     <title type="html"><![CDATA[My DEF CON 21 Experience]]></title>
     <link href="http://www.charleshooper.net/blog/my-def-con-21-experience/"/>
-    <updated>2013-08-08T10:41:00+00:00</updated>
+    <updated>2013-08-08T10:41:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/my-def-con-21-experience</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -667,7 +880,7 @@ with stuff.</p>
   <entry>
     <title type="html"><![CDATA[Why I moved to San Francisco]]></title>
     <link href="http://www.charleshooper.net/blog/why-i-moved-to-san-francisco/"/>
-    <updated>2013-07-21T00:33:00+00:00</updated>
+    <updated>2013-07-21T00:33:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/why-i-moved-to-san-francisco</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -736,7 +949,7 @@ is.</p>
   <entry>
     <title type="html"><![CDATA[How I Hacked My High School]]></title>
     <link href="http://www.charleshooper.net/blog/how-i-hacked-my-high-school/"/>
-    <updated>2013-07-18T10:59:00+00:00</updated>
+    <updated>2013-07-18T10:59:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/how-i-hacked-my-high-school</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -936,7 +1149,7 @@ given my computer access back.</p>
   <entry>
     <title type="html"><![CDATA[My Personal Kaizen]]></title>
     <link href="http://www.charleshooper.net/blog/personal-kaizen-self-improvement/"/>
-    <updated>2013-07-04T11:27:00+00:00</updated>
+    <updated>2013-07-04T11:27:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/my-personal-kaizen</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -993,7 +1206,7 @@ both publicly and privately.</li>
   <entry>
     <title type="html"><![CDATA[About this site (technical)]]></title>
     <link href="http://www.charleshooper.net/blog/about-this-site-technical/"/>
-    <updated>2013-06-22T11:58:00+00:00</updated>
+    <updated>2013-06-22T11:58:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/about-this-site-technical</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -1046,7 +1259,7 @@ our customers.</p>
   <entry>
     <title type="html"><![CDATA[Catching up]]></title>
     <link href="http://www.charleshooper.net/blog/catching-up/"/>
-    <updated>2013-06-22T04:45:00+00:00</updated>
+    <updated>2013-06-22T04:45:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/catching-up</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -1133,7 +1346,7 @@ listening to my story.</p>
   <entry>
     <title type="html"><![CDATA[Intro to Operations: Metrics Collection]]></title>
     <link href="http://www.charleshooper.net/blog/intro-to-ops-metrics-collection/"/>
-    <updated>2013-05-07T14:51:00+00:00</updated>
+    <updated>2013-05-07T14:51:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/intro-to-operations-metrics-collection</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -1207,7 +1420,7 @@ and the historical data will help you in the long run.</p>
   <entry>
     <title type="html"><![CDATA[Intro to Operations: Availability Monitoring and Alerting]]></title>
     <link href="http://www.charleshooper.net/blog/intro-to-ops-availability-monitoring-alerting/"/>
-    <updated>2013-05-05T21:57:00+00:00</updated>
+    <updated>2013-05-05T21:57:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/intro-to-operations-availability-monitoring-and-alerting</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -1320,7 +1533,7 @@ hope you find this helpful.</p>
   <entry>
     <title type="html"><![CDATA[Intro to Operations: Configuration Management]]></title>
     <link href="http://www.charleshooper.net/blog/intro-to-ops-config-management/"/>
-    <updated>2013-05-05T20:12:00+00:00</updated>
+    <updated>2013-05-05T20:12:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/intro-to-operations-configuration-management</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -1383,7 +1596,7 @@ curve.</p>
   <entry>
     <title type="html"><![CDATA[New Platform - Sorry for the RSS Spam]]></title>
     <link href="http://www.charleshooper.net/blog/new-platform/sorry-for-rss-spam/"/>
-    <updated>2013-05-05T15:58:00+00:00</updated>
+    <updated>2013-05-05T15:58:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/new-platform/new-platform-sorry-for-the-rss-spam</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -1394,108 +1607,6 @@ posts in multiple RSS readers as unread. This resulted in a ton of
 annoying spam for alot of people, particularly those using <a href="http://www.feedly.com/">Feedly</a>
 and Google Reader.</p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Intro to Operations for Early Stage Startups]]></title>
-    <link href="http://www.charleshooper.net/blog/intro-to-ops-for-startups/"/>
-    <updated>2013-05-04T21:37:00+00:00</updated>
-    <id>http://www.charleshooper.net/blog/intro-to-operations-for-early-stage-startups</id>
-    <content type="html"><![CDATA[<h1 id="section"></h1>
-
-<p>I’ve spent the last few years in a variety of roles for early stage tech
-startups. While in these roles, I’ve noticed a pattern: <em>Early stage
-startups don’t give much thought to their operations. In particular,
-they typically don’t hire anyone specifically for that role because they
-are focused on building their product.</em> In other words, all of their
-technical hires are for developers.</p>
-
-<p>What tends to happen in my experience is that <em>their developers soon
-become overwhelmed</em> (especially after a growth spurt) and are unable to
-spend their time shipping code that’s going to improve their product or
-make their company money. Eventually, if they’re lucky, management catches
-onto this and hires their first <strong>systems or operations engineer</strong>.</p>
-
-<p>Because I’ve had the opportunity to be first-hired systems engineer,
-what I’ve experienced is the effect of “working backwards” to undo a
-bunch of things that weren’t done following best practices while
-simultaneously moving things forward to improve them.</p>
-
-<p>I decided to try to educate whoever would be willing to read this
-(hopefully early stage startups!) about some <em>best practices</em> that will
-not only save their future operations engineers some headache, but will
-also improve their business. Part of this education will happen in the
-form of one-on-one time with these startups. For example, I spent the
-last couple of days sitting in on office hours at a startup accelerator.
-The other part; however, will take place by writing “Intro to…”
-articles and publishing them to a variety of places, including this blog.</p>
-
-<p>Specifically, the topics I’ve chosen to write about are:</p>
-
-<ul>
-  <li><a href="http://www.charleshooper.net/blog/intro-to-ops-config-management/">Configuration management</a></li>
-  <li><a href="http://www.charleshooper.net/blog/intro-to-ops-availability-monitoring-alerting/">Availability monitoring</a></li>
-  <li>
-    <p><a href="http://www.charleshooper.net/blog/intro-to-ops-metrics-collection/">Metrics collection</a></p>
-
-  </li>
-</ul>
-
-<p>Over the next week or so, I’ll write about each one of these topics and
-post them to this blog. I hope people find them helpful!</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[2012 Annual Review]]></title>
-    <link href="http://www.charleshooper.net/blog/2012-annual-review/"/>
-    <updated>2013-01-14T00:00:00+00:00</updated>
-    <id>http://www.charleshooper.net/blog/2012-annual-review</id>
-    <content type="html"><![CDATA[<h1 id="section"></h1>
-
-<p>Here are some stats from 2012:</p>
-
-<ul>
-  <li>Only 3 posts published.</li>
-  <li>50,791 pageviews.</li>
-  <li>36,176 visitors (32,007 unique)</li>
-  <li>71.97% bounce rate.</li>
-  <li>Same great position at dotCloud!</li>
-</ul>
-
-<p>Interestingly, my stats compared to last year aren’t too different, despite the fact that I only wrote 3 blog posts this year (instead of 10 last year). What’s also interesting is the HUGE spike in bounce rate (which used to be almost non-existent). This spike begins right around the time I hit a “home run” in terms of driving new traffic.</p>
-
-<p>Going forward, I am going to try to post more (<em>again</em>). I’ve said this before but have yet to succeed. This time around, I changed my posting rules to allow me to write about topics more personal to me or more opinionated in nature.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[An early year-end review &#8211; highlights]]></title>
-    <link href="http://www.charleshooper.net/blog/year-end-highlights/"/>
-    <updated>2012-12-16T00:00:00+00:00</updated>
-    <id>http://www.charleshooper.net/blog/year-end-highlights</id>
-    <content type="html"><![CDATA[<h1 id="section"></h1>
-
-<p>Since I’ve only written 3 blog posts so far this year and alot has changed, here’s a brief summary of what I’ll be writing about in my annual review:</p>
-
-<ul>
-  <li>I stopped doing contract work and started working for dotCloud part time,</li>
-  <li>As of tomorrow, I’ll officially have completed the requirements for my Bachelor’s degree,</li>
-  <li>I found myself, politically (I won’t be writing about this, but it is a big deal to me).</li>
-</ul>
-
-<p>What does the future hold for me?</p>
-
-<ul>
-  <li>dotCloud offered me a full time position and I accepted; I will start January 2nd,</li>
-  <li>I have a variety of side projects planned but it’s too soon to tell how much of my free time I’ll want to spend on them,</li>
-  <li>I hope to become more involved with my local community and the ACM,</li>
-  <li>I’ve made the decision to stop writing so much on Facebook and Twitter and write more here.</li>
-</ul>
-
-<p>That last item has big implications for this blog. It means that I’ll be writing about more personal subjects and opinions I have instead of wasting that effort on Twitter and Facebook (where relatives I haven’t seen in 20 years take the opportunities to rant on my wall). Some of these opinions may also be controversial and, that’s OK, we’re meant to disagree on some things. Some of them may even be ill-formed as they’ll be outside of my area of expertise. That’s OK too, just write me and educate me.</p>
 ]]></content>
   </entry>
   

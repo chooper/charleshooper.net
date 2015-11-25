@@ -9,9 +9,7 @@
   <meta name="author" content="Charles Hooper">
 
   
-  <meta name="description" content="Basic Concepts of Ruby Ruby is an object-oriented
-language, but before you skip this section because you think you know
-what this is all about &hellip;">
+  <meta name="description" content="Previously I blogged about a storage/database bottleneck causing dropped connections while utilizing Twitter’s streaming API. I’m happy to report &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,6 +89,184 @@ what this is all about &hellip;">
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/drinking-from-the-gardenhose-cont/">Drinking From the Gardenhose, Cont.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-16T00:00:00-08:00" pubdate data-updated="true">Dec 16<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>Previously I blogged about a <a href="http://subversity.net/drinking-from-the-gardenhose">storage/database bottleneck causing dropped connections while utilizing Twitter’s streaming API</a>. 
+I’m happy to report that the switch from <em>sqlite to MySQL</em> resulted in an immediate increase in <strong>throughput</strong>. I went from processing <strong>~5 updates/second</strong> to processing just over <strong>11 updates/second</strong>, almost doubling my capacity.</p>
+
+<p>I also saw great improvement in terms of <strong>CPU usage</strong> as well. Previously, I was pegging my CPU at <strong>100% usage</strong>. Since the switch to MySQL, which runs on another (similarly spec’d) host, I now use less than <strong>5% CPU</strong> on the stream listening/processing host and less than <strong>10% CPU</strong> on the MySQL host with the same dataset as before. I believe that parallelizing my code even further would allow me to take greater advantage of my resources and achieve higher throughput.</p>
+
+<p>Resolving this issue has allowed me to turn my focus back on what I originally started this project for: Building a large enough corpus to do accurate <a href="http://en.wikipedia.org/wiki/Tf–idf">Tf-idf scoring</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/drinking-from-the-gardenhose/">Drinking From the Gardenhose</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-15T00:00:00-08:00" pubdate data-updated="true">Dec 15<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>Lately I’ve been working on some code to process tweets coming out of the <em>Gardenhose</em>. The <strong>Gardenhose</strong> is the name given to the lowest level of access to <a href="http://apiwiki.twitter.com/Streaming-API-Documentation">Twitter’s streaming API</a>. Oddly enough however, my connections to the Twitter API were dropping, causing my program to hang and my CPU to remain maxed out at 100% usage. 
+After much debugging and banging my head on my desk, <a href="http://github.com/joshthecoder/tweepy">joshthecoder (creator of tweepy)</a> and uuid (#twitterapi / freenode) pointed out that I may be filling some type of buffer or queue, causing this condition. They suggested that my current workflow of <em>“receive tweet, process, store to DB”</em> all in the same thread might be too slow. After removing key parts of my processing code, what once took 100% now only took 1-3% CPU, I was receiving a much higher volume of tweets, and my connections were no longer dropping. This meant that the culprit of my general slowness was the <strong>sqlite database</strong>. 
+Basically, all I was doing with these tweets was tokenizing them, tallying up their contents, and then updating a corpus (stored in a sqlite database) that would track how many tweets each word appeared in. Having this data would allow me to perform accurate <a href="http://nlp.stanford.edu/IR-book/html/htmledition/tf-idf-weighting-1.html">Tf-idf</a> scoring later on. <a href="http://codepad.org/8OkD5AGM">You can see the original (and admittedly not-very-well documented) version of this program here (Python)</a>. 
+Fixing this problem is a two-step solution:</p>
+
+<ol>
+  <li>Break off the processing code into another thread</li>
+  <li>Replace the sqlite database with something faster</li>
+</ol>
+
+<p>The first step, moving the process code into its own thread, is a pretty easy feat. In fact, I’m testing my proof-of-concept as I write. The second step, however, is going to require alot more research and thought. In my proof-of-concept, I place Status (Tweet) objects into a queue which another thread then processes. Using sqlite, my queue never gets any smaller, as you can see below.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">$ ./bootstrap-stream.py
+</span><span class="line">Streaming timelines...
+</span><span class="line">Tue Dec 15 10:56:01 2009 | Queue: 93 items
+</span><span class="line">Tue Dec 15 10:56:08 2009 | Queue: 183 items
+</span><span class="line">Tue Dec 15 10:56:13 2009 | Queue: 278 items
+</span><span class="line">...
+</span><span class="line">Tue Dec 15 10:58:02 2009 | Queue: 1859 items</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>My next step will probably be to test storing these items in a MySQL (InnoDB) database, simply because it’s easy enough to swap out the sqlite module with the MySQLdb module in Python, although I  have a feeling that what I really need is a key-value store. Speaking of which, does any one have any recommendations as far as databases, hash tables, or key-value stores go? Bonus points if I can replicate the data.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/approaching-system-monitoring/">Approaching System Monitoring</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-07T00:00:00-08:00" pubdate data-updated="true">Dec 7<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="section"></h1>
+
+<p>Previously, I raised the question: “<a href="http://subversity.net/if-you-were-it-and-walked-into-a-company-with">If you were IT and walked into a company with no monitoring or logging, what would your priorities be?</a>” If I were in this situation, I would ask myself three questions: “<em>What should I be monitoring</em>,” “<em>How should I prioritize the alerts of each monitored item</em>,” and “<em>What items should I consider critical</em>?” 
+I’d first start by answering the question “What should I be monitoring.” In addition to security events (which are outside the scope of this discussion,) I would begin monitoring of the pertinent items in the following order:</p>
+
+<ol>
+  <li>Host-level availability</li>
+  <li>Service-level availability</li>
+  <li>Service-level performance (response times/timeouts etc)</li>
+  <li>Host-level health/performance/resources (CPU, memory, and disk usage)</li>
+</ol>
+
+<p>Once I have a plan to begin monitoring all of the neccessary items, I would then tackle the question “How should I prioritize the alerts of each monitored item.” I would do so using the list below as a guide. This list is by no means law. In fact, <strong>priority should be determined on a per-case basis depending on your or your organization’s needs</strong> and not some cookie-cutter list.</p>
+
+<ol>
+  <li>Network infrastructure (core routers, switches)</li>
+  <li>Servers hosting critical services</li>
+  <li>Critical services</li>
+  <li>Maxed resources (low disk usage, heavy swap usage, etc)</li>
+  <li>Everything else</li>
+</ol>
+
+<p>The final question (which is arguably an extension of the previous question) that needs to be answered is “What items should I consider critical.” This too is based off of your or your organization’s needs, but I would use the following as starting point.</p>
+
+<ul>
+  <li>Connectivity</li>
+  <li>Infrastructure (DNS, LDAP, etc)</li>
+  <li>Communications (Exchange/Email, etc)</li>
+  <li>Forward-facing services</li>
+  <li>Line of Business applications and services</li>
+  <li>Anything else critical to the operation and sustainability of the organization</li>
+</ul>
+
+<p>To sum it up, given the question “What would your priorities be if you walked into a company without any monitoring” I would approach the issue by asking myself and answering three questions. Those questions are “What should I be monitoring,” “How should I prioritize the alerts of each monitored item,” and “What items should I consider critical?” Once answered, it should be easy to develop a monitoring plan.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/mr-neighborlys-humble-little-ruby-book/">Mr. Neighborly&#8217;s Humble Little Ruby Book</a></h1>
     
     
@@ -107,7 +283,7 @@ what this is all about &hellip;">
   
 
 
-<time datetime="2009-12-05T00:00:00+00:00" pubdate data-updated="true">Dec 5<span>th</span>, 2009</time>
+<time datetime="2009-12-05T00:00:00-08:00" pubdate data-updated="true">Dec 5<span>th</span>, 2009</time>
         
       </p>
     
@@ -158,7 +334,7 @@ and at least read the following sentence.</p>
   
 
 
-<time datetime="2009-12-05T00:00:00+00:00" pubdate data-updated="true">Dec 5<span>th</span>, 2009</time>
+<time datetime="2009-12-05T00:00:00-08:00" pubdate data-updated="true">Dec 5<span>th</span>, 2009</time>
         
       </p>
     
@@ -215,7 +391,7 @@ subnet can support.  Should you find any errors, let me know! </p>
   
 
 
-<time datetime="2009-12-04T00:00:00+00:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
+<time datetime="2009-12-04T00:00:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
         
       </p>
     
@@ -296,7 +472,7 @@ importantly: the readers.</em></p>
   
 
 
-<time datetime="2009-12-04T00:00:00+00:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
+<time datetime="2009-12-04T00:00:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
         
       </p>
     
@@ -398,7 +574,7 @@ bond ports 1 &amp; 2 — but it does mean that you can’t bond ports 3 &amp; 4.
   
 
 
-<time datetime="2009-12-04T00:00:00+00:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
+<time datetime="2009-12-04T00:00:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
         
       </p>
     
@@ -483,7 +659,7 @@ cisco#write mem
   
 
 
-<time datetime="2009-12-04T00:00:00+00:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
+<time datetime="2009-12-04T00:00:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
         
       </p>
     
@@ -912,7 +1088,7 @@ great ease.</p>
   
 
 
-<time datetime="2009-12-04T00:00:00+00:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
+<time datetime="2009-12-04T00:00:00-08:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
         
       </p>
     
@@ -953,236 +1129,9 @@ return NULL;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/etherchannel-trunking-between-a-foundry-switch-and-cisco-catalyst/">EtherChannel Trunking Between a Foundry Switch and Cisco Catalyst</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-04T00:00:00+00:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>In my other article, <a href="http://charleshooper.posterous.com/link-aggregation-on-cisco-catalysts-and-found">LACP on Cisco Catalysts &amp; Foundry switches</a>, I describe how to configure aggregated links using LACP (802.3ad) on a Cisco Catalyst and Foundry switch. In this howto, I will be describing how to configure trunked ports using <strong>EtherChannel</strong> — LACP’s predecessor.</p>
-
-<p>Before starting, one thing that you should be aware of is that Foundry’s configure EtherChannel trunks as dot1q-encapsulated VLAN trunks by default. Cisco Catalysts (or IOS, rather) configure all ports as access ports by default.</p>
-
-<p>On a Cisco Catalyst switch running IOS, once logged in, you will need to perform the steps below. It is important that you perform these steps without the other device connected.</p>
-
-<pre><code>cisco&gt;enable
-Password: *enter password*
-cisco#config term
-cisco(config)#int Gi0/1
-cisco(config-if)#channel-group 1 mode on
-cisco(config-if)#int Gi0/2
-cisco(config-if)#channel-group 1 mode on
-cisco(config-if)#end
-cisco#write mem
-</code></pre>
-
-<p>If your other device is another Cisco Catalyst, then just repeat the steps above, connect your newly bonded ports, and disconnect any non-bonded ports connecting the two devices.</p>
-
-<p>If you are configuring a Foundry switch, there are <a href="http://www.foundrynetworks.co.jp/services/documentation/sribcg/Trunking.html">several rules you must follow</a>. Among these rules, is that you can only <em>start</em> your trunked ports on the first port of each group of 4.</p>
-
-<pre><code>BR-telnet@foundry&gt;enable
-Password: *enter password*
-BR-telnet@foundry#config term
-BR-telnet@foundry(config)#trunk ethe 1 to 2
-BR-telnet@foundry(config)#trunk deploy
-BR-telnet@foundry(config)#exit
-BR-telnet@foundry#write mem
-</code></pre>
-
-<p>Provided you correctly configured your VLANs prior to setting up EtherChannel, you may connect your cables starting with the <em>primary port</em>. The primary port is always the lowest-numbered port in the trunk, in our example, this is 1. Once connected, you can verify operation of your EtherChannel trunk with <code>show etherchannel summary</code> on the Cisco or <code>show trunk</code> on the Foundry in enable mode.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/ccnp-lab-recommendations/">CCNP Lab Recommendations?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-04T00:00:00+00:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>In the next couple of weeks or so I will begin studying for the CCNP (Cisco-Certified Network Professional). I have the study guides, but I don’t have a lab. My three questions:</p>
-
-<ol>
-  <li>Will I need much lab time for the CCNP?</li>
-  <li>If so, how intense are the labs?</li>
-  <li>What type of equipment is recommended for a CCNP lab?</li>
-</ol>
-
-<p>I passed the CCNA with almost no lab time at all, but to be fair I had worked for an ISP and was very familiar with alot of the material covered in the CCNA. I’m not sure that’s going to be the same with the CCNP. 
-Thoughts? Advice?</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/auto-type-juggling-and-unsanitized-input/">Auto Type Juggling and Unsanitized Input</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-04T00:00:00+00:00" pubdate data-updated="true">Dec 4<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1 id="section"></h1>
-
-<p>I would like to think that one day we will all be past the point where
-we are constantly finding silly bugs and vulnerabilities caused by
-unvalidated or unsanitized user input. Unfortunately for us all, we’re
-not. In this article, I will attempt to describe a rather overlooked
-result of <a href="http://www.php.net/manual/en/language.types.type-juggling.php">PHP’s type juggling</a>.</p>
-
-<p>If you aren’t already familiar, type juggling is PHP’s way of
-automatically switching or converting variables to different types based
-on the context it’s being used in. For example, if you have the strings
-“2″ and “3″ and you add them, PHP will convert them to integers and
-return the integer 5. This is useful in PHP web-applications since any
-variable that PHP retrieves from either GPC (<em>Get</em>, <em>Post</em>, <em>Cookie</em>)
-variables or the database is considered a string. This is regardless of
-its actual value or column type in the database and the string will need
-to be converted to a numeric type before any type of math operations or
-numeric comparisons can be performed on them.</p>
-
-<p>On the lower-level, PHP is actually using libc’s strtod() function. If
-we look at the man page, we learn If no conversion is performed, zero is
-returned. Without looking at PHP’s source, it would seem to me that PHP
-is blindly handing off string pointers to strtod() and if the type
-conversion fails it will retain the type of whatever the variable was
-last. This isn’t PHP’s fault, it’s the <em>developer’s responsibility</em> to
-make sure that the data they are using is properly sanitized!</p>
-
-<p>The best real-world example I can give about this bug was a series of
-exploits in the web-based RPG <a href="http://www.bootleggers.us/">Bootleggers</a> last round. One of the
-most well known exploits in this series was known to players as “The Arm
-Wrestling bug.” This arm wrestling bug was the result of a flaw or
-limitation in PHP’s magic type switching that allowed players to bypass
-certain logic checks to send extremely large strings of numbers to the
-database backend and essentially create money out of thin air, one MySQL
-signed integer (2,147,483,647) at a time.</p>
-
-<p>For an example on how we would go about exploiting this, we look at the
-following code:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">$var1 = '1';
-</span><span class="line">$var2 = '21';
-</span><span class="line">var_dump((bool) ($var1 &lt; $var2));
-</span><span class="line"># Output: bool(true)</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>All this code is doing is assigning strings to two variables and then
-doing a numeric comparison of them — In our case, this script will
-output “true” since, when evaluated as an integer, 1 is in fact
-less-than 21. However, if there is any non-numeric data being passed to
-the variable then <code>strtod()</code> will return 0 and PHP will evaluate these
-variables as strings and use natural sorting to determine if one
-variable is “less”-than another. Proof?</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">$var1 = '111 '; // there is a space before the closing quote
-</span><span class="line">$var2 = '21';
-</span><span class="line">var_dump((bool) ($var1 &lt; $var2));
-</span><span class="line"># Output: bool(true)</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>This block of code will <em>also</em> output true because the character <code>1</code>′ is
-before the character <code>2</code>′ when using natural sorting. If a user is able
-to bypass the logic checks with this exploit, then typically the string
-will be sent straight to the database as-is (OK, maybe escaped for
-apostrophes ;)). Depending on the DBMS there may be a variance in
-behavior. Usually, exploiters will use this attack with a very large
-string so that the column being updated with that value will actually
-update to the maximum value for that column’s data type.</p>
-
-<p>While exploits on web-based RPGs aren’t the end of the world, imagine if
-your <em>bank</em> used a PHP-based web-application. Wouldn’t you feel better
-if they all knew about his caveat and properly sanitized and validated
-user input? :-)</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/10/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -1198,11 +1147,23 @@ user input? :-)</p>
 <section>
   <h1>About Charles</h1>
 	<img src="http://www.gravatar.com/avatar/9f645d339b731bc99a95704ad4289aac.png?size=160" alt="Charles Hooper"/>
-	<p>Charles is an engineer at <a href="http://truss.works/">Truss</a>. He enjoys archery, smoking meat, gardening, home brewing, and hacking.</p>
+	<p>Charles is a systems and reliability engineer. He enjoys archery, smoking meat, gardening, home brewing, and hacking.</p>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/briefly-operator-requirements/">Briefly: Operator Requirements</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/briefly-health-checks/">Briefly: Health Checks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/briefly-logs/">Briefly: Logs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/i-have-a-new-job-at-truss/">I have a new job at Truss!</a>
@@ -1210,18 +1171,6 @@ user input? :-)</p>
     
       <li class="post">
         <a href="/blog/personal-archery-faq/">Personal Archery FAQ</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/what-am-i-supposed-to-do-with-all-of-this-honey/">What am I supposed to do with all of this honey?!</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/give-it-a-rest/">Give it a rest</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/on-slack-and-upkeep/">On Slack and Upkeep</a>
       </li>
     
   </ul>

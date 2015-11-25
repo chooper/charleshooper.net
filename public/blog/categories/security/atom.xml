@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Security | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/security/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2015-10-02T03:37:17+00:00</updated>
+  <updated>2015-11-24T15:27:46-08:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[My DEF CON 21 Experience]]></title>
     <link href="http://www.charleshooper.net/blog/my-def-con-21-experience/"/>
-    <updated>2013-08-08T10:41:00+00:00</updated>
+    <updated>2013-08-08T10:41:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/my-def-con-21-experience</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -143,7 +143,7 @@ with stuff.</p>
   <entry>
     <title type="html"><![CDATA[NESIT Hackerspace Break-In]]></title>
     <link href="http://www.charleshooper.net/blog/nesit-hackerspace-break-in/"/>
-    <updated>2011-04-23T00:00:00+00:00</updated>
+    <updated>2011-04-23T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/nesit-hackerspace-break-in</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -170,7 +170,7 @@ with stuff.</p>
   <entry>
     <title type="html"><![CDATA[Picking Applications to Audit]]></title>
     <link href="http://www.charleshooper.net/blog/picking-applications-to-audit/"/>
-    <updated>2010-12-23T00:00:00+00:00</updated>
+    <updated>2010-12-23T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/picking-applications-to-audit</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -199,7 +199,7 @@ with stuff.</p>
   <entry>
     <title type="html"><![CDATA[So You Just Received A Vulnerability Report. Now What?]]></title>
     <link href="http://www.charleshooper.net/blog/so-you-just-received-a-vulnerability-report-now-what/"/>
-    <updated>2010-12-22T00:00:00+00:00</updated>
+    <updated>2010-12-22T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/so-you-just-received-a-vulnerability-report-now-what</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -271,7 +271,7 @@ is MSRC [XXXX]. XXXX is the Security Program Manger assigned to the case and he 
   <entry>
     <title type="html"><![CDATA[Finding Web Vulnerabilities]]></title>
     <link href="http://www.charleshooper.net/blog/finding-web-vulnerabilities/"/>
-    <updated>2010-12-21T00:00:00+00:00</updated>
+    <updated>2010-12-21T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/finding-web-vulnerabilities</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 

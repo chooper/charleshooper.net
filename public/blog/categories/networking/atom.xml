@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Networking | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/networking/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2015-10-02T03:37:17+00:00</updated>
+  <updated>2015-11-24T15:27:46-08:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Link Aggregation on Cisco Catalysts &#038; Foundry switches]]></title>
     <link href="http://www.charleshooper.net/blog/link-aggregation-on-cisco-catalysts-foundry-switches/"/>
-    <updated>2009-12-04T00:00:00+00:00</updated>
+    <updated>2009-12-04T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/link-aggregation-on-cisco-catalysts-foundry-switches</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -75,7 +75,7 @@ bond ports 1 &amp; 2 — but it does mean that you can’t bond ports 3 &amp; 4.
   <entry>
     <title type="html"><![CDATA[Link Aggregation on a RedHat (CentOS) server and a Cisco Catalyst switch]]></title>
     <link href="http://www.charleshooper.net/blog/link-aggregation-on-a-redhat-centos-server-and-a-cisco-catalyst-switch/"/>
-    <updated>2009-12-04T00:00:00+00:00</updated>
+    <updated>2009-12-04T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/link-aggregation-on-a-redhat-centos-server-and-a-cisco-catalyst-switch</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -133,7 +133,7 @@ cisco#write mem
   <entry>
     <title type="html"><![CDATA[EtherChannel trunking between a Foundry switch and Cisco Catalyst]]></title>
     <link href="http://www.charleshooper.net/blog/etherchannel-trunking-between-a-foundry-switch-and-cisco-catalyst/"/>
-    <updated>2009-12-04T00:00:00+00:00</updated>
+    <updated>2009-12-04T00:00:00-08:00</updated>
     <id>http://www.charleshooper.net/blog/etherchannel-trunking-between-a-foundry-switch-and-cisco-catalyst</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 

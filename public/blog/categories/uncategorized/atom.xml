@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Uncategorized | Charles Hooper]]></title>
   <link href="http://www.charleshooper.net/blog/categories/uncategorized/atom.xml" rel="self"/>
   <link href="http://www.charleshooper.net/"/>
-  <updated>2015-10-02T03:37:17+00:00</updated>
+  <updated>2015-11-24T15:27:46-08:00</updated>
   <id>http://www.charleshooper.net/</id>
   <author>
     <name><![CDATA[Charles Hooper]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Validating Data with New-Style Classes in Python]]></title>
     <link href="http://www.charleshooper.net/blog/validating-data-with-new-style-classes-in-python/"/>
-    <updated>2010-10-11T00:00:00+00:00</updated>
+    <updated>2010-10-11T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/validating-data-with-new-style-classes-in-python</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -55,7 +55,7 @@ class SomeObject(object):    # new-style classes must be subclassed from object
   <entry>
     <title type="html"><![CDATA[Three Reasons Why I&#8217;m Ditching ChunkHost]]></title>
     <link href="http://www.charleshooper.net/blog/three-reasons-why-im-ditching-chunkhost/"/>
-    <updated>2010-10-04T00:00:00+00:00</updated>
+    <updated>2010-10-04T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/three-reasons-why-im-ditching-chunkhost</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -85,7 +85,7 @@ It saddens me to think that my last eight months at ChunkHost were a waste. Fort
   <entry>
     <title type="html"><![CDATA[The HN Effect in Numbers]]></title>
     <link href="http://www.charleshooper.net/blog/the-hn-effect-in-numbers/"/>
-    <updated>2010-08-24T00:00:00+00:00</updated>
+    <updated>2010-08-24T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/the-hn-effect-in-numbers</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -124,7 +124,7 @@ To conclude, don’t under-value the social sites. If you want some organic link
   <entry>
     <title type="html"><![CDATA[New URL/Domain for my Blog (formerly subversity.net)]]></title>
     <link href="http://www.charleshooper.net/blog/new-urldomain-for-my-blog-formerly-subversity-net/"/>
-    <updated>2010-08-13T00:00:00+00:00</updated>
+    <updated>2010-08-13T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/new-urldomain-for-my-blog-formerly-subversity-net</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
@@ -136,7 +136,7 @@ To conclude, don’t under-value the social sites. If you want some organic link
   <entry>
     <title type="html"><![CDATA[How I Made Money Spamming Twitter with Contextual Book Suggestions]]></title>
     <link href="http://www.charleshooper.net/blog/how-i-made-money-spamming-twitter-with-contextual-book-suggestions/"/>
-    <updated>2010-08-13T00:00:00+00:00</updated>
+    <updated>2010-08-13T00:00:00-07:00</updated>
     <id>http://www.charleshooper.net/blog/how-i-made-money-spamming-twitter-with-contextual-book-suggestions</id>
     <content type="html"><![CDATA[<h1 id="section"></h1>
 
