@@ -1,15 +1,22 @@
 #!/bin/bash
 
-# Generate
-docker-compose run web bundle exec rake generate
+set -eux -o pipefail
 
-# Deploy to VPSes
-#SSH_TARGET="cchdotnet@theobroma.plumata.net" bundle exec rake deploy
-#SSH_TARGET="cchdotnet@lagunitas.plumata.net" bundle exec rake deploy
+# Create and configure s3 bucket
+readonly BUCKET="www.charleshooper.net"
+aws s3 mb s3://${BUCKET} \
+	--region us-west-2 || true
+aws s3 website s3://${BUCKET} \
+	--region us-west-2 \
+	--index-document index.html
 
-# Deploy to Heroku
-git add .
-git commit -a -m 'auto-commit on deploy'
-git push origin master
-git push heroku master
+# Generate html
+LANG=en_US.UTF-8 bundle exec rake generate
 
+# Deploy to s3
+aws s3 cp --recursive public/ s3://${BUCKET}/ \
+	--region us-west-2 \
+	--acl public-read
+#--grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+
+# TODO(charles) purge cdn
