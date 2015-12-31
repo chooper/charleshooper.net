@@ -19,4 +19,6 @@ aws s3 cp --recursive public/ s3://${BUCKET}/ \
 	--acl public-read
 #--grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
 
-# TODO(charles) purge cdn
+# purge cdn
+# TODO(charles) figure out what to do about s3 eventual consistency :(
+# curl -X POST -H "Fastly-Key: $FASTLY_KEY" https://api.fastly.com/service/$FASTLY_SERVICE/purge_all
