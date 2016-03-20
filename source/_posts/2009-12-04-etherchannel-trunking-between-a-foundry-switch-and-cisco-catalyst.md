@@ -4,19 +4,8 @@ author: Charles Hooper
 comments: true
 layout: post
 permalink: /blog/etherchannel-trunking-between-a-foundry-switch-and-cisco-catalyst/
-posterous_24275adbefb0d287b103c9e6dc37e3b9_post_id:
-  - 'O:16:"SimpleXMLElement":1:{i:0;s:7:"8251549";}'
-posterous_24275adbefb0d287b103c9e6dc37e3b9_permalink:
-  - http://blog.charleshooper.net/etherchannel-trunking-between-a-foundry-switc
-has_been_twittered:
-  - failed
-twitter_failure_code:
-  - 400
-twitter_failure_reason:
-  - Settings do not permit the auto-tweeting of old posts
 categories:
   - Networking
-  - Uncategorized
 ---
 # 
 
@@ -40,9 +29,7 @@ On a Cisco Catalyst switch running IOS, once logged in, you will need to perform
 
 If your other device is another Cisco Catalyst, then just repeat the steps above, connect your newly bonded ports, and disconnect any non-bonded ports connecting the two devices.
 
-If you are configuring a Foundry switch, there are [several rules you must follow][2]. Among these rules, is that you can only *start* your trunked ports on the first port of each group of 4.
-
- [2]: http://www.foundrynetworks.co.jp/services/documentation/sribcg/Trunking.html
+If you are configuring a Foundry switch, there are several rules you must follow. Among these rules, is that you can only *start* your trunked ports on the first port of each group of 4.
 
     BR-telnet@foundry>enable
     Password: *enter password*

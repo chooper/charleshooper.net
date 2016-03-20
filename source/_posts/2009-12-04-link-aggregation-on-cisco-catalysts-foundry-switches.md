@@ -4,13 +4,8 @@ author: Charles Hooper
 comments: true
 layout: post
 permalink: /blog/link-aggregation-on-cisco-catalysts-foundry-switches/
-posterous_24275adbefb0d287b103c9e6dc37e3b9_post_id:
-  - 'O:16:"SimpleXMLElement":1:{i:0;s:7:"8251465";}'
-posterous_24275adbefb0d287b103c9e6dc37e3b9_permalink:
-  - http://blog.charleshooper.net/link-aggregation-on-cisco-catalysts-and-found
 categories:
   - Networking
-  - Uncategorized
 ---
 # 
 
@@ -59,10 +54,6 @@ groups on ports 1, 5, and 9. But this does *not* mean that you can’t
 bond ports 1 & 2 — but it does mean that you can’t bond ports 3 & 4.
 
 **Recommended reading:**
-*   [Configuring EtherChannels on the Cisco Catalyst 3550][1]
-*   [Foundry Switch and Router Installation and Basic Configuration — Dynamic Link Aggregation][2]
-*   [Link aggregation article on Wikipedia][3]
+*   [Link aggregation article on Wikipedia][1]
 
- [1]: http://www.cisco.com/en/US/docs/switches/lan/catalyst3550/software/release/12.1_13_ea1/configuration/guide/swethchl.html#wp1033981
- [2]: http://www.foundrynetworks.co.jp/services/documentation/sribcg/Trunking.html
- [3]: http://en.wikipedia.org/wiki/IEEE_802.3ad
+ [1]: http://en.wikipedia.org/wiki/IEEE_802.3ad

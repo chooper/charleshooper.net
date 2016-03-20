@@ -4,19 +4,8 @@ author: Charles Hooper
 comments: true
 layout: post
 permalink: /blog/link-aggregation-on-a-redhat-centos-server-and-a-cisco-catalyst-switch/
-posterous_24275adbefb0d287b103c9e6dc37e3b9_post_id:
-  - 'O:16:"SimpleXMLElement":1:{i:0;s:7:"8251500";}'
-posterous_24275adbefb0d287b103c9e6dc37e3b9_permalink:
-  - http://blog.charleshooper.net/link-aggregation-on-a-redhat-centos-server-an
-has_been_twittered:
-  - failed
-twitter_failure_code:
-  - 400
-twitter_failure_reason:
-  - Settings do not permit the auto-tweeting of old posts
 categories:
   - Networking
-  - Uncategorized
 ---
 # 
 
@@ -30,9 +19,7 @@ To enable EtherChannel bonding on your RedHat-based server, follow these four ea
     ONBOOT=yes
     USERCTL=no
 
-This file is also where you will configure your interface options, such as your IP address or if you will be using DHCP to obtain that information automatically. You can find more information on this in the RedHat Linux manual section [Interface Configuration Files][1].
-
- [1]: http://www.redhat.com/docs/manuals/linux/RHL-8.0-Manual/ref-guide/s1-networkscripts-interfaces.html
+This file is also where you will configure your interface options, such as your IP address or if you will be using DHCP to obtain that information automatically.
 
 **2.** Next, for each interface you want bonded, create the file (and backup any already-existing ones) `/etc/sysconfig/network-scripts/ifcfg-ethX`, where *X* is the number of the interface, for example: eth0 and eth1. Check the output of `dmesg` or `ifconfig` if you are confused.
 

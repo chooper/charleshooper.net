@@ -4,13 +4,8 @@ author: Charles Hooper
 comments: true
 layout: post
 permalink: /blog/minesweeper-hacking-viewing-process-memory-in-windows/
-posterous_24275adbefb0d287b103c9e6dc37e3b9_post_id:
-  - 'O:16:"SimpleXMLElement":1:{i:0;s:7:"8248786";}'
-posterous_24275adbefb0d287b103c9e6dc37e3b9_permalink:
-  - http://blog.charleshooper.net/minesweeper-hacking-viewing-process-memory-in
 categories:
   - Projects
-  - Uncategorized
 ---
 # 
 
@@ -38,13 +33,15 @@ My error was in thinking that minefield was stored in a 2-dimensional array (ie:
 > 
 > With these fixes, it reads all the bombs properly.
 
-And also [this comment from Anonymous][2]:
-
- [2]: http://www.subversity.net/reversing/hacking-minesweeper#comment-33
+And also an anonymous comment:
 
 > Sorry but your program is reading the grid incorrectly. Minesweeper uses a grid with a fixed width of 32 bytes and the playing field is taken as a window of that grid from the top left. e.g. beginner mode uses bytes 0 to 8 and skips bytes 9 to 31 per every 32 byte row.* Fixing the program to read based on that patten shows that Minesweeper only moves the mine if it happens to be the first square you click on. Apart from that, all mines are randomly placed at the start of the game. (* Actually it would use bytes 0 to 10, where bytes 0 and 10 are 0×10 which is to indicate the border of the mine field, and bytes 1 to 9 are the actual squares. but that’s not really relevant to the analysis if you’re just &ing with 0×80 to find bombs.)
 
-The program is available here: [Minehack Source][3] | [Minehack Source & Binary (ZIP)][4]
+The program is available here:
+
+* [Minehack Source][3]
+
+* [Minehack Source & Binary (ZIP)][4]
 
  [3]: http://sub-public.s3.amazonaws.com/minehack/minehack.cpp
  [4]: http://sub-public.s3.amazonaws.com/minehack/minehack.zip
