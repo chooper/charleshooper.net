@@ -4,19 +4,8 @@ author: Charles Hooper
 comments: true
 layout: post
 permalink: /blog/who-regulates-financial-reporting/
-posterous_24275adbefb0d287b103c9e6dc37e3b9_post_id:
-  - 'O:16:"SimpleXMLElement":1:{i:0;s:8:"21844419";}'
-posterous_24275adbefb0d287b103c9e6dc37e3b9_permalink:
-  - http://blog.charleshooper.net/who-regulates-financial-reporting
-has_been_twittered:
-  - failed
-twitter_failure_code:
-  - 400
-twitter_failure_reason:
-  - Settings do not permit the auto-tweeting of old posts
 categories:
   - Finance
-  - Uncategorized
 series:
   - Intro to Financial Reporting
 ---

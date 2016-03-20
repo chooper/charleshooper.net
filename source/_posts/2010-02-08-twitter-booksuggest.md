@@ -4,12 +4,9 @@ author: Charles Hooper
 comments: true
 layout: post
 permalink: /blog/twitter-booksuggest/
-posterous_24275adbefb0d287b103c9e6dc37e3b9_post_id:
-  - 'O:16:"SimpleXMLElement":1:{i:0;s:8:"11340287";}'
-posterous_24275adbefb0d287b103c9e6dc37e3b9_permalink:
-  - http://blog.charleshooper.net/twitter-booksuggest
 categories:
-  - Uncategorized
+- Projects
+- Twitter
 ---
 # 
 
