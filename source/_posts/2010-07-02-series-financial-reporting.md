@@ -1,5 +1,5 @@
 ---
-title: Financial Reporting
+title: "Series: Financial Reporting"
 author: Charles Hooper
 comments: true
 layout: post
@@ -15,7 +15,7 @@ At the date of publication, I was taking summer classes for Sociology and Princi
 
 
  [1]: http://www.charleshooper.net/blog/series/intro-to-financial-reporting/ "Intro to Financial Reporting"
- [2]: http://japherwocky.posterous.com/
+ [2]: https://twitter.com/japherwocky
 
 1. [What Are Some of the Main Financial Documents Used in Financial Reporting?][3]
 2. [What Is Financial Reporting and Who Uses Financial Reports?][4]
