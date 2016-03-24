@@ -33,7 +33,7 @@ First, working at dotCloud is going to be an awesome experience. Everyone I’ve
 
  [2]: http://www.forbes.com/special-report/2011/30-under30-12/30-under-30-12_land.html
 
-The second reason this is exciting because, in the process of starting at a new company, I’ve managed to expand my personal consulting practice. I don’t think I’ve said so before, but I provide *systems engineering services* to [Loud3r Inc][3]. I’m their only “web ops” guy and we’ve managed to completely turn things around in the past 6 months; we’re providing our services better (more reliable, more frequent updates), faster, and cheaper than before. Rather than cancel the contract entirely, the CEO of Loud3r and I felt it was a good idea for me to subcontract a large portion of my workload to a trusted colleague of mine.
+The second reason this is exciting because, in the process of starting at a new company, I’ve managed to expand my personal consulting practice. I don’t think I’ve said so before, but I provide *systems engineering services* to [Loud3r Inc][3]. I’m their only “web ops” engineer and we’ve managed to completely turn things around in the past 6 months; we’re providing our services better (more reliable, more frequent updates), faster, and cheaper than before. Rather than cancel the contract entirely, the CEO of Loud3r and I felt it was a good idea for me to subcontract a large portion of my workload to a trusted colleague of mine.
 
  [3]: http://www.loud3r.com/
 

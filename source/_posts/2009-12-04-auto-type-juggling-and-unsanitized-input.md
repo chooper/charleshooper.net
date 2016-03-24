@@ -83,6 +83,6 @@ update to the maximum value for that column’s data type.
 
 While exploits on web-based RPGs aren’t the end of the world, imagine if
 your *bank* used a PHP-based web-application. Wouldn’t you feel better
-if they all knew about his caveat and properly sanitized and validated
+if they all knew about this caveat and properly sanitized and validated
 user input? :-)
 
