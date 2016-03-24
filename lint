@@ -1,0 +1,8 @@
+#!/bin/bash
+set -u -o pipefail
+
+for file in $(ls source/_posts/*.md)
+do
+    echo "Running linter for $file"
+    joblint $file
+done
