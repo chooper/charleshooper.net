@@ -44,10 +44,9 @@ A fair amount of the time I share this story, people are more impressed with the
 
 While it only lasted a short while, I had alot of fun and made a little bit of money spamming Twitter. 
 
-The second re-incarnation of this project turned into [BookSuggest, a website for recommending books based on a person’s Twitter feed][5]. I haven’t put alot of effort into promoting it, but my conversion rate is much lower now that I’m not pushing the links in anyone’s face. 
+The second re-incarnation of this project turned into BookSuggest, a website for recommending books based on a person’s Twitter feed. I haven’t put alot of effort into promoting it, but my conversion rate is much lower now that I’m not pushing the links in anyone’s face.
 
 Try it out and comment here – what did BookSuggest tell YOU to read?
 
  [4]: http://sub-public.s3.amazonaws.com/blog_imgs/twitter-suspended.png "twitter-suspended.png"
- [5]: http://www.charleshooper.net/twitter/
 
