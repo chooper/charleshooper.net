@@ -60,7 +60,7 @@ that does not.
   application offline.
 
 1. Your application should be [disposable and restartable][7]; this means that
-  it's restartable on the same instance or a new instance) after a crash and
+  it's restartable on the same instance or a new instance after a crash and
   should crash in an automatically recoverable state. If your crash is not
   automatically recoverable, it should scream! In addition, your application
   should gracefully complete existing work such as HTTP requests or jobs it
@@ -70,8 +70,8 @@ that does not.
 
 These are just a start but these requirements should be imported into your project's
 requirements and prioritized with maintainability in mind. By doing so, your
-application will be more scalable, easier to operator, and have a lower Mean
-Time To Recovery than application that don't satisfy these requirements.
+application will be more scalable, easier to operate, and have a lower Mean
+Time To Recovery than an application that don't satisfy these requirements.
 
 Do you feel like I missed anything? What else would you recommend?
 
