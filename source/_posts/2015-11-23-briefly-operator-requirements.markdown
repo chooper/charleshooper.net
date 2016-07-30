@@ -31,8 +31,7 @@ that does not.
   12factor, then I would challenge you to borrow as much of it as you can before
   discounting the whole 12factor methodology.
 
-1. Your application should have plenty of [logging and follow best
-  practices][2].
+1. Your application should have plenty of [logging and follow best practices][2].
 
 1. Your application should also emit metrics that create some sense of
   understanding of what the system is doing.
