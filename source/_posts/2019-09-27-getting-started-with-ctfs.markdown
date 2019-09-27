@@ -41,7 +41,8 @@ Whether you're in college or not, you can also get involved with the large numbe
 
 If you'd like to practice your skills on your own time and before doing a CTF (like me!), there are different resources for that as well!
 
-For example, lots of CTFs publish their challenges after the competition. This means that you can find an old CTF event and work through the tasks on your own. Personally, I'll be starting with the challenges on [Square's CTF page](https://squarectf.com).
+For example, lots of CTFs publish their challenges after the competition. This means that you can find an old CTF event and work through the tasks on your own. Personally, I'll be starting with the challenges on [Square's CTF page](https://squarectf.com) and [picoCTF](https://picoctf.com).
+
 
 There are also resources out there for practicing the specific types of challenges you might encounter. For example, if you're interested in getting started with reverse engineering, you can practice on ["crack mes"](https://reverseengineering.stackexchange.com/a/15775) where you're given a binary and you have to crack it. Material for practicing the other types of challenges are out there too but you'll have to find those resources on your own.
 
