@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -eux -o pipefail
 
 # Create and configure s3 bucket
@@ -14,6 +13,7 @@ aws s3 website s3://${BUCKET} \
 LANG=en_US.UTF-8 bundle exec rake generate
 
 # Deploy to s3
+# TODO(charles) delete posts that no longer exist
 aws s3 cp --recursive public/ s3://${BUCKET}/ \
 	--region us-west-2 \
 	--acl public-read
