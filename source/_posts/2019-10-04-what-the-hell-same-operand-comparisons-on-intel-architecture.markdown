@@ -1,20 +1,23 @@
 ---
-layout: post title: "What the hell: Same-operand comparisons on Intel
-architecture" date: 2019-10-04 21:37 comments: true categories: 
+title: "What the hell: Same-operand comparisons on Intel architecture"
+layout: post
+date: 2019-10-04 21:37
+comments: true
+categories: 
 - Infosec
-  ---
+---
 # 
 
 I was reading _The Shellcoder's Handbook_ and, in chapter one, the author
 discusses how being able to recognize C-like language constructs in assembly
-code as an important skill.
+code is an important skill.
 
-There is one example that was throwing me for a loop and I just couldn't seem to
-understand what was going on despite reading all I could (especially references
-on the `or`, `test`, `cmp`, and `jxx` instructions).
+There was one example that was throwing me for a loop and I just couldn't seem to
+understand what was going on. This was despite all the reading that I could
+(especially references for the `or`, `test`, `cmp`, and `jxx` instructions).
 
-So I started writing this blog post but, by the time I finished, I _think_ I
-figured it all out but I'm publishing this anyway in the hopes that somebody
+So I started writing this blog post and, by the time I finished, I _think_ I
+figured it all out! I'm publishing it anyway though in the hopes that somebody
 corrects me if I'm wrong!
 
 Okay, so, here's the C code that the book wanted me to recognize:
@@ -27,7 +30,7 @@ if (number < 0)
 }
 ```
 
-The IA32 assembly that the book translated this to is:
+The IA32 assembly that the book translates this to is:
 
 ```
 number dw 0
