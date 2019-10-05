@@ -1,5 +1,5 @@
 ---
-title: "What the hell: Same-operand comparisons on Intel architecture"
+title: "What the hell? Same-operand comparisons on Intel architecture"
 permalink: /blog/same-operand-comparisons-on-intel-architecture/
 layout: post
 date: 2019-10-04 21:37
