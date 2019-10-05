@@ -19,7 +19,7 @@ corrects me if I'm wrong!
 
 Okay, so, here's the C code that the book wanted me to recognize:
 
-```C
+```
 int number;
 if (number < 0)
 {
@@ -29,7 +29,7 @@ if (number < 0)
 
 The IA32 assembly that the book translated this to is:
 
-```assembly
+```
 number dw 0
 mv eax, number
 or eax, eax
@@ -41,7 +41,7 @@ label:
 
 What I was _really_ stuck on were the two lines:
 
-```assembly
+```
 or eax, eax
 jge label
 ```
@@ -102,7 +102,7 @@ examples:
 
 Okay, so say we let `number = -10` here. We wind up with:
 
-```assembly
+```
 mv eax, number  ; eax = -10
 or eax, eax     ; eax = -10. SF=1, OF=0
 jge label       ; (SF xOR OF) = 0 => (1 xOR 0) = 1 => jump!
@@ -110,7 +110,7 @@ jge label       ; (SF xOR OF) = 0 => (1 xOR 0) = 1 => jump!
 
 Or `number = 10` this time:
 
-```assembly
+```
 mv eax, number  ; eax = 10
 or eax, eax     ; eax = 10. SF=0, OF=0
 jge label       ; (SF xOR OF) = 0 => (0 xOR 0) = 0 => don't jump
@@ -118,7 +118,7 @@ jge label       ; (SF xOR OF) = 0 => (0 xOR 0) = 0 => don't jump
 
 Finally, let's test our boundary, zero:
 
-```assembly
+```
 mv eax, number  ; eax = 0
 or eax, eax     ; eax = 0. SF=0, OF=0
 jge label       ; (SF xOR OF) = 0 => (0 xOR 0) = 0 => don't jump
