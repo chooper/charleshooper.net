@@ -39,9 +39,9 @@ number dw 0
 mv eax, number
 or eax, eax
 jge label
-// code for 'no' condition
+; code for 'no' condition
 label:
-//code for 'yes' condition'
+; code for 'yes' condition'
 ```
 
 And what I was _really_ stuck on were the two lines:
